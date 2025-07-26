@@ -1,73 +1,71 @@
-/* --- Google Fonts Import (OPTIONAL - Choose one or two gaming fonts you like) --- */
-/* Visit fonts.google.com, find a font (e.g., "Orbitron"), select styles, and copy the @import link */
-/* Example for Orbitron: */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
-/* Example for Press Start 2P: */
-/* @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap'); */
+/* --- Google Fonts Import (OPTIONAL - Choose the gaming fonts you like) --- */
+/* Visit fonts.google.com, find your desired fonts (e.g., "Orbitron", "Press Start 2P"),
+   select styles, and copy the @import link. Paste it here. */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Press+Start+2P&display=swap');
 
-/* --- General Body and Main Container Styling --- */
+
+/* --- Core Page Styles (based on "yellze's" successful approach) --- */
 body {
-    /* A deep, dark gaming-feel background color */
-    background-color: #1a1a2e !important; /* Deep dark blue/purple */
-    color: #e0e0e0 !important; /* Light grey for general text, ensures readability */
-    font-family: 'Orbitron', sans-serif !important; /* Example gaming font, fallback to generic sans-serif */
-    /* text-align: center; /* This was in original, consider if you want all text centered */
+    /* Apply a gaming-feel font globally, with fallbacks */
+    font-family: 'Orbitron', sans-serif !important; 
+    text-align: center; /* This centers body-level text/elements */
+    color: #e0e0e0 !important; /* Default text color for readability against dark background */
 }
 
-/* The main content container - applying the Go board pattern here */
+/* The main content container - This is where your star background goes */
 .container {
-    max-width: none !important; /* Forces the container to span full width */
+    max-width: none !important; /* Make the container span the full width of the page */
 
-    /* Go board pattern background */
-    background-image: url('YOUR_GO_BOARD_PATTERN_IMAGE_URL_HERE') !important; /* Replace with your image URL */
-    background-repeat: repeat !important; /* Repeat the pattern */
-    background-size: 150px 150px !important; /* Adjust size of each repeated board as desired */
-    background-attachment: fixed !important; /* Keep background fixed when scrolling */
-    background-position: center center !important;
+    /* Your Star Background */
+    background-image: url('YOUR_RELIABLE_STAR_IMAGE_URL_HERE') !important; /* <-- REPLACE THIS WITH YOUR IMAGE URL */
+    background-size: cover !important; /* Cover the entire container */
+    background-repeat: no-repeat !important; /* Don't tile the image */
+    background-attachment: fixed !important; /* Keep background fixed as you scroll */
+    background-position: center center !important; /* Center the image */
 
-    /* Optional: A subtle overlay to make text more readable over the pattern */
-    background-color: rgba(0, 0, 0, 0.4) !important; /* 40% opaque black overlay */
+    /* Optional: A subtle dark overlay to ensure text readability over the stars */
+    background-color: rgba(0, 0, 0, 0.4) !important; /* 40% opaque black */
 }
 
-
-/* --- Font Styling for OGS Elements --- */
-/* Main username font - can use a different gaming font here */
+/* --- Font Styling for OGS Elements (Gaming Feel) --- */
+/* Player Username */
 .avatar-container .Player-username {
-    font-size: 2.2em !important; /* Slightly larger */
-    font-family: 'Press Start 2P', cursive !important; /* Pixel font example */
-    color: #00FFFF !important; /* Cyan for a neon gaming feel */
+    font-size: 2.2em !important; /* Larger username */
+    font-family: 'Press Start 2P', cursive !important; /* Pixelated retro font */
+    color: #00FFFF !important; /* Neon cyan color */
     text-shadow: 0 0 5px #00FFFF, 0 0 10px #00FFFF; /* Subtle neon glow */
 }
 
-/* Headings within your "About Me" and elsewhere */
+/* Headings (h1, h2, h3) - for About Me or other sections */
 h1, h2, h3 {
-    font-family: 'Orbitron', sans-serif !important; /* Use your main gaming font */
-    color: #8A2BE2 !important; /* Rich purple gaming feel */
+    font-family: 'Orbitron', sans-serif !important; /* Futuristic font */
+    color: #8A2BE2 !important; /* Rich purple for headings */
+    text-shadow: 0 0 3px #8A2BE2; /* Subtle glow */
 }
 
-/* General text (DMs, chat, etc.) */
-/* You might need to be more specific with selectors if this doesn't catch all text */
-p, li, span, a,
+/* General text (paragraphs, list items, default links, chat messages) */
+p, li, span, a:not(.Player-username):not(.username-link), /* Exclude username links if they inherit this */
 .chat-message-text,
-.message-list-item-text {
-    color: #e0e0e0 !important; /* Light grey for readability */
+.message-list-item-text { /* Common text elements in chat/DMs */
+    color: #e0e0e0 !important; /* Light grey for good readability */
 }
 
-/* Optional: Make panels slightly transparent for background to show */
-/* You'll need to use browser inspect tool (F12) to find correct class names */
-/* Examples (replace with actual OGS selectors you find): */
+/* --- Optional: Panel Transparency (Crucial for background visibility) --- */
+/* You'll need to use your browser's inspect tool (F12) to find the exact class names
+   for the main content panels, sidebars, chat windows, etc., if you want the background
+   to show through them. Examples of what you might find: */
 /*
 .main-content-panel,
 .sidebar-panel,
 .chat-window {
-    background-color: rgba(26, 26, 46, 0.8) !important; // Semi-transparent version of main background color
+    background-color: rgba(26, 26, 46, 0.8) !important; // Semi-transparent version of body background color
     border-color: rgba(255, 255, 255, 0.1) !important; // Subtle border
     border-radius: 8px !important; // Slightly rounded corners
 }
 */
 
-/* --- Other elements from previous example (keep if you like) --- */
-/* Rainbow text animation for h2, h3 */
+/* --- Animations (from "yellze's" original code - kept as they work) --- */
+/* Rainbow text for h2, h3 */
 h2, h3 {
     animation: rainbowText 2s infinite;
 }
@@ -75,16 +73,16 @@ h2, h3 {
     0%   {  color: #FF0900; }
     17%  {  color: #FF7F00; }
     33%  {  color: #FFEF00; }
-    50%  {  color: #00F11D; }
+    50%   {  color: #00F11D; }
     67%  {  color: #0079FF; }
     83%  {  color: #A800FF; }
     100% {  color: #FF0900; }
 }
 
-/* About container special effects (scrolling H1, blinking H3) */
+/* Scrolling H1 and Blinking H3 in About Me */
 .about-container {
-    overflow: hidden; /* Important for scrolling text */
-    position: relative;
+    overflow: hidden !important; /* Crucial for text scrolling effect */
+    position: relative !important;
 }
 .about-container h1 {
     color: #00F11D !important; /* Green for scrolling text */
@@ -92,7 +90,7 @@ h2, h3 {
     position: absolute !important;
     width: 100% !important;
     height: 100% !important;
-    white-space: nowrap; /* Keep text on one line */
+    white-space: nowrap !important; /* Prevent text from wrapping */
     /* Starting position */
     -moz-transform:translateX(100%);
     -webkit-transform:translateX(100%);	
@@ -134,7 +132,7 @@ h2, h3 {
     100% {  opacity: 1; }
 }
 
-/* Hide leaderboards link from original */
+/* --- Menu Cleanup (from "yellze's" original code) --- */
 a[href="/leaderboards"] {
     display: none !important;
 }
