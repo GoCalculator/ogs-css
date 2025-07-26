@@ -1,53 +1,75 @@
-/* General body styles - kept from original for font handling */
+/* --- Google Fonts Import (OPTIONAL - Choose one or two gaming fonts you like) --- */
+/* Visit fonts.google.com, find a font (e.g., "Orbitron"), select styles, and copy the @import link */
+/* Example for Orbitron: */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+/* Example for Press Start 2P: */
+/* @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap'); */
+
+/* --- General Body and Main Container Styling --- */
 body {
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-    text-align: center; /* This might center ALL text if not overridden */
+    /* A deep, dark gaming-feel background color */
+    background-color: #1a1a2e !important; /* Deep dark blue/purple */
+    color: #e0e0e0 !important; /* Light grey for general text, ensures readability */
+    font-family: 'Orbitron', sans-serif !important; /* Example gaming font, fallback to generic sans-serif */
+    /* text-align: center; /* This was in original, consider if you want all text centered */
 }
 
-/* The main content container - this is where we put your star background */
+/* The main content container - applying the Go board pattern here */
 .container {
     max-width: none !important; /* Forces the container to span full width */
-    background-image: url('YOUR_RELIABLE_STAR_IMAGE_URL_HERE') !important;
-    background-size: cover !important; /* Ensures the image covers the entire container */
-    background-repeat: no-repeat !important; /* Prevents tiling */
-    background-attachment: fixed !important; /* Makes the background fixed as you scroll */
-    background-position: center center !important; /* Centers the background image */
+
+    /* Go board pattern background */
+    background-image: url('YOUR_GO_BOARD_PATTERN_IMAGE_URL_HERE') !important; /* Replace with your image URL */
+    background-repeat: repeat !important; /* Repeat the pattern */
+    background-size: 150px 150px !important; /* Adjust size of each repeated board as desired */
+    background-attachment: fixed !important; /* Keep background fixed when scrolling */
+    background-position: center center !important;
+
+    /* Optional: A subtle overlay to make text more readable over the pattern */
+    background-color: rgba(0, 0, 0, 0.4) !important; /* 40% opaque black overlay */
 }
 
-/* Text color adjustments for readability against a dark background */
-/* You might need to add more specific selectors here if some text remains dark */
-body, body *,
-.Player-username,
-.about-container p,
-.about-container h1,
-.about-container h2,
-.about-container h3,
-.chat-message-text { /* Attempt to target various text elements */
-    color: #E0E0E0 !important; /* A light grey for general text */
+
+/* --- Font Styling for OGS Elements --- */
+/* Main username font - can use a different gaming font here */
+.avatar-container .Player-username {
+    font-size: 2.2em !important; /* Slightly larger */
+    font-family: 'Press Start 2P', cursive !important; /* Pixel font example */
+    color: #00FFFF !important; /* Cyan for a neon gaming feel */
+    text-shadow: 0 0 5px #00FFFF, 0 0 10px #00FFFF; /* Subtle neon glow */
 }
 
-/* Optional: Make some panels semi-transparent to let the background show through */
-/* You'll need to use your browser's inspect tool (F12) on OGS to find exact class names */
-/* Examples of common OGS elements you might want to make semi-transparent: */
+/* Headings within your "About Me" and elsewhere */
+h1, h2, h3 {
+    font-family: 'Orbitron', sans-serif !important; /* Use your main gaming font */
+    color: #8A2BE2 !important; /* Rich purple gaming feel */
+}
+
+/* General text (DMs, chat, etc.) */
+/* You might need to be more specific with selectors if this doesn't catch all text */
+p, li, span, a,
+.chat-message-text,
+.message-list-item-text {
+    color: #e0e0e0 !important; /* Light grey for readability */
+}
+
+/* Optional: Make panels slightly transparent for background to show */
+/* You'll need to use browser inspect tool (F12) to find correct class names */
+/* Examples (replace with actual OGS selectors you find): */
 /*
 .main-content-panel,
 .sidebar-panel,
 .chat-window {
-    background-color: rgba(0, 0, 0, 0.7) !important; // Semi-transparent black overlay
-    border-color: rgba(255, 255, 255, 0.2) !important; // Lighter border for contrast
+    background-color: rgba(26, 26, 46, 0.8) !important; // Semi-transparent version of main background color
+    border-color: rgba(255, 255, 255, 0.1) !important; // Subtle border
+    border-radius: 8px !important; // Slightly rounded corners
 }
 */
 
-
-/* Font changes from original, if you want to keep them */
-.avatar-container .Player-username {
-    font-size: 2em !important; /* Added !important */
-    font-family: "Comic Sans MS", cursive, serif !important; /* Added !important */
-}
-
-/* Animations from original, if you want to keep them */
+/* --- Other elements from previous example (keep if you like) --- */
+/* Rainbow text animation for h2, h3 */
 h2, h3 {
-    animation:rainbowText 2s infinite;
+    animation: rainbowText 2s infinite;
 }
 @keyframes rainbowText{
     0%   {  color: #FF0900; }
@@ -59,17 +81,18 @@ h2, h3 {
     100% {  color: #FF0900; }
 }
 
-/* About container special effects from original */
+/* About container special effects (scrolling H1, blinking H3) */
 .about-container {
-    overflow: hidden;
+    overflow: hidden; /* Important for scrolling text */
     position: relative;
 }
 .about-container h1 {
-    color: limegreen !important; /* Added !important */
-    font-size: 3em !important; /* Added !important */
-    position: absolute !important; /* Added !important */
-    width: 100% !important; /* Added !important */
-    height: 100% !important; /* Added !important */
+    color: #00F11D !important; /* Green for scrolling text */
+    font-size: 3em !important;
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    white-space: nowrap; /* Keep text on one line */
     /* Starting position */
     -moz-transform:translateX(100%);
     -webkit-transform:translateX(100%);	
@@ -79,7 +102,6 @@ h2, h3 {
     -webkit-animation: scrolling 15s linear infinite;
     animation: scrolling 15s linear infinite;
 }
-/* Move it (define the animation) */
 @-moz-keyframes scrolling {
     0%   { -moz-transform: translateX(100%); }
     100% { -moz-transform: translateX(-100%); }
@@ -90,13 +112,13 @@ h2, h3 {
 }
 @keyframes scrolling {
      0%   { 
-        -moz-transform: translateX(100%); /* Firefox bug fix */
-        -webkit-transform: translateX(100%); /* Firefox bug fix */
+        -moz-transform: translateX(100%);
+        -webkit-transform: translateX(100%);
         transform: translateX(100%); 		
     }
     100% { 
-        -moz-transform: translateX(-100%); /* Firefox bug fix */
-        -webkit-transform: translateX(-100%); /* Firefox bug fix */
+        -moz-transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
         transform: translateX(-100%); 
     }
 }
@@ -112,7 +134,7 @@ h2, h3 {
     100% {  opacity: 1; }
 }
 
-/* clean up the menu from original */
+/* Hide leaderboards link from original */
 a[href="/leaderboards"] {
     display: none !important;
 }
