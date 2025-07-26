@@ -1,138 +1,18 @@
-/* --- Google Fonts Import (OPTIONAL - Choose the gaming fonts you like) --- */
-/* Visit fonts.google.com, find your desired fonts (e.g., "Orbitron", "Press Start 2P"),
-   select styles, and copy the @import link. Paste it here. */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Press+Start+2P&display=swap');
-
-
-/* --- Core Page Styles (based on "yellze's" successful approach) --- */
-body {
-    /* Apply a gaming-feel font globally, with fallbacks */
-    font-family: 'Orbitron', sans-serif !important; 
-    text-align: center; /* This centers body-level text/elements */
-    color: #e0e0e0 !important; /* Default text color for readability against dark background */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1a1a1a, #0d0d0d, #3a0ca3, #720026);
+  color: #e0e0e0;
 }
 
-/* The main content container - This is where your star background goes */
-.container {
-    max-width: none !important; /* Make the container span the full width of the page */
-
-    /* Your Star Background */
-    background-image: url('YOUR_RELIABLE_STAR_IMAGE_URL_HERE') !important; /* <-- REPLACE THIS WITH YOUR IMAGE URL */
-    background-size: cover !important; /* Cover the entire container */
-    background-repeat: no-repeat !important; /* Don't tile the image */
-    background-attachment: fixed !important; /* Keep background fixed as you scroll */
-    background-position: center center !important; /* Center the image */
-
-    /* Optional: A subtle dark overlay to ensure text readability over the stars */
-    background-color: rgba(0, 0, 0, 0.4) !important; /* 40% opaque black */
+body > * {
+  text-align: center;
+  padding: 40px;
 }
 
-/* --- Font Styling for OGS Elements (Gaming Feel) --- */
-/* Player Username */
-.avatar-container .Player-username {
-    font-size: 2.2em !important; /* Larger username */
-    font-family: 'Press Start 2P', cursive !important; /* Pixelated retro font */
-    color: #00FFFF !important; /* Neon cyan color */
-    text-shadow: 0 0 5px #00FFFF, 0 0 10px #00FFFF; /* Subtle neon glow */
+h1 {
+  margin-bottom: 10px;
+  text-shadow: 0 0 5px #ff006e;
 }
 
-/* Headings (h1, h2, h3) - for About Me or other sections */
-h1, h2, h3 {
-    font-family: 'Orbitron', sans-serif !important; /* Futuristic font */
-    color: #8A2BE2 !important; /* Rich purple for headings */
-    text-shadow: 0 0 3px #8A2BE2; /* Subtle glow */
-}
-
-/* General text (paragraphs, list items, default links, chat messages) */
-p, li, span, a:not(.Player-username):not(.username-link), /* Exclude username links if they inherit this */
-.chat-message-text,
-.message-list-item-text { /* Common text elements in chat/DMs */
-    color: #e0e0e0 !important; /* Light grey for good readability */
-}
-
-/* --- Optional: Panel Transparency (Crucial for background visibility) --- */
-/* You'll need to use your browser's inspect tool (F12) to find the exact class names
-   for the main content panels, sidebars, chat windows, etc., if you want the background
-   to show through them. Examples of what you might find: */
-/*
-.main-content-panel,
-.sidebar-panel,
-.chat-window {
-    background-color: rgba(26, 26, 46, 0.8) !important; // Semi-transparent version of body background color
-    border-color: rgba(255, 255, 255, 0.1) !important; // Subtle border
-    border-radius: 8px !important; // Slightly rounded corners
-}
-*/
-
-/* --- Animations (from "yellze's" original code - kept as they work) --- */
-/* Rainbow text for h2, h3 */
-h2, h3 {
-    animation: rainbowText 2s infinite;
-}
-@keyframes rainbowText{
-    0%   {  color: #FF0900; }
-    17%  {  color: #FF7F00; }
-    33%  {  color: #FFEF00; }
-    50%   {  color: #00F11D; }
-    67%  {  color: #0079FF; }
-    83%  {  color: #A800FF; }
-    100% {  color: #FF0900; }
-}
-
-/* Scrolling H1 and Blinking H3 in About Me */
-.about-container {
-    overflow: hidden !important; /* Crucial for text scrolling effect */
-    position: relative !important;
-}
-.about-container h1 {
-    color: #00F11D !important; /* Green for scrolling text */
-    font-size: 3em !important;
-    position: absolute !important;
-    width: 100% !important;
-    height: 100% !important;
-    white-space: nowrap !important; /* Prevent text from wrapping */
-    /* Starting position */
-    -moz-transform:translateX(100%);
-    -webkit-transform:translateX(100%);	
-    transform:translateX(100%);
-    /* Apply animation to this element */	
-    -moz-animation: scrolling 15s linear infinite;
-    -webkit-animation: scrolling 15s linear infinite;
-    animation: scrolling 15s linear infinite;
-}
-@-moz-keyframes scrolling {
-    0%   { -moz-transform: translateX(100%); }
-    100% { -moz-transform: translateX(-100%); }
-}
-@-webkit-keyframes scrolling {
-    0%   { -webkit-transform: translateX(100%); }
-    100% { -webkit-transform: translateX(-100%); }
-}
-@keyframes scrolling {
-     0%   { 
-        -moz-transform: translateX(100%);
-        -webkit-transform: translateX(100%);
-        transform: translateX(100%); 		
-    }
-    100% { 
-        -moz-transform: translateX(-100%);
-        -webkit-transform: translateX(-100%);
-        transform: translateX(-100%); 
-    }
-}
-
-.about-container h3 {
-    animation:blinkingText 1.5s infinite;
-}
-@keyframes blinkingText{
-    0%   {  opacity: 1; }
-    49%  {  opacity: 1; }
-    60%  {  opacity: 0; }
-    99%  {  opacity: 0; }
-    100% {  opacity: 1; }
-}
-
-/* --- Menu Cleanup (from "yellze's" original code) --- */
-a[href="/leaderboards"] {
-    display: none !important;
-}
