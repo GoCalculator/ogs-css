@@ -1,133 +1,118 @@
-/* Pure CSS Animated Night Sky */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-
-:root {
-  --space-width: 100vw;
-  --space-height: 100vh;
-  --star-count: 200;
-  --shooting-star-count: 3;
-  --galaxy-count: 3;
-}
-
+/* General body styles - kept from original for font handling */
 body {
-  margin: 0;
-  min-height: 100vh;
-  background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
-  overflow: hidden;
-  font-family: 'Orbitron', sans-serif;
-  position: relative;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    text-align: center; /* This might center ALL text if not overridden */
 }
 
-/* Stars Container */
-.stars {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  overflow: hidden;
+/* The main content container - this is where we put your star background */
+.container {
+    max-width: none !important; /* Forces the container to span full width */
+    background-image: url('YOUR_RELIABLE_STAR_IMAGE_URL_HERE') !important;
+    background-size: cover !important; /* Ensures the image covers the entire container */
+    background-repeat: no-repeat !important; /* Prevents tiling */
+    background-attachment: fixed !important; /* Makes the background fixed as you scroll */
+    background-position: center center !important; /* Centers the background image */
 }
 
-/* Base Star Style */
-.star {
-  position: absolute;
-  background: #fff;
-  border-radius: 50%;
-  animation: twinkle 3s infinite ease-in-out;
+/* Text color adjustments for readability against a dark background */
+/* You might need to add more specific selectors here if some text remains dark */
+body, body *,
+.Player-username,
+.about-container p,
+.about-container h1,
+.about-container h2,
+.about-container h3,
+.chat-message-text { /* Attempt to target various text elements */
+    color: #E0E0E0 !important; /* A light grey for general text */
 }
 
-/* Twinkling Animation */
-@keyframes twinkle {
-  0%, 100% { opacity: 0.1; transform: scale(0.7); }
-  50% { opacity: 1; transform: scale(1); }
+/* Optional: Make some panels semi-transparent to let the background show through */
+/* You'll need to use your browser's inspect tool (F12) on OGS to find exact class names */
+/* Examples of common OGS elements you might want to make semi-transparent: */
+/*
+.main-content-panel,
+.sidebar-panel,
+.chat-window {
+    background-color: rgba(0, 0, 0, 0.7) !important; // Semi-transparent black overlay
+    border-color: rgba(255, 255, 255, 0.2) !important; // Lighter border for contrast
+}
+*/
+
+
+/* Font changes from original, if you want to keep them */
+.avatar-container .Player-username {
+    font-size: 2em !important; /* Added !important */
+    font-family: "Comic Sans MS", cursive, serif !important; /* Added !important */
 }
 
-/* Generate multiple stars with different positions and animations */
-.star:nth-child(1) { top: 10%; left: 20%; width: 2px; height: 2px; animation-delay: 0s; }
-.star:nth-child(2) { top: 15%; left: 50%; width: 1px; height: 1px; animation-delay: 1s; }
-.star:nth-child(3) { top: 20%; left: 70%; width: 1.5px; height: 1.5px; animation-delay: 2s; }
-/* Add more stars as needed */
-
-/* Shooting Stars */
-.shooting-star {
-  position: absolute;
-  width: 100px;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, #fff 50%, rgba(255,255,255,0) 100%);
-  transform: rotate(-45deg);
-  animation: shooting 10s linear infinite;
-  opacity: 0;
+/* Animations from original, if you want to keep them */
+h2, h3 {
+    animation:rainbowText 2s infinite;
+}
+@keyframes rainbowText{
+    0%   {  color: #FF0900; }
+    17%  {  color: #FF7F00; }
+    33%  {  color: #FFEF00; }
+    50%  {  color: #00F11D; }
+    67%  {  color: #0079FF; }
+    83%  {  color: #A800FF; }
+    100% {  color: #FF0900; }
 }
 
-.shooting-star:nth-child(1) {
-  top: 20%;
-  left: -100px;
-  animation-delay: 3s;
+/* About container special effects from original */
+.about-container {
+    overflow: hidden;
+    position: relative;
+}
+.about-container h1 {
+    color: limegreen !important; /* Added !important */
+    font-size: 3em !important; /* Added !important */
+    position: absolute !important; /* Added !important */
+    width: 100% !important; /* Added !important */
+    height: 100% !important; /* Added !important */
+    /* Starting position */
+    -moz-transform:translateX(100%);
+    -webkit-transform:translateX(100%);	
+    transform:translateX(100%);
+    /* Apply animation to this element */	
+    -moz-animation: scrolling 15s linear infinite;
+    -webkit-animation: scrolling 15s linear infinite;
+    animation: scrolling 15s linear infinite;
+}
+/* Move it (define the animation) */
+@-moz-keyframes scrolling {
+    0%   { -moz-transform: translateX(100%); }
+    100% { -moz-transform: translateX(-100%); }
+}
+@-webkit-keyframes scrolling {
+    0%   { -webkit-transform: translateX(100%); }
+    100% { -webkit-transform: translateX(-100%); }
+}
+@keyframes scrolling {
+     0%   { 
+        -moz-transform: translateX(100%); /* Firefox bug fix */
+        -webkit-transform: translateX(100%); /* Firefox bug fix */
+        transform: translateX(100%); 		
+    }
+    100% { 
+        -moz-transform: translateX(-100%); /* Firefox bug fix */
+        -webkit-transform: translateX(-100%); /* Firefox bug fix */
+        transform: translateX(-100%); 
+    }
 }
 
-.shooting-star:nth-child(2) {
-  top: 50%;
-  left: -200px;
-  animation-delay: 8s;
-  width: 150px;
+.about-container h3 {
+    animation:blinkingText 1.5s infinite;
+}
+@keyframes blinkingText{
+    0%   {  opacity: 1; }
+    49%  {  opacity: 1; }
+    60%  {  opacity: 0; }
+    99%  {  opacity: 0; }
+    100% {  opacity: 1; }
 }
 
-.shooting-star:nth-child(3) {
-  top: 70%;
-  left: -150px;
-  animation-delay: 15s;
-  width: 80px;
-}
-
-@keyframes shooting {
-  0% { transform: translateX(0) translateY(0) rotate(-45deg); opacity: 1; }
-  70% { opacity: 1; }
-  100% { transform: translateX(1000px) translateY(-1000px) rotate(-45deg); opacity: 0; }
-}
-
-/* Galaxy Effects */
-.galaxy {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(10px);
-  animation: pulse 20s infinite alternate;
-}
-
-.galaxy:nth-child(1) {
-  width: 500px;
-  height: 500px;
-  top: -100px;
-  left: -100px;
-  background: radial-gradient(circle, rgba(138,43,226,0.2) 0%, rgba(0,0,0,0) 70%);
-  animation-delay: 0s;
-}
-
-.galaxy:nth-child(2) {
-  width: 700px;
-  height: 700px;
-  bottom: -200px;
-  right: -200px;
-  background: radial-gradient(circle, rgba(0,191,255,0.15) 0%, rgba(0,0,0,0) 70%);
-  animation-delay: 5s;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 0.2; }
-  100% { transform: scale(1.5); opacity: 0.4; }
-}
-
-/* Content Styling */
-.content {
-  position: relative;
-  z-index: 1;
-  color: #fff;
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  background: rgba(11, 15, 25, 0.7);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
-  margin-top: 2rem;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+/* clean up the menu from original */
+a[href="/leaderboards"] {
+    display: none !important;
 }
