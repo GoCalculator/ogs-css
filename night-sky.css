@@ -1,18 +1,12 @@
-html, body {
-  height: 100%;
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.container {
   background: linear-gradient(135deg, #1a1a1a, #0d0d0d, #3a0ca3, #720026);
   color: #e0e0e0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body > * {
-  text-align: center;
-  padding: 40px;
-}
-
-h1 {
-  margin-bottom: 10px;
+.container h1, 
+.container h2, 
+.container h3, 
+.container p {
   text-shadow: 0 0 5px #ff006e;
 }
-
