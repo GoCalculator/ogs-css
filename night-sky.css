@@ -5,86 +5,130 @@ body {
             overflow: hidden;
         }
 
-        .stars {
+        /* Create stars using body's pseudo-elements */
+        body::before,
+        body::after {
+            content: '';
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
+            pointer-events: none;
         }
 
-        .star {
-            position: absolute;
-            background: #fff;
-            border-radius: 50%;
-            animation: twinkle 3s infinite ease-in-out;
+        /* First layer of stars */
+        body::before {
+            background: 
+                /* Star positions */
+                radial-gradient(1px 1px at 10% 20%, white 1%, transparent 2%),
+                radial-gradient(1px 1px at 20% 30%, white 1%, transparent 2%),
+                radial-gradient(1px 1px at 30% 40%, white 1%, transparent 2%),
+                radial-gradient(1px 1px at 40% 10%, white 1%, transparent 2%),
+                radial-gradient(1px 1px at 50% 50%, white 1%, transparent 2%),
+                radial-gradient(1px 1px at 60% 20%, white 1%, transparent 2%),
+                radial-gradient(1px 1px at 70% 30%, white 1%, transparent 2%),
+                radial-gradient(1px 1px at 80% 40%, white 1%, transparent 2%),
+                radial-gradient(1px 1px at 90% 10%, white 1%, transparent 2%),
+                radial-gradient(1px 1px at 15% 60%, white 1%, transparent 2%),
+                radial-gradient(1.5px 1.5px at 25% 70%, white 1%, transparent 2%),
+                radial-gradient(1px 1px at 35% 80%, white 1%, transparent 2%),
+                radial-gradient(1.5px 1.5px at 45% 90%, white 1%, transparent 2%),
+                radial-gradient(1px 1px at 55% 60%, white 1%, transparent 2%),
+                radial-gradient(1.5px 1.5px at 65% 70%, white 1%, transparent 2%),
+                radial-gradient(1px 1px at 75% 80%, white 1%, transparent 2%),
+                radial-gradient(1.5px 1.5px at 85% 90%, white 1%, transparent 2%),
+                radial-gradient(1px 1px at 95% 60%, white 1%, transparent 2%);
+            animation: twinkle 5s infinite;
         }
 
-        .shooting-star {
-            position: absolute;
-            width: 100px;
-            height: 1px;
-            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, #fff 50%, rgba(255,255,255,0) 100%);
-            transform: rotate(-45deg);
-            opacity: 0;
-            animation: shooting 10s infinite;
+        /* Second layer of stars with different timing */
+        body::after {
+            background: 
+                /* More star positions */
+                radial-gradient(1px 1px at 5% 25%, white 1%, transparent 2%),
+                radial-gradient(1.5px 1.5px at 15% 35%, white 1%, transparent 2%),
+                radial-gradient(1px 1px at 25% 45%, white 1%, transparent 2%),
+                radial-gradient(1.5px 1.5px at 35% 15%, white 1%, transparent 2%),
+                radial-gradient(1px 1px at 45% 55%, white 1%, transparent 2%),
+                radial-gradient(1.5px 1.5px at 55% 25%, white 1%, transparent 2%),
+                radial-gradient(1px 1px at 65% 35%, white 1%, transparent 2%),
+                radial-gradient(1.5px 1.5px at 75% 45%, white 1%, transparent 2%),
+                radial-gradient(1px 1px at 85% 15%, white 1%, transparent 2%),
+                radial-gradient(1.5px 1.5px at 20% 65%, white 1%, transparent 2%),
+                radial-gradient(1px 1px at 30% 75%, white 1%, transparent 2%),
+                radial-gradient(1.5px 1.5px at 40% 85%, white 1%, transparent 2%),
+                radial-gradient(1px 1px at 50% 95%, white 1%, transparent 2%),
+                radial-gradient(1.5px 1.5px at 60% 65%, white 1%, transparent 2%),
+                radial-gradient(1px 1px at 70% 75%, white 1%, transparent 2%),
+                radial-gradient(1.5px 1.5px at 80% 85%, white 1%, transparent 2%),
+                radial-gradient(1px 1px at 90% 95%, white 1%, transparent 2%);
+            animation: twinkle 7s infinite reverse;
         }
 
-        .galaxy {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(10px);
-            animation: pulse 20s infinite alternate;
-        }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.1; transform: scale(0.7); }
-            50% { opacity: 1; transform: scale(1); }
-        }
-
-        @keyframes shooting {
+        /* Shooting stars using box-shadow on pseudo-elements */
+        @keyframes shooting1 {
             0% { transform: translateX(0) translateY(0) rotate(-45deg); opacity: 1; }
             70% { opacity: 1; }
             100% { transform: translateX(1000px) translateY(-1000px) rotate(-45deg); opacity: 0; }
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.2; }
-            100% { transform: scale(1.5); opacity: 0.4; }
+        @keyframes shooting2 {
+            0% { transform: translateX(0) translateY(0) rotate(-45deg); opacity: 1; }
+            70% { opacity: 1; }
+            100% { transform: translateX(1000px) translateY(-1000px) rotate(-45deg); opacity: 0; }
         }
 
-        /* Star positions */
-        .star:nth-child(1) { top: 10%; left: 20%; width: 2px; height: 2px; animation-delay: 0s; }
-        .star:nth-child(2) { top: 15%; left: 50%; width: 1px; height: 1px; animation-delay: 1s; }
-        .star:nth-child(3) { top: 20%; left: 70%; width: 1.5px; height: 1.5px; animation-delay: 2s; }
-        .star:nth-child(4) { top: 30%; left: 40%; width: 1px; height: 1px; animation-delay: 0.5s; }
-        .star:nth-child(5) { top: 50%; left: 20%; width: 1.5px; height: 1.5px; animation-delay: 1.5s; }
-        .star:nth-child(6) { top: 60%; left: 60%; width: 2px; height: 2px; animation-delay: 0.7s; }
-        .star:nth-child(7) { top: 70%; left: 30%; width: 1px; height: 1px; animation-delay: 2.5s; }
-        .star:nth-child(8) { top: 80%; left: 50%; width: 1.5px; height: 1.5px; animation-delay: 1s; }
-        .star:nth-child(9) { top: 25%; left: 10%; width: 1px; height: 1px; animation-delay: 1.8s; }
-        .star:nth-child(10) { top: 85%; left: 80%; width: 2px; height: 2px; animation-delay: 0.3s; }
+        @keyframes shooting3 {
+            0% { transform: translateX(0) translateY(0) rotate(-45deg); opacity: 1; }
+            70% { opacity: 1; }
+            100% { transform: translateX(1000px) translateY(-1000px) rotate(-45deg); opacity: 0; }
+        }
 
-        /* Shooting star positions */
-        .shooting-star:nth-child(1) { top: 20%; left: -100px; animation-delay: 3s; }
-        .shooting-star:nth-child(2) { top: 50%; left: -200px; animation-delay: 8s; width: 150px; }
-        .shooting-star:nth-child(3) { top: 70%; left: -150px; animation-delay: 15s; width: 80px; }
+        /* First shooting star */
+        body::before {
+            box-shadow: 100px 100px 0 0 transparent;
+            animation: shooting1 10s infinite 3s;
+        }
 
-        /* Galaxy positions */
-        .galaxy:nth-child(1) {
-            width: 500px;
-            height: 500px;
-            top: -100px;
+        /* Second shooting star */
+        body::after {
+            box-shadow: 300px 300px 0 0 transparent;
+            animation: shooting2 15s infinite 8s;
+        }
+
+        /* Third shooting star using a data-uri for another pseudo-element */
+        body::before {
+            content: '';
+            position: fixed;
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, #fff 50%, rgba(255,255,255,0) 100%);
+            transform: rotate(-45deg);
+            top: 70%;
             left: -100px;
-            background: radial-gradient(circle, rgba(138,43,226,0.2) 0%, rgba(0,0,0,0) 70%);
+            animation: shooting3 12s infinite 15s;
         }
 
-        .galaxy:nth-child(2) {
-            width: 700px;
-            height: 700px;
-            bottom: -200px;
-            right: -200px;
-            background: radial-gradient(circle, rgba(0,191,255,0.15) 0%, rgba(0,0,0,0) 70%);
-            animation-delay: 5s;
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Galaxy effects using background gradients */
+        body {
+            background: 
+                /* First galaxy */
+                radial-gradient(circle at 20% 20%, rgba(138, 43, 226, 0.1) 0%, transparent 30%),
+                /* Second galaxy */
+                radial-gradient(circle at 80% 80%, rgba(0, 191, 255, 0.1) 0%, transparent 40%),
+                /* Base background */
+                #0a0a1a;
+            animation: pulse 20s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { background-size: 100% 100%, 100% 100%, auto; }
+            100% { background-size: 120% 120%, 120% 120%, auto; }
         }
