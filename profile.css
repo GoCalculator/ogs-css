@@ -12,31 +12,61 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Starry Night Background */
+/* Natural Night Sky */
 body {
-    background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+    background: #0a0e17;  /* Deep blue-black */
     overflow: hidden;
+    min-height: 100vh;
 }
 
 /* Stars */
-.stars, .stars::after {
-    content: '';
+.stars {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: -1;
-}
-
-.stars {
-    background: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3CradialGradient id='galaxy1' cx='20%25' cy='30%25' r='200' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0%%' stop-color='%23a78bfa' stop-opacity='0.1'/%3E%3Cstop offset='100%%' stop-color='%234f46e5' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='galaxy2' cx='80%25' cy='70%25' r='300' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0%%' stop-color='%23f472b6' stop-opacity='0.1'/%3E%3Cstop offset='100%%' stop-color='%23db2777' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='%23090a0f'/%3E%3Ccircle cx='20%25' cy='30%25' r='200' fill='url(%23galaxy1)'/%3E%3Ccircle cx='80%25' cy='70%25' r='300' fill='url(%23galaxy2)'/%3E%3C/svg%3E");
-    background-size: cover;
-}
-
-.stars::after {
-    background: transparent url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='stars' width='4' height='4' patternUnits='userSpaceOnUse' patternTransform='scale(1)'%3E%3Cpath d='M 0,0 L 4,4 M 4,0 L 0,4' stroke='rgba(255,255,255,0.3)' stroke-width='0.5'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23stars)'/%3E%3C/svg%3E") repeat center;
-    animation: twinkle 8s ease-in-out infinite alternate;
+    background: 
+        /* Base star layer - small white dots */
+        radial-gradient(2px 2px at 20% 30%, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 40% 70%, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 50% 20%, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 70% 60%, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 90% 40%, #fff, rgba(0,0,0,0)),
+        
+        /* Brighter stars */
+        radial-gradient(3px 3px at 30% 50%, #fff, rgba(0,0,0,0)),
+        radial-gradient(3px 3px at 60% 30%, #fff, rgba(0,0,0,0)),
+        radial-gradient(3px 3px at 80% 80%, #fff, rgba(0,0,0,0)),
+        
+        /* Subtle milky way */
+        linear-gradient(0deg, rgba(15, 23, 42, 0.8) 0%, transparent 100%);
+    
+    /* Create more stars with box-shadow */
+    box-shadow: 
+        /* Top left */
+        10% 10% 0 0.5px #fff,
+        15% 20% 0 1px #fff,
+        25% 15% 0 0.5px #fff,
+        
+        /* Top right */
+        85% 15% 0 0.5px #fff,
+        75% 25% 0 1px #fff,
+        90% 30% 0 0.5px #fff,
+        
+        /* Bottom left */
+        20% 80% 0 0.5px #fff,
+        30% 70% 0 1px #fff,
+        15% 90% 0 0.5px #fff,
+        
+        /* Bottom right */
+        80% 85% 0 0.5px #fff,
+        70% 75% 0 1px #fff,
+        90% 70% 0 0.5px #fff;
+    
+    /* Subtle twinkling effect */
+    animation: twinkle 8s infinite alternate;
 }
 
 /* Shooting Stars */
