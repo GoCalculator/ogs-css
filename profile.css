@@ -30,6 +30,16 @@ body::before {
 }
 
 /* Night Sky with Stars */
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
 .stars {
     position: fixed;
     top: 0;
@@ -39,19 +49,59 @@ body::before {
     z-index: -1;
     pointer-events: none;
     background: 
-        /* Deep space background */
-        radial-gradient(ellipse at bottom, #0a0e17 0%, #000 100%),
+        /* Deep space gradient */
+        linear-gradient(to bottom, #0a0e17 0%, #0c1420 50%, #0a0e17 100%),
+        
+        /* Distant galaxy effect */
+        radial-gradient(ellipse at 30% 30%, rgba(25, 40, 80, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 70%, rgba(25, 40, 80, 0.2) 0%, transparent 50%),
         
         /* Base star layer - small white dots */
-        radial-gradient(1px 1px at 10% 20%, #fff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 20% 30%, #fff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 30% 40%, #fff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 40% 50%, #fff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 50% 60%, #fff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 60% 70%, #fff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 70% 80%, #fff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 80% 90%, #fff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 90% 10%, #fff, rgba(0,0,0,0));
+        radial-gradient(0.5px 0.5px at 10% 20%, #fff, rgba(0,0,0,0)),
+        radial-gradient(0.5px 0.5px at 20% 30%, #fff, rgba(0,0,0,0)),
+        radial-gradient(0.8px 0.8px at 30% 40%, #fff, rgba(0,0,0,0)),
+        radial-gradient(0.5px 0.5px at 40% 50%, #fff, rgba(0,0,0,0)),
+        radial-gradient(0.8px 0.8px at 50% 60%, #fff, rgba(0,0,0,0)),
+        radial-gradient(0.5px 0.5px at 60% 70%, #fff, rgba(0,0,0,0)),
+        radial-gradient(0.8px 0.8px at 70% 80%, #fff, rgba(0,0,0,0)),
+        radial-gradient(0.5px 0.5px at 80% 90%, #fff, rgba(0,0,0,0)),
+        radial-gradient(0.8px 0.8px at 90% 10%, #fff, rgba(0,0,0,0)),
+        
+        /* Additional star patterns */
+        radial-gradient(1px 1px at 15% 25%, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 25% 75%, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 35% 45%, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 45% 15%, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 55% 85%, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 65% 35%, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 75% 65%, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 85% 25%, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 95% 75%, #fff, rgba(0,0,0,0));
+    
+    /* Twinkling effect for stars */
+    animation: float 15s ease-in-out infinite;
+}
+
+/* Add twinkling effect to some stars */
+.stars::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(1px 1px at 15% 25%, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 25% 75%, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 35% 45%, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 45% 15%, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 55% 85%, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 65% 35%, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 75% 65%, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 85% 25%, #fff, rgba(0,0,0,0));
+    animation: twinkle 5s infinite;
+    opacity: 0.7;
+    z-index: -1;
 }
 
 /* Main Content Container */
