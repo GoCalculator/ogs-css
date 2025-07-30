@@ -1,4 +1,4 @@
-/* OGS Profile - Night Sky Theme */
+/* OGS Profile - Starry Night Theme */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
 /* Base Variables */
@@ -7,261 +7,128 @@
     --space-darker: #010409;
     --star-color: #ffffff;
     --star-glow: #e2e8f0;
-    --galaxy-1: #4a148c;
-    --galaxy-2: #1a237e;
-    --galaxy-3: #0d47a1;
 }
 
-/* Night Sky Background */
+/* Body Background - Simple Dark Background */
 body {
-    background: var(--space-darker) !important;
+    background-color: var(--space-darker) !important;
+    background-image: 
+        /* Tiny white dots for stars */
+        radial-gradient(1px 1px at 20% 20%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 40% 30%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 60% 40%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 80% 50%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 30% 60%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 50% 70%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 70% 80%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 90% 90%, var(--star-color), transparent);
+    background-size: 10% 10%;
+    background-attachment: fixed;
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
 }
 
-/* Stars Container */
-.stars-container {
+/* Content Area */
+#content {
+    background: rgba(10, 14, 23, 0.9) !important;
+    backdrop-filter: blur(5px) !important;
+    border: 1px solid rgba(0, 255, 255, 0.3) !important;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7) !important;
+    border-radius: 8px !important;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    margin: 20px auto !important;
+    max-width: 1200px !important;
+}
+
+/* Add subtle animation to stars */
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+/* Create twinkling effect using pseudo-elements */
+body::before {
+    content: '';
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none;
+    background-image: 
+        radial-gradient(1px 1px at 10% 15%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 20% 35%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 30% 55%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 40% 75%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 50% 95%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 60% 15%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 70% 35%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 80% 55%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 90% 75%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 100% 95%, var(--star-color), transparent);
+    background-size: 10% 10%;
+    opacity: 0.5;
     z-index: -1;
-    overflow: hidden;
+    animation: twinkle 5s infinite alternate;
 }
 
-/* Stars */
-.star {
-    position: absolute;
-    background: white;
-    border-radius: 50%;
-    animation: twinkle var(--duration) infinite ease-in-out;
-    opacity: 0;
-}
-
-/* Star Sizes */
-.star.small {
-    width: 1px;
-    height: 1px;
-    box-shadow: 0 0 2px 1px white;
-    --duration: 5s;
-}
-
-.star.medium {
-    width: 2px;
-    height: 2px;
-    box-shadow: 0 0 4px 1px white;
-    --duration: 7s;
-}
-
-.star.large {
-    width: 3px;
-    height: 3px;
-    box-shadow: 0 0 6px 2px white;
-    --duration: 10s;
-}
-
-/* Twinkling Animation */
-@keyframes twinkle {
-    0%, 100% { opacity: 0.1; }
-    50% { opacity: 1; }
-}
-
-/* Shooting Stars */
-.shooting-star {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: linear-gradient(90deg, rgba(255,255,255,0.8), transparent);
-    border-radius: 50%;
-    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
-    animation: shooting-star var(--duration) linear infinite;
-    opacity: 0;
-}
-
-@keyframes shooting-star {
-    0% {
-        transform: translateX(0) translateY(0) scale(0.5);
-        opacity: 0;
-    }
-    10% {
-        opacity: 1;
-    }
-    90% {
-        opacity: 0.8;
-    }
-    100% {
-        transform: translateX(100vw) translateY(100vh) scale(1.5);
-        opacity: 0;
-    }
-}
-
-/* Galaxies */
-.galaxy {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(15px);
-    opacity: 0.2;
+/* Add some larger "stars" */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 15% 25%, var(--star-glow), transparent),
+        radial-gradient(2px 2px at 35% 45%, var(--star-glow), transparent),
+        radial-gradient(2px 2px at 55% 65%, var(--star-glow), transparent),
+        radial-gradient(2px 2px at 75% 85%, var(--star-glow), transparent),
+        radial-gradient(2px 2px at 25% 5%, var(--star-glow), transparent),
+        radial-gradient(2px 2px at 45% 25%, var(--star-glow), transparent),
+        radial-gradient(2px 2px at 65% 45%, var(--star-glow), transparent),
+        radial-gradient(2px 2px at 85% 65%, var(--star-glow), transparent),
+        radial-gradient(2px 2px at 5% 85%, var(--star-glow), transparent);
+    background-size: 10% 10%;
+    opacity: 0.7;
     z-index: -1;
+    animation: twinkle 7s infinite alternate-reverse;
 }
 
-.galaxy-1 {
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, var(--galaxy-1), transparent 70%);
-    top: 10%;
-    left: 10%;
-    animation: float 25s infinite alternate ease-in-out;
-}
-
-.galaxy-2 {
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, var(--galaxy-2), transparent 70%);
-    bottom: 5%;
-    right: 10%;
-    animation: float 30s infinite alternate-reverse ease-in-out;
-}
-
-.galaxy-3 {
-    width: 250px;
-    height: 250px;
-    background: radial-gradient(circle, var(--galaxy-3), transparent 70%);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: float 35s infinite alternate ease-in-out;
-}
-
-@keyframes float {
-    0%, 100% { transform: translate(-50%, -50%) scale(1); }
-    50% { transform: translate(-50%, -50%) scale(1.2); }
-}
-
-/* Add this to your HTML head:
-<script>
-// Generate stars
-function createStars() {
-    const container = document.createElement('div');
-    container.className = 'stars-container';
-    document.body.appendChild(container);
-
-    // Create galaxies
-    for (let i = 1; i <= 3; i++) {
-        const galaxy = document.createElement('div');
-        galaxy.className = `galaxy galaxy-${i}`;
-        container.appendChild(galaxy);
-    }
-
-    // Create stars
-    for (let i = 0; i < 200; i++) {
-        const star = document.createElement('div');
-        const size = Math.random() > 0.7 ? 'large' : Math.random() > 0.4 ? 'medium' : 'small';
-        star.className = `star ${size}`;
-        
-        // Random position
-        star.style.left = `${Math.random() * 100}%`;
-        star.style.top = `${Math.random() * 100}%`;
-        
-        // Random animation delay
-        star.style.animationDelay = `${Math.random() * 10}s`;
-        
-        container.appendChild(star);
-    }
-
-    // Create shooting stars
-    function createShootingStar() {
-        const shootingStar = document.createElement('div');
-        shootingStar.className = 'shooting-star';
-        shootingStar.style.left = `${Math.random() * 30}%`;
-        shootingStar.style.top = `${Math.random() * 30}%`;
-        shootingStar.style.setProperty('--duration', `${5 + Math.random() * 5}s`);
-        
-        container.appendChild(shootingStar);
-        
-        // Remove after animation
-        setTimeout(() => {
-            shootingStar.remove();
-        }, 10000);
-    }
-
-    // Create shooting stars periodically
-    setInterval(createShootingStar, 3000);
-    
-    // Initial shooting stars
-    for (let i = 0; i < 3; i++) {
-        setTimeout(createShootingStar, i * 2000);
-    }
-}
-
-// Run when DOM is loaded
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', createStars);
-} else {
-    createStars();
-}
-</script>
-*/
-
-/* OGS Theme Variables */
-:root {
-    --ogs-bg: rgba(10, 14, 23, 0.85);
-    --ogs-text: #e0f7ff;
-    --ogs-primary: #00ffff;
-    --ogs-secondary: #ff00ff;
-    --ogs-accent: #00ff7f;
-    --space-dark: #030712;
-    --space-darker: #010409;
-}
-
-/* Main Profile Container */
-#content {
-    background: var(--ogs-bg) !important;
-    backdrop-filter: blur(10px) !important;
-    border: 1px solid var(--ogs-primary) !important;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 255, 255, 0.2) !important;
-    border-radius: 12px !important;
-    overflow: hidden;
-    position: relative;
-    z-index: 10; /* Higher than stars */
-    margin: 20px auto !important;
-    max-width: 1200px !important;
-    border-top: 1px solid rgba(0, 255, 255, 0.3) !important;
-    border-left: 1px solid rgba(0, 255, 255, 0.2) !important;
-}
-
-/* Username Styling */
-#profile-username {
-    font-family: 'Orbitron', sans-serif !important;
-    color: var(--ogs-primary) !important;
-    text-shadow: 0 0 10px var(--ogs-primary) !important;
-    letter-spacing: 2px !important;
-    text-transform: uppercase !important;
-    animation: pulse 2s infinite;
-}
-
-/* Profile Stats */
-.profile-ratings, .profile-details {
-    background: rgba(0, 0, 0, 0.4) !important;
-    border: 1px solid var(--ogs-primary) !important;
-    border-radius: 8px !important;
-    padding: 15px !important;
+/* Profile Header */
+.profile-header {
+    background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(10, 25, 47, 0.8)) !important;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.2) !important;
+    padding: 20px !important;
     margin-bottom: 20px !important;
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.2) !important;
+}
+
+/* Username */
+h1 {
+    color: #e0f7ff !important;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5) !important;
+    font-family: 'Orbitron', sans-serif !important;
+    letter-spacing: 1px !important;
+}
+
+/* Stats Boxes */
+.profile-ratings,
+.profile-details {
+    background: rgba(0, 0, 0, 0.4) !important;
+    border: 1px solid rgba(0, 255, 255, 0.2) !important;
+    border-radius: 6px !important;
+    padding: 15px !important;
+    margin-bottom: 15px !important;
     transition: all 0.3s ease !important;
 }
 
-.profile-ratings:hover, .profile-details:hover {
+.profile-ratings:hover,
+.profile-details:hover {
     transform: translateY(-3px) !important;
-    box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3) !important;
-}
-
-/* Rank Badge */
-.rank {
-    border: 2px solid var(--ogs-accent) !important;
-    box-shadow: 0 0 10px var(--ogs-accent) !important;
+    box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2) !important;
 }
 
 /* Buttons */
@@ -285,64 +152,57 @@ button:hover, .btn:hover, .ogs-button:hover {
 /* Game List */
 .game-list, .game-list-row {
     background: rgba(0, 0, 0, 0.3) !important;
-    border: 1px solid var(--ogs-primary) !important;
+    border: 1px solid rgba(0, 255, 255, 0.1) !important;
     border-radius: 6px !important;
     margin-bottom: 10px !important;
     transition: all 0.3s ease !important;
 }
 
-.game-list-row:hover {
-    background: rgba(0, 180, 216, 0.1) !important;
-    transform: translateX(5px) !important;
+.game-list:hover, .game-list-row:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 5px 15px rgba(0, 255, 255, 0.1) !important;
 }
 
 /* Tabs */
+.nav-tabs {
+    border-bottom: 1px solid rgba(0, 255, 255, 0.2) !important;
+    margin-bottom: 15px !important;
+}
+
 .nav-tabs > li > a {
-    color: var(--ogs-text) !important;
+    color: #e0f7ff !important;
     border: 1px solid transparent !important;
+    border-radius: 4px 4px 0 0 !important;
+    margin-right: 5px !important;
     transition: all 0.3s ease !important;
 }
 
-.nav-tabs > li.active > a {
-    color: var(--ogs-primary) !important;
-    border-bottom: 2px solid var(--ogs-primary) !important;
-    background: transparent !important;
+.nav-tabs > li > a:hover {
+    background: rgba(0, 255, 255, 0.1) !important;
+    border-color: rgba(0, 255, 255, 0.2) !important;
 }
 
-/* Animations */
-@keyframes pulse {
-    0% { text-shadow: 0 0 5px var(--ogs-primary), 0 0 10px var(--ogs-primary); }
-    50% { text-shadow: 0 0 15px var(--ogs-primary), 0 0 30px var(--ogs-secondary); }
-    100% { text-shadow: 0 0 5px var(--ogs-primary), 0 0 10px var(--ogs-primary); }
+.nav-tabs > li.active > a {
+    background: rgba(0, 255, 255, 0.2) !important;
+    border-color: rgba(0, 255, 255, 0.3) !important;
+    color: #fff !important;
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
+    height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--ogs-bg);
+    background: rgba(0, 0, 0, 0.2);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--ogs-primary);
-    border-radius: 5px;
+    background: rgba(0, 255, 255, 0.3);
+    border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--ogs-secondary);
+    background: rgba(0, 255, 255, 0.5);
 }
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    #content {
-        margin: 10px !important;
-        padding: 10px !important;
-    }
-    
-    .profile-ratings, .profile-details {
-        padding: 10px !important;
-    }
-}
-
