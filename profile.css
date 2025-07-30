@@ -1,3 +1,4 @@
+
 /*
  * OGS Night Sky - A Gaming-Inspired Theme
  * Version: 2.0
@@ -362,15 +363,31 @@ button, .button, input[type="submit"], .btn {
   line-height: 1.2 !important;
 }
 
-button::before, .button::before {
+/* Enhanced button hover animations */
+button::before, .button::before, input[type="submit"]::before {
     content: '';
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), rgba(0, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease-out;
+    z-index: 1;
+}
+
+button::after, .button::after, input[type="submit"]::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.3), transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.4s ease-out;
+    z-index: 0;
 }
 
 button:hover, .button:hover, input[type="submit"]:hover {
@@ -380,12 +397,42 @@ button:hover, .button:hover, input[type="submit"]:hover {
   box-shadow: 
     0 0 20px var(--glow-color-primary),
     0 0 40px var(--glow-color-secondary),
+    0 0 60px rgba(0, 255, 255, 0.2),
     inset 0 0 15px rgba(255, 255, 255, 0.2) !important;
-  transform: translateY(-3px) scale(1.02) !important;
+  transform: translateY(-4px) scale(1.05) !important;
+  animation: button-pulse 0.6s ease-out !important;
 }
 
-button:hover::before, .button:hover::before {
+button:hover::before, .button:hover::before, input[type="submit"]:hover::before {
     left: 100%;
+}
+
+button:hover::after, .button:hover::after, input[type="submit"]:hover::after {
+    width: 120px;
+    height: 120px;
+}
+
+@keyframes button-pulse {
+    0% {
+        box-shadow: 
+            0 0 10px var(--glow-color-primary),
+            0 0 20px var(--glow-color-secondary),
+            inset 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+    50% {
+        box-shadow: 
+            0 0 30px var(--glow-color-primary),
+            0 0 60px var(--glow-color-secondary),
+            0 0 90px rgba(0, 255, 255, 0.3),
+            inset 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+    100% {
+        box-shadow: 
+            0 0 20px var(--glow-color-primary),
+            0 0 40px var(--glow-color-secondary),
+            0 0 60px rgba(0, 255, 255, 0.2),
+            inset 0 0 15px rgba(255, 255, 255, 0.2);
+    }
 }
 
 button:active, .button:active {
@@ -916,3 +963,5 @@ Add this HTML to create shooting stars:
     <div class="particle"></div>
 </div>
 --- */
+
+/* End of OGS Night Sky Theme - Enhanced Gaming Edition */
