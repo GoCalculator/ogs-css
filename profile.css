@@ -12,28 +12,73 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Animated Background */
-body::before {
+/* Starry Night Background */
+body {
+    background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+    overflow: hidden;
+}
+
+/* Stars */
+.stars, .stars::after {
     content: '';
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: 
-        radial-gradient(circle at 20% 50%, #ff006e 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, #8338ec 0%, transparent 50%),
-        radial-gradient(circle at 40% 80%, #3a86ff 0%, transparent 50%),
-        radial-gradient(circle at 90% 70%, #06ffa5 0%, transparent 50%),
-        linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
     z-index: -1;
-    -webkit-animation: backgroundShift 20s ease-in-out infinite;
-            animation: backgroundShift 20s ease-in-out infinite;
-    will-change: transform;
-    -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-    -webkit-transform: translateZ(0);
-            transform: translateZ(0);
+}
+
+.stars {
+    background: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3CradialGradient id='galaxy1' cx='20%25' cy='30%25' r='200' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0%%' stop-color='%23a78bfa' stop-opacity='0.1'/%3E%3Cstop offset='100%%' stop-color='%234f46e5' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='galaxy2' cx='80%25' cy='70%25' r='300' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0%%' stop-color='%23f472b6' stop-opacity='0.1'/%3E%3Cstop offset='100%%' stop-color='%23db2777' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='%23090a0f'/%3E%3Ccircle cx='20%25' cy='30%25' r='200' fill='url(%23galaxy1)'/%3E%3Ccircle cx='80%25' cy='70%25' r='300' fill='url(%23galaxy2)'/%3E%3C/svg%3E");
+    background-size: cover;
+}
+
+.stars::after {
+    background: transparent url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='stars' width='4' height='4' patternUnits='userSpaceOnUse' patternTransform='scale(1)'%3E%3Cpath d='M 0,0 L 4,4 M 4,0 L 0,4' stroke='rgba(255,255,255,0.3)' stroke-width='0.5'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23stars)'/%3E%3C/svg%3E") repeat center;
+    animation: twinkle 8s ease-in-out infinite alternate;
+}
+
+/* Shooting Stars */
+.shooting-star {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 0 10px 2px #fff;
+    opacity: 0;
+    z-index: -1;
+}
+
+.shooting-star::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+}
+
+/* Shooting Star Animations */
+@keyframes shoot1 {
+    0% { transform: translateX(0) translateY(0) scale(0.3); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateX(100vw) translateY(100vh) scale(1); opacity: 0; }
+}
+
+@keyframes shoot2 {
+    0% { transform: translateX(0) translateY(100vh) scale(0.3); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateX(100vw) translateY(0) scale(1); opacity: 0; }
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
 }
 
 @-webkit-keyframes backgroundShift {
