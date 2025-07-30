@@ -1,298 +1,224 @@
-/* Online-Go.com Profile Enhancement CSS */
-/* Compatible with existing OGS layout - no layout changes, only visual enhancements */
+/*
+ * Gaming Profile CSS for Online-Go.com
+ * Designed for a dark mode, gaming feel with subtle animations.
+ *
+ * To use:
+ * 1. Save this content as a .css file (e.g., 'gaming-profile.css') on your GitHub.
+ * 2. Link to it from your online-go.com profile settings.
+ * The URL should look something like:
+ * https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO_NAME/main/gaming-profile.css
+ * (Replace YOUR_USERNAME and YOUR_REPO_NAME)
+ */
 
-/* Target the main profile container */
-.Player-details {
-  position: relative;
-  background: linear-gradient(135deg, rgba(44, 62, 80, 0.05) 0%, rgba(52, 152, 219, 0.08) 100%);
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+/* Root variables for easy color customization */
+:root {
+    --primary-bg: #1a1a2e; /* Deep dark background */
+    --secondary-bg: #2c2c4d; /* Slightly lighter dark for elements */
+    --text-color: #e0e0e0; /* Light gray for general text */
+    --accent-color: #e94560; /* Vibrant red/pink for accents */
+    --highlight-color: #00bcd4; /* Cyan for highlights/active states */
+    --border-color: #4a4a7a; /* Darker border color */
+    --shadow-color: rgba(0, 0, 0, 0.4); /* General shadow */
+    --glow-color: rgba(233, 69, 96, 0.6); /* Accent color glow */
+    --font-family-gaming: 'Press Start 2P', 'Roboto Mono', monospace; /* Pixel-like font, fallback to monospaced */
+    --font-family-body: 'Inter', sans-serif; /* Modern, readable font for general text */
 }
 
-.Player-details:hover {
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  transform: translateY(-2px);
+/* Basic body styling for dark mode and gaming font */
+body {
+    background-color: var(--primary-bg) !important; /* Force dark background */
+    color: var(--text-color) !important; /* Force light text */
+    font-family: var(--font-family-body) !important; /* Use a readable font for main text */
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px; /* Add some padding around the content */
+    box-sizing: border-box;
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
-/* Enhance the player avatar */
-.Player-details .Player-details-avatar img,
-.player-avatar img {
-  border: 3px solid #3498db;
-  border-radius: 50%;
-  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
-  transition: all 0.3s ease;
+/* Apply gaming font to headings and specific elements for a thematic touch */
+h1, h2, h3, h4, h5, h6,
+.username, /* Assuming OGS uses a class like .username for the profile name */
+.rank,     /* Assuming OGS uses a class like .rank for the player's rank */
+.game-title, /* For game-related titles if applicable */
+.button,   /* For buttons if they don't have a specific class */
+.nav-item { /* For navigation items if they exist */
+    font-family: var(--font-family-gaming) !important;
+    color: var(--highlight-color) !important; /* Highlight color for titles */
+    text-shadow: 0 0 5px var(--glow-color); /* Subtle text glow */
+    margin-bottom: 15px;
 }
 
-.Player-details .Player-details-avatar img:hover,
-.player-avatar img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
-  border-color: #e74c3c;
-}
-
-/* Style the player name/username */
-.Player-details h2,
-.player-name {
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-  position: relative;
-}
-
-.Player-details h2::after {
-  content: '';
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #3498db, #e74c3c);
-  transition: width 0.3s ease;
-}
-
-.Player-details h2:hover::after {
-  width: 100%;
-}
-
-/* Enhance rank display */
-.Player-details .rank,
-.player-rank {
-  background: linear-gradient(45deg, #f39c12, #f1c40f);
-  color: #2c3e50;
-  padding: 4px 12px;
-  border-radius: 15px;
-  font-weight: bold;
-  box-shadow: 0 2px 8px rgba(243, 156, 18, 0.3);
-  transition: all 0.3s ease;
-}
-
-.Player-details .rank:hover,
-.player-rank:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(243, 156, 18, 0.4);
-}
-
-/* Style game statistics */
-.Player-details .statistics,
-.player-statistics {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
-  padding: 15px;
-  margin: 10px 0;
-  border-left: 4px solid #3498db;
-  transition: all 0.3s ease;
-}
-
-.Player-details .statistics:hover,
-.player-statistics:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-left-color: #e74c3c;
-  transform: translateX(5px);
-}
-
-/* Enhance win/loss indicators */
-.win-percentage,
-.outcome-win {
-  color: #27ae60 !important;
-  font-weight: bold;
-  text-shadow: 0 1px 2px rgba(39, 174, 96, 0.3);
-}
-
-.outcome-loss {
-  color: #e74c3c !important;
-  font-weight: bold;
-  text-shadow: 0 1px 2px rgba(231, 76, 60, 0.3);
-}
-
-/* Style the about/profile description section */
-.Player-details .about,
-.player-about {
-  background: rgba(44, 62, 80, 0.02);
-  border-radius: 8px;
-  padding: 20px;
-  margin: 15px 0;
-  border: 1px solid rgba(52, 152, 219, 0.1);
-  position: relative;
-  overflow: hidden;
-}
-
-.Player-details .about::before,
-.player-about::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
-  transition: left 0.6s ease;
-}
-
-.Player-details .about:hover::before,
-.player-about:hover::before {
-  left: 100%;
-}
-
-/* Enhanced text styling for profile content */
-.Player-details .about p,
-.player-about p {
-  transition: color 0.3s ease;
-}
-
-.Player-details .about p:hover,
-.player-about p:hover {
-  color: #3498db;
-}
-
-/* Style recent games list */
-.game-list .game-item,
-.recent-games .game {
-  background: rgba(236, 240, 241, 0.05);
-  border-radius: 6px;
-  padding: 10px;
-  margin: 8px 0;
-  border-left: 3px solid #bdc3c7;
-  transition: all 0.3s ease;
-}
-
-.game-list .game-item:hover,
-.recent-games .game:hover {
-  background: rgba(236, 240, 241, 0.1);
-  border-left-color: #3498db;
-  transform: translateX(8px);
-}
-
-/* Style buttons and interactive elements */
-.btn, button {
-  transition: all 0.3s ease;
-  border-radius: 6px;
-}
-
-.btn:hover, button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* Enhance links */
+/* General link styling */
 a {
-  transition: color 0.3s ease;
-  position: relative;
+    color: var(--accent-color) !important; /* Accent color for links */
+    text-decoration: none !important; /* No underline by default */
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* Smooth transition for hover */
 }
 
-a::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: #3498db;
-  transition: width 0.3s ease;
+/* Link hover effect: glow and highlight */
+a:hover {
+    color: var(--highlight-color) !important; /* Change to highlight color on hover */
+    text-shadow: 0 0 8px var(--highlight-color); /* Stronger glow on hover */
 }
 
-a:hover::after {
-  width: 100%;
+/* Styling for common UI elements like panels, cards, or sections */
+.panel, .card, .section, .profile-info {
+    background-color: var(--secondary-bg) !important; /* Lighter dark background for elements */
+    border: 1px solid var(--border-color) !important; /* Subtle border */
+    border-radius: 8px !important; /* Rounded corners */
+    padding: 20px !important;
+    margin-bottom: 20px !important;
+    box-shadow: 0 4px 15px var(--shadow-color) !important; /* Soft shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover */
 }
 
-/* Style achievement badges (if present) */
-.achievement, .badge {
-  background: linear-gradient(45deg, #ffd700, #ffed4e);
-  color: #2c3e50;
-  padding: 4px 10px;
-  border-radius: 12px;
-  display: inline-block;
-  margin: 2px;
-  font-size: 0.9em;
-  font-weight: bold;
-  box-shadow: 0 2px 6px rgba(255, 215, 0, 0.3);
-  transition: all 0.3s ease;
+/* Hover effect for panels/cards: slight lift and enhanced shadow */
+.panel:hover, .card:hover, .section:hover, .profile-info:hover {
+    transform: translateY(-3px); /* Slight lift */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6); /* Deeper shadow */
 }
 
-.achievement:hover, .badge:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 10px rgba(255, 215, 0, 0.4);
+/* Buttons (if OGS allows styling them) */
+button, .btn, .button {
+    background-color: var(--accent-color) !important; /* Accent color for buttons */
+    color: var(--text-color) !important; /* Light text on buttons */
+    border: none !important;
+    border-radius: 5px !important;
+    padding: 10px 20px !important;
+    cursor: pointer !important;
+    font-family: var(--font-family-gaming) !important;
+    text-transform: uppercase;
+    box-shadow: 0 3px 10px var(--shadow-color);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Subtle animations for page load */
-.Player-details {
-  animation: fadeInUp 0.6s ease;
+/* Button hover effect: darken and subtle glow */
+button:hover, .btn:hover, .button:hover {
+    background-color: darken(var(--accent-color), 10%) !important; /* Slightly darker on hover */
+    transform: translateY(-2px); /* Slight lift */
+    box-shadow: 0 5px 15px var(--glow-color); /* Accent glow */
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
+/* Button active effect: press down */
+button:active, .btn:active, .button:active {
     transform: translateY(0);
-  }
+    box-shadow: 0 2px 5px var(--shadow-color);
 }
 
-/* Style embedded content from profile HTML */
-.Player-details .about img {
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+/* Lists (e.g., game history, friends list) */
+ul {
+    list-style: none !important; /* No default bullet points */
+    padding: 0 !important;
 }
 
-.Player-details .about img:hover {
-  transform: scale(1.02);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+li {
+    padding: 8px 0 !important;
+    border-bottom: 1px dashed var(--border-color) !important; /* Dashed separator */
+    transition: background-color 0.2s ease;
 }
 
-/* Style custom HTML elements in profile */
-.Player-details .about h1,
-.Player-details .about h2,
-.Player-details .about h3 {
-  color: #2c3e50;
-  border-bottom: 2px solid #3498db;
-  padding-bottom: 5px;
-  margin-bottom: 15px;
+li:last-child {
+    border-bottom: none !important; /* No border for the last item */
 }
 
-/* Add subtle glow to important elements */
-.Player-details .rank,
-.win-percentage {
-  animation: subtleGlow 3s ease-in-out infinite alternate;
+li:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Subtle background on hover */
 }
 
-@keyframes subtleGlow {
-  from { filter: brightness(1); }
-  to { filter: brightness(1.1); }
+/* Specific elements that might be present on an OGS profile */
+.profile-header {
+    text-align: center;
+    margin-bottom: 30px;
 }
 
-/* Style profile sections */
-.profile-section {
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 8px;
-  padding: 15px;
-  margin: 10px 0;
-  border: 1px solid rgba(52, 152, 219, 0.1);
+.profile-avatar {
+    border: 3px solid var(--highlight-color) !important; /* Highlight border around avatar */
+    border-radius: 50% !important; /* Circular avatar */
+    box-shadow: 0 0 15px var(--glow-color) !important; /* Avatar glow */
+    transition: transform 0.3s ease;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .Player-details {
-    margin: 5px;
-    padding: 15px;
-  }
-  
-  .Player-details .about {
-    padding: 15px;
-  }
+.profile-avatar:hover {
+    transform: scale(1.05); /* Slightly enlarge avatar on hover */
 }
 
-/* Dark theme compatibility */
-@media (prefers-color-scheme: dark) {
-  .Player-details {
-    background: linear-gradient(135deg, rgba(44, 62, 80, 0.1) 0%, rgba(52, 152, 219, 0.15) 100%);
-  }
-  
-  .Player-details .about {
-    background: rgba(255, 255, 255, 0.02);
-  }
-  
-  .Player-details .statistics {
-    background: rgba(255, 255, 255, 0.03);
-  }
+/* Subtle background animation (optional - might not be visible depending on OGS structure) */
+/* This creates a very slow, subtle starfield or grid effect */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,0.05) 1px, transparent 1px),
+        radial-gradient(circle at 90% 80%, rgba(255,255,255,0.05) 1px, transparent 1px),
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 50px 50px, 70px 70px, 100px 100px;
+    animation: moveBackground 60s linear infinite; /* Very slow movement */
+    z-index: -1; /* Ensure it's behind content */
+    opacity: 0.3; /* Keep it very subtle */
 }
+
+@keyframes moveBackground {
+    from { background-position: 0 0; }
+    to { background-position: 50px 50px; } /* Moves by one background-size unit */
+}
+
+/* Scrollbar styling for a darker, gaming look */
+::-webkit-scrollbar {
+    width: 12px;
+    background-color: var(--secondary-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--accent-color);
+    border-radius: 6px;
+    border: 2px solid var(--secondary-bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--highlight-color);
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--primary-bg);
+    border-radius: 8px;
+}
+
+/* Ensure images fit within their containers and have a subtle border */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+/* Add a subtle glow to active/selected elements if possible */
+.active, .selected {
+    box-shadow: 0 0 10px var(--highlight-color) !important;
+    border-color: var(--highlight-color) !important;
+}
+
+/* Example of how to target specific OGS elements if you know their IDs or classes */
+/* #profile-page-container {
+    max-width: 900px;
+    margin: 20px auto;
+} */
+
+/* .ogs-chat-window {
+    background-color: var(--secondary-bg) !important;
+    border: 1px solid var(--border-color) !important;
+} */
+
+/* .ogs-game-board {
+    border: 2px solid var(--highlight-color) !important;
+    box-shadow: 0 0 20px var(--glow-color) !important;
+} */
+
+/* Important: Use !important to override OGS's default styles.
+   Be mindful that OGS updates might break some styles.
+   Test thoroughly after applying! */
