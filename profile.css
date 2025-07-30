@@ -1,4 +1,4 @@
-* Epic Modern Profile CSS */
+/* Epic Modern Profile CSS */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap');
 
 /* Global Styles */
@@ -8,6 +8,8 @@ body {
     color: #fff;
     overflow-x: hidden;
     position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* Animated Background */
@@ -25,14 +27,27 @@ body::before {
         radial-gradient(circle at 90% 70%, #06ffa5 0%, transparent 50%),
         linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
     z-index: -1;
-    animation: backgroundShift 20s ease-in-out infinite;
+    -webkit-animation: backgroundShift 20s ease-in-out infinite;
+            animation: backgroundShift 20s ease-in-out infinite;
+    will-change: transform;
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+}
+
+@-webkit-keyframes backgroundShift {
+    0%, 100% { -webkit-transform: scale(1) rotate(0deg); transform: scale(1) rotate(0deg); }
+    25% { -webkit-transform: scale(1.1) rotate(1deg); transform: scale(1.1) rotate(1deg); }
+    50% { -webkit-transform: scale(1.05) rotate(-0.5deg); transform: scale(1.05) rotate(-0.5deg); }
+    75% { -webkit-transform: scale(1.08) rotate(0.8deg); transform: scale(1.08) rotate(0.8deg); }
 }
 
 @keyframes backgroundShift {
-    0%, 100% { transform: scale(1) rotate(0deg); }
-    25% { transform: scale(1.1) rotate(1deg); }
-    50% { transform: scale(1.05) rotate(-0.5deg); }
-    75% { transform: scale(1.08) rotate(0.8deg); }
+    0%, 100% { -webkit-transform: scale(1) rotate(0deg); transform: scale(1) rotate(0deg); }
+    25% { -webkit-transform: scale(1.1) rotate(1deg); transform: scale(1.1) rotate(1deg); }
+    50% { -webkit-transform: scale(1.05) rotate(-0.5deg); transform: scale(1.05) rotate(-0.5deg); }
+    75% { -webkit-transform: scale(1.08) rotate(0.8deg); transform: scale(1.08) rotate(0.8deg); }
 }
 
 /* Container with glassmorphism */
