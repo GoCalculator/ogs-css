@@ -8,12 +8,15 @@ body {
     color: #e0f7ff;
     margin: 0;
     padding: 0;
-    font-size: 16px;
-    line-height: 1.6;
+    font-size: 14px;  /* OGS uses 14px as base font size */
+    line-height: 1.5;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
+    zoom: 0.8;  /* Adjust zoom to match OGS layout */
+    width: 100%;
+    position: relative;
 }
 
 /* Full Page Background */
@@ -106,20 +109,17 @@ body::before {
 /* Main Content Container */
 .container {
     width: 100%;
-    max-width: 1440px; /* 1200px * 1.2 */
+    max-width: 1200px;  /* Standard OGS container width */
     margin: 0 auto;
-    padding: 24px; /* 20px * 1.2 */
+    padding: 20px 30px;  /* Standard OGS padding */
     background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px; /* 10px * 1.2 */
-    box-shadow: 0 4.8px 7.2px rgba(0, 0, 0, 0.1); /* Scaled by 1.2 */
+    border-radius: 8px;  /* Slightly rounded corners like OGS */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
     flex: 1;
-    margin-top: 24px; /* 20px * 1.2 */
-    margin-bottom: 24px; /* 20px * 1.2 */
-    transform: scale(1.0);
-    transform-origin: top center;
+    margin: 20px auto;
     position: relative;
     z-index: 1;
 }
