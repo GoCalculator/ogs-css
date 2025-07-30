@@ -1,187 +1,348 @@
-/* Custom Button Styles */
-/* Created for OGS Profile - Pure CSS Button */
+/* Online-Go.com Profile Page Custom CSS */
+/* Modern, animated styling with Go-themed elements */
 
-/* Import Google Font - Orbitron */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-
-/* Base Button Style */
-.custom-btn {
-    /* Layout */
-    display: inline-block;
-    padding: 12px 28px;
-    margin: 10px;
-    
-    /* Typography */
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-decoration: none;
-    text-align: center;
-    line-height: 1.5;
-    
-    /* Visual Styling */
-    color: #ffffff;
-    background: linear-gradient(45deg, #4a00e0, #8e2de2);
-    border: none;
-    border-radius: 30px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    
-    /* Interactivity */
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    z-index: 1;
-    
-    /* Prevent text selection */
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  --accent-color: #e74c3c;
+  --gold-color: #f39c12;
+  --text-light: #ecf0f1;
+  --text-dark: #2c3e50;
+  --bg-dark: #1a1a1a;
+  --bg-light: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --glow-color: rgba(52, 152, 219, 0.4);
 }
 
-/* Hover State */
-.custom-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    color: #ffffff;
+/* Main profile container */
+.profile-container {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  padding: 2rem;
+  margin: 1rem;
+  box-shadow: 0 20px 40px var(--shadow-color);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
-/* Active/Click State */
-.custom-btn:active {
-    transform: translateY(1px);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+.profile-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+  pointer-events: none;
 }
 
-/* Ripple Effect */
-.custom-btn::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 5px;
-    height: 5px;
-    background: rgba(255, 255, 255, 0.5);
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Profile header */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid var(--gold-color);
+  box-shadow: 0 0 30px var(--glow-color);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-avatar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: left 0.5s ease;
+}
+
+.profile-avatar:hover::before {
+  left: 100%;
+}
+
+.profile-avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px var(--glow-color);
+}
+
+.profile-info h1 {
+  color: var(--text-light);
+  font-size: 2.5rem;
+  margin: 0 0 0.5rem 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  animation: fadeInUp 1s ease;
+}
+
+.profile-info .rank {
+  background: linear-gradient(45deg, var(--gold-color), #f1c40f);
+  color: var(--text-dark);
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-weight: bold;
+  display: inline-block;
+  box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes fadeInUp {
+  from {
     opacity: 0;
-    border-radius: 100%;
-    transform: scale(1, 1) translate(-50%, -50%);
-    transform-origin: 50% 50%;
-    transition: all 0.6s ease;
-    z-index: -1;
-}
-
-/* Click Animation */
-.custom-btn:active::after {
+    transform: translateY(30px);
+  }
+  to {
     opacity: 1;
-    transform: scale(40, 40);
-    transition: all 0.4s ease-out;
+    transform: translateY(0);
+  }
 }
 
-/* Icon Styling (if using Font Awesome) */
-.custom-btn i {
-    margin-right: 8px;
-    transition: transform 0.3s ease;
+/* Stats section */
+.profile-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+  position: relative;
+  z-index: 2;
 }
 
-/* Hover effect for icon */
-.custom-btn:hover i {
-    transform: translateX(3px);
+.stat-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Disabled State */
-.custom-btn:disabled,
-.custom-btn.disabled {
-    background: #cccccc;
-    cursor: not-allowed;
-    transform: none !important;
-    box-shadow: none !important;
-    opacity: 0.7;
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: left 0.6s ease;
 }
 
-/* Button Sizes */
-.custom-btn.btn-sm {
-    padding: 8px 20px;
-    font-size: 14px;
+.stat-card:hover::before {
+  left: 100%;
 }
 
-.custom-btn.btn-lg {
-    padding: 16px 36px;
-    font-size: 18px;
+.stat-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  border-color: var(--secondary-color);
 }
 
-/* Color Variations */
-.custom-btn.primary {
-    background: linear-gradient(45deg, #4a00e0, #8e2de2);
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--text-light);
+  display: block;
+  margin-bottom: 0.5rem;
 }
 
-.custom-btn.success {
-    background: linear-gradient(45deg, #00b09b, #96c93d);
+.stat-label {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.custom-btn.danger {
-    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+/* Recent games section */
+.recent-games {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  padding: 2rem;
+  margin: 2rem 0;
+  position: relative;
+  z-index: 2;
 }
 
-.custom-btn.warning {
-    background: linear-gradient(45deg, #f79d00, #64f38c);
-    color: #333;
+.recent-games h2 {
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  position: relative;
 }
 
-.custom-btn.info {
-    background: linear-gradient(45deg, #00c6ff, #0072ff);
+.recent-games h2::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+  border-radius: 2px;
 }
 
-/* Outline Style */
-.custom-btn.outline {
-    background: transparent;
-    border: 2px solid #4a00e0;
-    color: #4a00e0;
+.game-item {
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 4px solid var(--secondary-color);
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 0 10px 10px 0;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
-.custom-btn.outline:hover {
-    background: rgba(74, 0, 224, 0.1);
+.game-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(10px);
+  border-left-color: var(--accent-color);
 }
 
-/* Block Style (full width) */
-.custom-btn.block {
-    display: block;
-    width: 100%;
-    margin: 10px 0;
+.game-result {
+  font-weight: bold;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  display: inline-block;
+  margin-right: 1rem;
 }
 
-/* Button Group */
-.btn-group {
-    display: inline-flex;
-    gap: 5px;
-    margin: 10px;
+.game-result.win {
+  background: linear-gradient(45deg, #27ae60, #2ecc71);
+  color: white;
 }
 
-.btn-group .custom-btn {
-    margin: 0;
-    border-radius: 0;
+.game-result.loss {
+  background: linear-gradient(45deg, #e74c3c, #c0392b);
+  color: white;
 }
 
-.btn-group .custom-btn:first-child {
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
+.game-opponent {
+  color: var(--text-light);
+  font-size: 1.1rem;
 }
 
-.btn-group .custom-btn:last-child {
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
+/* Go board pattern overlay */
+.profile-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.3;
+  pointer-events: none;
 }
 
-/* Responsive Adjustments */
+/* Animations for page load */
+.profile-stats .stat-card:nth-child(1) { animation: slideInLeft 0.8s ease 0.2s both; }
+.profile-stats .stat-card:nth-child(2) { animation: slideInLeft 0.8s ease 0.4s both; }
+.profile-stats .stat-card:nth-child(3) { animation: slideInLeft 0.8s ease 0.6s both; }
+.profile-stats .stat-card:nth-child(4) { animation: slideInLeft 0.8s ease 0.8s both; }
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsive design */
 @media (max-width: 768px) {
-    .custom-btn {
-        padding: 10px 20px;
-        font-size: 14px;
-    }
-    
-    .custom-btn.btn-lg {
-        padding: 14px 30px;
-        font-size: 16px;
-    }
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .profile-info h1 {
+    font-size: 2rem;
+  }
+  
+  .profile-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .profile-container {
+    margin: 0.5rem;
+    padding: 1.5rem;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, var(--accent-color), var(--secondary-color));
+}
+
+/* Hover effects for interactive elements */
+.clickable {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.clickable:hover {
+  transform: scale(1.02);
+  filter: brightness(1.1);
+}
+
+/* Special effects for achievements/badges */
+.achievement {
+  background: linear-gradient(45deg, #ffd700, #ffed4e);
+  color: var(--text-dark);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  display: inline-block;
+  margin: 0.2rem;
+  font-weight: bold;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.2); }
 }
