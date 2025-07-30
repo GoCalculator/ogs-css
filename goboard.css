@@ -1,0 +1,552 @@
+/*
+ * OGS Weiqi Theme - Profile-Scoped Background
+ * Version: 1.0 - Pure CSS Animated Go Board
+ * Author: BadukAlpha
+ * Description: A subtle, animated Weiqi (Go) board background for a specific
+ * container within the OGS 'About Me' section.
+ * Maintains existing gaming UI enhancements.
+ *
+ * Instructions for OGS 'About Me' section:
+ * 1. Host this CSS file on a public server (e.g., GitHub Gist/Pages).
+ * 2. In your OGS 'About Me' editor (HTML mode), add:
+ * <link rel="stylesheet" type="text/css" href="YOUR_GITHUB_RAW_CSS_LINK_HERE">
+ * 3. Wrap your profile content in: <div class="go-themed-background-container">...</div>
+ */
+
+/* --- Gaming Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap');
+
+/* --- Animation Keyframes --- */
+/* Existing keyframes from your previous theme (kept for other elements) */
+@keyframes star-twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes star-twinkle-2 {
+  0%, 100% { opacity: 0.5; transform: scale(0.9); }
+  50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+@keyframes star-twinkle-3 {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.3); }
+}
+
+@keyframes nebula-float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.4; }
+  33% { transform: translate(20px, -30px) rotate(120deg); opacity: 0.7; }
+  66% { transform: translate(-15px, 25px) rotate(240deg); opacity: 0.5; }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(0, 255, 255, 0.4); }
+  50% { box-shadow: 0 0 25px rgba(0, 255, 255, 0.8), 0 0 35px rgba(255, 0, 255, 0.4); }
+}
+
+@keyframes button-shine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+@keyframes text-glow {
+  0%, 100% { text-shadow: 0 0 5px currentColor; }
+  50% { text-shadow: 0 0 15px currentColor, 0 0 25px currentColor; }
+}
+
+@keyframes profile-rotate {
+  0% { transform: rotate(0deg) scale(1); }
+  100% { transform: rotate(360deg) scale(1.1); }
+}
+
+@keyframes vibrant-glow-pulse {
+  0%, 100% { text-shadow: 0 0 10px var(--primary-glow), 0 0 20px var(--secondary-glow); }
+  50% { text-shadow: 0 0 25px var(--primary-glow), 0 0 40px var(--secondary-glow), 0 0 60px rgba(255, 0, 255, 0.3); }
+}
+
+/* --- NEW WEIQI THEME ANIMATION KEYFRAMES --- */
+
+/* Animates the background position for a subtle grid shift */
+@keyframes go-board-shift {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: 50px 50px, 50px 50px; } /* Shifts by 50px in x and y */
+}
+
+/* Animates the floating Go stones/orbs */
+@keyframes floating-orb {
+  0% { transform: translate(0, 0) scale(0.8); opacity: 0.2; }
+  25% { transform: translate(10%, 15%) scale(1); opacity: 0.4; }
+  50% { transform: translate(20%, 0%) scale(0.9); opacity: 0.3; }
+  75% { transform: translate(10%, -15%) scale(1.1); opacity: 0.5; }
+  100% { transform: translate(0, 0) scale(0.8); opacity: 0.2; }
+}
+
+
+/* --- CSS Variables --- */
+:root {
+  --gaming-font: 'Rajdhani', 'Orbitron', sans-serif;
+  --accent-font: 'Orbitron', monospace;
+  --primary-glow: #00ffff;
+  --secondary-glow: #ff00ff;
+  --accent-glow: #ffff00;
+  --text-color: #e8f4f8;
+  --bg-panel: rgba(8, 20, 35, 0.9);
+  --bg-interactive: rgba(20, 40, 60, 0.95);
+  --border-glow: rgba(0, 188, 212, 0.7);
+  --success: #00ff88;
+  --warning: #ffaa00;
+  --danger: #ff4444;
+
+  /* Weiqi Theme Specific Colors */
+  --go-board-color: #3A2B1F; /* Dark wood brown */
+  --go-line-color: #5E4B3E; /* Slightly lighter brown for lines */
+  --go-stone-white: rgba(255, 255, 255, 0.15); /* Translucent white for floating orbs */
+  --go-stone-black: rgba(0, 0, 0, 0.15); /* Translucent black for floating orbs */
+  --go-stone-glow: rgba(0, 255, 255, 0.1); /* Subtle glow for orbs */
+}
+
+/* --- BASE STYLES FOR PROFILE CONTENT AREA --- */
+/* Ensure elements in the profile area are transparent so OGS's background shows through */
+#page-container, #content-container, .theme-bg-fg, body > div,
+#main-content, .main, .container, .wrapper, .content, .page,
+#app, #root, .app-container, .site-wrapper, .site-content,
+.main-wrapper, .content-wrapper, .page-wrapper,
+.user-profile-about,
+.about-me-section,
+.profile-content-area
+{
+  background: transparent !important; /* Forces transparency to show OGS's default background */
+  background-color: transparent !important;
+  background-image: none !important;
+  color: var(--text-color) !important; /* Apply gaming text color */
+  font-family: var(--gaming-font) !important;
+}
+
+/* Ensure global HTML/BODY styling allows OGS's default background */
+html, html body {
+  min-height: auto !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+body {
+  position: static !important;
+  min-height: auto !important;
+  background: transparent !important;
+  overflow-x: hidden !important;
+}
+
+/* Removed full-page starfield code (body::before, body::after, html::before, html::after were removed) */
+
+
+/* --- WEIQI THEMED BACKGROUND CONTAINER --- */
+/* Wrap your About Me content in this: <div class="go-themed-background-container">...</div> */
+.go-themed-background-container {
+  background-color: var(--go-board-color) !important; /* Base Go board color */
+  border: 2px solid var(--border-glow) !important;
+  border-radius: 12px !important;
+  padding: 20px !important;
+  margin-bottom: 20px !important;
+  box-shadow: 0 0 25px rgba(0, 188, 212, 0.3), inset 0 0 25px rgba(0, 0, 0, 0.5) !important;
+  position: relative; /* Needed for pseudo-elements */
+  overflow: hidden; /* Important for background animations */
+
+  /* Pure CSS Go Board Lines */
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent calc(25px - 1px), var(--go-line-color) 25px, var(--go-line-color) 26px), /* Horizontal lines */
+    repeating-linear-gradient(90deg, transparent, transparent calc(25px - 1px), var(--go-line-color) 25px, var(--go-line-color) 26px); /* Vertical lines */
+  background-size: 26px 26px; /* Size of each grid cell (line width + spacing) */
+  animation: go-board-shift 120s linear infinite alternate; /* Subtle, slow shift */
+  background-attachment: scroll; /* Background will scroll with content */
+}
+
+/* Floating "White" Go Stone/Orb */
+.go-themed-background-container::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 15%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffffff, var(--go-stone-white) 70%);
+  box-shadow: 0 0 15px var(--go-stone-glow);
+  animation: floating-orb 20s ease-in-out infinite alternate;
+  z-index: 0; /* Ensure it's behind content but above container background */
+  pointer-events: none; /* Allow clicks/interactions on content below */
+}
+
+/* Floating "Black" Go Stone/Orb */
+.go-themed-background-container::after {
+  content: '';
+  position: absolute;
+  bottom: 15%;
+  right: 20%;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #4a4a4a, var(--go-stone-black) 70%);
+  box-shadow: 0 0 15px var(--go-stone-glow);
+  animation: floating-orb 25s 5s ease-in-out infinite alternate-reverse; /* Different delay/direction */
+  z-index: 0;
+  pointer-events: none;
+}
+
+
+/* --- "Scanning Line" Effect on Panels/Borders (only border glow remains) --- */
+/* Apply this class to a div: <div class="scanned-panel">...</div> */
+.scanned-panel {
+  position: relative;
+  overflow: hidden;
+  background: transparent !important; /* Ensures the OGS default background shows through */
+  border: 2px solid var(--border-glow) !important;
+  border-radius: 12px !important;
+  padding: 20px !important;
+  margin-bottom: 20px !important;
+  box-shadow: 0 0 15px var(--border-glow) !important;
+}
+
+.scanned-panel::before {
+  content: none !important; /* Hides the scan line as it won't work well without a solid background */
+}
+
+
+/* --- ANIMATION CHOICE 3: Enhanced Pulsing Glow for Text --- */
+/* Apply to a header or span: <h1 class="vibrant-title">...</h1> or <span class="vibrant-text">...</span> */
+.vibrant-title, .vibrant-text {
+  animation: vibrant-glow-pulse 3s infinite ease-in-out alternate !important;
+  display: inline-block;
+  color: var(--primary-glow) !important;
+}
+
+
+/* --- EXISTING ENHANCED GAMING UI (these still work great!) --- */
+
+/* Gaming Headers */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--accent-font) !important;
+  font-weight: 700 !important;
+  color: var(--primary-glow) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 2px !important;
+  animation: text-glow 3s infinite ease-in-out !important;
+  margin: 0.8em 0 !important;
+}
+
+/* Enhanced Gaming Buttons */
+button, .button, input[type="submit"], .btn, a.btn {
+  background: transparent !important; /* Uses OGS default button background */
+  border: 2px solid var(--primary-glow) !important;
+  border-radius: 8px !important;
+  color: var(--text-color) !important;
+  font-family: var(--gaming-font) !important;
+  font-weight: 600 !important;
+  font-size: 0.95em !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  padding: 12px 24px !important;
+  cursor: pointer !important;
+  position: relative !important;
+  overflow: hidden !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  line-height: 1 !important;
+  text-decoration: none !important;
+}
+
+/* Button shine effect */
+button::before, .button::before, input[type="submit"]::before, .btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+  z-index: 1;
+}
+
+/* Button hover effects */
+button:hover, .button:hover, input[type="submit"]:hover, .btn:hover {
+  background: transparent !important; /* Uses OGS default on hover */
+  border-color: var(--secondary-glow) !important;
+  color: white !important;
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow:
+    0 0 20px var(--primary-glow),
+    0 0 40px rgba(255, 0, 255, 0.4),
+    0 5px 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+button:hover::before, .button:hover::before, input[type="submit"]:hover::before, .btn:hover::before {
+  left: 100%;
+}
+
+/* ENHANCED PROFILE PICTURES - Gaming Circle Style */
+.PlayerImage, .player-image img, #TopNav .user-image img, .user-avatar,
+.PlayerIcon, .player-icon, .avatar, .profile-pic, img[src*="avatar"] {
+  width: auto !important;
+  height: auto !important;
+  border-radius: 50% !important;
+  border: 3px solid transparent !important;
+  background: transparent !important; /* Lets OGS default show, or just the border-box */
+  box-shadow:
+    0 0 20px var(--primary-glow),
+    0 0 40px rgba(0, 255, 255, 0.3),
+    inset 0 0 20px rgba(0, 0, 0, 0.3) !important;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Gaming profile picture glow ring */
+.PlayerImage::before, .player-image img::before, #TopNav .user-image img::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border-radius: 50%;
+  background: conic-gradient(var(--primary-glow), var(--secondary-glow), var(--accent-glow), var(--primary-glow));
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+  animation: profile-rotate 10s linear infinite;
+}
+
+/* Profile picture hover effect */
+.PlayerImage:hover, .player-image img:hover, #TopNav .user-image img:hover,
+.PlayerIcon:hover, .player-icon:hover, .avatar:hover, img[src*="avatar"]:hover {
+  transform: scale(1.1) !important;
+  border-width: 4px !important;
+  box-shadow:
+    0 0 30px var(--primary-glow),
+    0 0 60px var(--secondary-glow),
+    0 0 90px rgba(255, 0, 255, 0.2),
+    inset 0 0 30px rgba(255, 255, 255, 0.1) !important;
+}
+
+.PlayerImage:hover::before, .player-image img:hover::before {
+  opacity: 0.7;
+}
+
+/* Enhanced Links */
+a {
+  color: var(--primary-glow) !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-glow), var(--secondary-glow));
+  transition: width 0.3s ease;
+}
+
+a:hover {
+  color: white !important;
+  text-shadow: 0 0 10px var(--primary-glow) !important;
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+/* Enhanced Input Fields */
+input[type="text"], input[type="password"], input[type="email"],
+textarea, select {
+  background: transparent !important; /* Lets OGS default input background show */
+  border: 2px solid var(--border-glow) !important;
+  border-radius: 6px !important;
+  color: var(--text-color) !important;
+  font-family: var(--gaming-font) !important;
+  padding: 10px 15px !important;
+  transition: all 0.3s ease !important;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--primary-glow) !important;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5) !important;
+  outline: none !important;
+  background: transparent !important; /* Lets OGS default input background show on focus */
+}
+
+/* Enhanced Panels */
+.main-container, .dialog, .modal, .panel, .card,
+.play-area, .chat-container, .game-info, .content-panel {
+  background: transparent !important; /* Lets OGS default panel background show */
+  border: 2px solid var(--border-glow) !important;
+  border-radius: 12px !important;
+  box-shadow:
+    0 0 25px rgba(0, 188, 212, 0.3),
+    inset 0 0 25px rgba(0, 0, 0, 0.5) !important;
+  transition: all 0.3s ease !important;
+}
+
+.dialog, .modal {
+  animation: glow-pulse 4s infinite ease-in-out;
+}
+
+/* Enhanced Navigation - applies to OGS's own navigation, might be overridden by OGS themes */
+#TopNav, .nav-bar, .navigation, .navbar, .header-nav {
+  background: transparent !important; /* Lets OGS default navigation background show */
+  border-bottom: 2px solid var(--border-glow) !important;
+  box-shadow: 0 2px 20px rgba(0, 188, 212, 0.4) !important;
+}
+
+/* Gaming Clock */
+.clock, .timer, .time-display {
+  background: transparent !important; /* Lets OGS default clock background show */
+  border: 2px solid var(--border-glow) !important;
+  border-radius: 8px !important;
+  padding: 8px 16px !important;
+  font-family: var(--accent-font) !important;
+  font-weight: 700 !important;
+  color: var(--primary-glow) !important;
+  text-shadow: 0 0 8px currentColor !important;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.4) !important;
+}
+
+.clock.running, .timer.running {
+  animation: glow-pulse 2s infinite;
+  color: var(--warning) !important;
+}
+
+/* Enhanced Go Board - These apply to the board if it appears in a profile context (e.g., small demo board) */
+.play-area .Goban, .goban-container, .game-board {
+  background: transparent !important; /* Lets OGS default board background show */
+  border: 3px solid var(--primary-glow) !important;
+  border-radius: 8px !important;
+  box-shadow:
+    0 0 40px var(--primary-glow),
+    inset 0 0 30px rgba(0, 255, 255, 0.1) !important;
+}
+
+/* Enhanced Board Lines */
+.play-area .Goban .lines line, .board-lines line {
+  stroke: rgba(0, 255, 255, 0.8) !important;
+  stroke-width: 1.5px !important;
+  filter: drop-shadow(0 0 1px rgba(0, 255, 255, 0.8)) !important;
+}
+
+/* Enhanced Star Points */
+.play-area .Goban .star-points circle, .board-stars circle {
+  fill: rgba(0, 255, 255, 0.8) !important;
+  filter: drop-shadow(0 0 3px rgba(0, 255, 255, 0.8)) !important;
+  animation: star-twinkle 3s infinite ease-in-out !important;
+}
+
+/* Gaming Stones */
+.play-area .Goban .white.stone .stone-inner, .white-stone {
+  background: radial-gradient(circle at 35% 35%, #ffffff, #f0f8ff 50%, #d0e8f0) !important;
+  box-shadow:
+    0 0 10px white,
+    0 0 20px rgba(0, 255, 255, 0.3),
+    inset 0 0 10px rgba(255, 255, 255, 0.8) !important;
+}
+
+.play-area .Goban .black.stone .stone-inner, .black-stone {
+  background: radial-gradient(circle at 35% 35%, #4a4a4a, #1e1e1e 70%, #000000) !important;
+  box-shadow:
+    0 0 5px rgba(100, 100, 100, 0.5),
+    inset 0 0 10px rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Enhanced Chat */
+.chat-log-row, .chat-message, .message {
+  padding: 8px 12px !important;
+  border-radius: 6px !important;
+  transition: all 0.3s ease !important;
+  border-left: 3px solid transparent !important;
+}
+
+.chat-log-row:hover, .chat-message:hover, .message:hover {
+  background: transparent !important; /* Lets OGS default hover background show */
+  border-left-color: var(--primary-glow) !important;
+  transform: translateX(5px) !important;
+}
+
+.chat-username, .message-author {
+  color: var(--primary-glow) !important;
+  font-weight: 600 !important;
+  text-shadow: 0 0 5px currentColor !important;
+}
+
+/* Enhanced Scrollbars */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Lets default scrollbar track show */
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent; /* Lets default scrollbar thumb show */
+  border-radius: 5px;
+  box-shadow: 0 0 5px var(--primary-glow);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  box-shadow: 0 0 10px var(--primary-glow);
+}
+
+/* Tables */
+table {
+  border: 2px solid var(--border-glow) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  box-shadow: 0 0 20px rgba(0, 188, 212, 0.3) !important;
+}
+
+th {
+  background: transparent !important; /* Lets OGS default table header show */
+  color: var(--primary-glow) !important;
+  font-family: var(--gaming-font) !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  padding: 12px 8px !important;
+}
+
+tr:hover {
+  background: transparent !important; /* Lets OGS default row hover show */
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(0, 255, 255, 0.3) !important;
+  color: white !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  button, .button {
+    padding: 10px 20px !important;
+    font-size: 0.85em !important;
+  }
+
+  h1 { font-size: 1.8em !important; }
+  h2 { font-size: 1.5em !important; }
+}
+
+/* Additional OGS-specific overrides */
+.ogs-body, .ogs-main, .ogs-content {
+  background: transparent !important;
+}
+
+/* End of OGS Night Sky Theme - Profile-Scoped Animations */
