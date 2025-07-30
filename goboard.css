@@ -14,9 +14,11 @@ body {
     top: 0 !important;
     left: 0 !important;
     width: 100% !important;
-    height: 100% !important;
+    height: 100vh !important;
     z-index: -100 !important;
     background: transparent !important;
+    content: "" !important;
+    display: block !important;
 }
 
 .stars-bg:before {
@@ -114,6 +116,8 @@ body {
     z-index: -99 !important;
     filter: blur(3px) !important;
     animation: galaxyGlow1 8s ease-in-out infinite alternate !important;
+    content: "" !important;
+    display: block !important;
 }
 
 /* Galaxy 2 - Blue nebula */
@@ -128,6 +132,8 @@ body {
     z-index: -99 !important;
     filter: blur(2px) !important;
     animation: galaxyGlow2 10s ease-in-out infinite alternate !important;
+    content: "" !important;
+    display: block !important;
 }
 
 /* Galaxy 3 - Cyan distant galaxy */
@@ -142,6 +148,8 @@ body {
     z-index: -99 !important;
     filter: blur(4px) !important;
     animation: galaxyGlow3 12s ease-in-out infinite alternate !important;
+    content: "" !important;
+    display: block !important;
 }
 
 /* Shooting stars - Simplified without pseudo-elements */
@@ -156,6 +164,8 @@ body {
     transform: rotate(25deg) !important;
     animation: shootAcross1 8s linear infinite !important;
     opacity: 0 !important;
+    content: "" !important;
+    display: block !important;
 }
 
 .shooting-star-2 {
@@ -169,6 +179,8 @@ body {
     transform: rotate(35deg) !important;
     animation: shootAcross2 10s linear infinite !important;
     opacity: 0 !important;
+    content: "" !important;
+    display: block !important;
 }
 
 .shooting-star-3 {
@@ -182,6 +194,8 @@ body {
     transform: rotate(30deg) !important;
     animation: shootAcross3 12s linear infinite !important;
     opacity: 0 !important;
+    content: "" !important;
+    display: block !important;
 }
 
 /* Glowing floating stars - Simplified */
@@ -196,6 +210,8 @@ body {
     z-index: -97 !important;
     box-shadow: 0 0 20px rgba(135, 206, 250, 1) !important;
     animation: floatStar1 8s ease-in-out infinite !important;
+    content: "" !important;
+    display: block !important;
 }
 
 .glowing-star-2 {
@@ -209,6 +225,8 @@ body {
     z-index: -97 !important;
     box-shadow: 0 0 15px rgba(255, 182, 193, 1) !important;
     animation: floatStar2 10s ease-in-out infinite !important;
+    content: "" !important;
+    display: block !important;
 }
 
 .glowing-star-3 {
@@ -222,6 +240,8 @@ body {
     z-index: -97 !important;
     box-shadow: 0 0 12px white !important;
     animation: floatStar3 12s ease-in-out infinite !important;
+    content: "" !important;
+    display: block !important;
 }
 
 .glowing-star-4 {
@@ -235,6 +255,8 @@ body {
     z-index: -97 !important;
     box-shadow: 0 0 18px rgba(173, 216, 230, 1) !important;
     animation: floatStar4 9s ease-in-out infinite !important;
+    content: "" !important;
+    display: block !important;
 }
 
 /* Navigation links */
