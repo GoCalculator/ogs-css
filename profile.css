@@ -1,18 +1,5 @@
 /*
  * OGS Night Sky - A Gaming-Inspired Theme
- * Version: 1.2
- * Author: Gemini
- * Description: A dark, animated theme for online-go.com, featuring a dynamic
- * night sky with stars, nebulae, and glowing UI elements.
- *
- * Instructions: To use this theme, install a browser extension like "Stylus"
- * and create a new style for the domain "online-go.com",
- * then paste this entire CSS code into it.
- *
- * --- CHANGELOG v1.2 ---
- * - FIXED: Animated background is now consistently visible by correcting z-index stacking and simplifying pseudo-elements.
- * - FIXED: Profile picture in the top navigation bar is now properly sized and no longer overflows.
- * - MERGED: Incorporated enhanced starfield, fonts, and UI styles from user-provided code.
 */
 
 /* --- Font Import --- */
