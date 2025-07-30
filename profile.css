@@ -165,27 +165,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
-    animation: glitch-effect 0.3s ease-in-out !important;
+    text-shadow: 
+        0 0 15px var(--neon-cyan),
+        0 0 25px var(--neon-cyan),
+        0 0 35px var(--neon-cyan) !important;
     cursor: default !important;
 }
 
 @keyframes glow-pulse {
     0% { text-shadow: 0 0 5px var(--neon-cyan), 0 0 10px var(--neon-cyan), 0 0 15px var(--neon-cyan); }
     100% { text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan), 0 0 30px var(--neon-cyan); }
-}
-
-@keyframes glitch-effect {
-    0% { transform: translate(0); }
-    10% { transform: translate(-2px, 2px); }
-    20% { transform: translate(2px, -2px); }
-    30% { transform: translate(-2px, -2px); }
-    40% { transform: translate(2px, 2px); }
-    50% { transform: translate(-2px, 2px); }
-    60% { transform: translate(2px, -2px); }
-    70% { transform: translate(-2px, -2px); }
-    80% { transform: translate(2px, 2px); }
-    90% { transform: translate(-2px, 2px); }
-    100% { transform: translate(0); }
 }
 
 /* Gaming Buttons */
@@ -474,28 +463,22 @@ body {
     50% { transform: translateY(-10px); }
 }
 
-/* Screen Glitch Effect (rare occurrence) */
-@keyframes screen-glitch {
-    0% { transform: translate(0); filter: hue-rotate(0deg); }
-    10% { transform: translate(-2px, 2px); filter: hue-rotate(90deg); }
-    20% { transform: translate(-4px, 0px); filter: hue-rotate(180deg); }
-    30% { transform: translate(4px, 2px); filter: hue-rotate(270deg); }
-    40% { transform: translate(0px, -2px); filter: hue-rotate(360deg); }
-    50% { transform: translate(-2px, 0px); filter: hue-rotate(0deg); }
-    60% { transform: translate(-4px, 0px); filter: hue-rotate(90deg); }
-    70% { transform: translate(4px, -2px); filter: hue-rotate(180deg); }
-    80% { transform: translate(-2px, 2px); filter: hue-rotate(270deg); }
-    90% { transform: translate(2px, -2px); filter: hue-rotate(360deg); }
-    100% { transform: translate(0); filter: hue-rotate(0deg); }
+/* Smooth Color Shift Effect */
+@keyframes color-shift {
+    0% { filter: hue-rotate(0deg); }
+    25% { filter: hue-rotate(90deg); }
+    50% { filter: hue-rotate(180deg); }
+    75% { filter: hue-rotate(270deg); }
+    100% { filter: hue-rotate(360deg); }
 }
 
-/* Rare glitch effect on entire page */
+/* Subtle color shift on page (very slow) */
 html {
-    animation: screen-glitch 0.5s linear infinite !important;
+    animation: color-shift 30s linear infinite !important;
     animation-play-state: paused !important;
 }
 
-/* Activate glitch very rarely */
+/* Activate color shift on hover */
 html:hover {
     animation-play-state: running !important;
 }
