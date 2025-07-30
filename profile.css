@@ -1,208 +1,441 @@
-/* OGS Profile - Starry Night Theme */
+/* 
+ * OGS NIGHT SKY THEME - FIXED VERSION
+ * This version targets OGS-specific elements to ensure visibility
+ */
+
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
 /* Base Variables */
 :root {
     --space-dark: #030712;
     --space-darker: #010409;
+    --space-medium: #0f172a;
     --star-color: #ffffff;
     --star-glow: #e2e8f0;
+    --star-blue: #93c5fd;
+    --star-purple: #c084fc;
+    --neon-cyan: #00ffff;
+    --neon-blue: #0080ff;
 }
 
-/* Body Background - Simple Dark Background */
-body {
+/* FORCE night sky on ALL possible OGS containers */
+html,
+body,
+#main-content,
+.MainGoContent,
+.Game,
+.Profile,
+.page-container,
+.main-nav,
+div[class*="main"],
+div[class*="page"],
+div[class*="content"] {
     background-color: var(--space-darker) !important;
     background-image: 
-        /* Tiny white dots for stars */
-        radial-gradient(1px 1px at 20% 20%, var(--star-color), transparent),
-        radial-gradient(1px 1px at 40% 30%, var(--star-color), transparent),
-        radial-gradient(1px 1px at 60% 40%, var(--star-color), transparent),
-        radial-gradient(1px 1px at 80% 50%, var(--star-color), transparent),
-        radial-gradient(1px 1px at 30% 60%, var(--star-color), transparent),
-        radial-gradient(1px 1px at 50% 70%, var(--star-color), transparent),
-        radial-gradient(1px 1px at 70% 80%, var(--star-color), transparent),
-        radial-gradient(1px 1px at 90% 90%, var(--star-color), transparent);
-    background-size: 10% 10%;
-    background-attachment: fixed;
-    min-height: 100vh;
-    position: relative;
-    overflow-x: hidden;
+        /* Layer 1: Small distant stars */
+        radial-gradient(1px 1px at 12% 15%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 25% 25%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 38% 35%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 51% 45%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 64% 55%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 77% 65%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 90% 75%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 15% 85%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 35% 95%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 55% 5%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 75% 15%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 95% 35%, var(--star-color), transparent),
+        /* Layer 2: Colored accent stars */
+        radial-gradient(1px 1px at 8% 28%, var(--star-blue), transparent),
+        radial-gradient(1px 1px at 22% 48%, var(--star-purple), transparent),
+        radial-gradient(1px 1px at 42% 68%, var(--neon-cyan), transparent),
+        radial-gradient(1px 1px at 62% 88%, var(--star-blue), transparent),
+        radial-gradient(1px 1px at 82% 8%, var(--star-purple), transparent) !important;
+    background-size: 400px 400px, 600px 600px !important;
+    background-attachment: fixed !important;
+    min-height: 100vh !important;
+    position: relative !important;
 }
 
-/* Content Area */
-#content {
-    background: rgba(10, 14, 23, 0.9) !important;
-    backdrop-filter: blur(5px) !important;
-    border: 1px solid rgba(0, 255, 255, 0.3) !important;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7) !important;
-    border-radius: 8px !important;
-    overflow: hidden;
-    position: relative;
-    z-index: 1;
+/* Flying Stars Animation */
+html::before {
+    content: '' !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 300% !important;
+    height: 100% !important;
+    background-image: 
+        radial-gradient(2px 2px at 50px 50px, var(--neon-cyan), transparent),
+        radial-gradient(1px 1px at 150px 100px, var(--star-color), transparent),
+        radial-gradient(2px 2px at 250px 150px, var(--star-purple), transparent),
+        radial-gradient(1px 1px at 350px 200px, var(--star-blue), transparent),
+        radial-gradient(2px 2px at 450px 80px, var(--neon-cyan), transparent),
+        radial-gradient(1px 1px at 550px 120px, var(--star-color), transparent) !important;
+    background-repeat: repeat !important;
+    background-size: 600px 300px !important;
+    animation: fly-stars 30s linear infinite !important;
+    z-index: -100 !important;
+    pointer-events: none !important;
+}
+
+/* Twinkling Stars Layer */
+html::after {
+    content: '' !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-image: 
+        radial-gradient(2px 2px at 18% 22%, var(--star-glow), transparent),
+        radial-gradient(3px 3px at 32% 42%, var(--star-color), transparent),
+        radial-gradient(2px 2px at 48% 62%, var(--star-glow), transparent),
+        radial-gradient(3px 3px at 68% 82%, var(--star-color), transparent),
+        radial-gradient(2px 2px at 82% 18%, var(--star-glow), transparent),
+        radial-gradient(2px 2px at 28% 72%, var(--neon-cyan), transparent),
+        radial-gradient(2px 2px at 58% 32%, var(--star-purple), transparent),
+        radial-gradient(2px 2px at 78% 52%, var(--star-blue), transparent) !important;
+    background-size: 500px 500px !important;
+    background-attachment: fixed !important;
+    opacity: 0.8 !important;
+    z-index: -99 !important;
+    pointer-events: none !important;
+    animation: twinkle-bright 4s ease-in-out infinite alternate !important;
+}
+
+/* Galaxy 1 - Purple Spiral */
+body::before {
+    content: '' !important;
+    position: fixed !important;
+    top: 20% !important;
+    right: 15% !important;
+    width: 300px !important;
+    height: 180px !important;
+    background: 
+        radial-gradient(ellipse 60% 30% at 50% 50%, rgba(147, 51, 234, 0.4) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 20% at 60% 40%, rgba(192, 132, 252, 0.3) 0%, transparent 70%),
+        radial-gradient(ellipse 80% 40% at 40% 60%, rgba(147, 51, 234, 0.2) 0%, transparent 80%) !important;
+    border-radius: 50% !important;
+    animation: rotate-galaxy 50s linear infinite, pulse-galaxy 8s ease-in-out infinite !important;
+    z-index: -98 !important;
+    pointer-events: none !important;
+}
+
+/* Galaxy 2 - Blue Nebula */
+body::after {
+    content: '' !important;
+    position: fixed !important;
+    bottom: 25% !important;
+    left: 10% !important;
+    width: 280px !important;
+    height: 160px !important;
+    background: 
+        radial-gradient(ellipse 70% 35% at 40% 60%, rgba(59, 130, 246, 0.4) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 25% at 60% 40%, rgba(0, 255, 255, 0.3) 0%, transparent 70%),
+        radial-gradient(ellipse 90% 45% at 30% 70%, rgba(59, 130, 246, 0.2) 0%, transparent 80%) !important;
+    border-radius: 50% !important;
+    animation: rotate-galaxy-reverse 60s linear infinite, pulse-galaxy-2 10s ease-in-out infinite !important;
+    z-index: -97 !important;
+    pointer-events: none !important;
+}
+
+/* Additional Distant Galaxy */
+.Profile::before,
+.MainGoContent::before,
+#main-content::before {
+    content: '' !important;
+    position: fixed !important;
+    top: 60% !important;
+    right: 35% !important;
+    width: 200px !important;
+    height: 120px !important;
+    background: 
+        radial-gradient(ellipse 80% 40% at 50% 50%, rgba(236, 72, 153, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 30% at 70% 30%, rgba(244, 114, 182, 0.25) 0%, transparent 60%) !important;
+    border-radius: 50% !important;
+    animation: rotate-galaxy 80s linear infinite, pulse-galaxy-3 12s ease-in-out infinite !important;
+    z-index: -96 !important;
+    pointer-events: none !important;
+}
+
+/* Animations */
+@keyframes fly-stars {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(0%); }
+}
+
+@keyframes twinkle-bright {
+    0% { opacity: 0.6; }
+    100% { opacity: 1; }
+}
+
+@keyframes rotate-galaxy {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes rotate-galaxy-reverse {
+    0% { transform: rotate(360deg); }
+    100% { transform: rotate(0deg); }
+}
+
+@keyframes pulse-galaxy {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.1); }
+}
+
+@keyframes pulse-galaxy-2 {
+    0%, 100% { opacity: 0.35; transform: scale(1); }
+    50% { opacity: 0.65; transform: scale(1.08); }
+}
+
+@keyframes pulse-galaxy-3 {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.05); }
+}
+
+/* Content containers with glass effect */
+#content,
+.Profile,
+.MainGoContent,
+.profile-content,
+div[class*="profile"],
+div[class*="main-content"] {
+    background: rgba(15, 23, 42, 0.85) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(0, 255, 255, 0.2) !important;
+    box-shadow: 
+        0 0 30px rgba(0, 0, 0, 0.8),
+        0 0 60px rgba(0, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
     margin: 20px auto !important;
     max-width: 1200px !important;
-}
-
-/* Add subtle animation to stars */
-@keyframes twinkle {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 1; }
-}
-
-/* Create twinkling effect using pseudo-elements */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        radial-gradient(1px 1px at 10% 15%, var(--star-color), transparent),
-        radial-gradient(1px 1px at 20% 35%, var(--star-color), transparent),
-        radial-gradient(1px 1px at 30% 55%, var(--star-color), transparent),
-        radial-gradient(1px 1px at 40% 75%, var(--star-color), transparent),
-        radial-gradient(1px 1px at 50% 95%, var(--star-color), transparent),
-        radial-gradient(1px 1px at 60% 15%, var(--star-color), transparent),
-        radial-gradient(1px 1px at 70% 35%, var(--star-color), transparent),
-        radial-gradient(1px 1px at 80% 55%, var(--star-color), transparent),
-        radial-gradient(1px 1px at 90% 75%, var(--star-color), transparent),
-        radial-gradient(1px 1px at 100% 95%, var(--star-color), transparent);
-    background-size: 10% 10%;
-    opacity: 0.5;
-    z-index: -1;
-    animation: twinkle 5s infinite alternate;
-}
-
-/* Add some larger "stars" */
-body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        radial-gradient(2px 2px at 15% 25%, var(--star-glow), transparent),
-        radial-gradient(2px 2px at 35% 45%, var(--star-glow), transparent),
-        radial-gradient(2px 2px at 55% 65%, var(--star-glow), transparent),
-        radial-gradient(2px 2px at 75% 85%, var(--star-glow), transparent),
-        radial-gradient(2px 2px at 25% 5%, var(--star-glow), transparent),
-        radial-gradient(2px 2px at 45% 25%, var(--star-glow), transparent),
-        radial-gradient(2px 2px at 65% 45%, var(--star-glow), transparent),
-        radial-gradient(2px 2px at 85% 65%, var(--star-glow), transparent),
-        radial-gradient(2px 2px at 5% 85%, var(--star-glow), transparent);
-    background-size: 10% 10%;
-    opacity: 0.7;
-    z-index: -1;
-    animation: twinkle 7s infinite alternate-reverse;
+    position: relative !important;
+    z-index: 1 !important;
 }
 
 /* Profile Header */
-.profile-header {
-    background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(10, 25, 47, 0.8)) !important;
-    border-bottom: 1px solid rgba(0, 255, 255, 0.2) !important;
+.profile-header,
+h1 {
+    background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(15, 23, 42, 0.9)) !important;
+    border-bottom: 2px solid rgba(0, 255, 255, 0.3) !important;
     padding: 20px !important;
     margin-bottom: 20px !important;
-}
-
-/* Username */
-h1 {
     color: #e0f7ff !important;
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5) !important;
+    text-shadow: 
+        0 0 10px rgba(0, 255, 255, 0.6),
+        0 0 20px rgba(0, 255, 255, 0.4) !important;
     font-family: 'Orbitron', sans-serif !important;
-    letter-spacing: 1px !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+    animation: header-glow 3s ease-in-out infinite alternate !important;
 }
 
-/* Stats Boxes */
+@keyframes header-glow {
+    0% { text-shadow: 0 0 10px rgba(0, 255, 255, 0.6), 0 0 20px rgba(0, 255, 255, 0.4); }
+    100% { text-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6); }
+}
+
+/* Stats boxes */
 .profile-ratings,
-.profile-details {
-    background: rgba(0, 0, 0, 0.4) !important;
-    border: 1px solid rgba(0, 255, 255, 0.2) !important;
-    border-radius: 6px !important;
-    padding: 15px !important;
+.profile-details,
+div[class*="rating"],
+div[class*="stat"] {
+    background: rgba(0, 0, 0, 0.6) !important;
+    border: 1px solid rgba(0, 255, 255, 0.3) !important;
+    border-radius: 8px !important;
+    padding: 18px !important;
     margin-bottom: 15px !important;
-    transition: all 0.3s ease !important;
+    transition: all 0.4s ease !important;
+    backdrop-filter: blur(5px) !important;
 }
 
 .profile-ratings:hover,
-.profile-details:hover {
-    transform: translateY(-3px) !important;
-    box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2) !important;
+.profile-details:hover,
+div[class*="rating"]:hover,
+div[class*="stat"]:hover {
+    transform: translateY(-5px) scale(1.02) !important;
+    box-shadow: 
+        0 10px 25px rgba(0, 255, 255, 0.2),
+        0 0 40px rgba(0, 255, 255, 0.1) !important;
+    border-color: rgba(0, 255, 255, 0.5) !important;
 }
 
-/* Buttons */
-button, .btn, .ogs-button {
-    background: linear-gradient(45deg, #00b4d8, #00f5d4) !important;
-    border: none !important;
-    color: #111 !important;
+/* Animated Buttons */
+button, 
+.btn, 
+.ogs-button,
+input[type="button"],
+input[type="submit"],
+a[class*="button"] {
+    background: linear-gradient(45deg, #0080ff, #00ffff) !important;
+    border: 2px solid rgba(0, 255, 255, 0.5) !important;
+    color: #000814 !important;
     font-weight: bold !important;
     text-transform: uppercase !important;
     letter-spacing: 1px !important;
-    transition: all 0.3s ease !important;
+    padding: 12px 24px !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
     position: relative !important;
     overflow: hidden !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 
+        0 0 15px rgba(0, 255, 255, 0.3),
+        inset 0 0 15px rgba(255, 255, 255, 0.2) !important;
+    animation: button-glow 2s ease-in-out infinite alternate !important;
 }
 
-button:hover, .btn:hover, .ogs-button:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 5px 15px rgba(0, 245, 212, 0.4) !important;
+button:hover, 
+.btn:hover, 
+.ogs-button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover,
+a[class*="button"]:hover {
+    transform: translateY(-3px) scale(1.05) !important;
+    background: linear-gradient(45deg, #00ffff, #ffffff) !important;
+    box-shadow: 
+        0 10px 25px rgba(0, 255, 255, 0.5),
+        0 0 40px rgba(0, 255, 255, 0.7),
+        inset 0 0 20px rgba(255, 255, 255, 0.3) !important;
+    color: #000 !important;
+}
+
+/* Button energy wave effect */
+button::before, 
+.btn::before, 
+.ogs-button::before,
+input[type="button"]::before,
+input[type="submit"]::before,
+a[class*="button"]::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    width: 0 !important;
+    height: 0 !important;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 70%) !important;
+    border-radius: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    transition: width 0.6s ease, height 0.6s ease !important;
+    z-index: -1 !important;
+}
+
+button:hover::before, 
+.btn:hover::before, 
+.ogs-button:hover::before,
+input[type="button"]:hover::before,
+input[type="submit"]:hover::before,
+a[class*="button"]:hover::before {
+    width: 300% !important;
+    height: 300% !important;
+}
+
+@keyframes button-glow {
+    0% { 
+        box-shadow: 
+            0 0 10px rgba(0, 255, 255, 0.3),
+            inset 0 0 10px rgba(255, 255, 255, 0.2);
+    }
+    100% { 
+        box-shadow: 
+            0 0 20px rgba(0, 255, 255, 0.5),
+            inset 0 0 20px rgba(255, 255, 255, 0.3);
+    }
 }
 
 /* Game List */
-.game-list, .game-list-row {
-    background: rgba(0, 0, 0, 0.3) !important;
-    border: 1px solid rgba(0, 255, 255, 0.1) !important;
-    border-radius: 6px !important;
+.game-list, 
+.game-list-row,
+div[class*="game"],
+tr {
+    background: rgba(0, 0, 0, 0.4) !important;
+    border: 1px solid rgba(0, 255, 255, 0.2) !important;
+    border-radius: 8px !important;
     margin-bottom: 10px !important;
     transition: all 0.3s ease !important;
+    backdrop-filter: blur(3px) !important;
 }
 
-.game-list:hover, .game-list-row:hover {
+.game-list:hover, 
+.game-list-row:hover,
+div[class*="game"]:hover,
+tr:hover {
     transform: translateY(-2px) !important;
-    box-shadow: 0 5px 15px rgba(0, 255, 255, 0.1) !important;
+    box-shadow: 0 8px 20px rgba(0, 255, 255, 0.15) !important;
+    border-color: rgba(0, 255, 255, 0.4) !important;
 }
 
 /* Tabs */
 .nav-tabs {
-    border-bottom: 1px solid rgba(0, 255, 255, 0.2) !important;
-    margin-bottom: 15px !important;
+    border-bottom: 2px solid rgba(0, 255, 255, 0.3) !important;
+    margin-bottom: 20px !important;
+    background: rgba(0, 0, 0, 0.3) !important;
+    border-radius: 8px 8px 0 0 !important;
 }
 
 .nav-tabs > li > a {
     color: #e0f7ff !important;
     border: 1px solid transparent !important;
-    border-radius: 4px 4px 0 0 !important;
+    border-radius: 6px 6px 0 0 !important;
     margin-right: 5px !important;
     transition: all 0.3s ease !important;
+    background: rgba(0, 0, 0, 0.3) !important;
 }
 
 .nav-tabs > li > a:hover {
-    background: rgba(0, 255, 255, 0.1) !important;
-    border-color: rgba(0, 255, 255, 0.2) !important;
+    background: rgba(0, 255, 255, 0.15) !important;
+    border-color: rgba(0, 255, 255, 0.3) !important;
+    transform: translateY(-2px) !important;
 }
 
 .nav-tabs > li.active > a {
-    background: rgba(0, 255, 255, 0.2) !important;
-    border-color: rgba(0, 255, 255, 0.3) !important;
+    background: rgba(0, 255, 255, 0.25) !important;
+    border-color: rgba(0, 255, 255, 0.5) !important;
     color: #fff !important;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3) !important;
 }
 
-/* Scrollbar */
+/* Enhanced Scrollbar */
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 12px !important;
+    height: 12px !important;
 }
 
 ::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.4) !important;
+    border-radius: 6px !important;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(0, 255, 255, 0.3);
-    border-radius: 4px;
+    background: linear-gradient(45deg, rgba(0, 255, 255, 0.5), rgba(0, 128, 255, 0.7)) !important;
+    border-radius: 6px !important;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3) !important;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 255, 255, 0.5);
+    background: linear-gradient(45deg, rgba(0, 255, 255, 0.8), rgba(255, 255, 255, 0.6)) !important;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.6) !important;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    html::before {
+        background-size: 400px 200px !important;
+    }
+    
+    html::after {
+        background-size: 300px 300px !important;
+    }
+    
+    body::before {
+        width: 200px !important;
+        height: 120px !important;
+    }
+    
+    body::after {
+        width: 180px !important;
+        height: 100px !important;
+    }
 }
