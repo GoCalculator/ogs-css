@@ -8,13 +8,12 @@ body {
     color: #e0f7ff;
     margin: 0;
     padding: 0;
-    font-size: 19.2px; /* 16px * 1.2 */
+    font-size: 16px;
     line-height: 1.6;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
-    zoom: 1.2;
 }
 
 /* Full Page Background */
@@ -119,7 +118,7 @@ body::before {
     flex: 1;
     margin-top: 24px; /* 20px * 1.2 */
     margin-bottom: 24px; /* 20px * 1.2 */
-    transform: scale(1.2);
+    transform: scale(1.0);
     transform-origin: top center;
     position: relative;
     z-index: 1;
