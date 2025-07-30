@@ -1,6 +1,6 @@
 /*
  * OGS Night Sky - A Gaming-Inspired Theme (About Me Edition)
- * Version: 3.2 - Profile-Scoped Animations
+ * Version: 3.3 - Enhanced Profile Transparency
  * Author: BadukAlpha
  * Description: A dark, animated theme for online-go.com profile sections,
  * with enhanced gaming aesthetics, and beautiful profile picture styling.
@@ -96,7 +96,11 @@
 #page-container, #content-container, .theme-bg-fg, body > div,
 #main-content, .main, .container, .wrapper, .content, .page,
 #app, #root, .app-container, .site-wrapper, .site-content,
-.main-wrapper, .content-wrapper, .page-wrapper {
+.main-wrapper, .content-wrapper, .page-wrapper,
+.user-profile-about, /* <-- Added this for OGS profile content areas */
+.about-me-section, /* <-- Common pattern for About Me sections */
+.profile-content-area /* <-- Another common pattern */
+{
   background: transparent !important; /* Makes sure OGS containers are see-through */
   background-color: transparent !important;
   background-image: none !important;
@@ -205,7 +209,7 @@ button, .button, input[type="submit"], .btn, a.btn {
   font-weight: 600 !important;
   font-size: 0.95em !important;
   text-transform: uppercase !important;
-  letter-spacing: 1px !important;
+  letter-spacing: 1px !!important;
   padding: 12px 24px !important;
   cursor: pointer !important;
   position: relative !important;
