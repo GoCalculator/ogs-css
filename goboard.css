@@ -1,12 +1,5 @@
-/* Galaxy Background CSS - Use your own image */
-
-/* Method 1: If you can upload the image to your own server/hosting */
 body, .galaxy-background {
-    background-image: url("https://4kwallpapers.com/images/walls/thumbs_3t/21267.jpg") !important;
-    background-size: cover !important;
-    background-position: center center !important;
-    background-repeat: no-repeat !important;
-    background-attachment: fixed !important;
+    background: url("https://4kwallpapers.com/images/walls/thumbs_3t/21267.jpg") center center / cover no-repeat fixed !important;
     color: white !important;
     min-height: 100vh !important;
 }
