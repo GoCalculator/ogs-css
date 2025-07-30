@@ -1,25 +1,48 @@
-/* Clean Night Sky CSS */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;400;600&display=swap');
+/* Gaming Profile CSS for OGS */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Press+Start+2P&display=swap');
 
-/* Global Styles */
-body {
-    font-family: 'Rajdhani', sans-serif;
-    background: #0a0e17;  /* Deep blue-black */
-    color: #e0f7ff;
-    margin: 0;
-    padding: 0;
-    font-size: 14px;  /* OGS uses 14px as base font size */
-    line-height: 1.5;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    overflow-x: hidden;
-    zoom: 0.8;  /* Adjust zoom to match OGS layout */
-    width: 100%;
-    position: relative;
+/* Base Styles */
+:root {
+    --primary-color: #0ff;
+    --secondary-color: #f0f;
+    --bg-dark: #0a0e17;
+    --text-glow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px var(--primary-color), 0 0 30px var(--primary-color);
 }
 
-/* Full Page Background */
+/* Keyframe Animations */
+@keyframes scanline {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+@keyframes flicker {
+    0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% { opacity: 1; }
+    20%, 21.999%, 63%, 63.999%, 65%, 69.999% { opacity: 0.4; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 0 5px var(--primary-color); }
+    50% { box-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--secondary-color); }
+}
+
+/* Base Layout */
+body {
+    font-family: 'Orbitron', sans-serif;
+    background-color: var(--bg-dark);
+    color: #fff;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* CRT Screen Effect */
 body::before {
     content: '';
     position: fixed;
@@ -27,169 +50,209 @@ body::before {
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: -2;
-    background: #0a0e17;
-}
-
-/* Night Sky with Stars */
-@keyframes twinkle {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 1; }
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-}
-
-.stars {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-    pointer-events: none;
     background: 
-        /* Deep space gradient */
-        linear-gradient(to bottom, #0a0e17 0%, #0c1420 50%, #0a0e17 100%),
-        
-        /* Distant galaxy effect */
-        radial-gradient(ellipse at 30% 30%, rgba(25, 40, 80, 0.2) 0%, transparent 50%),
-        radial-gradient(ellipse at 70% 70%, rgba(25, 40, 80, 0.2) 0%, transparent 50%),
-        
-        /* Base star layer - small white dots */
-        radial-gradient(0.5px 0.5px at 10% 20%, #fff, rgba(0,0,0,0)),
-        radial-gradient(0.5px 0.5px at 20% 30%, #fff, rgba(0,0,0,0)),
-        radial-gradient(0.8px 0.8px at 30% 40%, #fff, rgba(0,0,0,0)),
-        radial-gradient(0.5px 0.5px at 40% 50%, #fff, rgba(0,0,0,0)),
-        radial-gradient(0.8px 0.8px at 50% 60%, #fff, rgba(0,0,0,0)),
-        radial-gradient(0.5px 0.5px at 60% 70%, #fff, rgba(0,0,0,0)),
-        radial-gradient(0.8px 0.8px at 70% 80%, #fff, rgba(0,0,0,0)),
-        radial-gradient(0.5px 0.5px at 80% 90%, #fff, rgba(0,0,0,0)),
-        radial-gradient(0.8px 0.8px at 90% 10%, #fff, rgba(0,0,0,0)),
-        
-        /* Additional star patterns */
-        radial-gradient(1px 1px at 15% 25%, #fff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 25% 75%, #fff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 35% 45%, #fff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 45% 15%, #fff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 55% 85%, #fff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 65% 35%, #fff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 75% 65%, #fff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 85% 25%, #fff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 95% 75%, #fff, rgba(0,0,0,0));
-    
-    /* Twinkling effect for stars */
-    animation: float 15s ease-in-out infinite;
+        linear-gradient(
+            to bottom,
+            rgba(18, 16, 16, 0) 50%,
+            rgba(0, 0, 0, 0.25) 50%
+        );
+    background-size: 100% 4px;
+    z-index: 1000;
+    pointer-events: none;
+    animation: flicker 0.15s infinite;
 }
 
-/* Add twinkling effect to some stars */
-.stars::before {
+/* Main Container */
+.profile-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 10px var(--primary-color), 
+                inset 0 0 10px var(--primary-color);
+    animation: pulse 4s infinite;
+    background: rgba(10, 14, 23, 0.8);
+    backdrop-filter: blur(5px);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Profile Header */
+.profile-header {
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.profile-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    box-shadow: 0 0 10px var(--primary-color);
+}
+
+/* Username */
+.username {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 2.5em;
+    color: #fff;
+    text-shadow: var(--text-glow);
+    margin: 0 0 10px;
+    animation: float 3s ease-in-out infinite;
+    letter-spacing: 2px;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.stat-box {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--primary-color);
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-box::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        radial-gradient(1px 1px at 15% 25%, #fff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 25% 75%, #fff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 35% 45%, #fff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 45% 15%, #fff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 55% 85%, #fff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 65% 35%, #fff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 75% 65%, #fff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 85% 25%, #fff, rgba(0,0,0,0));
-    animation: twinkle 5s infinite;
-    opacity: 0.7;
-    z-index: -1;
-}
-
-/* Main Content Container */
-.container {
+    left: -100%;
     width: 100%;
-    max-width: 1200px;  /* Standard OGS container width */
-    margin: 0 auto;
-    padding: 20px 30px;  /* Standard OGS padding */
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;  /* Slightly rounded corners like OGS */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-    flex: 1;
-    margin: 20px auto;
-    position: relative;
-    z-index: 1;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+    transition: 0.5s;
 }
 
-/* Typography */
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Orbitron', sans-serif;
-    color: #e0f7ff;
-    margin: 1em 0 0.5em;
+.stat-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
 }
 
-h1 { 
-    font-size: 24px; 
-    margin: 0 0 15px 0;
+.stat-box:hover::before {
+    left: 100%;
+}
+
+.stat-label {
+    color: var(--primary-color);
+    font-size: 0.9em;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.stat-value {
+    font-size: 1.5em;
     font-weight: bold;
-    color: #e0f7ff;
-}
-h2 { 
-    font-size: 18px; 
-    margin: 20px 0 10px 0;
-    font-weight: 600;
-    color: #e0f7ff;
-}
-h3 { 
-    font-size: 16px; 
-    margin: 15px 0 8px 0;
-    font-weight: 600;
-    color: #e0f7ff;
+    color: #fff;
+    text-shadow: 0 0 10px var(--primary-color);
 }
 
-p {
-    line-height: 1.6;
-    margin: 0 0 1em;
+/* Game History */
+.game-history {
+    margin-top: 40px;
 }
 
-a {
-    color: #a8d8ff;
-    text-decoration: none;
-    transition: color 0.3s ease;
+.game-history h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    display: inline-block;
+    text-shadow: 0 0 5px var(--primary-color);
 }
 
-a:hover {
-    color: #ffffff;
-}
-
-/* Simple scrollbar */
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.3);
-}
-
-/* Responsive adjustments */
+/* Responsive Design */
 @media (max-width: 768px) {
-    .container {
-        padding: 15px;
+    .stats-grid {
+        grid-template-columns: 1fr;
     }
     
-    h1 { font-size: 2em; }
-    h2 { font-size: 1.7em; }
-    h3 { font-size: 1.3em; }
+    .username {
+        font-size: 1.8em;
+    }
+}
+
+/* Scanline Effect */
+.scanline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        transparent 50%,
+        rgba(0, 0, 0, 0.2) 50%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 1001;
+    animation: scanline 4s linear infinite;
+    opacity: 0.5;
+}
+
+/* Pixel Corners */
+.pixel-corners {
+    position: relative;
+}
+
+.pixel-corners::before,
+.pixel-corners::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 5px var(--primary-color);
+}
+
+.pixel-corners::before {
+    top: -5px;
+    left: -5px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.pixel-corners::after {
+    top: -5px;
+    right: -5px;
+    border-left: none;
+    border-bottom: none;
+}
+
+.pixel-corners .pixel-bottom-left,
+.pixel-corners .pixel-bottom-right {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 5px var(--primary-color);
+}
+
+.pixel-corners .pixel-bottom-left {
+    bottom: -5px;
+    left: -5px;
+    border-right: none;
+    border-top: none;
+}
+
+.pixel-corners .pixel-bottom-right {
+    bottom: -5px;
+    right: -5px;
+    border-left: none;
+    border-top: none;
 }
