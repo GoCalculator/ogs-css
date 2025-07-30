@@ -16,6 +16,7 @@
     --accent-color: #ff00ff; /* Magenta accent */
 }
 
+/* Note: OGS styles will likely override this body rule, but it's included from your original code. */
 body {
     background-color: var(--primary-color);
     color: var(--text-color);
@@ -80,6 +81,7 @@ body {
     color: #fff;
     text-align: center;
     animation: glow 1.5s ease-in-out infinite alternate;
+    font-weight: bold;
 }
 
 @keyframes glow {
@@ -110,6 +112,8 @@ body {
 .pulsate {
     animation: pulsate 2s ease-out infinite;
     box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.7);
+    background-color: var(--secondary-color);
+    border-radius: 10px;
 }
 
 @keyframes pulsate {
