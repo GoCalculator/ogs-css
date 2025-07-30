@@ -1,13 +1,12 @@
-/* Galaxy Background CSS - Option 3 */
-
-body, .galaxy-option3 {
-    background-image: url("https://gocalculator.github.io/ogs.css/250472%20(1).jpg") !important;
-    background-size: cover !important;
-    background-position: center center !important;
-    background-repeat: no-repeat !important;
-    background-attachment: fixed !important;
-    color: white !important;
-    min-height: 100vh !important;
+.container {
+    max-width: none !important;
+    background-image: url('https://gocalculator.github.io/ogs.css/250472%20(1).jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white;
+    min-height: 100vh;
 }
 
 /* Navigation links */
@@ -39,10 +38,3 @@ body, .galaxy-option3 {
     box-shadow: 0 0 15px rgba(135, 206, 250, 0.7) !important;
     transform: translateY(-2px) !important;
 }
-
-/*Add this to html:
-<div class="nav-links">
-    <a href="https://github.com" class="nav-link">GitHub</a>
-    <a href="https://online-go.com" class="nav-link">Online-Go.com</a>
-</div>
- */
