@@ -1,6 +1,6 @@
 /*
  * OGS Night Sky - A Gaming-Inspired Theme
- * Version: 1.0
+ * Version: 1.1
  * Author: BadukAlpha
  * Description: A dark, animated theme for online-go.com, featuring a dynamic
  * night sky with stars, nebulae, and glowing UI elements.
@@ -8,6 +8,12 @@
  * Instructions: To use this theme, install a browser extension like "Stylus"
  * and create a new style for the domain "online-go.com",
  * then paste this entire CSS code into it.
+ *
+ * --- CHANGELOG v1.1 ---
+ * - FIXED: Page scrolling was disabled. Removed `overflow: hidden` from body.
+ * - FIXED: Go board styles were incorrectly appearing on profile pages. Selectors are now more specific.
+ * - FIXED: Animated background was not visible. Adjusted z-indexing and forced main content background to be transparent.
+ * - FIXED: Text within buttons was not centered. Added flex properties to center content.
 */
 
 /* --- Font Import --- */
@@ -113,7 +119,13 @@ body, html {
   background-color: #000000 !important;
   color: var(--base-text-color) !important;
   font-family: var(--primary-font) !important;
-  overflow: hidden; /* Prevents scrollbars from appearing due to off-screen animated elements */
+  /* FIX: Changed overflow: hidden to overflow-x: hidden to allow vertical scrolling */
+  overflow-x: hidden;
+}
+
+/* FIX: Added selectors for main site wrappers to ensure background is visible */
+#page-container, #content-container, .theme-bg-fg {
+    background: transparent !important;
 }
 
 body::before, body::after {
@@ -123,7 +135,8 @@ body::before, body::after {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -10;
+  /* FIX: z-index changed from -10 to -1 for better compatibility */
+  z-index: -1;
   pointer-events: none;
 }
 
@@ -187,7 +200,7 @@ body::after {
 /* --- General UI Components --- */
 
 /* Main Containers and Panels */
-.main-container, .White.stone-container, .layout-column, .Goban, .play-area, #content, .dialog {
+.main-container, .White.stone-container, .layout-column, .play-area, #content, .dialog {
   background-color: var(--panel-bg-color) !important;
   border: 1px solid var(--panel-border-color) !important;
   border-radius: 12px !important;
@@ -221,6 +234,11 @@ button, .button, input[type="submit"] {
   letter-spacing: 1px;
   transition: all 0.3s ease-in-out !important;
   box-shadow: 0 0 5px rgba(0, 255, 255, 0.4);
+  /* FIX: Added flex properties to center button text */
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
 }
 
 button:hover, .button:hover, input[type="submit"]:hover {
@@ -301,44 +319,45 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
     animation: glow-pulse 2s infinite;
 }
 
-/* --- Go Board and Stones --- */
+/* --- Go Board and Stones (Game Page Only) --- */
 
+/* FIX: Added .play-area to make these selectors specific to the game screen */
 /* The Board */
-.Goban {
+.play-area .Goban {
   background-color: var(--board-bg) !important;
   background-image: none !important; /* Remove default wood texture */
   border: 2px solid var(--glow-color-primary) !important;
-  box-shadow: 0 0 20px var(--glow-color-primary);
+  box-shadow: 0 0 20px var(--glow-color-primary) !important;
 }
 
 /* Board Lines */
-.Goban .lines line {
+.play-area .Goban .lines line {
   stroke: var(--board-line-color) !important;
   stroke-width: 1.5px !important;
   filter: drop-shadow(0 0 1px var(--board-line-color));
 }
 
 /* Star Points */
-.Goban .star-points circle {
+.play-area .Goban .star-points circle {
   fill: var(--board-line-color) !important;
   filter: drop-shadow(0 0 3px var(--board-line-color));
 }
 
 /* Stones */
-.Goban .stone {
+.play-area .Goban .stone {
   transition: all 0.2s ease-in-out;
 }
 
-.Goban .stone.last-move > .stone-inner {
+.play-area .Goban .stone.last-move > .stone-inner {
   animation: glow-pulse 1.5s infinite ease-in-out;
 }
 
-.Goban .stone.placed > .stone-inner {
+.play-area .Goban .stone.placed > .stone-inner {
     animation: place-stone-glow 0.3s ease-out;
 }
 
 /* White Stones - Glowing Orbs */
-.Goban .white.stone .stone-inner {
+.play-area .Goban .white.stone .stone-inner {
   background: radial-gradient(circle at 35% 35%, #ffffff 0%, #f0f8ff 40%, #d1e8f0 100%) !important;
   box-shadow:
     0 0 5px #fff,
@@ -349,7 +368,7 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 }
 
 /* Black Stones - Obsidian Orbs */
-.Goban .black.stone .stone-inner {
+.play-area .Goban .black.stone .stone-inner {
   background: radial-gradient(circle at 35% 35%, #4a4a4a 0%, #1e1e1e 70%, #000000 100%) !important;
   box-shadow:
     0 0 5px rgba(100, 100, 100, 0.3),
@@ -358,7 +377,7 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 }
 
 /* Stone hover effect */
-.Goban .stone.hover .stone-inner {
+.play-area .Goban .stone.hover .stone-inner {
     transform: scale(1.05);
     box-shadow: 0 0 15px 5px var(--glow-color-secondary) !important;
 }
@@ -431,11 +450,3 @@ tr:nth-child(even) {
 }
 
 /* End of OGS Night Sky Theme */
-/* This file contains over 250 lines of detailed CSS.
-   The perceived length and complexity comes from the combination of animations,
-   gradients, shadows, and targeting many specific elements of the OGS website
-   to create a cohesive and immersive experience. The line count can be easily
-   extended by adding more variations of animations, targeting more sub-pages,
-   and adding more vendor prefixes for maximum browser compatibility,
-   but this provides the core transformation requested. */
-
