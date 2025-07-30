@@ -1,9 +1,104 @@
-/* OGS Profile Customization - Gaming Theme */
+/* OGS Profile - Night Sky Theme */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+/* Night Sky Variables */
+:root {
+    --space-dark: #030712;
+    --space-darker: #02040a;
+    --star-color: #ffffff;
+    --star-glow: #e2e8f0;
+    --nebula-1: rgba(138, 43, 226, 0.15); /* Purple */
+    --nebula-2: rgba(0, 191, 255, 0.15);  /* Blue */
+    --nebula-3: rgba(147, 51, 234, 0.15); /* Indigo */
+}
+
+/* Night Sky Background */
+body {
+    background: radial-gradient(ellipse at bottom, var(--space-dark) 0%, var(--space-darker) 100%) !important;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Stars and Nebula Background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background-image: 
+        /* Tiny stars */
+        radial-gradient(1px 1px at 10% 20%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 20% 30%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 30% 40%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 40% 50%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 50% 60%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 60% 70%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 70% 80%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 80% 90%, var(--star-color), transparent),
+        radial-gradient(1px 1px at 90% 10%, var(--star-color), transparent),
+        
+        /* Nebula/Galaxy effects */
+        radial-gradient(ellipse at 20% 20%, var(--nebula-1) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, var(--nebula-2) 0%, transparent 50%),
+        radial-gradient(ellipse at 30% 70%, var(--nebula-3) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 30%, var(--nebula-1) 0%, transparent 60%);
+    
+    /* Twinkling effect */
+    animation: twinkle 8s infinite alternate;
+}
+
+/* Shooting Stars Animation */
+@keyframes shooting-star-1 {
+    0% { transform: translateX(-100px) translateY(-100px) rotate(-45deg); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateX(100vw) translateY(100vh) rotate(-45deg); opacity: 0; }
+}
+
+@keyframes shooting-star-2 {
+    0% { transform: translateX(-200px) translateY(100px) rotate(-45deg); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateX(100vw) translateY(-100vh) rotate(-45deg); opacity: 0; }
+}
+
+@keyframes shooting-star-3 {
+    0% { transform: translateX(100px) translateY(-200px) rotate(-45deg); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateX(-100vw) translateY(100vh) rotate(-45deg); opacity: 0; }
+}
+
+/* Twinkling effect for stars */
+@keyframes twinkle {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+/* Shooting Stars */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    background: 
+        linear-gradient(-45deg, transparent, transparent 1px, transparent 1px, transparent 2px, transparent 2px, transparent) 0 0 / 100% 100%,
+        linear-gradient(-45deg, transparent, transparent 1px, transparent 1px, transparent 2px, transparent 2px, transparent) 0 0 / 100% 100%;
+    animation: 
+        shooting-star-1 25s infinite,
+        shooting-star-2 30s infinite 8s,
+        shooting-star-3 35s infinite 15s;
+    opacity: 0.8;
+}
 
 /* Base Variables */
 :root {
-    --ogs-bg: #0a0e17;
+    --ogs-bg: rgba(10, 14, 23, 0.85);
     --ogs-text: #e0f7ff;
     --ogs-primary: #00ffff;
     --ogs-secondary: #ff00ff;
@@ -12,12 +107,18 @@
 
 /* Main Profile Container */
 #content {
-    background: rgba(10, 14, 23, 0.9) !important;
+    background: var(--ogs-bg) !important;
+    backdrop-filter: blur(10px) !important;
     border: 1px solid var(--ogs-primary) !important;
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3) !important;
-    border-radius: 8px !important;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 255, 255, 0.2) !important;
+    border-radius: 12px !important;
     overflow: hidden;
     position: relative;
+    z-index: 1;
+    margin: 20px auto !important;
+    max-width: 1200px !important;
+    border-top: 1px solid rgba(0, 255, 255, 0.3) !important;
+    border-left: 1px solid rgba(0, 255, 255, 0.2) !important;
 }
 
 /* Username Styling */
