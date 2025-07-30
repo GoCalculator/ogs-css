@@ -174,17 +174,30 @@
 }
 
 body, html {
-  background-color: #000000 !important;
-  color: var(--base-text-color) !important;
-  font-family: var(--primary-font) !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  /* FIXED: Proper scrolling */
-  overflow-x: hidden !important;
-  overflow-y: auto !important;
-  min-height: 100vh !important;
+    background-color: #000010 !important;
+    background-attachment: fixed !important;
+    background-image:
+        /* Glowing planet 1 */
+        radial-gradient(circle at 30% 70%, rgba(0, 100, 255, 0.25), transparent 50%),
+        /* Glowing planet 2 */
+        radial-gradient(circle at 80% 20%, rgba(200, 100, 255, 0.15), transparent 50%),
+        /* Starfield */
+        radial-gradient(1px 1px at 5% 10%, #ffffff, transparent),
+        radial-gradient(1px 1px at 15% 25%, #ffffff, transparent),
+        radial-gradient(1px 1px at 25% 30%, #ffffff, transparent),
+        radial-gradient(1px 1px at 35% 40%, #ffffff, transparent),
+        radial-gradient(1px 1px at 45% 60%, #ffffff, transparent),
+        radial-gradient(1px 1px at 55% 70%, #ffffff, transparent),
+        radial-gradient(1px 1px at 65% 80%, #ffffff, transparent),
+        radial-gradient(1px 1px at 75% 90%, #ffffff, transparent),
+        radial-gradient(1px 1px at 85% 95%, #ffffff, transparent),
+        /* Nebula clouds */
+        radial-gradient(500px at 60% 40%, rgba(255, 0, 150, 0.08), transparent),
+        radial-gradient(400px at 40% 70%, rgba(0, 150, 255, 0.05), transparent),
+        radial-gradient(600px at 80% 60%, rgba(255, 150, 50, 0.07), transparent);
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
 }
-
 /* FIXED: Force all potential blocking elements to be transparent */
 #page-container, #content-container, .theme-bg-fg, body > div, #main-content,
 .main, .container, .wrapper, .content, .page, #app, #root, .app-container {
