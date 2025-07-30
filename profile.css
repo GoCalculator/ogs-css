@@ -1,53 +1,58 @@
-/* Night Sky Profile CSS with Flying Stars */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+/* Clean Dark Mode Profile CSS with Flying Stars */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Force dark mode override */
+* {
+    color: #e2e8f0 !important;
+}
 
 /* Global Styles */
 body {
-    font-family: 'Inter', sans-serif;
-    background: #0a0a0f;
-    color: #e8e8f0;
-    overflow-x: hidden;
-    position: relative;
-    margin: 0;
-    padding: 0;
+    font-family: 'Inter', sans-serif !important;
+    background: #0f172a !important;
+    color: #e2e8f0 !important;
+    overflow-x: hidden !important;
+    position: relative !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
-/* Animated Night Sky Background */
+/* Night Sky Background */
 body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    content: '' !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
     background: 
-        radial-gradient(ellipse at bottom, #1e3a8a 0%, #0f172a 70%),
-        linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #312e81 100%);
-    z-index: -2;
+        radial-gradient(ellipse at bottom, #1e293b 0%, #0f172a 70%),
+        linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #334155 100%) !important;
+    z-index: -2 !important;
 }
 
-/* Static Stars Background */
+/* Twinkling Stars */
 body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    content: '' !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
     background-image: 
         radial-gradient(1px 1px at 20px 30px, rgba(255, 255, 255, 0.8), transparent),
         radial-gradient(1px 1px at 40px 70px, rgba(255, 255, 255, 0.6), transparent),
         radial-gradient(1px 1px at 90px 40px, rgba(255, 255, 255, 0.9), transparent),
         radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.7), transparent),
-        radial-gradient(2px 2px at 160px 120px, rgba(147, 197, 253, 0.8), transparent),
+        radial-gradient(2px 2px at 160px 120px, rgba(203, 213, 225, 0.8), transparent),
         radial-gradient(1px 1px at 200px 160px, rgba(255, 255, 255, 0.5), transparent),
         radial-gradient(1px 1px at 240px 50px, rgba(255, 255, 255, 0.8), transparent),
-        radial-gradient(2px 2px at 280px 180px, rgba(147, 197, 253, 0.6), transparent);
-    background-repeat: repeat;
-    background-size: 300px 200px;
-    animation: twinkle 8s ease-in-out infinite alternate;
-    z-index: -1;
-    pointer-events: none;
+        radial-gradient(2px 2px at 280px 180px, rgba(203, 213, 225, 0.6), transparent) !important;
+    background-repeat: repeat !important;
+    background-size: 300px 200px !important;
+    animation: twinkle 8s ease-in-out infinite alternate, starsMove 120s linear infinite !important;
+    z-index: -1 !important;
+    pointer-events: none !important;
 }
 
 @keyframes twinkle {
@@ -55,38 +60,24 @@ body::after {
     100% { opacity: 1; }
 }
 
-/* Flying Stars Animation */
-.flying-stars {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
+@keyframes starsMove {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-200px); }
 }
 
-.flying-stars::before,
-.flying-stars::after {
-    content: '✦';
-    position: absolute;
-    color: rgba(147, 197, 253, 0.8);
-    font-size: 12px;
-    animation: flyAcross 15s linear infinite;
+/* Shooting Star */
+.container::before {
+    content: '✦' !important;
+    position: fixed !important;
+    top: 20% !important;
+    color: rgba(203, 213, 225, 0.9) !important;
+    font-size: 16px !important;
+    animation: shootingStar 15s linear infinite !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
 }
 
-.flying-stars::before {
-    top: 20%;
-    animation-delay: 0s;
-}
-
-.flying-stars::after {
-    top: 70%;
-    animation-delay: 7s;
-    color: rgba(255, 255, 255, 0.6);
-}
-
-@keyframes flyAcross {
+@keyframes shootingStar {
     0% {
         left: -50px;
         opacity: 0;
@@ -107,90 +98,72 @@ body::after {
     }
 }
 
-/* Create flying stars element */
-body {
-    position: relative;
-}
-
-body::after {
-    background-image: 
-        radial-gradient(1px 1px at 20px 30px, rgba(255, 255, 255, 0.8), transparent),
-        radial-gradient(1px 1px at 40px 70px, rgba(255, 255, 255, 0.6), transparent),
-        radial-gradient(1px 1px at 90px 40px, rgba(255, 255, 255, 0.9), transparent),
-        radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.7), transparent),
-        radial-gradient(2px 2px at 160px 120px, rgba(147, 197, 253, 0.8), transparent),
-        radial-gradient(1px 1px at 200px 160px, rgba(255, 255, 255, 0.5), transparent);
-    background-repeat: repeat;
-    background-size: 300px 200px;
-    animation: twinkle 8s ease-in-out infinite alternate, starsMove 120s linear infinite;
-}
-
-@keyframes starsMove {
-    0% { transform: translateY(0px); }
-    100% { transform: translateY(-200px); }
-}
-
-/* Container with glass effect */
+/* Container */
 .container {
     max-width: none !important;
-    background: rgba(15, 23, 42, 0.4) !important;
+    background: rgba(15, 23, 42, 0.8) !important;
     backdrop-filter: blur(12px) !important;
-    border: 1px solid rgba(148, 163, 184, 0.2) !important;
+    border: 1px solid rgba(71, 85, 105, 0.3) !important;
     border-radius: 16px !important;
     box-shadow: 
-        0 20px 40px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
-    position: relative;
+        0 20px 40px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+    position: relative !important;
     margin: 20px !important;
 }
 
-/* Username styling */
+/* Username - SMALLER SIZE */
 .avatar-container .Player-username {
-    font-size: 2.5em !important;
+    font-size: 1.8em !important;
     font-family: 'Inter', sans-serif !important;
     font-weight: 600 !important;
     color: #f1f5f9 !important;
-    text-shadow: 
-        0 0 20px rgba(147, 197, 253, 0.5),
-        0 4px 8px rgba(0, 0, 0, 0.3) !important;
-    position: relative;
-    animation: gentleGlow 4s ease-in-out infinite alternate;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: #f1f5f9 !important;
+    background-clip: unset !important;
+    animation: none !important;
 }
 
-@keyframes gentleGlow {
-    0% { text-shadow: 0 0 20px rgba(147, 197, 253, 0.5), 0 4px 8px rgba(0, 0, 0, 0.3); }
-    100% { text-shadow: 0 0 30px rgba(147, 197, 253, 0.8), 0 4px 12px rgba(0, 0, 0, 0.4); }
-}
-
-/* Avatar styling */
+/* Avatar */
 .avatar-container img {
     border-radius: 50% !important;
-    border: 3px solid rgba(147, 197, 253, 0.3) !important;
+    border: 2px solid rgba(71, 85, 105, 0.4) !important;
     box-shadow: 
-        0 0 20px rgba(147, 197, 253, 0.3),
+        0 0 20px rgba(0, 0, 0, 0.4),
         0 8px 16px rgba(0, 0, 0, 0.3) !important;
     transition: all 0.3s ease !important;
+    background: none !important;
+    padding: 0 !important;
+    animation: none !important;
 }
 
 .avatar-container img:hover {
-    border-color: rgba(147, 197, 253, 0.6) !important;
+    border-color: rgba(71, 85, 105, 0.6) !important;
     box-shadow: 
-        0 0 30px rgba(147, 197, 253, 0.5),
+        0 0 25px rgba(0, 0, 0, 0.5),
         0 12px 24px rgba(0, 0, 0, 0.4) !important;
     transform: scale(1.02) !important;
 }
 
-/* Headings */
+/* Headings - NO RAINBOW COLORS */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Inter', sans-serif !important;
     font-weight: 500 !important;
     color: #f1f5f9 !important;
     margin: 1.5em 0 !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: #f1f5f9 !important;
+    background-clip: unset !important;
+    animation: none !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
 }
 
 h2, h3 {
     color: #cbd5e1 !important;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+    -webkit-text-fill-color: #cbd5e1 !important;
     position: relative;
 }
 
@@ -201,32 +174,36 @@ h2::after, h3::after {
     left: 0;
     width: 40px;
     height: 2px;
-    background: linear-gradient(90deg, rgba(147, 197, 253, 0.8), transparent);
+    background: linear-gradient(90deg, rgba(71, 85, 105, 0.8), transparent);
     border-radius: 1px;
 }
 
 /* About section */
 .about-container {
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    background: rgba(15, 23, 42, 0.3);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(148, 163, 184, 0.15);
-    margin: 20px 0;
-    padding: 24px;
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 12px !important;
+    background: rgba(30, 41, 59, 0.4) !important;
+    backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(71, 85, 105, 0.2) !important;
+    margin: 20px 0 !important;
+    padding: 24px !important;
 }
 
 .about-container h1 {
     color: #e2e8f0 !important;
-    font-size: 1.8em !important;
+    font-size: 1.6em !important;
     font-family: 'Inter', sans-serif !important;
     font-weight: 500 !important;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-    position: relative;
-    animation: slideInFromRight 20s linear infinite;
-    white-space: nowrap;
-    transform: translateX(100%);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+    position: relative !important;
+    animation: slideInFromRight 20s linear infinite !important;
+    white-space: nowrap !important;
+    transform: translateX(100%) !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: #e2e8f0 !important;
+    background-clip: unset !important;
 }
 
 @keyframes slideInFromRight {
@@ -236,48 +213,48 @@ h2::after, h3::after {
     100% { transform: translateX(-100%); }
 }
 
-/* Stats and achievements sections */
+/* Stats sections */
 .stats-container, .achievements-container {
-    background: rgba(15, 23, 42, 0.25) !important;
-    border: 1px solid rgba(148, 163, 184, 0.15) !important;
+    background: rgba(30, 41, 59, 0.3) !important;
+    border: 1px solid rgba(71, 85, 105, 0.2) !important;
     border-radius: 12px !important;
     backdrop-filter: blur(8px) !important;
     margin: 20px 0 !important;
-    position: relative;
+    position: relative !important;
 }
 
 /* Links */
 a {
-    color: #93c5fd !important;
+    color: #94a3b8 !important;
     text-decoration: none !important;
-    transition: all 0.3s ease;
-    position: relative;
+    transition: all 0.3s ease !important;
+    position: relative !important;
 }
 
 a:hover {
-    color: #dbeafe !important;
-    text-shadow: 0 0 8px rgba(147, 197, 253, 0.6);
+    color: #cbd5e1 !important;
+    text-shadow: 0 0 8px rgba(203, 213, 225, 0.3) !important;
 }
 
-a::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: rgba(147, 197, 253, 0.6);
-    transition: width 0.3s ease;
+a::before, a::after {
+    display: none !important;
 }
 
 a:hover::after {
-    width: 100%;
+    content: '' !important;
+    position: absolute !important;
+    bottom: -2px !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 1px !important;
+    background: rgba(148, 163, 184, 0.6) !important;
+    display: block !important;
 }
 
 /* Buttons */
 button, .button, input[type="button"], input[type="submit"] {
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.8), rgba(147, 197, 253, 0.6)) !important;
-    border: 1px solid rgba(147, 197, 253, 0.3) !important;
+    background: rgba(30, 41, 59, 0.8) !important;
+    border: 1px solid rgba(71, 85, 105, 0.4) !important;
     border-radius: 8px !important;
     color: #f1f5f9 !important;
     font-family: 'Inter', sans-serif !important;
@@ -286,14 +263,19 @@ button, .button, input[type="button"], input[type="submit"] {
     cursor: pointer !important;
     transition: all 0.3s ease !important;
     backdrop-filter: blur(4px) !important;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+    text-shadow: none !important;
+    animation: none !important;
 }
 
 button:hover, .button:hover {
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(147, 197, 253, 0.7)) !important;
-    border-color: rgba(147, 197, 253, 0.5) !important;
+    background: rgba(51, 65, 85, 0.9) !important;
+    border-color: rgba(71, 85, 105, 0.6) !important;
     transform: translateY(-1px) !important;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+button::before, .button::before {
+    display: none !important;
 }
 
 /* Scrollbar */
@@ -302,93 +284,62 @@ button:hover, .button:hover {
 }
 
 ::-webkit-scrollbar-track {
-    background: rgba(15, 23, 42, 0.3);
+    background: rgba(15, 23, 42, 0.5);
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(147, 197, 253, 0.4);
+    background: rgba(71, 85, 105, 0.6);
     border-radius: 4px;
     border: 1px solid rgba(15, 23, 42, 0.2);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(147, 197, 253, 0.6);
+    background: rgba(71, 85, 105, 0.8);
 }
 
-/* Text styling */
-p, span, div {
+/* Text elements */
+p, span, div, td, th, li {
     color: #cbd5e1 !important;
-    line-height: 1.6;
+    line-height: 1.6 !important;
 }
 
-/* Game board and elements */
+/* Game elements */
 .goban-container, .game-board {
     border-radius: 8px !important;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
-    background: rgba(15, 23, 42, 0.2) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+    background: rgba(30, 41, 59, 0.3) !important;
     backdrop-filter: blur(4px) !important;
 }
 
-/* Shooting star effect */
-.shooting-star {
-    position: fixed;
-    top: 10%;
-    right: -100px;
-    width: 2px;
-    height: 2px;
-    background: linear-gradient(45deg, transparent, #ffffff, transparent);
-    border-radius: 50%;
-    animation: shootingStar 8s linear infinite;
-    z-index: 2;
+/* Force override any existing styles */
+.container *, 
+.avatar-container *,
+.about-container *,
+.stats-container *,
+.achievements-container * {
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: inherit !important;
+    background-clip: unset !important;
 }
 
-.shooting-star::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 50px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
-    transform: translateX(50px);
+/* Make sure no rainbow animations exist */
+* {
+    animation: none !important;
 }
 
-@keyframes shootingStar {
-    0% {
-        right: -100px;
-        top: 10%;
-        opacity: 0;
-    }
-    5% {
-        opacity: 1;
-    }
-    95% {
-        opacity: 1;
-    }
-    100% {
-        right: 100%;
-        top: 80%;
-        opacity: 0;
-    }
+/* Re-enable only the animations we want */
+body::after {
+    animation: twinkle 8s ease-in-out infinite alternate, starsMove 120s linear infinite !important;
 }
 
-/* Add shooting star to body */
-body::before {
-    content: '';
-    position: fixed;
-    top: 15%;
-    right: -100px;
-    width: 3px;
-    height: 3px;
-    background: radial-gradient(circle, #ffffff 0%, transparent 70%);
-    border-radius: 50%;
-    animation: shootingStar 12s linear infinite;
-    box-shadow: 
-        -80px 0 6px -6px rgba(255, 255, 255, 0.8),
-        -60px 0 4px -4px rgba(255, 255, 255, 0.6),
-        -40px 0 2px -2px rgba(255, 255, 255, 0.4);
-    z-index: 3;
+.container::before {
+    animation: shootingStar 15s linear infinite !important;
+}
+
+.about-container h1 {
+    animation: slideInFromRight 20s linear infinite !important;
 }
 
 /* Hide unwanted elements */
@@ -401,11 +352,11 @@ a[href*="ads"],
 /* Responsive design */
 @media (max-width: 768px) {
     .avatar-container .Player-username {
-        font-size: 2em !important;
+        font-size: 1.5em !important;
     }
     
     .about-container h1 {
-        font-size: 1.5em !important;
+        font-size: 1.3em !important;
     }
     
     .container {
