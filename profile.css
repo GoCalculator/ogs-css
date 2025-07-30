@@ -139,39 +139,13 @@ body {
     overflow: hidden;
 }
 
-/* Glowing border animation */
-.container::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, #ff006e, #8338ec, #3a86ff, #06ffa5, #ff006e);
-    border-radius: 20px;
-    z-index: -1;
-    animation: borderGlow 3s linear infinite;
-    background-size: 400% 400%;
-}
-
-@keyframes borderGlow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* Username styling */
+/* Clean, simple username styling */
 .avatar-container .Player-username {
     font-size: 3em !important;
     font-family: 'Orbitron', monospace !important;
     font-weight: 900 !important;
-    background: linear-gradient(45deg, #ff006e, #8338ec, #3a86ff, #06ffa5);
-    background-size: 400% 400%;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    background-clip: text !important;
-    animation: gradientShift 3s ease-in-out infinite, textGlow 2s ease-in-out infinite alternate;
-    text-shadow: 0 0 30px rgba(255, 0, 110, 0.5);
+    color: #fff; /* Plain white text */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Subtle white glow */
     position: relative;
 }
 
