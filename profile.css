@@ -1,441 +1,227 @@
-/* 
- * OGS NIGHT SKY THEME - FIXED VERSION
- * This version targets OGS-specific elements to ensure visibility
+/*
+ * OGS NIGHT SKY BACKGROUND
+ * Adds a beautiful animated starry night sky background to OGS
+ * without affecting the default layout or text boxes.
+ *
+ * How to use:
+ * 1. Add this CSS to your OGS custom CSS section.
+ * 2. The night sky will automatically appear as the page background.
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-
-/* Base Variables */
 :root {
-    --space-dark: #030712;
-    --space-darker: #010409;
-    --space-medium: #0f172a;
-    --star-color: #ffffff;
-    --star-glow: #e2e8f0;
-    --star-blue: #93c5fd;
-    --star-purple: #c084fc;
-    --neon-cyan: #00ffff;
-    --neon-blue: #0080ff;
+    --glow-color: #00ffff; /* Cyan glow - change this to your preferred color */
+    --accent-color: #ff00ff; /* Magenta accent */
 }
 
-/* FORCE night sky on ALL possible OGS containers */
-html,
-body,
-#main-content,
-.MainGoContent,
-.Game,
-.Profile,
-.page-container,
-.main-nav,
-div[class*="main"],
-div[class*="page"],
-div[class*="content"] {
-    background-color: var(--space-darker) !important;
-    background-image: 
-        /* Layer 1: Small distant stars */
-        radial-gradient(1px 1px at 12% 15%, var(--star-color), transparent),
-        radial-gradient(1px 1px at 25% 25%, var(--star-color), transparent),
-        radial-gradient(1px 1px at 38% 35%, var(--star-color), transparent),
-        radial-gradient(1px 1px at 51% 45%, var(--star-color), transparent),
-        radial-gradient(1px 1px at 64% 55%, var(--star-color), transparent),
-        radial-gradient(1px 1px at 77% 65%, var(--star-color), transparent),
-        radial-gradient(1px 1px at 90% 75%, var(--star-color), transparent),
-        radial-gradient(1px 1px at 15% 85%, var(--star-color), transparent),
-        radial-gradient(1px 1px at 35% 95%, var(--star-color), transparent),
-        radial-gradient(1px 1px at 55% 5%, var(--star-color), transparent),
-        radial-gradient(1px 1px at 75% 15%, var(--star-color), transparent),
-        radial-gradient(1px 1px at 95% 35%, var(--star-color), transparent),
-        /* Layer 2: Colored accent stars */
-        radial-gradient(1px 1px at 8% 28%, var(--star-blue), transparent),
-        radial-gradient(1px 1px at 22% 48%, var(--star-purple), transparent),
-        radial-gradient(1px 1px at 42% 68%, var(--neon-cyan), transparent),
-        radial-gradient(1px 1px at 62% 88%, var(--star-blue), transparent),
-        radial-gradient(1px 1px at 82% 8%, var(--star-purple), transparent) !important;
-    background-size: 400px 400px, 600px 600px !important;
-    background-attachment: fixed !important;
-    min-height: 100vh !important;
-    position: relative !important;
-}
+/* ==========================================================================
+   Night Sky Background Effect
+   ========================================================================== */
 
-/* Flying Stars Animation */
-html::before {
-    content: '' !important;
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 300% !important;
-    height: 100% !important;
-    background-image: 
-        radial-gradient(2px 2px at 50px 50px, var(--neon-cyan), transparent),
-        radial-gradient(1px 1px at 150px 100px, var(--star-color), transparent),
-        radial-gradient(2px 2px at 250px 150px, var(--star-purple), transparent),
-        radial-gradient(1px 1px at 350px 200px, var(--star-blue), transparent),
-        radial-gradient(2px 2px at 450px 80px, var(--neon-cyan), transparent),
-        radial-gradient(1px 1px at 550px 120px, var(--star-color), transparent) !important;
-    background-repeat: repeat !important;
-    background-size: 600px 300px !important;
-    animation: fly-stars 30s linear infinite !important;
-    z-index: -100 !important;
-    pointer-events: none !important;
-}
-
-/* Twinkling Stars Layer */
-html::after {
-    content: '' !important;
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    background-image: 
-        radial-gradient(2px 2px at 18% 22%, var(--star-glow), transparent),
-        radial-gradient(3px 3px at 32% 42%, var(--star-color), transparent),
-        radial-gradient(2px 2px at 48% 62%, var(--star-glow), transparent),
-        radial-gradient(3px 3px at 68% 82%, var(--star-color), transparent),
-        radial-gradient(2px 2px at 82% 18%, var(--star-glow), transparent),
-        radial-gradient(2px 2px at 28% 72%, var(--neon-cyan), transparent),
-        radial-gradient(2px 2px at 58% 32%, var(--star-purple), transparent),
-        radial-gradient(2px 2px at 78% 52%, var(--star-blue), transparent) !important;
-    background-size: 500px 500px !important;
-    background-attachment: fixed !important;
-    opacity: 0.8 !important;
-    z-index: -99 !important;
-    pointer-events: none !important;
-    animation: twinkle-bright 4s ease-in-out infinite alternate !important;
-}
-
-/* Galaxy 1 - Purple Spiral */
+/* Create the night sky background */
 body::before {
-    content: '' !important;
-    position: fixed !important;
-    top: 20% !important;
-    right: 15% !important;
-    width: 300px !important;
-    height: 180px !important;
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1000; /* Far behind everything */
     background: 
-        radial-gradient(ellipse 60% 30% at 50% 50%, rgba(147, 51, 234, 0.4) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 20% at 60% 40%, rgba(192, 132, 252, 0.3) 0%, transparent 70%),
-        radial-gradient(ellipse 80% 40% at 40% 60%, rgba(147, 51, 234, 0.2) 0%, transparent 80%) !important;
-    border-radius: 50% !important;
-    animation: rotate-galaxy 50s linear infinite, pulse-galaxy 8s ease-in-out infinite !important;
-    z-index: -98 !important;
-    pointer-events: none !important;
+        radial-gradient(2px 1px at 20px 30px, #eee, transparent),
+        radial-gradient(2px 1px at 40px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+        radial-gradient(1px 2px at 130px 80px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 1px at 160px 30px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1px 1px at 200px 90px, #eee, transparent),
+        radial-gradient(1px 2px at 240px 50px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(2px 1px at 280px 10px, #fff, transparent),
+        radial-gradient(1px 1px at 320px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(2px 2px at 360px 40px, rgba(255,255,255,0.6), transparent),
+        linear-gradient(135deg, #0c0c0c 0%, #1a1a3e 25%, #2d1b69 50%, #1a1a3e 75%, #0c0c0c 100%);
+    background-size: 
+        400px 300px,
+        400px 300px,
+        400px 300px,
+        400px 300px,
+        400px 300px,
+        400px 300px,
+        400px 300px,
+        400px 300px,
+        400px 300px,
+        400px 300px,
+        100% 100%;
+    animation: twinkle 8s infinite ease-in-out, drift 20s infinite linear;
 }
 
-/* Galaxy 2 - Blue Nebula */
+/* Twinkling animation for stars */
+@keyframes twinkle {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+/* Subtle drifting animation */
+@keyframes drift {
+    0% { transform: translateX(0px); }
+    100% { transform: translateX(-50px); }
+}
+
+/* Add some nebula-like clouds */
 body::after {
-    content: '' !important;
-    position: fixed !important;
-    bottom: 25% !important;
-    left: 10% !important;
-    width: 280px !important;
-    height: 160px !important;
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -999; /* Just above the stars but still behind everything */
     background: 
-        radial-gradient(ellipse 70% 35% at 40% 60%, rgba(59, 130, 246, 0.4) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 25% at 60% 40%, rgba(0, 255, 255, 0.3) 0%, transparent 70%),
-        radial-gradient(ellipse 90% 45% at 30% 70%, rgba(59, 130, 246, 0.2) 0%, transparent 80%) !important;
-    border-radius: 50% !important;
-    animation: rotate-galaxy-reverse 60s linear infinite, pulse-galaxy-2 10s ease-in-out infinite !important;
-    z-index: -97 !important;
-    pointer-events: none !important;
+        radial-gradient(ellipse at 20% 30%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 60%, rgba(30, 144, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 40% 80%, rgba(255, 20, 147, 0.06) 0%, transparent 50%);
+    animation: nebula-drift 30s infinite ease-in-out alternate;
 }
 
-/* Additional Distant Galaxy */
-.Profile::before,
-.MainGoContent::before,
-#main-content::before {
-    content: '' !important;
-    position: fixed !important;
-    top: 60% !important;
-    right: 35% !important;
-    width: 200px !important;
-    height: 120px !important;
-    background: 
-        radial-gradient(ellipse 80% 40% at 50% 50%, rgba(236, 72, 153, 0.3) 0%, transparent 50%),
-        radial-gradient(ellipse 60% 30% at 70% 30%, rgba(244, 114, 182, 0.25) 0%, transparent 60%) !important;
-    border-radius: 50% !important;
-    animation: rotate-galaxy 80s linear infinite, pulse-galaxy-3 12s ease-in-out infinite !important;
-    z-index: -96 !important;
-    pointer-events: none !important;
+@keyframes nebula-drift {
+    0% { transform: translateX(0px) translateY(0px); }
+    100% { transform: translateX(20px) translateY(-10px); }
 }
 
-/* Animations */
-@keyframes fly-stars {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(0%); }
+/* ==========================================================================
+   Optional Gaming UI Elements (preserve original animations)
+   ========================================================================== */
+
+/* Animated Gradient Border - for special elements only */
+.animated-border {
+    position: relative;
+    padding: 2rem;
+    border-radius: 10px;
+    background: rgba(42, 42, 42, 0.9); /* Semi-transparent so night sky shows through */
+    backdrop-filter: blur(5px);
+    overflow: hidden;
+    z-index: 1;
 }
 
-@keyframes twinkle-bright {
-    0% { opacity: 0.6; }
-    100% { opacity: 1; }
+.animated-border::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        transparent,
+        rgba(255, 0, 255, 0.8),
+        rgba(0, 255, 255, 0.8),
+        transparent 30%
+    );
+    animation: rotate 4s linear infinite;
+    z-index: -2;
 }
 
-@keyframes rotate-galaxy {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+.animated-border::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    background: rgba(42, 42, 42, 0.9);
+    backdrop-filter: blur(5px);
+    border-radius: 8px;
+    z-index: -1;
 }
 
-@keyframes rotate-galaxy-reverse {
-    0% { transform: rotate(360deg); }
-    100% { transform: rotate(0deg); }
-}
-
-@keyframes pulse-galaxy {
-    0%, 100% { opacity: 0.4; transform: scale(1); }
-    50% { opacity: 0.7; transform: scale(1.1); }
-}
-
-@keyframes pulse-galaxy-2 {
-    0%, 100% { opacity: 0.35; transform: scale(1); }
-    50% { opacity: 0.65; transform: scale(1.08); }
-}
-
-@keyframes pulse-galaxy-3 {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 0.6; transform: scale(1.05); }
-}
-
-/* Content containers with glass effect */
-#content,
-.Profile,
-.MainGoContent,
-.profile-content,
-div[class*="profile"],
-div[class*="main-content"] {
-    background: rgba(15, 23, 42, 0.85) !important;
-    backdrop-filter: blur(10px) !important;
-    border: 1px solid rgba(0, 255, 255, 0.2) !important;
-    box-shadow: 
-        0 0 30px rgba(0, 0, 0, 0.8),
-        0 0 60px rgba(0, 255, 255, 0.1) !important;
-    border-radius: 12px !important;
-    margin: 20px auto !important;
-    max-width: 1200px !important;
-    position: relative !important;
-    z-index: 1 !important;
-}
-
-/* Profile Header */
-.profile-header,
-h1 {
-    background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(15, 23, 42, 0.9)) !important;
-    border-bottom: 2px solid rgba(0, 255, 255, 0.3) !important;
-    padding: 20px !important;
-    margin-bottom: 20px !important;
-    color: #e0f7ff !important;
-    text-shadow: 
-        0 0 10px rgba(0, 255, 255, 0.6),
-        0 0 20px rgba(0, 255, 255, 0.4) !important;
-    font-family: 'Orbitron', sans-serif !important;
-    letter-spacing: 2px !important;
-    text-transform: uppercase !important;
-    animation: header-glow 3s ease-in-out infinite alternate !important;
-}
-
-@keyframes header-glow {
-    0% { text-shadow: 0 0 10px rgba(0, 255, 255, 0.6), 0 0 20px rgba(0, 255, 255, 0.4); }
-    100% { text-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6); }
-}
-
-/* Stats boxes */
-.profile-ratings,
-.profile-details,
-div[class*="rating"],
-div[class*="stat"] {
-    background: rgba(0, 0, 0, 0.6) !important;
-    border: 1px solid rgba(0, 255, 255, 0.3) !important;
-    border-radius: 8px !important;
-    padding: 18px !important;
-    margin-bottom: 15px !important;
-    transition: all 0.4s ease !important;
-    backdrop-filter: blur(5px) !important;
-}
-
-.profile-ratings:hover,
-.profile-details:hover,
-div[class*="rating"]:hover,
-div[class*="stat"]:hover {
-    transform: translateY(-5px) scale(1.02) !important;
-    box-shadow: 
-        0 10px 25px rgba(0, 255, 255, 0.2),
-        0 0 40px rgba(0, 255, 255, 0.1) !important;
-    border-color: rgba(0, 255, 255, 0.5) !important;
-}
-
-/* Animated Buttons */
-button, 
-.btn, 
-.ogs-button,
-input[type="button"],
-input[type="submit"],
-a[class*="button"] {
-    background: linear-gradient(45deg, #0080ff, #00ffff) !important;
-    border: 2px solid rgba(0, 255, 255, 0.5) !important;
-    color: #000814 !important;
-    font-weight: bold !important;
-    text-transform: uppercase !important;
-    letter-spacing: 1px !important;
-    padding: 12px 24px !important;
-    border-radius: 8px !important;
-    cursor: pointer !important;
-    position: relative !important;
-    overflow: hidden !important;
-    transition: all 0.3s ease !important;
-    box-shadow: 
-        0 0 15px rgba(0, 255, 255, 0.3),
-        inset 0 0 15px rgba(255, 255, 255, 0.2) !important;
-    animation: button-glow 2s ease-in-out infinite alternate !important;
-}
-
-button:hover, 
-.btn:hover, 
-.ogs-button:hover,
-input[type="button"]:hover,
-input[type="submit"]:hover,
-a[class*="button"]:hover {
-    transform: translateY(-3px) scale(1.05) !important;
-    background: linear-gradient(45deg, #00ffff, #ffffff) !important;
-    box-shadow: 
-        0 10px 25px rgba(0, 255, 255, 0.5),
-        0 0 40px rgba(0, 255, 255, 0.7),
-        inset 0 0 20px rgba(255, 255, 255, 0.3) !important;
-    color: #000 !important;
-}
-
-/* Button energy wave effect */
-button::before, 
-.btn::before, 
-.ogs-button::before,
-input[type="button"]::before,
-input[type="submit"]::before,
-a[class*="button"]::before {
-    content: '' !important;
-    position: absolute !important;
-    top: 50% !important;
-    left: 50% !important;
-    width: 0 !important;
-    height: 0 !important;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 70%) !important;
-    border-radius: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    transition: width 0.6s ease, height 0.6s ease !important;
-    z-index: -1 !important;
-}
-
-button:hover::before, 
-.btn:hover::before, 
-.ogs-button:hover::before,
-input[type="button"]:hover::before,
-input[type="submit"]:hover::before,
-a[class*="button"]:hover::before {
-    width: 300% !important;
-    height: 300% !important;
-}
-
-@keyframes button-glow {
-    0% { 
-        box-shadow: 
-            0 0 10px rgba(0, 255, 255, 0.3),
-            inset 0 0 10px rgba(255, 255, 255, 0.2);
-    }
-    100% { 
-        box-shadow: 
-            0 0 20px rgba(0, 255, 255, 0.5),
-            inset 0 0 20px rgba(255, 255, 255, 0.3);
+@keyframes rotate {
+    100% {
+        transform: rotate(1turn);
     }
 }
 
-/* Game List */
-.game-list, 
-.game-list-row,
-div[class*="game"],
-tr {
-    background: rgba(0, 0, 0, 0.4) !important;
-    border: 1px solid rgba(0, 255, 255, 0.2) !important;
-    border-radius: 8px !important;
-    margin-bottom: 10px !important;
-    transition: all 0.3s ease !important;
-    backdrop-filter: blur(3px) !important;
+/* Glowing Text Effect */
+.glow-text {
+    color: #fff;
+    text-align: center;
+    animation: glow 1.5s ease-in-out infinite alternate;
 }
 
-.game-list:hover, 
-.game-list-row:hover,
-div[class*="game"]:hover,
-tr:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 8px 20px rgba(0, 255, 255, 0.15) !important;
-    border-color: rgba(0, 255, 255, 0.4) !important;
-}
-
-/* Tabs */
-.nav-tabs {
-    border-bottom: 2px solid rgba(0, 255, 255, 0.3) !important;
-    margin-bottom: 20px !important;
-    background: rgba(0, 0, 0, 0.3) !important;
-    border-radius: 8px 8px 0 0 !important;
-}
-
-.nav-tabs > li > a {
-    color: #e0f7ff !important;
-    border: 1px solid transparent !important;
-    border-radius: 6px 6px 0 0 !important;
-    margin-right: 5px !important;
-    transition: all 0.3s ease !important;
-    background: rgba(0, 0, 0, 0.3) !important;
-}
-
-.nav-tabs > li > a:hover {
-    background: rgba(0, 255, 255, 0.15) !important;
-    border-color: rgba(0, 255, 255, 0.3) !important;
-    transform: translateY(-2px) !important;
-}
-
-.nav-tabs > li.active > a {
-    background: rgba(0, 255, 255, 0.25) !important;
-    border-color: rgba(0, 255, 255, 0.5) !important;
-    color: #fff !important;
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3) !important;
-}
-
-/* Enhanced Scrollbar */
-::-webkit-scrollbar {
-    width: 12px !important;
-    height: 12px !important;
-}
-
-::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.4) !important;
-    border-radius: 6px !important;
-}
-
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(45deg, rgba(0, 255, 255, 0.5), rgba(0, 128, 255, 0.7)) !important;
-    border-radius: 6px !important;
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3) !important;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(45deg, rgba(0, 255, 255, 0.8), rgba(255, 255, 255, 0.6)) !important;
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.6) !important;
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-    html::before {
-        background-size: 400px 200px !important;
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #fff,
+                     0 0 20px #fff,
+                     0 0 30px var(--glow-color),
+                     0 0 40px var(--glow-color),
+                     0 0 50px var(--glow-color),
+                     0 0 60px var(--glow-color),
+                     0 0 70px var(--glow-color);
     }
-    
-    html::after {
-        background-size: 300px 300px !important;
+    to {
+        text-shadow: 0 0 20px #fff,
+                     0 0 30px var(--accent-color),
+                     0 0 40px var(--accent-color),
+                     0 0 50px var(--accent-color),
+                     0 0 60px var(--accent-color),
+                     0 0 70px var(--accent-color),
+                     0 0 80px var(--accent-color);
     }
-    
-    body::before {
-        width: 200px !important;
-        height: 120px !important;
+}
+
+/* Pulsating Effect */
+.pulsate {
+    animation: pulsate 2s ease-out infinite;
+    box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.7);
+}
+
+@keyframes pulsate {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.7);
     }
-    
-    body::after {
-        width: 180px !important;
-        height: 100px !important;
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 10px 20px rgba(0, 255, 255, 0);
     }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 255, 255, 0);
+    }
+}
+
+/* Gaming Button */
+.gaming-button {
+    background: var(--accent-color);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.gaming-button:hover {
+    background: var(--glow-color);
+    color: #111;
+    box-shadow: 0 0 20px var(--glow-color);
+}
+
+.gaming-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease;
+}
+
+.gaming-button:hover::before {
+    transform: translate(-50%, -50%) scale(1);
 }
