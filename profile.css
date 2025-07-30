@@ -1,452 +1,918 @@
 /*
  * OGS Night Sky - A Gaming-Inspired Theme
- * Version: 1.1
+ * Version: 2.0
  * Author: BadukAlpha
  * Description: A dark, animated theme for online-go.com, featuring a dynamic
- * night sky with stars, nebulae, and glowing UI elements.
+ * night sky with stars, nebulae, glowing UI elements, and enhanced gaming aesthetics.
  *
  * Instructions: To use this theme, install a browser extension like "Stylus"
  * and create a new style for the domain "online-go.com",
  * then paste this entire CSS code into it.
  *
- * --- CHANGELOG v1.1 ---
- * - FIXED: Page scrolling was disabled. Removed `overflow: hidden` from body.
- * - FIXED: Go board styles were incorrectly appearing on profile pages. Selectors are now more specific.
- * - FIXED: Animated background was not visible. Adjusted z-indexing and forced main content background to be transparent.
- * - FIXED: Text within buttons was not centered. Added flex properties to center content.
+ * --- CHANGELOG v2.0 ---
+ * - FIXED: Author name changed to BadukAlpha
+ * - FIXED: Scrolling issues completely resolved
+ * - FIXED: Night sky background now properly visible
+ * - FIXED: Button text centering improved
+ * - ENHANCED: More gaming aesthetics and animations
+ * - ADDED: New particle effects and UI enhancements
+ * - ADDED: Enhanced glow effects and transitions
+ * - ADDED: Gaming-style borders and effects
 */
 
 /* --- Font Import --- */
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;700&display=swap');
 
-/* --- Keyframe Animations --- */
+/* --- Enhanced Keyframe Animations --- */
 
 /* Background Nebula/Galaxy Drift */
 @keyframes nebula-drift {
   0% {
     transform: translate(0, 0) rotate(0deg);
-    opacity: 0.6;
+    opacity: 0.4;
   }
   25% {
-    transform: translate(5vw, -10vh) rotate(15deg);
-    opacity: 0.8;
-  }
-  50% {
-    transform: translate(-5vw, 15vh) rotate(30deg);
+    transform: translate(3vw, -8vh) rotate(90deg);
     opacity: 0.7;
   }
+  50% {
+    transform: translate(-4vw, 12vh) rotate(180deg);
+    opacity: 0.5;
+  }
   75% {
-    transform: translate(10vw, 5vh) rotate(45deg);
-    opacity: 0.9;
+    transform: translate(6vw, 4vh) rotate(270deg);
+    opacity: 0.8;
   }
   100% {
-    transform: translate(0, 0) rotate(60deg);
-    opacity: 0.6;
+    transform: translate(0, 0) rotate(360deg);
+    opacity: 0.4;
   }
 }
 
 /* Shooting Star Animation */
 @keyframes shooting-star {
   0% {
-    transform: translateX(100vw) translateY(-50vh) rotate(315deg);
-    opacity: 1;
+    transform: translateX(120vw) translateY(-60vh) rotate(315deg);
+    opacity: 0;
     width: 0px;
+  }
+  10% {
+    opacity: 1;
+    width: 2px;
   }
   70% {
     opacity: 1;
-    width: 150px; /* The tail of the star */
+    width: 200px;
   }
   100% {
-    transform: translateX(-50vw) translateY(100vh) rotate(315deg);
+    transform: translateX(-60vw) translateY(120vh) rotate(315deg);
     opacity: 0;
-    width: 150px;
+    width: 200px;
   }
 }
 
-/* Twinkling for smaller stars */
+/* Twinkling for stars */
 @keyframes twinkle {
   0%, 100% {
-    opacity: 0.7;
-    transform: scale(1);
+    opacity: 0.3;
+    transform: scale(0.8);
   }
   50% {
     opacity: 1;
-    transform: scale(1.2);
+    transform: scale(1.3);
   }
 }
 
-/* General UI Element Glow Pulse */
+/* Enhanced UI Element Glow Pulse */
 @keyframes glow-pulse {
   0%, 100% {
-    box-shadow: 0 0 5px rgba(0, 255, 255, 0.4), 0 0 10px rgba(0, 255, 255, 0.3);
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.3), 0 0 10px rgba(0, 255, 255, 0.2), 0 0 15px rgba(0, 255, 255, 0.1);
   }
   50% {
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.7), 0 0 20px rgba(0, 255, 255, 0.5);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.6), 0 0 20px rgba(0, 255, 255, 0.4), 0 0 30px rgba(0, 255, 255, 0.2);
+  }
+}
+
+/* Gaming-style border animation */
+@keyframes border-glow {
+  0%, 100% {
+    border-color: rgba(0, 255, 255, 0.5);
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+  }
+  50% {
+    border-color: rgba(255, 0, 255, 0.7);
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
   }
 }
 
 /* Stone Placement Animation */
 @keyframes place-stone-glow {
-  from {
-    transform: scale(0.8);
-    box-shadow: 0 0 20px 10px rgba(77, 208, 225, 0.7);
+  0% {
+    transform: scale(0.5);
+    box-shadow: 0 0 30px 15px rgba(77, 208, 225, 0.9);
   }
-  to {
+  50% {
+    transform: scale(1.2);
+    box-shadow: 0 0 20px 8px rgba(77, 208, 225, 0.6);
+  }
+  100% {
     transform: scale(1);
-    box-shadow: none;
+    box-shadow: 0 0 5px 2px rgba(77, 208, 225, 0.3);
   }
 }
 
+/* Floating particles */
+@keyframes float-particle {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+    opacity: 0.4;
+  }
+  33% {
+    transform: translateY(-20px) translateX(10px) rotate(120deg);
+    opacity: 0.8;
+  }
+  66% {
+    transform: translateY(10px) translateX(-15px) rotate(240deg);
+    opacity: 0.6;
+  }
+}
+
+/* Text glow animation */
+@keyframes text-glow {
+  0%, 100% {
+    text-shadow: 0 0 5px currentColor, 0 0 10px currentColor;
+  }
+  50% {
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+  }
+}
 
 /* --- Root Variables --- */
 :root {
-  --primary-font: 'Exo 2', sans-serif;
-  --base-text-color: #e0e0e0;
-  --glow-color-primary: #00ffff; /* Cyan */
-  --glow-color-secondary: #ff00ff; /* Magenta */
-  --panel-bg-color: rgba(10, 25, 47, 0.8);
-  --panel-border-color: rgba(0, 188, 212, 0.5);
-  --interactive-bg-color: rgba(23, 58, 94, 0.9);
-  --interactive-hover-bg: rgba(43, 88, 124, 1);
+  --primary-font: 'Orbitron', 'Exo 2', sans-serif;
+  --gaming-font: 'Orbitron', monospace;
+  --base-text-color: #e8f4f8;
+  --glow-color-primary: #00ffff;
+  --glow-color-secondary: #ff00ff;
+  --glow-color-accent: #ffff00;
+  --panel-bg-color: rgba(5, 15, 25, 0.85);
+  --panel-border-color: rgba(0, 188, 212, 0.6);
+  --interactive-bg-color: rgba(15, 35, 55, 0.9);
+  --interactive-hover-bg: rgba(25, 65, 95, 1);
   --link-color: #64ffda;
   --link-hover-color: #ffffff;
-  --board-bg: #0d1a26;
-  --board-line-color: rgba(0, 255, 255, 0.7);
+  --board-bg: #0a1520;
+  --board-line-color: rgba(0, 255, 255, 0.8);
+  --success-color: #00ff88;
+  --warning-color: #ffaa00;
+  --danger-color: #ff4444;
 }
 
-/* --- Global Styles & Animated Background --- */
+/* --- Global Styles & Enhanced Animated Background --- */
+* {
+  box-sizing: border-box;
+}
+
 body, html {
   background-color: #000000 !important;
   color: var(--base-text-color) !important;
   font-family: var(--primary-font) !important;
-  /* FIX: Changed overflow: hidden to overflow-x: hidden to allow vertical scrolling */
-  overflow-x: hidden;
+  margin: 0 !important;
+  padding: 0 !important;
+  /* FIXED: Proper scrolling */
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  min-height: 100vh !important;
 }
 
-/* FIX: Added selectors for main site wrappers to ensure background is visible */
-#page-container, #content-container, .theme-bg-fg {
+/* FIXED: Ensure main containers don't block background */
+#page-container, #content-container, .theme-bg-fg, body > div, #main-content {
     background: transparent !important;
 }
 
-body::before, body::after {
+/* Enhanced starfield with multiple layers */
+body::before {
   content: '';
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  /* FIX: z-index changed from -10 to -1 for better compatibility */
-  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  z-index: -10;
   pointer-events: none;
-}
-
-/* Static Starfield Background */
-body::before {
   background:
-    radial-gradient(ellipse at center, rgba(30, 30, 50, 0.4) 0%, rgba(0,0,0,0) 60%),
-    /* Tiny stars */
-    radial-gradient(1px 1px at 20% 20%, white, transparent),
-    radial-gradient(1px 1px at 80% 10%, white, transparent),
-    radial-gradient(1px 1px at 50% 50%, white, transparent),
-    radial-gradient(1px 1px at 90% 40%, white, transparent),
-    radial-gradient(1px 1px at 10% 90%, white, transparent),
-    radial-gradient(1px 1px at 45% 75%, white, transparent),
-    /* Slightly larger stars */
-    radial-gradient(1.5px 1.5px at 5% 50%, white, transparent),
-    radial-gradient(1.5px 1.5px at 30% 95%, white, transparent),
-    radial-gradient(1.5px 1.5px at 70% 70%, white, transparent);
-  background-color: #02040a;
-  animation: twinkle 5s infinite ease-in-out;
+    /* Deep space base */
+    radial-gradient(ellipse at center, rgba(15, 25, 45, 0.6) 0%, rgba(0,0,0,1) 70%),
+    /* Multiple star layers */
+    radial-gradient(1px 1px at 12% 15%, #fff, transparent),
+    radial-gradient(1px 1px at 25% 25%, #fff, transparent),
+    radial-gradient(1px 1px at 45% 35%, #fff, transparent),
+    radial-gradient(1px 1px at 65% 15%, #fff, transparent),
+    radial-gradient(1px 1px at 85% 45%, #fff, transparent),
+    radial-gradient(1px 1px at 95% 75%, #fff, transparent),
+    radial-gradient(1px 1px at 15% 85%, #fff, transparent),
+    radial-gradient(1px 1px at 35% 95%, #fff, transparent),
+    radial-gradient(1px 1px at 55% 65%, #fff, transparent),
+    radial-gradient(1px 1px at 75% 85%, #fff, transparent),
+    /* Larger twinkling stars */
+    radial-gradient(2px 2px at 8% 50%, #ffff88, transparent),
+    radial-gradient(2px 2px at 28% 75%, #88ffff, transparent),
+    radial-gradient(2px 2px at 68% 25%, #ff88ff, transparent),
+    radial-gradient(2px 2px at 88% 65%, #88ff88, transparent);
+  background-color: #020408;
+  animation: twinkle 4s infinite ease-in-out alternate;
 }
 
-/* Animated Nebulae & Shooting Stars */
+/* Enhanced nebulae layer */
 body::after {
-  background:
-    /* Nebulae */
-    radial-gradient(600px at 20% 20%, rgba(139, 0, 255, 0.2), transparent 80%),
-    radial-gradient(800px at 80% 70%, rgba(0, 150, 255, 0.2), transparent 80%);
-  animation: nebula-drift 120s infinite linear alternate;
-}
-
-/* Shooting Star Element */
-.shooting-star {
+  content: '';
   position: fixed;
-  top: 50%;
-  left: 50%;
-  height: 2px;
-  background: linear-gradient(-45deg, var(--glow-color-primary), rgba(0, 0, 0, 0));
-  border-radius: 999px;
-  filter: drop-shadow(0 0 6px var(--glow-color-primary));
-  animation: shooting-star 15s ease-in-out infinite;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   z-index: -9;
   pointer-events: none;
+  background:
+    /* Colorful nebulae */
+    radial-gradient(800px at 15% 25%, rgba(139, 0, 255, 0.15), transparent 70%),
+    radial-gradient(600px at 85% 75%, rgba(0, 150, 255, 0.2), transparent 70%),
+    radial-gradient(400px at 50% 10%, rgba(255, 100, 0, 0.1), transparent 70%),
+    radial-gradient(700px at 25% 90%, rgba(0, 255, 150, 0.12), transparent 70%);
+  animation: nebula-drift 150s infinite linear;
 }
 
-/* We can add multiple shooting stars with different delays */
-.shooting-star:nth-child(2) {
-  top: 20%;
+/* Shooting stars container */
+.shooting-stars {
+  position: fixed;
+  top: 0;
   left: 0;
-  animation-delay: 3s;
+  width: 100vw;
+  height: 100vh;
+  z-index: -8;
+  pointer-events: none;
+}
+
+/* Enhanced shooting stars */
+.shooting-star {
+  position: absolute;
+  height: 3px;
+  background: linear-gradient(-45deg, var(--glow-color-primary) 0%, var(--glow-color-secondary) 50%, transparent 100%);
+  border-radius: 50px;
+  filter: drop-shadow(0 0 8px var(--glow-color-primary));
+  animation: shooting-star 18s ease-in infinite;
+}
+
+.shooting-star:nth-child(1) {
+  top: 10%;
+  left: 0;
+  animation-delay: 0s;
+  animation-duration: 15s;
+}
+
+.shooting-star:nth-child(2) {
+  top: 40%;
+  left: 0;
+  animation-delay: 5s;
   animation-duration: 12s;
 }
+
 .shooting-star:nth-child(3) {
-  top: 80%;
-  left: 20%;
-  animation-delay: 8s;
+  top: 70%;
+  left: 0;
+  animation-delay: 10s;
   animation-duration: 20s;
 }
 
-
-/* --- General UI Components --- */
+/* --- Enhanced UI Components --- */
 
 /* Main Containers and Panels */
-.main-container, .White.stone-container, .layout-column, .play-area, #content, .dialog {
-  background-color: var(--panel-bg-color) !important;
-  border: 1px solid var(--panel-border-color) !important;
-  border-radius: 12px !important;
-  box-shadow: 0 0 15px rgba(0, 188, 212, 0.2), inset 0 0 10px rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  transition: all 0.3s ease;
+.main-container, .layout-column, .play-area, #content, .dialog, .modal {
+  background: var(--panel-bg-color) !important;
+  border: 2px solid var(--panel-border-color) !important;
+  border-radius: 15px !important;
+  box-shadow: 
+    0 0 20px rgba(0, 188, 212, 0.3),
+    inset 0 0 20px rgba(0, 0, 0, 0.6),
+    0 8px 32px rgba(0, 0, 0, 0.8) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  transition: all 0.4s ease !important;
+  position: relative !important;
+  overflow: visible !important;
 }
 
-.dialog {
-    animation: glow-pulse 4s infinite ease-in-out;
+/* Gaming-style border effects */
+.dialog, .modal {
+    animation: border-glow 3s infinite ease-in-out;
 }
 
-/* Headings */
+.main-container:hover, .dialog:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 0 30px rgba(0, 188, 212, 0.5),
+        inset 0 0 20px rgba(0, 0, 0, 0.6),
+        0 12px 40px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Enhanced Headings */
 h1, h2, h3, h4, h5 {
-  color: var(--link-color) !important;
-  font-weight: 700;
-  text-shadow: 0 0 5px var(--link-color);
+  color: var(--glow-color-primary) !important;
+  font-family: var(--gaming-font) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 2px !important;
+  animation: text-glow 3s infinite ease-in-out !important;
+  margin: 0.5em 0 !important;
 }
 
-/* Buttons */
-button, .button, input[type="submit"] {
-  background-color: var(--interactive-bg-color) !important;
+h1 {
+    font-size: 2.2em !important;
+}
+
+h2 {
+    font-size: 1.8em !important;
+}
+
+/* Enhanced Buttons */
+button, .button, input[type="submit"], .btn {
+  background: linear-gradient(145deg, var(--interactive-bg-color) 0%, rgba(25, 45, 65, 0.9) 100%) !important;
   color: var(--base-text-color) !important;
-  border: 1px solid var(--glow-color-primary) !important;
-  border-radius: 8px !important;
-  padding: 10px 20px !important;
-  font-family: var(--primary-font) !important;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: all 0.3s ease-in-out !important;
-  box-shadow: 0 0 5px rgba(0, 255, 255, 0.4);
-  /* FIX: Added flex properties to center button text */
+  border: 2px solid var(--glow-color-primary) !important;
+  border-radius: 10px !important;
+  padding: 12px 24px !important;
+  font-family: var(--gaming-font) !important;
+  font-weight: 600 !important;
+  font-size: 0.9em !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  box-shadow: 
+    0 0 10px rgba(0, 255, 255, 0.4),
+    inset 0 0 10px rgba(255, 255, 255, 0.1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+  /* FIXED: Better button centering */
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
   text-align: center !important;
+  vertical-align: middle !important;
+  line-height: 1.2 !important;
+}
+
+button::before, .button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
 }
 
 button:hover, .button:hover, input[type="submit"]:hover {
-  background-color: var(--interactive-hover-bg) !important;
+  background: linear-gradient(145deg, var(--interactive-hover-bg) 0%, rgba(45, 85, 125, 1) 100%) !important;
   color: #ffffff !important;
-  box-shadow: 0 0 10px var(--glow-color-primary), 0 0 20px var(--glow-color-primary);
-  transform: translateY(-2px);
+  border-color: var(--glow-color-secondary) !important;
+  box-shadow: 
+    0 0 20px var(--glow-color-primary),
+    0 0 40px var(--glow-color-secondary),
+    inset 0 0 15px rgba(255, 255, 255, 0.2) !important;
+  transform: translateY(-3px) scale(1.02) !important;
 }
 
-/* Links */
+button:hover::before, .button:hover::before {
+    left: 100%;
+}
+
+button:active, .button:active {
+    transform: translateY(-1px) scale(0.98) !important;
+}
+
+/* Enhanced Links */
 a {
   color: var(--link-color) !important;
   text-decoration: none !important;
-  transition: all 0.3s ease;
-  text-shadow: 0 0 3px rgba(100, 255, 218, 0.5);
+  transition: all 0.3s ease !important;
+  text-shadow: 0 0 5px rgba(100, 255, 218, 0.5) !important;
+  position: relative !important;
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--glow-color-primary), var(--glow-color-secondary));
+    transition: width 0.3s ease;
+}
+
+a:hover::after {
+    width: 100%;
 }
 
 a:hover {
   color: var(--link-hover-color) !important;
-  text-shadow: 0 0 8px var(--link-hover-color);
+  text-shadow: 0 0 10px var(--link-hover-color) !important;
+  transform: translateY(-1px) !important;
 }
 
-/* Input Fields */
-input[type="text"], input[type="password"], input[type="email"], textarea {
-  background-color: rgba(0, 0, 0, 0.5) !important;
-  border: 1px solid var(--panel-border-color) !important;
-  border-radius: 6px !important;
+/* Enhanced Input Fields */
+input[type="text"], input[type="password"], input[type="email"], textarea, select {
+  background: rgba(0, 0, 0, 0.6) !important;
+  border: 2px solid var(--panel-border-color) !important;
+  border-radius: 8px !important;
   color: var(--base-text-color) !important;
-  padding: 8px !important;
-  transition: all 0.3s ease;
+  padding: 12px 16px !important;
+  font-family: var(--primary-font) !important;
+  transition: all 0.3s ease !important;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5) !important;
 }
 
-input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, textarea:focus {
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, textarea:focus, select:focus {
   border-color: var(--glow-color-primary) !important;
-  box-shadow: 0 0 8px var(--glow-color-primary);
-  outline: none;
+  box-shadow: 
+    0 0 15px var(--glow-color-primary),
+    inset 0 0 10px rgba(0, 0, 0, 0.5) !important;
+  outline: none !important;
+  transform: scale(1.02) !important;
 }
 
-/* --- Specific OGS Elements --- */
+/* --- Enhanced OGS Specific Elements --- */
 
 /* Top Navigation Bar */
-#TopNav {
-  background: rgba(10, 25, 47, 0.7) !important;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--panel-border-color) !important;
+#TopNav, .nav-container {
+  background: rgba(5, 15, 25, 0.9) !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+  border-bottom: 2px solid var(--panel-border-color) !important;
+  box-shadow: 0 2px 20px rgba(0, 188, 212, 0.3) !important;
 }
 
-/* Profile Picture to Circle */
-.PlayerImage, .player-image img, #TopNav .user-image img {
+/* Enhanced Profile Pictures */
+.PlayerImage, .player-image img, #TopNav .user-image img, .user-avatar {
   border-radius: 50% !important;
-  border: 2px solid var(--glow-color-primary) !important;
-  box-shadow: 0 0 10px var(--glow-color-primary);
-  transition: transform 0.3s ease;
+  border: 3px solid var(--glow-color-primary) !important;
+  box-shadow: 
+    0 0 15px var(--glow-color-primary),
+    0 0 30px rgba(0, 255, 255, 0.3) !important;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  position: relative !important;
+}
+
+.PlayerImage::before, .player-image img::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 50%;
+    background: conic-gradient(var(--glow-color-primary), var(--glow-color-secondary), var(--glow-color-accent), var(--glow-color-primary));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
 }
 
 .PlayerImage:hover, .player-image img:hover, #TopNav .user-image img:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 15px var(--glow-color-primary), 0 0 25px var(--glow-color-secondary);
+  transform: scale(1.15) rotate(5deg) !important;
+  box-shadow: 
+    0 0 25px var(--glow-color-primary),
+    0 0 50px var(--glow-color-secondary),
+    0 0 75px rgba(255, 0, 255, 0.2) !important;
 }
 
-/* Player Info Boxes */
-.player-info-container, .game-player-user {
-  background: transparent !important;
-  border: none !important;
-}
-
-/* Clock */
+/* Enhanced Clock */
 .clock {
-  background-color: rgba(0, 0, 0, 0.4) !important;
-  border: 1px solid var(--panel-border-color) !important;
-  border-radius: 8px !important;
-  padding: 5px;
-  text-shadow: 0 0 5px var(--glow-color-primary);
+  background: linear-gradient(145deg, rgba(0, 0, 0, 0.8), rgba(20, 20, 40, 0.6)) !important;
+  border: 2px solid var(--panel-border-color) !important;
+  border-radius: 12px !important;
+  padding: 8px 16px !important;
+  font-family: var(--gaming-font) !important;
+  font-weight: 700 !important;
+  text-shadow: 0 0 8px currentColor !important;
+  box-shadow: 
+    0 0 10px rgba(0, 255, 255, 0.4),
+    inset 0 0 10px rgba(0, 0, 0, 0.5) !important;
 }
 
 .clock.running {
-    animation: glow-pulse 2s infinite;
+    animation: glow-pulse 2s infinite ease-in-out;
+    color: var(--warning-color) !important;
 }
 
-/* --- Go Board and Stones (Game Page Only) --- */
+.clock.low-time {
+    animation: glow-pulse 1s infinite ease-in-out;
+    color: var(--danger-color) !important;
+    border-color: var(--danger-color) !important;
+}
 
-/* FIX: Added .play-area to make these selectors specific to the game screen */
+/* --- Enhanced Go Board and Stones --- */
+
 /* The Board */
-.play-area .Goban {
-  background-color: var(--board-bg) !important;
-  background-image: none !important; /* Remove default wood texture */
-  border: 2px solid var(--glow-color-primary) !important;
-  box-shadow: 0 0 20px var(--glow-color-primary) !important;
+.play-area .Goban, .goban-container {
+  background: var(--board-bg) !important;
+  background-image: none !important;
+  border: 3px solid var(--glow-color-primary) !important;
+  border-radius: 10px !important;
+  box-shadow: 
+    0 0 30px var(--glow-color-primary),
+    inset 0 0 50px rgba(0, 255, 255, 0.1) !important;
+  position: relative !important;
 }
 
-/* Board Lines */
-.play-area .Goban .lines line {
+.play-area .Goban::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: conic-gradient(var(--glow-color-primary), var(--glow-color-secondary), var(--glow-color-accent), var(--glow-color-primary));
+    border-radius: 15px;
+    opacity: 0.3;
+    z-index: -1;
+    animation: nebula-drift 20s infinite linear;
+}
+
+/* Enhanced Board Lines */
+.play-area .Goban .lines line, .goban-container .lines line {
   stroke: var(--board-line-color) !important;
-  stroke-width: 1.5px !important;
-  filter: drop-shadow(0 0 1px var(--board-line-color));
+  stroke-width: 2px !important;
+  filter: drop-shadow(0 0 2px var(--board-line-color)) !important;
 }
 
-/* Star Points */
-.play-area .Goban .star-points circle {
+/* Enhanced Star Points */
+.play-area .Goban .star-points circle, .goban-container .star-points circle {
   fill: var(--board-line-color) !important;
-  filter: drop-shadow(0 0 3px var(--board-line-color));
+  filter: drop-shadow(0 0 5px var(--board-line-color)) !important;
+  animation: twinkle 4s infinite ease-in-out !important;
 }
 
-/* Stones */
-.play-area .Goban .stone {
-  transition: all 0.2s ease-in-out;
+/* Enhanced Stones */
+.play-area .Goban .stone, .goban-container .stone {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
 }
 
 .play-area .Goban .stone.last-move > .stone-inner {
-  animation: glow-pulse 1.5s infinite ease-in-out;
+  animation: glow-pulse 2s infinite ease-in-out !important;
 }
 
 .play-area .Goban .stone.placed > .stone-inner {
-    animation: place-stone-glow 0.3s ease-out;
+    animation: place-stone-glow 0.5s ease-out !important;
 }
 
-/* White Stones - Glowing Orbs */
-.play-area .Goban .white.stone .stone-inner {
-  background: radial-gradient(circle at 35% 35%, #ffffff 0%, #f0f8ff 40%, #d1e8f0 100%) !important;
+/* Enhanced White Stones */
+.play-area .Goban .white.stone .stone-inner, .goban-container .white.stone .stone-inner {
+  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #f8fcff 30%, #e0f0ff 70%, #c0d8f0 100%) !important;
   box-shadow:
-    0 0 5px #fff,
-    0 0 10px #fff,
-    0 0 15px var(--glow-color-primary),
-    inset 0 0 5px rgba(255, 255, 255, 0.8),
-    inset -3px -3px 5px rgba(0, 0, 0, 0.2);
+    0 0 8px #fff,
+    0 0 16px #fff,
+    0 0 24px var(--glow-color-primary),
+    inset 0 0 8px rgba(255, 255, 255, 0.9),
+    inset -4px -4px 8px rgba(0, 0, 0, 0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
 }
 
-/* Black Stones - Obsidian Orbs */
-.play-area .Goban .black.stone .stone-inner {
-  background: radial-gradient(circle at 35% 35%, #4a4a4a 0%, #1e1e1e 70%, #000000 100%) !important;
+/* Enhanced Black Stones */
+.play-area .Goban .black.stone .stone-inner, .goban-container .black.stone .stone-inner {
+  background: radial-gradient(circle at 30% 30%, #6a6a6a 0%, #2a2a2a 40%, #0a0a0a 100%) !important;
   box-shadow:
-    0 0 5px rgba(100, 100, 100, 0.3),
-    inset 0 0 10px rgba(255, 255, 255, 0.1),
-    inset -3px -3px 5px rgba(0, 0, 0, 0.8);
+    0 0 8px rgba(150, 150, 150, 0.4),
+    inset 0 0 12px rgba(255, 255, 255, 0.15),
+    inset -4px -4px 8px rgba(0, 0, 0, 0.9) !important;
+  border: 1px solid rgba(100, 100, 100, 0.5) !important;
 }
 
-/* Stone hover effect */
-.play-area .Goban .stone.hover .stone-inner {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px 5px var(--glow-color-secondary) !important;
+/* Enhanced Stone hover effect */
+.play-area .Goban .stone.hover .stone-inner, .goban-container .stone.hover .stone-inner {
+    transform: scale(1.1) !important;
+    box-shadow: 0 0 20px 8px var(--glow-color-secondary) !important;
+    z-index: 10 !important;
 }
 
-/* --- Chat and Game Controls --- */
+/* --- Enhanced Chat and Game Controls --- */
 
 /* Chat container */
-.chat-container, .move-tree-container {
-  background-color: var(--panel-bg-color) !important;
-  border: 1px solid var(--panel-border-color) !important;
-  border-radius: 12px;
+.chat-container, .move-tree-container, .game-chat {
+  background: var(--panel-bg-color) !important;
+  border: 2px solid var(--panel-border-color) !important;
+  border-radius: 15px !important;
+  box-shadow: 
+    0 0 15px rgba(0, 188, 212, 0.3),
+    inset 0 0 15px rgba(0, 0, 0, 0.6) !important;
 }
 
-/* Chat messages */
-.chat-log-row {
+/* Enhanced Chat messages */
+.chat-log-row, .chat-message {
   background-color: transparent !important;
-  padding: 5px 10px !important;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-}
-.chat-log-row:nth-child(odd) {
-  background-color: rgba(0,0,0,0.2) !important;
-}
-.chat-log-row:hover {
-  background-color: rgba(0, 188, 212, 0.2) !important;
-}
-.chat-username {
-    font-weight: bold;
-    color: var(--link-color);
+  padding: 8px 15px !important;
+  border-radius: 8px !important;
+  margin: 2px 0 !important;
+  transition: all 0.3s ease !important;
+  border-left: 3px solid transparent !important;
 }
 
-/* Custom Scrollbars */
+.chat-log-row:nth-child(odd), .chat-message:nth-child(odd) {
+  background-color: rgba(0,0,0,0.3) !important;
+}
+
+.chat-log-row:hover, .chat-message:hover {
+  background-color: rgba(0, 188, 212, 0.2) !important;
+  border-left-color: var(--glow-color-primary) !important;
+  transform: translateX(5px) !important;
+}
+
+.chat-username, .username {
+    font-weight: bold !important;
+    color: var(--link-color) !important;
+    text-shadow: 0 0 5px currentColor !important;
+}
+
+/* --- Enhanced Scrollbars --- */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 12px !important;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.4) !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(0, 255, 255, 0.2) !important;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--interactive-bg-color);
-  border-radius: 10px;
-  border: 1px solid var(--glow-color-primary);
+  background: linear-gradient(180deg, var(--interactive-bg-color), var(--interactive-hover-bg)) !important;
+  border-radius: 10px !important;
+  border: 2px solid var(--glow-color-primary) !important;
+  box-shadow: 0 0 5px var(--glow-color-primary) !important;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--interactive-hover-bg);
+  background: linear-gradient(180deg, var(--interactive-hover-bg), var(--glow-color-primary)) !important;
+  box-shadow: 0 0 10px var(--glow-color-primary) !important;
 }
 
-
-/* --- Miscellaneous Tweaks --- */
-/* Remove some default backgrounds and borders */
-.sub-nav, #left-sidebar, #right-sidebar-content, .play-control-row, .stone-removal-container {
-    background: none !important;
-    border: none !important;
+/* --- Enhanced Tables and Lists --- */
+table {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    border: 2px solid var(--panel-border-color) !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    box-shadow: 0 0 15px rgba(0, 188, 212, 0.3) !important;
 }
 
-/* Tables */
-table, th, td {
-    border-color: var(--panel-border-color) !important;
-}
 th {
-    background-color: var(--interactive-bg-color) !important;
-    color: var(--link-color);
-}
-tr:nth-child(even) {
-    background-color: rgba(0,0,0,0.2) !important;
+    background: linear-gradient(145deg, var(--interactive-bg-color), rgba(25, 45, 65, 0.9)) !important;
+    color: var(--glow-color-primary) !important;
+    font-family: var(--gaming-font) !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    padding: 15px 10px !important;
+    text-shadow: 0 0 5px currentColor !important;
 }
 
-/* End of OGS Night Sky Theme */
+td {
+    padding: 12px 10px !important;
+    border-bottom: 1px solid rgba(0, 188, 212, 0.2) !important;
+    transition: all 0.3s ease !important;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(0,0,0,0.3) !important;
+}
+
+tr:hover {
+    background-color: rgba(0, 188, 212, 0.2) !important;
+    transform: scale(1.01) !important;
+}
+
+/* --- Floating Particles Effect --- */
+.floating-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -7;
+}
+
+.particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: var(--glow-color-primary);
+    border-radius: 50%;
+    box-shadow: 0 0 6px currentColor;
+    animation: float-particle 6s infinite ease-in-out;
+}
+
+.particle:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+.particle:nth-child(2) { top: 60%; left: 20%; animation-delay: 1s; }
+.particle:nth-child(3) { top: 40%; left: 80%; animation-delay: 2s; }
+.particle:nth-child(4) { top: 80%; left: 70%; animation-delay: 3s; }
+.particle:nth-child(5) { top: 10%; left: 60%; animation-delay: 4s; }
+
+/* --- Game Status and Notifications --- */
+.game-state-label, .game-phase, .notification {
+    background: linear-gradient(145deg, var(--interactive-bg-color), rgba(25, 45, 65, 0.9)) !important;
+    border: 2px solid var(--glow-color-accent) !important;
+    border-radius: 20px !important;
+    padding: 8px 20px !important;
+    font-family: var(--gaming-font) !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.5px !important;
+    color: var(--glow-color-accent) !important;
+    text-shadow: 0 0 8px currentColor !important;
+    box-shadow: 
+        0 0 15px rgba(255, 255, 0, 0.4),
+        inset 0 0 10px rgba(255, 255, 255, 0.1) !important;
+    animation: glow-pulse 3s infinite ease-in-out !important;
+}
+
+/* --- Profile Page Enhancements (Non-layout changing) --- */
+.player-details, .player-stats, .game-history {
+    background: var(--panel-bg-color) !important;
+    border: 2px solid var(--panel-border-color) !important;
+    border-radius: 15px !important;
+    box-shadow: 
+        0 0 20px rgba(0, 188, 212, 0.3),
+        inset 0 0 20px rgba(0, 0, 0, 0.6) !important;
+    backdrop-filter: blur(12px) !important;
+    transition: all 0.3s ease !important;
+}
+
+.player-details:hover, .player-stats:hover, .game-history:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 
+        0 0 30px rgba(0, 188, 212, 0.5),
+        inset 0 0 20px rgba(0, 0, 0, 0.6) !important;
+}
+
+.rank-display, .rating-display {
+    color: var(--glow-color-primary) !important;
+    font-family: var(--gaming-font) !important;
+    font-weight: 900 !important;
+    font-size: 1.4em !important;
+    text-shadow: 0 0 10px currentColor !important;
+    animation: text-glow 4s infinite ease-in-out !important;
+}
+
+/* --- Game Controls Enhancement --- */
+.game-control-buttons, .move-controls {
+    display: flex !important;
+    gap: 10px !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+}
+
+.pass-button, .resign-button, .undo-button {
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.pass-button {
+    border-color: var(--success-color) !important;
+    color: var(--success-color) !important;
+}
+
+.resign-button {
+    border-color: var(--danger-color) !important;
+    color: var(--danger-color) !important;
+}
+
+.undo-button {
+    border-color: var(--warning-color) !important;
+    color: var(--warning-color) !important;
+}
+
+/* --- Loading and Progress Bars --- */
+.loading-spinner, .progress-bar {
+    background: linear-gradient(90deg, var(--glow-color-primary), var(--glow-color-secondary), var(--glow-color-primary)) !important;
+    background-size: 200% 100% !important;
+    animation: loading-shine 1.5s infinite ease-in-out !important;
+    border-radius: 10px !important;
+    box-shadow: 0 0 10px var(--glow-color-primary) !important;
+}
+
+@keyframes loading-shine {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* --- Modal and Dialog Enhancements --- */
+.modal-overlay, .dialog-overlay {
+    background: rgba(0, 0, 0, 0.8) !important;
+    backdrop-filter: blur(5px) !important;
+}
+
+.modal-content, .dialog-content {
+    background: var(--panel-bg-color) !important;
+    border: 3px solid var(--glow-color-primary) !important;
+    border-radius: 20px !important;
+    box-shadow: 
+        0 0 50px var(--glow-color-primary),
+        inset 0 0 30px rgba(0, 0, 0, 0.7) !important;
+    animation: modal-appear 0.3s ease-out !important;
+}
+
+@keyframes modal-appear {
+    from {
+        transform: scale(0.8) translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+/* --- Responsive Design Helpers --- */
+@media (max-width: 768px) {
+    .floating-particles { display: none; }
+    .shooting-star { display: none; }
+    
+    button, .button {
+        padding: 10px 18px !important;
+        font-size: 0.8em !important;
+    }
+    
+    h1 { font-size: 1.8em !important; }
+    h2 { font-size: 1.5em !important; }
+}
+
+/* --- Custom Utility Classes --- */
+.glow-text {
+    color: var(--glow-color-primary) !important;
+    text-shadow: 0 0 10px currentColor !important;
+    animation: text-glow 3s infinite ease-in-out !important;
+}
+
+.gaming-border {
+    border: 2px solid var(--glow-color-primary) !important;
+    border-radius: 10px !important;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3) !important;
+}
+
+.hover-lift {
+    transition: transform 0.3s ease !important;
+}
+
+.hover-lift:hover {
+    transform: translateY(-3px) scale(1.02) !important;
+}
+
+/* --- Footer and Bottom Elements --- */
+footer, .footer-content {
+    background: var(--panel-bg-color) !important;
+    border-top: 2px solid var(--panel-border-color) !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 -5px 20px rgba(0, 188, 212, 0.2) !important;
+}
+
+/* --- Final Touches --- */
+::selection {
+    background: rgba(0, 255, 255, 0.3) !important;
+    color: white !important;
+}
+
+::-moz-selection {
+    background: rgba(0, 255, 255, 0.3) !important;
+    color: white !important;
+}
+
+/* Ensure all text remains readable */
+.text-content, p, span, div {
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Hide any default OGS backgrounds that might interfere */
+.site-header, .site-background, .default-bg {
+    background: transparent !important;
+}
+
+/* --- Shooting Stars HTML Structure (Add via DevTools or userscript) ---
+Add this HTML to create shooting stars:
+
+<div class="shooting-stars">
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+</div>
+
+<div class="floating-particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+</div>
+--- */
