@@ -1,14 +1,9 @@
 /*
- * EPIC GAMING UI ANIMATIONS
- * A massive collection of pure CSS animations for a futuristic, gaming-inspired UI.
- *
- * Version: 2.0
- *
- * How to use:
- * 1. Add this CSS to your OGS custom CSS section or your project's stylesheet.
- * 2. Apply the classes to the HTML elements you want to animate.
- * Example: <div class="card-holographic">Your Content</div>
- * Example: <h1 class="text-glitch" data-text="Player 1">Player 1</h1>
+ * OGS-COMPATIBLE EPIC GAMING UI ANIMATIONS
+ * Fixed version for Online Go Server integration
+ * 
+ * IMPORTANT: Use !important declarations to override OGS defaults
+ * Apply classes directly to elements you want to style
  */
 
 /* ==========================================================================
@@ -17,141 +12,120 @@
 
 :root {
     /* Main Color Palette */
-    --color-primary-dark: #0a0a14;   /* Deep space blue/black */
-    --color-secondary-dark: #10121f; /* Slightly lighter navy */
-    --color-tertiary-dark: #1a1d32;  /* Panel background */
-    --color-primary-light: #e5e5e5;  /* Primary text color */
-    --color-secondary-light: #a0a0b4;/* Muted text, subtitles */
+    --color-primary-dark: #0a0a14 !important;
+    --color-secondary-dark: #10121f !important;
+    --color-tertiary-dark: #1a1d32 !important;
+    --color-primary-light: #e5e5e5 !important;
+    --color-secondary-light: #a0a0b4 !important;
 
     /* Accent & Glow Colors */
-    --color-accent-cyan: #00ffff;
-    --color-accent-magenta: #ff00ff;
-    --color-accent-green: #00ff7f;   /* Lime green for success/positive */
-    --color-accent-red: #ff3c3c;     /* Red for alerts/errors */
-    --color-accent-yellow: #fffb00;  /* Yellow for warnings */
-    --color-accent-purple: #9d00ff;
+    --color-accent-cyan: #00ffff !important;
+    --color-accent-magenta: #ff00ff !important;
+    --color-accent-green: #00ff7f !important;
+    --color-accent-red: #ff3c3c !important;
+    --color-accent-yellow: #fffb00 !important;
+    --color-accent-purple: #9d00ff !important;
 
     /* Font Families */
-    --font-primary: 'Orbitron', 'Segoe UI', sans-serif; /* Titles, headings */
-    --font-secondary: 'Rajdhani', 'Segoe UI', sans-serif; /* Body text, UI elements */
+    --font-primary: 'Orbitron', 'Courier New', monospace !important;
+    --font-secondary: 'Rajdhani', 'Arial', sans-serif !important;
 
     /* Animation Timings */
-    --timing-fast: 0.2s;
-    --timing-normal: 0.4s;
-    --timing-slow: 0.8s;
+    --timing-fast: 0.2s !important;
+    --timing-normal: 0.4s !important;
+    --timing-slow: 0.8s !important;
 }
 
 /* ==========================================================================
-   2. BASE & TYPOGRAPHY STYLES
+   2. OGS-SPECIFIC OVERRIDES
    ========================================================================== */
 
-/* Note: These base styles might be overridden by OGS defaults. */
-body {
-    background-color: var(--color-primary-dark);
-    color: var(--color-primary-light);
-    font-family: var(--font-secondary);
-    font-weight: 500;
+/* Override OGS body styles when using gaming theme */
+body.gaming-theme {
+    background-color: var(--color-primary-dark) !important;
+    color: var(--color-primary-light) !important;
+    font-family: var(--font-secondary) !important;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-primary);
-    color: var(--color-primary-light);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 0 0 5px var(--color-accent-cyan);
+/* Override OGS navigation and header styles */
+.gaming-theme .MainNavigation,
+.gaming-theme .NavBar,
+.gaming-theme header {
+    background-color: var(--color-secondary-dark) !important;
+    border-bottom: 1px solid var(--color-accent-cyan) !important;
 }
 
-p {
-    color: var(--color-secondary-light);
-    line-height: 1.6;
+/* Override OGS game board container */
+.gaming-theme .Goban-container,
+.gaming-theme .game-container {
+    background-color: var(--color-tertiary-dark) !important;
+    border: 2px solid var(--color-accent-purple) !important;
+    border-radius: 10px !important;
 }
-
-a {
-    color: var(--color-accent-cyan);
-    text-decoration: none;
-    transition: color var(--timing-fast) ease, text-shadow var(--timing-fast) ease;
-}
-
-a:hover {
-    color: #fff;
-    text-shadow: 0 0 10px var(--color-accent-cyan);
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-    width: 10px;
-}
-::-webkit-scrollbar-track {
-    background: var(--color-primary-dark);
-}
-::-webkit-scrollbar-thumb {
-    background: var(--color-accent-cyan);
-    border-radius: 10px;
-    box-shadow: 0 0 10px var(--color-accent-cyan);
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #fff;
-}
-
 
 /* ==========================================================================
-   3. TEXT EFFECTS
+   3. TEXT EFFECTS (Enhanced for OGS)
    ========================================================================== */
 
-/* --- 3.1. Glow Text (Original) --- */
+/* --- 3.1. Glow Text --- */
 .text-glow {
-    color: #fff;
-    text-align: center;
-    animation: glow-anim 1.5s ease-in-out infinite alternate;
+    color: #fff !important;
+    animation: glow-anim 1.5s ease-in-out infinite alternate !important;
+    font-weight: bold !important;
 }
 
 @keyframes glow-anim {
     from {
-        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px var(--color-accent-cyan), 0 0 40px var(--color-accent-cyan);
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px var(--color-accent-cyan), 0 0 40px var(--color-accent-cyan) !important;
     }
     to {
-        text-shadow: 0 0 20px #fff, 0 0 30px var(--color-accent-magenta), 0 0 40px var(--color-accent-magenta);
+        text-shadow: 0 0 20px #fff, 0 0 30px var(--color-accent-magenta), 0 0 40px var(--color-accent-magenta) !important;
     }
 }
 
-/* --- 3.2. Glitch Effect (Original & Improved) --- */
+/* --- 3.2. Glitch Effect --- */
 .text-glitch {
-    position: relative;
-    font-weight: 900;
-    color: white;
-    letter-spacing: 0.1em;
-    animation: glitch-skew-anim 1s infinite linear alternate-reverse;
+    position: relative !important;
+    font-weight: 900 !important;
+    color: white !important;
+    letter-spacing: 0.1em !important;
+    animation: glitch-skew-anim 1s infinite linear alternate-reverse !important;
+    display: inline-block !important;
 }
 
 .text-glitch::before,
 .text-glitch::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--color-primary-dark);
-    overflow: hidden;
+    content: attr(data-text) !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: transparent !important;
+    overflow: hidden !important;
 }
 
 .text-glitch::before {
-    left: 2px;
-    text-shadow: -2px 0 var(--color-accent-magenta);
-    animation: glitch-1-anim 2.5s infinite linear alternate-reverse;
+    left: 2px !important;
+    text-shadow: -2px 0 var(--color-accent-magenta) !important;
+    animation: glitch-1-anim 2.5s infinite linear alternate-reverse !important;
 }
 
 .text-glitch::after {
-    left: -2px;
-    text-shadow: -2px 0 var(--color-accent-cyan);
-    animation: glitch-2-anim 1.5s infinite linear alternate-reverse;
+    left: -2px !important;
+    text-shadow: -2px 0 var(--color-accent-cyan) !important;
+    animation: glitch-2-anim 1.5s infinite linear alternate-reverse !important;
 }
 
 @keyframes glitch-1-anim {
     0% { clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%); }
     10% { clip-path: polygon(0 15%, 100% 15%, 100% 20%, 0 20%); }
     20% { clip-path: polygon(0 10%, 100% 10%, 100% 20%, 0 20%); }
-    /* ... (more steps for randomness) ... */
+    30% { clip-path: polygon(0 1%, 100% 1%, 100% 2%, 0 2%); }
+    40% { clip-path: polygon(0 33%, 100% 33%, 100% 34%, 0 34%); }
+    50% { clip-path: polygon(0 44%, 100% 44%, 100% 44%, 0 44%); }
+    60% { clip-path: polygon(0 50%, 100% 50%, 100% 55%, 0 55%); }
+    70% { clip-path: polygon(0 70%, 100% 70%, 100% 80%, 0 80%); }
     80% { clip-path: polygon(0 20%, 100% 20%, 100% 25%, 0 25%); }
     90% { clip-path: polygon(0 5%, 100% 5%, 100% 10%, 0 10%); }
     100% { clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%); }
@@ -160,127 +134,115 @@ a:hover {
 @keyframes glitch-2-anim {
     0% { clip-path: polygon(0 75%, 100% 75%, 100% 80%, 0 80%); }
     10% { clip-path: polygon(0 60%, 100% 60%, 100% 65%, 0 65%); }
-    /* ... (more steps for randomness) ... */
+    20% { clip-path: polygon(0 85%, 100% 85%, 100% 90%, 0 90%); }
+    30% { clip-path: polygon(0 95%, 100% 95%, 100% 96%, 0 96%); }
+    40% { clip-path: polygon(0 66%, 100% 66%, 100% 67%, 0 67%); }
+    50% { clip-path: polygon(0 55%, 100% 55%, 100% 56%, 0 56%); }
+    60% { clip-path: polygon(0 50%, 100% 50%, 100% 55%, 0 55%); }
+    70% { clip-path: polygon(0 30%, 100% 30%, 100% 40%, 0 40%); }
+    80% { clip-path: polygon(0 80%, 100% 80%, 100% 85%, 0 85%); }
     90% { clip-path: polygon(0 90%, 100% 90%, 100% 95%, 0 95%); }
     100% { clip-path: polygon(0 75%, 100% 75%, 100% 80%, 0 80%); }
 }
 
 @keyframes glitch-skew-anim {
-  0% { transform: skewX(0); }
-  80% { transform: skewX(0); }
-  81% { transform: skewX(8deg); }
-  82% { transform: skewX(-8deg); }
-  83% { transform: skewX(0); }
-  100% { transform: skewX(0); }
+    0% { transform: skewX(0); }
+    80% { transform: skewX(0); }
+    81% { transform: skewX(8deg); }
+    82% { transform: skewX(-8deg); }
+    83% { transform: skewX(0); }
+    100% { transform: skewX(0); }
 }
 
-/* --- 3.3. Text Scanner --- */
-.text-scanner {
-    position: relative;
-    color: rgba(255,255,255,0.3);
-    -webkit-text-stroke: 1px var(--color-accent-green);
-}
-.text-scanner::before {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    color: var(--color-accent-green);
-    -webkit-text-stroke: 1px var(--color-accent-green);
-    border-bottom: 3px solid var(--color-accent-green);
-    animation: scanner-anim 4s linear infinite;
-}
-@keyframes scanner-anim {
-    0%, 10%, 100% {
-        height: 0;
-    }
-    60%, 80% {
-        height: 100%;
-    }
-}
-
-/* --- 3.4. Neon Flicker --- */
+/* --- 3.3. Neon Flicker --- */
 .text-flicker {
-    animation: flicker-anim 5s infinite;
-    text-shadow: 0 0 5px var(--color-accent-yellow), 0 0 15px var(--color-accent-yellow);
-    color: var(--color-accent-yellow);
+    animation: flicker-anim 5s infinite !important;
+    text-shadow: 0 0 5px var(--color-accent-yellow), 0 0 15px var(--color-accent-yellow) !important;
+    color: var(--color-accent-yellow) !important;
 }
+
 @keyframes flicker-anim {
     0%, 18%, 22%, 25%, 53%, 57%, 100% {
         text-shadow:
         0 0 4px #fff,
         0 0 11px var(--color-accent-yellow),
         0 0 19px var(--color-accent-yellow),
-        0 0 40px var(--color-accent-yellow);
-        opacity: 1;
+        0 0 40px var(--color-accent-yellow) !important;
+        opacity: 1 !important;
     }
     20%, 24%, 55% {
-        text-shadow: none;
-        opacity: 0.4;
+        text-shadow: none !important;
+        opacity: 0.4 !important;
     }
 }
 
 /* ==========================================================================
-   4. BUTTONS
+   4. BUTTONS (OGS-Compatible)
    ========================================================================== */
 
-/* --- 4.1. Gaming Button (Original) --- */
+/* --- 4.1. Gaming Button --- */
 .btn-gaming {
-    background: var(--color-accent-magenta);
-    border: none;
-    padding: 15px 30px;
-    border-radius: 5px;
-    color: white;
-    font-size: 1rem;
-    font-family: var(--font-primary);
-    font-weight: bold;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    transition: all var(--timing-normal) ease;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    background: var(--color-accent-magenta) !important;
+    border: none !important;
+    padding: 12px 24px !important;
+    border-radius: 5px !important;
+    color: white !important;
+    font-size: 1rem !important;
+    font-family: var(--font-primary) !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    position: relative !important;
+    overflow: hidden !important;
+    transition: all var(--timing-normal) ease !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    z-index: 1 !important;
 }
+
 .btn-gaming:hover {
-    background: var(--color-accent-cyan);
-    color: #111;
-    box-shadow: 0 0 20px var(--color-accent-cyan);
+    background: var(--color-accent-cyan) !important;
+    color: #111 !important;
+    box-shadow: 0 0 20px var(--color-accent-cyan) !important;
+    transform: translateY(-2px) !important;
 }
+
 .btn-gaming::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300%;
-    height: 300%;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    transition: transform 0.5s ease;
+    content: '' !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    width: 300% !important;
+    height: 300% !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-radius: 50% !important;
+    transform: translate(-50%, -50%) scale(0) !important;
+    transition: transform 0.5s ease !important;
+    z-index: -1 !important;
 }
+
 .btn-gaming:hover::before {
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%) scale(1) !important;
 }
 
 /* --- 4.2. Button with Glitch Hover --- */
 .btn-glitch-hover {
-    background: transparent;
-    border: 2px solid var(--color-accent-purple);
-    color: var(--color-accent-purple);
-    padding: 15px 30px;
-    font-family: var(--font-primary);
-    text-transform: uppercase;
-    position: relative;
-    cursor: pointer;
-    transition: all var(--timing-fast);
+    background: transparent !important;
+    border: 2px solid var(--color-accent-purple) !important;
+    color: var(--color-accent-purple) !important;
+    padding: 12px 24px !important;
+    font-family: var(--font-primary) !important;
+    text-transform: uppercase !important;
+    position: relative !important;
+    cursor: pointer !important;
+    transition: all var(--timing-fast) !important;
 }
+
 .btn-glitch-hover:hover {
-    animation: btn-glitch-anim 0.3s linear 4;
-    background: var(--color-accent-purple);
-    color: var(--color-primary-dark);
+    animation: btn-glitch-anim 0.3s linear 4 !important;
+    background: var(--color-accent-purple) !important;
+    color: var(--color-primary-dark) !important;
 }
+
 @keyframes btn-glitch-anim {
     0% { transform: translate(0); }
     25% { transform: translate(4px, -4px); }
@@ -289,248 +251,220 @@ a:hover {
     100% { transform: translate(-4px, -4px); }
 }
 
-/* --- 4.3. Button with Power-Up Charge --- */
-.btn-charge {
-    background: var(--color-tertiary-dark);
-    border: 2px solid var(--color-accent-green);
-    color: var(--color-accent-green);
-    padding: 15px 30px;
-    font-family: var(--font-primary);
-    text-transform: uppercase;
-    position: relative;
-    cursor: pointer;
-    overflow: hidden;
-}
-.btn-charge::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: var(--color-accent-green);
-    transition: left var(--timing-normal) ease-in-out;
-    z-index: 0;
-}
-.btn-charge span {
-    position: relative;
-    z-index: 1;
-}
-.btn-charge:hover::before {
-    left: 0;
-}
-.btn-charge:hover {
-    color: var(--color-primary-dark);
-}
-
-
 /* ==========================================================================
-   5. BORDERS & CONTAINERS
+   5. CONTAINERS & CARDS
    ========================================================================== */
 
-/* --- 5.1. Animated Gradient Border (Original) --- */
-.border-animated-gradient {
-    position: relative;
-    padding: 2rem;
-    border-radius: 10px;
-    background: var(--color-secondary-dark);
-    overflow: hidden;
-    z-index: 1;
-}
-.border-animated-gradient::before {
-    content: '';
-    position: absolute;
-    top: -50%; left: -50%;
-    width: 200%; height: 200%;
-    background: conic-gradient(transparent, var(--color-accent-magenta), var(--color-accent-cyan), transparent 30%);
-    animation: rotate-anim 4s linear infinite;
-    z-index: -2;
-}
-.border-animated-gradient::after {
-    content: '';
-    position: absolute;
-    top: 3px; left: 3px; right: 3px; bottom: 3px;
-    background: var(--color-secondary-dark);
-    border-radius: 8px;
-    z-index: -1;
-}
-@keyframes rotate-anim {
-    100% { transform: rotate(1turn); }
-}
-
-/* --- 5.2. Pulsating Effect (Original) --- */
-.fx-pulsate {
-    animation: pulsate-anim 2s ease-out infinite;
-    box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.7);
-}
-@keyframes pulsate-anim {
-    0% { transform: scale(0.98); box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.7); }
-    70% { transform: scale(1); box-shadow: 0 0 10px 20px rgba(0, 255, 255, 0); }
-    100% { transform: scale(0.98); box-shadow: 0 0 0 0 rgba(0, 255, 255, 0); }
-}
-
-/* --- 5.3. Corner-Scanning Border --- */
-.border-scanner {
-    position: relative;
-    padding: 1.5rem;
-    background: transparent;
-}
-.border-scanner::before, .border-scanner::after {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border-color: var(--color-accent-red);
-    border-style: solid;
-    animation: scanner-border-anim 4s linear infinite;
-}
-.border-scanner::before {
-    top: 0; left: 0;
-    border-width: 3px 0 0 3px;
-}
-.border-scanner::after {
-    bottom: 0; right: 0;
-    border-width: 0 3px 3px 0;
-}
-@keyframes scanner-border-anim {
-    0% { width: 20px; height: 20px; }
-    50% { width: calc(100% - 2px); height: calc(100% - 2px); }
-    100% { width: 20px; height: 20px; }
-}
-
-/* --- 5.4. Holographic Card --- */
+/* --- 5.1. Holographic Card --- */
 .card-holographic {
-    background: linear-gradient(45deg, var(--color-secondary-dark), var(--color-tertiary-dark));
-    border: 1px solid var(--color-accent-purple);
-    padding: 2rem;
-    border-radius: 15px;
-    position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    transform-style: preserve-3d;
+    background: linear-gradient(45deg, var(--color-secondary-dark), var(--color-tertiary-dark)) !important;
+    border: 1px solid var(--color-accent-purple) !important;
+    padding: 1.5rem !important;
+    border-radius: 15px !important;
+    position: relative !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    transform-style: preserve-3d !important;
+    overflow: hidden !important;
 }
+
 .card-holographic:hover {
-    transform: perspective(1000px) rotateY(var(--rotateY)) rotateX(var(--rotateX)) scale3d(1.05, 1.05, 1.05);
-    box-shadow: 0 0 30px var(--color-accent-purple);
+    transform: perspective(1000px) rotateY(5deg) rotateX(5deg) scale3d(1.05, 1.05, 1.05) !important;
+    box-shadow: 0 0 30px var(--color-accent-purple) !important;
 }
+
 .card-holographic::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
     background: linear-gradient(
         115deg,
         transparent 20%,
         rgba(0, 255, 255, 0.3),
         rgba(255, 0, 255, 0.3),
         transparent 80%
-    );
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    mix-blend-mode: screen;
-    background-size: 200% 200%;
-    animation: holo-bg-anim 10s linear infinite;
+    ) !important;
+    opacity: 0 !important;
+    transition: opacity 0.4s ease !important;
+    mix-blend-mode: overlay !important;
+    background-size: 200% 200% !important;
+    animation: holo-bg-anim 10s linear infinite !important;
+    pointer-events: none !important;
 }
+
 .card-holographic:hover::before {
-    opacity: 1;
+    opacity: 1 !important;
 }
+
 @keyframes holo-bg-anim {
     from { background-position: 0% 0%; }
     to { background-position: 200% 200%; }
 }
 
+/* --- 5.2. Animated Border --- */
+.border-animated-gradient {
+    position: relative !important;
+    padding: 1.5rem !important;
+    border-radius: 10px !important;
+    background: var(--color-secondary-dark) !important;
+    overflow: hidden !important;
+    z-index: 1 !important;
+}
+
+.border-animated-gradient::before {
+    content: '' !important;
+    position: absolute !important;
+    top: -50% !important;
+    left: -50% !important;
+    width: 200% !important;
+    height: 200% !important;
+    background: conic-gradient(transparent, var(--color-accent-magenta), var(--color-accent-cyan), transparent 30%) !important;
+    animation: rotate-anim 4s linear infinite !important;
+    z-index: -2 !important;
+}
+
+.border-animated-gradient::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 3px !important;
+    left: 3px !important;
+    right: 3px !important;
+    bottom: 3px !important;
+    background: var(--color-secondary-dark) !important;
+    border-radius: 8px !important;
+    z-index: -1 !important;
+}
+
+@keyframes rotate-anim {
+    100% { transform: rotate(1turn); }
+}
+
+/* --- 5.3. Pulsating Effect --- */
+.fx-pulsate {
+    animation: pulsate-anim 2s ease-out infinite !important;
+}
+
+@keyframes pulsate-anim {
+    0% { 
+        transform: scale(0.98) !important; 
+        box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.7) !important; 
+    }
+    70% { 
+        transform: scale(1) !important; 
+        box-shadow: 0 0 10px 20px rgba(0, 255, 255, 0) !important; 
+    }
+    100% { 
+        transform: scale(0.98) !important; 
+        box-shadow: 0 0 0 0 rgba(0, 255, 255, 0) !important; 
+    }
+}
+
 /* ==========================================================================
-   6. UI ELEMENTS & LOADERS
+   6. LOADERS & UI ELEMENTS
    ========================================================================== */
 
-/* --- 6.1. Animated Divider --- */
-.divider-animated {
-    height: 2px;
-    width: 100%;
-    background: linear-gradient(90deg, transparent, var(--color-accent-cyan), transparent);
-    animation: divider-anim 3s ease-in-out infinite;
+/* --- 6.1. Sci-Fi Loader --- */
+.loader-scifi {
+    width: 60px !important;
+    height: 60px !important;
+    border: 3px solid transparent !important;
+    border-top-color: var(--color-accent-green) !important;
+    border-radius: 50% !important;
+    animation: spin-anim 1.5s ease infinite !important;
+    position: relative !important;
+    display: inline-block !important;
 }
+
+.loader-scifi::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 5px !important;
+    left: 5px !important;
+    right: 5px !important;
+    bottom: 5px !important;
+    border: 3px solid transparent !important;
+    border-top-color: var(--color-accent-magenta) !important;
+    border-radius: 50% !important;
+    animation: spin-anim 2s ease infinite reverse !important;
+}
+
+.loader-scifi::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 15px !important;
+    left: 15px !important;
+    right: 15px !important;
+    bottom: 15px !important;
+    border: 3px solid transparent !important;
+    border-top-color: var(--color-accent-yellow) !important;
+    border-radius: 50% !important;
+    animation: spin-anim 1s ease infinite !important;
+}
+
+@keyframes spin-anim {
+    to { transform: rotate(360deg); }
+}
+
+/* --- 6.2. Animated Divider --- */
+.divider-animated {
+    height: 2px !important;
+    width: 100% !important;
+    background: linear-gradient(90deg, transparent, var(--color-accent-cyan), transparent) !important;
+    animation: divider-anim 3s ease-in-out infinite !important;
+    margin: 1rem 0 !important;
+}
+
 @keyframes divider-anim {
     0% { transform: scaleX(0); }
     50% { transform: scaleX(1); }
     100% { transform: scaleX(0); }
 }
 
-/* --- 6.2. Sci-Fi Loader --- */
-.loader-scifi {
-    width: 60px;
-    height: 60px;
-    border: 3px solid transparent;
-    border-top-color: var(--color-accent-green);
-    border-radius: 50%;
-    animation: spin-anim 1.5s ease infinite;
-    position: relative;
-}
-.loader-scifi::before {
-    content: '';
-    position: absolute;
-    top: 5px; left: 5px; right: 5px; bottom: 5px;
-    border: 3px solid transparent;
-    border-top-color: var(--color-accent-magenta);
-    border-radius: 50%;
-    animation: spin-anim 2s ease infinite reverse;
-}
-.loader-scifi::after {
-    content: '';
-    position: absolute;
-    top: 15px; left: 15px; right: 15px; bottom: 15px;
-    border: 3px solid transparent;
-    border-top-color: var(--color-accent-yellow);
-    border-radius: 50%;
-    animation: spin-anim 1s ease infinite;
-}
-@keyframes spin-anim {
-    to { transform: rotate(360deg); }
+/* ==========================================================================
+   7. CUSTOM SCROLLBAR
+   ========================================================================== */
+
+.gaming-theme ::-webkit-scrollbar {
+    width: 10px !important;
 }
 
-/* --- 6.3. Hexagonal Grid Background --- */
-.bg-hex {
-    position: relative;
-    background-color: var(--color-primary-dark);
-}
-.bg-hex::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background-image:
-        linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
-        linear-gradient(60deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px),
-        linear-gradient(120deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
-    background-size: 40px 69px;
-    animation: hex-pan-anim 20s linear infinite;
-    opacity: 0.5;
-}
-@keyframes hex-pan-anim {
-    from { background-position: 0 0; }
-    to { background-position: -80px 0; }
+.gaming-theme ::-webkit-scrollbar-track {
+    background: var(--color-primary-dark) !important;
 }
 
-/* --- 6.4. Data Stream Background --- */
-.bg-datastream {
-    position: relative;
-    overflow: hidden;
-    background-color: var(--color-primary-dark);
+.gaming-theme ::-webkit-scrollbar-thumb {
+    background: var(--color-accent-cyan) !important;
+    border-radius: 10px !important;
+    box-shadow: 0 0 10px var(--color-accent-cyan) !important;
 }
-.bg-datastream::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 200%; height: 100%;
-    background-image: linear-gradient(
-        90deg,
-        rgba(0, 255, 255, 0) 0,
-        rgba(0, 255, 255, 0.2) 25%,
-        rgba(0, 255, 255, 0) 50%
-    );
-    background-size: 50px 100%;
-    animation: datastream-anim 5s linear infinite;
+
+.gaming-theme ::-webkit-scrollbar-thumb:hover {
+    background: #fff !important;
 }
-@keyframes datastream-anim {
-    from { transform: translateX(-50%); }
-    to { transform: translateX(0); }
-}
+
+/* ==========================================================================
+   8. USAGE INSTRUCTIONS (Comment Block)
+   ========================================================================== */
+
+/*
+HOW TO USE THIS CSS WITH OGS:
+
+1. Copy this entire CSS code
+2. In OGS, go to Settings > Preferences > Custom CSS
+3. Paste this code there
+4. Apply classes to elements using browser dev tools or user scripts
+
+EXAMPLE USAGE:
+- Add class="text-glow" to make text glow
+- Add class="text-glitch" data-text="GLITCH" to create glitch effect
+- Add class="btn-gaming" to buttons for gaming style
+- Add class="card-holographic" to containers for 3D effect
+- Add class="loader-scifi" to create animated loader
+- Add class="gaming-theme" to body for overall theme
+
+TESTING:
+Open browser dev tools (F12), select an element, and add classes like:
+document.querySelector('h1').className += ' text-glow'
+*/
