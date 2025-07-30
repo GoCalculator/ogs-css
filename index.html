@@ -1,7 +1,403 @@
-<h1>　　　Welcome To My Profile! </h1>
 
-<link rel="stylesheet" type="text/css" href="https://GoCalculator.github.io/night-sky.css">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Profile CSS</title>
+    <style>
+        body {
+            font-family: monospace;
+            margin: 0;
+            padding: 0;
+            background: white;
+            color: black;
+        }
+        pre {
+            margin: 0;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+<pre>/* Epic Modern Profile CSS */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap');
 
-<link rel="stylesheet" type="text/css" href="https://GoCalculator.github.io/night-sky.css"><link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
+/* Global Styles */
+body {
+    font-family: 'Rajdhani', sans-serif;
+    background: #000;
+    color: #fff;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Animated Background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 50%, #ff006e 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, #8338ec 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, #3a86ff 0%, transparent 50%),
+        radial-gradient(circle at 90% 70%, #06ffa5 0%, transparent 50%),
+        linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+    z-index: -1;
+    animation: backgroundShift 20s ease-in-out infinite;
+}
+
+@keyframes backgroundShift {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    25% { transform: scale(1.1) rotate(1deg); }
+    50% { transform: scale(1.05) rotate(-0.5deg); }
+    75% { transform: scale(1.08) rotate(0.8deg); }
+}
+
+/* Container with glassmorphism */
+.container {
+    max-width: none !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 20px !important;
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Glowing border animation */
+.container::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #ff006e, #8338ec, #3a86ff, #06ffa5, #ff006e);
+    border-radius: 20px;
+    z-index: -1;
+    animation: borderGlow 3s linear infinite;
+    background-size: 400% 400%;
+}
+
+@keyframes borderGlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Username styling */
+.avatar-container .Player-username {
+    font-size: 3em !important;
+    font-family: 'Orbitron', monospace !important;
+    font-weight: 900 !important;
+    background: linear-gradient(45deg, #ff006e, #8338ec, #3a86ff, #06ffa5);
+    background-size: 400% 400%;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    animation: gradientShift 3s ease-in-out infinite, textGlow 2s ease-in-out infinite alternate;
+    text-shadow: 0 0 30px rgba(255, 0, 110, 0.5);
+    position: relative;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes textGlow {
+    from { filter: drop-shadow(0 0 10px rgba(255, 0, 110, 0.8)); }
+    to { filter: drop-shadow(0 0 25px rgba(131, 56, 236, 0.8)); }
+}
+
+/* Avatar with holographic effect */
+.avatar-container img {
+    border-radius: 50% !important;
+    border: 3px solid transparent !important;
+    background: linear-gradient(45deg, #ff006e, #8338ec, #3a86ff, #06ffa5) !important;
+    background-clip: border-box !important;
+    padding: 3px !important;
+    animation: avatarPulse 4s ease-in-out infinite, avatarRotate 20s linear infinite;
+    box-shadow: 
+        0 0 30px rgba(255, 0, 110, 0.6),
+        0 0 60px rgba(131, 56, 236, 0.4),
+        inset 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+@keyframes avatarPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes avatarRotate {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+/* Headings with cyberpunk style */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Orbitron', monospace !important;
+    font-weight: 700 !important;
+    position: relative;
+    margin: 1.5em 0 !important;
+}
+
+h2, h3 {
+    background: linear-gradient(135deg, #ff006e 0%, #8338ec 25%, #3a86ff 50%, #06ffa5 75%, #ff006e 100%);
+    background-size: 300% 300%;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    animation: rainbowShift 4s ease-in-out infinite, textFlicker 0.1s ease-in-out infinite;
+    text-shadow: 0 0 20px rgba(255, 0, 110, 0.5);
+}
+
+@keyframes rainbowShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes textFlicker {
+    0%, 95%, 100% { opacity: 1; }
+    97% { opacity: 0.95; }
+}
+
+/* About section with matrix-style scrolling */
+.about-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 20px 0;
+    padding: 20px;
+}
+
+.about-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(6, 255, 165, 0.2), transparent);
+    animation: scanLine 3s linear infinite;
+}
+
+@keyframes scanLine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.about-container h1 {
+    color: #06ffa5 !important;
+    font-size: 2.5em !important;
+    font-family: 'Orbitron', monospace !important;
+    font-weight: 900 !important;
+    text-shadow: 
+        0 0 10px #06ffa5,
+        0 0 20px #06ffa5,
+        0 0 30px #06ffa5;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    white-space: nowrap;
+    animation: 
+        matrixScroll 12s linear infinite,
+        glitchEffect 5s ease-in-out infinite;
+    transform: translateX(100%);
+}
+
+@keyframes matrixScroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+@keyframes glitchEffect {
+    0%, 90%, 100% { 
+        text-shadow: 
+            0 0 10px #06ffa5,
+            0 0 20px #06ffa5,
+            0 0 30px #06ffa5;
+    }
+    95% { 
+        text-shadow: 
+            2px 0 #ff006e,
+            -2px 0 #3a86ff,
+            0 0 10px #06ffa5;
+        transform: translateX(-98%) skew(2deg);
+    }
+}
+
+/* Stats sections with neon glow */
+.stats-container, .achievements-container {
+    background: rgba(0, 0, 0, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 15px !important;
+    backdrop-filter: blur(15px) !important;
+    position: relative;
+    overflow: hidden;
+    margin: 20px 0 !important;
+}
+
+.stats-container::after, .achievements-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ff006e, transparent);
+    animation: topGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes topGlow {
+    from { opacity: 0.5; }
+    to { opacity: 1; }
+}
+
+/* Links with hover effects */
+a {
+    color: #06ffa5 !important;
+    text-decoration: none !important;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #ff006e !important;
+    text-shadow: 0 0 10px #ff006e;
+}
+
+a::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #ff006e, #8338ec);
+    transition: width 0.3s ease;
+}
+
+a:hover::before {
+    width: 100%;
+}
+
+/* Buttons with cyberpunk styling */
+button, .button, input[type="button"], input[type="submit"] {
+    background: linear-gradient(45deg, #ff006e, #8338ec) !important;
+    border: none !important;
+    border-radius: 25px !important;
+    color: white !important;
+    font-family: 'Orbitron', monospace !important;
+    font-weight: 600 !important;
+    padding: 12px 25px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+    overflow: hidden !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+}
+
+button:hover, .button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 25px rgba(255, 0, 110, 0.4) !important;
+}
+
+button::before, .button::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent) !important;
+    transition: left 0.5s ease !important;
+}
+
+button:hover::before, .button:hover::before {
+    left: 100% !important;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #ff006e, #8338ec);
+    border-radius: 6px;
+    border: 2px solid rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #8338ec, #3a86ff);
+}
+
+/* Floating particles effect */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, rgba(255, 0, 110, 0.3), transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(131, 56, 236, 0.3), transparent),
+        radial-gradient(1px 1px at 90px 40px, rgba(58, 134, 255, 0.3), transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(6, 255, 165, 0.3), transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: floatingParticles 20s linear infinite;
+    z-index: 1;
+}
+
+@keyframes floatingParticles {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-200px); }
+}
+
+/* Hide unwanted elements */
+a[href="/leaderboards"],
+a[href*="ads"],
+.advertisement {
+    display: none !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .avatar-container .Player-username {
+        font-size: 2em !important;
+    }
+    
+    .about-container h1 {
+        font-size: 1.8em !important;
+    }
+    
+    .container {
+        margin: 10px !important;
+        border-radius: 15px !important;
+    }
+}</pre>
+</body>
+</html>
