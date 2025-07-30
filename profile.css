@@ -1,370 +1,135 @@
-/*
- * PURE CSS NIGHT SKY THEME
- * Features: Flying stars, stationary stars, galaxies, animated buttons
- * Compatible with: online-go.com
- */
+/* OGS Profile Customization - Gaming Theme */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
-/* ==========================================================================
-   NIGHT SKY BACKGROUND
-   ========================================================================== */
-
-/* Deep space background */
-body {
-    background: linear-gradient(to bottom, #0f0f23 0%, #1a1a2e 50%, #16213e 100%) !important;
-    min-height: 100vh !important;
-    position: relative !important;
-    overflow-x: hidden !important;
+/* Base Variables */
+:root {
+    --ogs-bg: #0a0e17;
+    --ogs-text: #e0f7ff;
+    --ogs-primary: #00ffff;
+    --ogs-secondary: #ff00ff;
+    --ogs-accent: #00ff7f;
 }
 
-/* Stationary Stars - Layer 1 */
-body::before {
-    content: '' !important;
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    background-image: 
-        radial-gradient(2px 2px at 20px 30px, #ffffff, transparent),
-        radial-gradient(2px 2px at 40px 70px, #b8c6db, transparent),
-        radial-gradient(1px 1px at 90px 40px, #ffffff, transparent),
-        radial-gradient(1px 1px at 130px 80px, #fff3a0, transparent),
-        radial-gradient(2px 2px at 160px 30px, #b8c6db, transparent),
-        radial-gradient(1px 1px at 200px 100px, #ffffff, transparent),
-        radial-gradient(2px 2px at 250px 60px, #fff3a0, transparent),
-        radial-gradient(1px 1px at 300px 120px, #b8c6db, transparent) !important;
-    background-repeat: repeat !important;
-    background-size: 350px 200px !important;
-    animation: twinkle 4s ease-in-out infinite alternate !important;
-    z-index: -10 !important;
-    pointer-events: none !important;
-}
-
-/* Stationary Stars - Layer 2 (Brighter) */
-body::after {
-    content: '' !important;
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    background-image: 
-        radial-gradient(3px 3px at 80px 50px, #ffffff, transparent),
-        radial-gradient(2px 2px at 200px 120px, #00ffff, transparent),
-        radial-gradient(3px 3px at 320px 80px, #ffffff, transparent),
-        radial-gradient(2px 2px at 450px 150px, #ff1493, transparent),
-        radial-gradient(1px 1px at 550px 30px, #8a2be2, transparent) !important;
-    background-repeat: repeat !important;
-    background-size: 600px 300px !important;
-    animation: bright-twinkle 3s ease-in-out infinite alternate !important;
-    z-index: -9 !important;
-    pointer-events: none !important;
-}
-
-/* Flying Stars */
-html::before {
-    content: '' !important;
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 300% !important;
-    height: 100% !important;
-    background-image: 
-        radial-gradient(1px 1px at 50px 40px, #00ffff, transparent),
-        radial-gradient(1px 1px at 150px 80px, #ffffff, transparent),
-        radial-gradient(1px 1px at 250px 120px, #ff1493, transparent),
-        radial-gradient(1px 1px at 350px 60px, #fff3a0, transparent),
-        radial-gradient(1px 1px at 450px 100px, #8a2be2, transparent) !important;
-    background-repeat: repeat !important;
-    background-size: 500px 250px !important;
-    animation: fly-stars 20s linear infinite !important;
-    z-index: -8 !important;
-    pointer-events: none !important;
-}
-
-/* Galaxy 1 - Purple Spiral */
-html::after {
-    content: '' !important;
-    position: fixed !important;
-    top: 20% !important;
-    right: 15% !important;
-    width: 300px !important;
-    height: 180px !important;
-    background: 
-        radial-gradient(ellipse 60% 30% at 50% 50%, rgba(138, 43, 226, 0.6) 0%, transparent 50%),
-        radial-gradient(ellipse 40% 20% at 60% 40%, rgba(255, 20, 147, 0.4) 0%, transparent 60%) !important;
-    border-radius: 50% !important;
-    animation: rotate-galaxy 40s linear infinite, pulse-galaxy 6s ease-in-out infinite !important;
-    z-index: -7 !important;
-    pointer-events: none !important;
-}
-
-/* Galaxy 2 - Blue Nebula */
-.galaxy-blue {
-    position: fixed !important;
-    bottom: 25% !important;
-    left: 10% !important;
-    width: 250px !important;
-    height: 150px !important;
-    background: 
-        radial-gradient(ellipse 70% 35% at 40% 60%, rgba(0, 128, 255, 0.5) 0%, transparent 50%),
-        radial-gradient(ellipse 50% 25% at 60% 40%, rgba(0, 255, 255, 0.3) 0%, transparent 60%) !important;
-    border-radius: 50% !important;
-    animation: rotate-galaxy-reverse 50s linear infinite, pulse-galaxy-2 8s ease-in-out infinite !important;
-    z-index: -7 !important;
-    pointer-events: none !important;
-}
-
-/* Create Galaxy 2 using page container */
-.page-container::before, .main-content::before, body:nth-child(1)::before {
-    content: '' !important;
-    position: fixed !important;
-    bottom: 25% !important;
-    left: 10% !important;
-    width: 250px !important;
-    height: 150px !important;
-    background: 
-        radial-gradient(ellipse 70% 35% at 40% 60%, rgba(0, 128, 255, 0.5) 0%, transparent 50%),
-        radial-gradient(ellipse 50% 25% at 60% 40%, rgba(0, 255, 255, 0.3) 0%, transparent 60%) !important;
-    border-radius: 50% !important;
-    animation: rotate-galaxy-reverse 50s linear infinite, pulse-galaxy-2 8s ease-in-out infinite !important;
-    z-index: -7 !important;
-    pointer-events: none !important;
-}
-
-/* Galaxy 3 - Pink Distant */
-.page-container::after, .main-content::after, body:nth-child(1)::after {
-    content: '' !important;
-    position: fixed !important;
-    top: 60% !important;
-    right: 40% !important;
-    width: 180px !important;
-    height: 100px !important;
-    background: 
-        radial-gradient(ellipse 80% 40% at 50% 50%, rgba(255, 20, 147, 0.4) 0%, transparent 40%) !important;
-    border-radius: 50% !important;
-    animation: rotate-galaxy 60s linear infinite, pulse-galaxy-3 10s ease-in-out infinite !important;
-    z-index: -6 !important;
-    pointer-events: none !important;
-}
-
-/* ==========================================================================
-   ANIMATIONS
-   ========================================================================== */
-
-/* Star Animations */
-@keyframes twinkle {
-    0% { opacity: 0.5; }
-    100% { opacity: 1; }
-}
-
-@keyframes bright-twinkle {
-    0% { opacity: 0.7; }
-    100% { opacity: 1; }
-}
-
-@keyframes fly-stars {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(0%); }
-}
-
-/* Galaxy Animations */
-@keyframes rotate-galaxy {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-@keyframes rotate-galaxy-reverse {
-    0% { transform: rotate(360deg); }
-    100% { transform: rotate(0deg); }
-}
-
-@keyframes pulse-galaxy {
-    0%, 100% { opacity: 0.6; transform: scale(1); }
-    50% { opacity: 0.9; transform: scale(1.1); }
-}
-
-@keyframes pulse-galaxy-2 {
-    0%, 100% { opacity: 0.5; transform: scale(1); }
-    50% { opacity: 0.8; transform: scale(1.05); }
-}
-
-@keyframes pulse-galaxy-3 {
-    0%, 100% { opacity: 0.4; transform: scale(1); }
-    50% { opacity: 0.7; transform: scale(1.08); }
-}
-
-/* ==========================================================================
-   ANIMATED BUTTONS
-   ========================================================================== */
-
-/* All Button Types */
-button, 
-.btn, 
-input[type="submit"], 
-input[type="button"], 
-.button,
-a.button {
-    background: linear-gradient(45deg, #1a1a2e, #16213e) !important;
-    border: 2px solid #8a2be2 !important;
-    color: #00ffff !important;
-    padding: 12px 24px !important;
+/* Main Profile Container */
+#content {
+    background: rgba(10, 14, 23, 0.9) !important;
+    border: 1px solid var(--ogs-primary) !important;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3) !important;
     border-radius: 8px !important;
-    cursor: pointer !important;
-    position: relative !important;
-    overflow: hidden !important;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Username Styling */
+#profile-username {
+    font-family: 'Orbitron', sans-serif !important;
+    color: var(--ogs-primary) !important;
+    text-shadow: 0 0 10px var(--ogs-primary) !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+    animation: pulse 2s infinite;
+}
+
+/* Profile Stats */
+.profile-ratings, .profile-details {
+    background: rgba(0, 0, 0, 0.4) !important;
+    border: 1px solid var(--ogs-primary) !important;
+    border-radius: 8px !important;
+    padding: 15px !important;
+    margin-bottom: 20px !important;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.2) !important;
     transition: all 0.3s ease !important;
+}
+
+.profile-ratings:hover, .profile-details:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3) !important;
+}
+
+/* Rank Badge */
+.rank {
+    border: 2px solid var(--ogs-accent) !important;
+    box-shadow: 0 0 10px var(--ogs-accent) !important;
+}
+
+/* Buttons */
+button, .btn, .ogs-button {
+    background: linear-gradient(45deg, #00b4d8, #00f5d4) !important;
+    border: none !important;
+    color: #111 !important;
     font-weight: bold !important;
     text-transform: uppercase !important;
     letter-spacing: 1px !important;
-    box-shadow: 
-        0 0 10px rgba(138, 43, 226, 0.3),
-        inset 0 0 10px rgba(0, 255, 255, 0.1) !important;
-    animation: button-glow 2s ease-in-out infinite alternate !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+    overflow: hidden !important;
 }
 
-/* Button Hover Effect */
-button:hover, 
-.btn:hover, 
-input[type="submit"]:hover, 
-input[type="button"]:hover, 
-.button:hover,
-a.button:hover {
-    border-color: #00ffff !important;
-    color: #1a1a2e !important;
-    background: linear-gradient(45deg, #00ffff, #0080ff) !important;
-    box-shadow: 
-        0 0 20px #00ffff,
-        0 0 40px rgba(0, 255, 255, 0.5),
-        inset 0 0 20px rgba(255, 255, 255, 0.2) !important;
-    transform: translateY(-3px) scale(1.05) !important;
-    animation: button-hover-pulse 0.6s ease-out !important;
+button:hover, .btn:hover, .ogs-button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 5px 15px rgba(0, 245, 212, 0.4) !important;
 }
 
-/* Button Active/Click Effect */
-button:active, 
-.btn:active, 
-input[type="submit"]:active, 
-input[type="button"]:active, 
-.button:active,
-a.button:active {
-    transform: translateY(0) scale(0.98) !important;
-    box-shadow: 
-        0 0 15px #8a2be2,
-        inset 0 0 15px rgba(138, 43, 226, 0.5) !important;
+/* Game List */
+.game-list, .game-list-row {
+    background: rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid var(--ogs-primary) !important;
+    border-radius: 6px !important;
+    margin-bottom: 10px !important;
+    transition: all 0.3s ease !important;
 }
 
-/* Button Energy Wave Effect */
-button::before, 
-.btn::before, 
-input[type="submit"]::before, 
-input[type="button"]::before, 
-.button::before,
-a.button::before {
-    content: '' !important;
-    position: absolute !important;
-    top: 50% !important;
-    left: 50% !important;
-    width: 0 !important;
-    height: 0 !important;
-    background: radial-gradient(circle, rgba(0, 255, 255, 0.4) 0%, transparent 70%) !important;
-    border-radius: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    transition: width 0.6s ease, height 0.6s ease !important;
-    z-index: -1 !important;
+.game-list-row:hover {
+    background: rgba(0, 180, 216, 0.1) !important;
+    transform: translateX(5px) !important;
 }
 
-button:hover::before, 
-.btn:hover::before, 
-input[type="submit"]:hover::before, 
-input[type="button"]:hover::before, 
-.button:hover::before,
-a.button:hover::before {
-    width: 300% !important;
-    height: 300% !important;
+/* Tabs */
+.nav-tabs > li > a {
+    color: var(--ogs-text) !important;
+    border: 1px solid transparent !important;
+    transition: all 0.3s ease !important;
 }
 
-/* Button Animations */
-@keyframes button-glow {
-    0% { 
-        box-shadow: 
-            0 0 5px rgba(138, 43, 226, 0.3),
-            inset 0 0 5px rgba(0, 255, 255, 0.1);
-    }
-    100% { 
-        box-shadow: 
-            0 0 15px rgba(138, 43, 226, 0.6),
-            inset 0 0 15px rgba(0, 255, 255, 0.2);
-    }
+.nav-tabs > li.active > a {
+    color: var(--ogs-primary) !important;
+    border-bottom: 2px solid var(--ogs-primary) !important;
+    background: transparent !important;
 }
 
-@keyframes button-hover-pulse {
-    0% { 
-        box-shadow: 
-            0 0 10px #00ffff,
-            0 0 20px rgba(0, 255, 255, 0.3);
-    }
-    50% { 
-        box-shadow: 
-            0 0 25px #00ffff,
-            0 0 50px rgba(0, 255, 255, 0.6);
-    }
-    100% { 
-        box-shadow: 
-            0 0 20px #00ffff,
-            0 0 40px rgba(0, 255, 255, 0.5);
-    }
+/* Animations */
+@keyframes pulse {
+    0% { text-shadow: 0 0 5px var(--ogs-primary), 0 0 10px var(--ogs-primary); }
+    50% { text-shadow: 0 0 15px var(--ogs-primary), 0 0 30px var(--ogs-secondary); }
+    100% { text-shadow: 0 0 5px var(--ogs-primary), 0 0 10px var(--ogs-primary); }
 }
 
-/* Floating Button Animation */
-.floating-btn {
-    animation: float-button 3s ease-in-out infinite !important;
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
 }
 
-@keyframes float-button {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-5px); }
+::-webkit-scrollbar-track {
+    background: var(--ogs-bg);
 }
 
-/* Pulse Button Animation */
-.pulse-btn {
-    animation: pulse-button 2s ease-in-out infinite !important;
+::-webkit-scrollbar-thumb {
+    background: var(--ogs-primary);
+    border-radius: 5px;
 }
 
-@keyframes pulse-button {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+::-webkit-scrollbar-thumb:hover {
+    background: var(--ogs-secondary);
 }
 
-/* ==========================================================================
-   RESPONSIVE DESIGN
-   ========================================================================== */
-
+/* Responsive Adjustments */
 @media (max-width: 768px) {
-    /* Reduce star density on mobile */
-    body::before, body::after, html::before {
-        background-size: 250px 150px !important;
+    #content {
+        margin: 10px !important;
+        padding: 10px !important;
     }
     
-    /* Smaller galaxies on mobile */
-    html::after {
-        width: 200px !important;
-        height: 120px !important;
-    }
-    
-    .page-container::before, .main-content::before {
-        width: 180px !important;
-        height: 100px !important;
-    }
-    
-    .page-container::after, .main-content::after {
-        width: 120px !important;
-        height: 80px !important;
-    }
-    
-    /* Adjust button sizes for mobile */
-    button, .btn, input[type="submit"], input[type="button"], .button, a.button {
-        padding: 10px 20px !important;
-        font-size: 0.9rem !important;
+    .profile-ratings, .profile-details {
+        padding: 10px !important;
     }
 }
