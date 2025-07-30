@@ -1,5 +1,109 @@
-body, .galaxy-background {
-    background: url("https://4kwallpapers.com/images/walls/thumbs_3t/21267.jpg") center center / cover no-repeat fixed !important;
+/* Method 4: Pure CSS Galaxy Background (guaranteed to work) */
+.css-galaxy-realistic {
+    background: 
+        /* Bright stars */
+        radial-gradient(2px 2px at 20px 30px, #ffffff, transparent),
+        radial-gradient(2px 2px at 40px 70px, #ffffff, transparent),
+        radial-gradient(1px 1px at 90px 40px, #ffffff, transparent),
+        radial-gradient(1px 1px at 130px 80px, #ffffff, transparent),
+        radial-gradient(2px 2px at 160px 30px, #ffffff, transparent),
+        radial-gradient(1px 1px at 200px 120px, #ffffff, transparent),
+        radial-gradient(2px 2px at 250px 60px, #ffffff, transparent),
+        radial-gradient(1px 1px at 300px 140px, #ffffff, transparent),
+        /* Galaxy spiral */
+        conic-gradient(from 45deg at 40% 50%, 
+            transparent 0deg, 
+            rgba(138, 43, 226, 0.6) 30deg, 
+            rgba(75, 0, 130, 0.8) 60deg,
+            transparent 90deg,
+            rgba(147, 0, 211, 0.4) 120deg,
+            transparent 150deg,
+            rgba(138, 43, 226, 0.7) 180deg,
+            rgba(75, 0, 130, 0.5) 210deg,
+            transparent 240deg,
+            rgba(147, 0, 211, 0.6) 270deg,
+            transparent 300deg,
+            rgba(138, 43, 226, 0.4) 330deg,
+            transparent 360deg),
+        /* Galaxy center glow */
+        radial-gradient(ellipse 600px 300px at 40% 50%, 
+            rgba(255, 255, 255, 0.3) 0%, 
+            rgba(138, 43, 226, 0.6) 20%, 
+            rgba(75, 0, 130, 0.4) 40%, 
+            transparent 70%),
+        /* Distant galaxy */
+        radial-gradient(ellipse 400px 200px at 75% 25%, 
+            rgba(25, 25, 112, 0.5) 0%, 
+            rgba(72, 61, 139, 0.3) 30%, 
+            transparent 60%),
+        /* Nebula clouds */
+        radial-gradient(ellipse 800px 400px at 20% 80%, 
+            rgba(65, 105, 225, 0.3) 0%, 
+            rgba(30, 144, 255, 0.2) 40%, 
+            transparent 70%),
+        /* Deep space gradient */
+        linear-gradient(135deg, 
+            #000000 0%, 
+            #0a0a1a 15%, 
+            #1a1a2e 30%, 
+            #16213e 45%, 
+            #0f3460 60%, 
+            #533483 75%, 
+            #2d1b69 90%, 
+            #1e1e3f 100%) !important;
+    
+    background-size: 
+        400px 400px, 400px 400px, 400px 400px, 400px 400px, 400px 400px, 400px 400px, 400px 400px, 400px 400px,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100% !important;
+    
+    background-repeat: repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat !important;
     color: white !important;
     min-height: 100vh !important;
+    animation: galaxyRotate 120s linear infinite !important;
+}
+
+/* Navigation links */
+.nav-links {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    z-index: 1000 !important;
+    display: flex !important;
+    gap: 15px !important;
+}
+
+.nav-link {
+    display: inline-block !important;
+    padding: 10px 20px !important;
+    background: rgba(0, 0, 0, 0.7) !important;
+    color: white !important;
+    text-decoration: none !important;
+    border-radius: 25px !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    transition: all 0.3s ease !important;
+    font-family: Arial, sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+}
+
+.nav-link:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 0 15px rgba(135, 206, 250, 0.7) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Animations */
+@keyframes galaxyRotate {
+    0% { 
+        background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+        transform: rotate(0deg);
+    }
+    100% { 
+        background-position: 400px 400px, -400px 400px, 400px -400px, -400px -400px, 200px 200px, -200px -200px, 300px -300px, -300px 300px, 2% 2%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+        transform: rotate(1deg);
+    }
 }
