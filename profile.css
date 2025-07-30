@@ -12,36 +12,46 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Star styling and animation */
+/* Star styling */
 .star {
     position: absolute;
     background-color: white;
     border-radius: 50%;
     pointer-events: none;
-    animation: twinkle var(--duration) infinite ease-in-out, 
-               moveX var(--duration) infinite linear;
+    animation: twinkle 10s infinite ease-in-out, 
+               move 20s infinite linear;
+    width: 2px;
+    height: 2px;
+    box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.5);
 }
 
-/* Create multiple stars with different sizes and animations */
-.star:nth-child(1) { --size: 1px; --duration: 15s; --distance: 20px; top: 10%; left: 10%; }
-.star:nth-child(2) { --size: 2px; --duration: 20s; --distance: 30px; top: 30%; left: 20%; }
-.star:nth-child(3) { --size: 1px; --duration: 25s; --distance: 40px; top: 50%; left: 30%; }
-.star:nth-child(4) { --size: 3px; --duration: 30s; --distance: 25px; top: 70%; left: 40%; }
-.star:nth-child(5) { --size: 1px; --duration: 18s; --distance: 35px; top: 20%; left: 50%; }
-.star:nth-child(6) { --size: 2px; --duration: 22s; --distance: 45px; top: 40%; left: 60%; }
-.star:nth-child(7) { --size: 1px; --duration: 28s; --distance: 30px; top: 60%; left: 70%; }
-.star:nth-child(8) { --size: 2px; --duration: 32s; --distance: 25px; top: 80%; left: 80%; }
-.star:nth-child(9) { --size: 1px; --duration: 19s; --distance: 35px; top: 30%; left: 90%; }
-.star:nth-child(10) { --size: 3px; --duration: 24s; --distance: 40px; top: 50%; left: 95%; }
-
-/* Add more stars as needed */
-.star:nth-child(n+11) {
-    --size: calc(1px + (random(3) * 1px));
-    --duration: calc(15s + (random(20) * 1s));
-    --distance: calc(20px + (random(30) * 1px));
-    top: random(100) * 1%;
-    left: random(100) * 1%;
+/* Create different star sizes */
+.star.small {
+    width: 1px;
+    height: 1px;
 }
+
+.star.medium {
+    width: 2px;
+    height: 2px;
+}
+
+.star.large {
+    width: 3px;
+    height: 3px;
+}
+
+/* Position stars */
+.star-1 { top: 10%; left: 10%; }
+.star-2 { top: 30%; left: 20%; animation-delay: -5s; }
+.star-3 { top: 50%; left: 30%; animation-delay: -10s; }
+.star-4 { top: 70%; left: 40%; animation-delay: -15s; }
+.star-5 { top: 20%; left: 50%; animation-delay: -2s; }
+.star-6 { top: 40%; left: 60%; animation-delay: -7s; }
+.star-7 { top: 60%; left: 70%; animation-delay: -12s; }
+.star-8 { top: 80%; left: 80%; animation-delay: -17s; }
+.star-9 { top: 30%; left: 90%; animation-delay: -3s; }
+.star-10 { top: 50%; left: 95%; animation-delay: -8s; }
 
 /* Star animations */
 @keyframes twinkle {
@@ -55,25 +65,15 @@
     }
 }
 
-@keyframes moveX {
-    0% { transform: translateX(0) translateY(0); }
-    25% { transform: translateX(var(--distance)) translateY(calc(-1 * var(--distance) * 0.5)); }
-    50% { transform: translateX(calc(var(--distance) * 1.5)) translateY(0); }
-    75% { transform: translateX(var(--distance)) translateY(calc(var(--distance) * 0.5)); }
-    100% { transform: translateX(0) translateY(0); }
+@keyframes move {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(20px, -10px); }
+    50% { transform: translate(30px, 0); }
+    75% { transform: translate(20px, 10px); }
+    100% { transform: translate(0, 0); }
 }
 
-/* Make the stars visible */
-.star::before {
-    content: '';
-    position: absolute;
-    width: var(--size);
-    height: var(--size);
-    background: white;
-    border-radius: 50%;
-}
-
-/* Add some shooting stars */
+/* Shooting stars */
 .shooting-star {
     position: absolute;
     background: linear-gradient(to right, rgba(255,255,255,0) 0%, white 50%, rgba(255,255,255,0) 100%);
@@ -83,27 +83,25 @@
     animation: shoot 10s infinite;
 }
 
-.shooting-star:nth-child(1) { top: 15%; left: 0; animation-delay: 0s; }
-.shooting-star:nth-child(2) { top: 40%; left: 0; animation-delay: 5s; }
-.shooting-star:nth-child(3) { top: 65%; left: 0; animation-delay: 8s; }
+.shooting-star-1 { top: 15%; left: 0; animation-delay: 0s; }
+.shooting-star-2 { top: 40%; left: 0; animation-delay: 5s; }
+.shooting-star-3 { top: 65%; left: 0; animation-delay: 8s; }
 
 @keyframes shoot {
     0% { 
-        transform: translateX(0) translateY(0);
+        transform: translate(0, 0);
         width: 0;
         opacity: 0;
     }
-    10% {
-        opacity: 1;
-    }
+    10% { opacity: 1; }
     70% {
         width: 100px;
-        transform: translateX(calc(100vw - 100px)) translateY(50px);
+        transform: translate(300px, 50px);
         opacity: 0;
     }
     100% {
         width: 100px;
-        transform: translateX(calc(100vw - 100px)) translateY(50px);
+        transform: translate(300px, 50px);
         opacity: 0;
     }
 }
