@@ -15,8 +15,8 @@ body {
 /* Natural Night Sky */
 body {
     background: #0a0e17;  /* Deep blue-black */
-    overflow: hidden;
     min-height: 100vh;
+    position: relative;
 }
 
 /* Stars */
