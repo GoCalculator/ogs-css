@@ -1,24 +1,16 @@
 /*
- * OGS Night Sky - A Gaming-Inspired Theme (Default Background Edition)
- * Version: 3.4 - All Custom Backgrounds Removed
+ * OGS Night Sky - A Gaming-Inspired Theme (No Backgrounds Edition)
+ * Version: 3.5 - All Backgrounds Completely Removed
  * Author: BadukAlpha
  * Description: A dark, animated theme for online-go.com profile sections,
- * with enhanced gaming aesthetics, and beautiful profile picture styling,
- * but using the default OGS site background.
- *
- * Instructions for OGS 'About Me' section:
- * 1. Host this CSS file on a public server (e.g., GitHub Gist/Pages).
- * 2. In your OGS 'About Me' editor (HTML mode), add:
- * <link rel="stylesheet" type="text/css" href="YOUR_GITHUB_RAW_CSS_LINK_HERE">
- * 3. Wrap your profile content in appropriate HTML divs for the remaining styling.
- * (e.g., <div class="profile-main-container">...your content...</div>)
+ * with enhanced gaming aesthetics and beautiful effects,
+ * but with ALL backgrounds removed to allow custom background images.
  */
 
 /* --- Gaming Fonts --- */
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap');
 
 /* --- Animation Keyframes --- */
-/* Kept only keyframes relevant for non-background animations (e.g., text glow, button shine, profile picture) */
 @keyframes star-twinkle {
   0%, 100% { opacity: 0.3; transform: scale(0.8); }
   50% { opacity: 1; transform: scale(1.2); }
@@ -60,14 +52,10 @@
   100% { transform: rotate(360deg) scale(1.1); }
 }
 
-/* Removed Cosmic Dust and Scanning Line background-related keyframes */
-/* @keyframes cosmic-dust-move and @keyframes scan-line are removed */
-
 @keyframes vibrant-glow-pulse {
   0%, 100% { text-shadow: 0 0 10px var(--primary-glow), 0 0 20px var(--secondary-glow); }
   50% { text-shadow: 0 0 25px var(--primary-glow), 0 0 40px var(--secondary-glow), 0 0 60px rgba(255, 0, 255, 0.3); }
 }
-
 
 /* --- CSS Variables --- */
 :root {
@@ -77,8 +65,6 @@
   --secondary-glow: #ff00ff;
   --accent-glow: #ffff00;
   --text-color: #e8f4f8;
-  --bg-panel: rgba(8, 20, 35, 0.9); /* Kept for other elements that might use it */
-  --bg-interactive: rgba(20, 40, 60, 0.95); /* Kept for other elements that might use it */
   --border-glow: rgba(0, 188, 212, 0.7);
   --success: #00ff88;
   --warning: #ffaa00;
@@ -86,7 +72,6 @@
 }
 
 /* --- BASE STYLES FOR PROFILE CONTENT AREA --- */
-/* Ensure elements in the profile area are transparent so OGS's background shows through */
 #page-container, #content-container, .theme-bg-fg, body > div,
 #main-content, .main, .container, .wrapper, .content, .page,
 #app, #root, .app-container, .site-wrapper, .site-content,
@@ -95,36 +80,22 @@
 .about-me-section,
 .profile-content-area
 {
-  background: transparent !important; /* Forces transparency to show OGS's default background */
-  background-color: transparent !important;
-  background-image: none !important;
-  color: var(--text-color) !important; /* Apply gaming text color */
+  color: var(--text-color) !important;
   font-family: var(--gaming-font) !important;
 }
 
-/* Ensure global HTML/BODY styling allows OGS's default background */
 html, html body {
   min-height: auto !important;
-  background: transparent !important;
-  background-color: transparent !important;
-  background-image: none !important;
 }
 
 body {
   position: static !important;
   min-height: auto !important;
-  background: transparent !important;
   overflow-x: hidden !important;
 }
 
-/* Removed full-page starfield code (body::before, body::after, html::before, html::after were removed) */
-
-
-/* --- CUSTOM CONTAINER (without custom background fill) --- */
-/* Wrap your About Me content in this to get a custom border/shadow: <div class="profile-main-container">...</div> */
+/* --- CUSTOM CONTAINER --- */
 .profile-main-container {
-  /* Removed background-color and background-image for default OGS background */
-  background: transparent !important; /* Ensures the OGS default background shows through */
   border: 2px solid var(--border-glow) !important;
   border-radius: 12px !important;
   padding: 20px !important;
@@ -132,16 +103,12 @@ body {
   box-shadow: 0 0 25px rgba(0, 188, 212, 0.3), inset 0 0 25px rgba(0, 0, 0, 0.5) !important;
   position: relative;
   overflow: hidden;
-  /* Removed cosmic-dust-move animation */
 }
 
-/* --- "Scanning Line" Effect on Panels/Borders (only border glow remains) --- */
-/* Apply this class to a div: <div class="scanned-panel">...</div> */
+/* --- SCANNED PANEL --- */
 .scanned-panel {
   position: relative;
   overflow: hidden;
-  /* Removed background color */
-  background: transparent !important; /* Ensures the OGS default background shows through */
   border: 2px solid var(--border-glow) !important;
   border-radius: 12px !important;
   padding: 20px !important;
@@ -150,21 +117,17 @@ body {
 }
 
 .scanned-panel::before {
-  /* Removed the scanning line animation as it was tied to the custom background fill */
-  content: none !important; /* Hides the scan line */
+  content: none !important;
 }
 
-
-/* --- ANIMATION CHOICE 3: Enhanced Pulsing Glow for Text --- */
-/* Apply to a header or span: <h1 class="vibrant-title">...</h1> or <span class="vibrant-text">...</span> */
+/* --- ENHANCED PULSING GLOW FOR TEXT --- */
 .vibrant-title, .vibrant-text {
   animation: vibrant-glow-pulse 3s infinite ease-in-out alternate !important;
   display: inline-block;
   color: var(--primary-glow) !important;
 }
 
-
-/* --- EXISTING ENHANCED GAMING UI (these still work great!) --- */
+/* --- GAMING UI ELEMENTS --- */
 
 /* Gaming Headers */
 h1, h2, h3, h4, h5, h6 {
@@ -179,8 +142,6 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Enhanced Gaming Buttons */
 button, .button, input[type="submit"], .btn, a.btn {
-  /* Removed custom background fill */
-  background: transparent !important; /* Uses OGS default button background */
   border: 2px solid var(--primary-glow) !important;
   border-radius: 8px !important;
   color: var(--text-color) !important;
@@ -218,8 +179,6 @@ button::before, .button::before, input[type="submit"]::before, .btn::before {
 
 /* Button hover effects */
 button:hover, .button:hover, input[type="submit"]:hover, .btn:hover {
-  /* Removed custom background fill on hover */
-  background: transparent !important; /* Uses OGS default on hover */
   border-color: var(--secondary-glow) !important;
   color: white !important;
   transform: translateY(-2px) scale(1.02) !important;
@@ -233,15 +192,13 @@ button:hover::before, .button:hover::before, input[type="submit"]:hover::before,
   left: 100%;
 }
 
-/* ENHANCED PROFILE PICTURES - Gaming Circle Style */
+/* ENHANCED PROFILE PICTURES */
 .PlayerImage, .player-image img, #TopNav .user-image img, .user-avatar,
 .PlayerIcon, .player-icon, .avatar, .profile-pic, img[src*="avatar"] {
   width: auto !important;
   height: auto !important;
   border-radius: 50% !important;
   border: 3px solid transparent !important;
-  /* Removed custom background fill */
-  background: transparent !important; /* Lets OGS default show, or just the border-box */
   box-shadow:
     0 0 20px var(--primary-glow),
     0 0 40px rgba(0, 255, 255, 0.3),
@@ -315,8 +272,6 @@ a:hover::after {
 /* Enhanced Input Fields */
 input[type="text"], input[type="password"], input[type="email"],
 textarea, select {
-  /* Removed custom background fill */
-  background: transparent !important; /* Lets OGS default input background show */
   border: 2px solid var(--border-glow) !important;
   border-radius: 6px !important;
   color: var(--text-color) !important;
@@ -329,21 +284,16 @@ input:focus, textarea:focus, select:focus {
   border-color: var(--primary-glow) !important;
   box-shadow: 0 0 15px rgba(0, 255, 255, 0.5) !important;
   outline: none !important;
-  /* Removed custom background fill on focus */
-  background: transparent !important; /* Lets OGS default input background show on focus */
 }
 
 /* Enhanced Panels */
 .main-container, .dialog, .modal, .panel, .card,
 .play-area, .chat-container, .game-info, .content-panel {
-  /* Removed custom background fill and backdrop filter */
-  background: transparent !important; /* Lets OGS default panel background show */
   border: 2px solid var(--border-glow) !important;
   border-radius: 12px !important;
   box-shadow:
     0 0 25px rgba(0, 188, 212, 0.3),
     inset 0 0 25px rgba(0, 0, 0, 0.5) !important;
-  /* Removed backdrop-filter */
   transition: all 0.3s ease !important;
 }
 
@@ -351,19 +301,14 @@ input:focus, textarea:focus, select:focus {
   animation: glow-pulse 4s infinite ease-in-out;
 }
 
-/* Enhanced Navigation - applies to OGS's own navigation, might be overridden by OGS themes */
+/* Enhanced Navigation */
 #TopNav, .nav-bar, .navigation, .navbar, .header-nav {
-  /* Removed custom background fill and backdrop filter */
-  background: transparent !important; /* Lets OGS default navigation background show */
   border-bottom: 2px solid var(--border-glow) !important;
-  /* Removed backdrop-filter */
   box-shadow: 0 2px 20px rgba(0, 188, 212, 0.4) !important;
 }
 
 /* Gaming Clock */
 .clock, .timer, .time-display {
-  /* Removed custom background fill */
-  background: transparent !important; /* Lets OGS default clock background show */
   border: 2px solid var(--border-glow) !important;
   border-radius: 8px !important;
   padding: 8px 16px !important;
@@ -379,10 +324,8 @@ input:focus, textarea:focus, select:focus {
   color: var(--warning) !important;
 }
 
-/* Enhanced Go Board - These apply to the board if it appears in a profile context (e.g., small demo board) */
+/* Enhanced Go Board */
 .play-area .Goban, .goban-container, .game-board {
-  /* Removed custom background fill */
-  background: transparent !important; /* Lets OGS default board background show */
   border: 3px solid var(--primary-glow) !important;
   border-radius: 8px !important;
   box-shadow:
@@ -404,8 +347,7 @@ input:focus, textarea:focus, select:focus {
   animation: star-twinkle 3s infinite ease-in-out !important;
 }
 
-/* Gaming Stones */
-/* Kept custom stone appearance as these are not "backgrounds" of containers */
+/* Gaming Stones - Keep these as they're visual elements, not backgrounds */
 .play-area .Goban .white.stone .stone-inner, .white-stone {
   background: radial-gradient(circle at 35% 35%, #ffffff, #f0f8ff 50%, #d0e8f0) !important;
   box-shadow:
@@ -430,8 +372,6 @@ input:focus, textarea:focus, select:focus {
 }
 
 .chat-log-row:hover, .chat-message:hover, .message:hover {
-  /* Removed custom background on hover */
-  background: transparent !important; /* Lets OGS default hover background show */
   border-left-color: var(--primary-glow) !important;
   transform: translateX(5px) !important;
 }
@@ -448,16 +388,12 @@ input:focus, textarea:focus, select:focus {
 }
 
 ::-webkit-scrollbar-track {
-  /* Removed custom background */
-  background: transparent; /* Lets default scrollbar track show */
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-  /* Removed custom background */
-  background: transparent; /* Lets default scrollbar thumb show */
   border-radius: 5px;
-  box-shadow: 0 0 5px var(--primary-glow); /* Kept glow */
+  box-shadow: 0 0 5px var(--primary-glow);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -473,18 +409,11 @@ table {
 }
 
 th {
-  /* Removed custom background fill */
-  background: transparent !important; /* Lets OGS default table header show */
   color: var(--primary-glow) !important;
   font-family: var(--gaming-font) !important;
   font-weight: 600 !important;
   text-transform: uppercase !important;
   padding: 12px 8px !important;
-}
-
-tr:hover {
-  /* Removed custom background on hover */
-  background: transparent !important; /* Lets OGS default row hover show */
 }
 
 /* Selection styling */
@@ -504,9 +433,4 @@ tr:hover {
   h2 { font-size: 1.5em !important; }
 }
 
-/* Additional OGS-specific overrides */
-.ogs-body, .ogs-main, .ogs-content {
-  background: transparent !important;
-}
-
-/* End of OGS Night Sky Theme - Profile-Scoped Animations */
+/* End of OGS Night Sky Theme - No Backgrounds Edition */
