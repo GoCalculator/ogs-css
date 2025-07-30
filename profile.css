@@ -12,7 +12,9 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin: 0;
-    padding: 20px;
+    padding: 40px;
+    font-size: 16px;
+    line-height: 1.6;
 }
 
 /* Night Sky with Stars */
@@ -42,14 +44,15 @@ body {
 
 /* Container */
 .container {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.3);
+    padding: 40px;
+    background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 1.1em;
 }
 
 /* Typography */
@@ -59,9 +62,21 @@ h1, h2, h3, h4, h5, h6 {
     margin: 1em 0 0.5em;
 }
 
-h1 { font-size: 2.5em; }
-h2 { font-size: 2em; }
-h3 { font-size: 1.5em; }
+h1 { 
+    font-size: 2.8em; 
+    margin-top: 0;
+    margin-bottom: 0.5em;
+}
+h2 { 
+    font-size: 2.2em; 
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+h3 { 
+    font-size: 1.8em; 
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
 
 p {
     line-height: 1.6;
