@@ -1,5 +1,5 @@
 /* Enhanced Gaming Theme CSS for Online-Go.com Group */
-/* Fixed topbar, buttons, added gaming font and more animations */
+/* Fixed navigation alignment and removed all arrows */
 
 /* Gaming font imports */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
@@ -63,40 +63,124 @@ nav {
   border-bottom: 2px solid var(--gaming-blue) !important;
   box-shadow: 0 4px 20px rgba(66, 153, 225, 0.3) !important;
   position: relative !important;
-  overflow: visible !important;
   z-index: 1000 !important;
 }
 
-/* Preserve navigation visibility and structure with proper alignment */
-.navbar-nav,
-.nav,
-.site-header .nav,
-header .nav {
-  display: flex !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  position: relative !important;
-  align-items: center !important;
-  height: auto !important;
+/* Header animation - non-interfering */
+.site-header::after,
+header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gaming-cyan), var(--gaming-blue), var(--gaming-purple));
+  animation: headerPulse 3s ease-in-out infinite;
 }
 
-.navbar-nav li,
-.nav li,
-.site-header .nav li,
-header .nav li {
-  display: flex !important;
-  align-items: center !important;
-  height: auto !important;
+@keyframes headerPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
 }
 
-/* Remove dropdown arrows but keep functionality */
+/* COMPLETELY REMOVE ALL DROPDOWN ARROWS */
+*::after,
+*::before {
+  content: none !important;
+}
+
+/* Re-enable our custom animations only */
+.site-header::after,
+header::after,
+.card::before,
+.panel::before,
+.group-card::before,
+a::after {
+  content: '' !important;
+}
+
+/* Remove Bootstrap and other framework arrows specifically */
 .dropdown-toggle::after,
 .nav-link::after,
-.dropdown > a::after {
+.dropdown > a::after,
+.btn-group > .btn::after,
+.navbar-nav .dropdown-toggle::after,
+.nav .dropdown-toggle::after,
+button::after,
+[data-toggle="dropdown"]::after {
   display: none !important;
+  content: none !important;
+  border: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
-/* Ensure dropdown menus still work */
+/* Fixed navigation - only style actual nav elements */
+.navbar-nav .nav-link,
+.navbar .nav-link,
+.site-header .nav-link,
+header .nav-link,
+nav > a,
+.nav > li > a {
+  color: var(--gaming-text) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative !important;
+  padding: 10px 15px !important;
+  border-radius: 6px !important;
+  font-family: 'Rajdhani', sans-serif !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  display: block !important;
+  line-height: 1.5 !important;
+}
+
+/* Navigation hover effects - only for nav links */
+.navbar-nav .nav-link::before,
+.navbar .nav-link::before,
+.site-header .nav-link::before,
+header .nav-link::before,
+nav > a::before,
+.nav > li > a::before {
+  content: '' !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--gaming-blue), var(--gaming-cyan));
+  transition: width 0.4s ease;
+  z-index: -1;
+  border-radius: 6px;
+}
+
+.navbar-nav .nav-link:hover::before,
+.navbar .nav-link:hover::before,
+.site-header .nav-link:hover::before,
+header .nav-link:hover::before,
+nav > a:hover::before,
+.nav > li > a:hover::before {
+  width: 100%;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar .nav-link:hover,
+.site-header .nav-link:hover,
+header .nav-link:hover,
+nav > a:hover,
+.nav > li > a:hover {
+  color: white !important;
+  transform: translateY(-2px) !important;
+  text-shadow: 0 0 15px rgba(0, 212, 255, 0.8) !important;
+  animation: navGlow 1s ease-in-out infinite alternate;
+}
+
+@keyframes navGlow {
+  0% { text-shadow: 0 0 15px rgba(0, 212, 255, 0.8); }
+  100% { text-shadow: 0 0 25px rgba(0, 212, 255, 1); }
+}
+
+/* Dropdown menus - style but don't break functionality */
 .dropdown-menu {
   background: linear-gradient(145deg, var(--gaming-secondary), var(--gaming-accent)) !important;
   border: 1px solid var(--gaming-border) !important;
@@ -127,88 +211,6 @@ header .nav li {
   color: var(--gaming-cyan) !important;
 }
 
-/* Header animation - non-interfering */
-.site-header::after,
-header::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, var(--gaming-cyan), var(--gaming-blue), var(--gaming-purple));
-  animation: headerPulse 3s ease-in-out infinite;
-}
-
-@keyframes headerPulse {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
-}
-
-/* Enhanced navigation with proper alignment */
-.nav-link,
-.navbar-nav .nav-link,
-nav a,
-.site-header a,
-header a {
-  color: var(--gaming-text) !important;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  position: relative !important;
-  padding: 12px 16px !important;
-  border-radius: 6px !important;
-  text-align: center !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  font-family: 'Rajdhani', sans-serif !important;
-  font-weight: 500 !important;
-  vertical-align: middle !important;
-  line-height: 1.2 !important;
-  height: auto !important;
-  min-height: 40px !important;
-}
-
-.nav-link::before,
-.navbar-nav .nav-link::before,
-nav a::before,
-.site-header a::before,
-header a::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background: linear-gradient(90deg, var(--gaming-blue), var(--gaming-cyan));
-  transition: width 0.4s ease;
-  z-index: -1;
-  border-radius: 6px;
-}
-
-.nav-link:hover::before,
-.navbar-nav .nav-link:hover::before,
-nav a:hover::before,
-.site-header a:hover::before,
-header a:hover::before {
-  width: 100%;
-}
-
-.nav-link:hover,
-.navbar-nav .nav-link:hover,
-nav a:hover,
-.site-header a:hover,
-header a:hover {
-  color: white !important;
-  transform: translateY(-2px) !important;
-  text-shadow: 0 0 15px rgba(0, 212, 255, 0.8) !important;
-  animation: navGlow 1s ease-in-out infinite alternate;
-}
-
-@keyframes navGlow {
-  0% { text-shadow: 0 0 15px rgba(0, 212, 255, 0.8); }
-  100% { text-shadow: 0 0 25px rgba(0, 212, 255, 1); }
-}
-
 /* Animated cards with better colors */
 .card,
 .panel,
@@ -226,7 +228,7 @@ div[class*="card"] {
 .card::before,
 .panel::before,
 .group-card::before {
-  content: '';
+  content: '' !important;
   position: absolute;
   top: 0;
   left: -100%;
@@ -262,11 +264,11 @@ div[class*="card"] {
   50% { box-shadow: 0 20px 50px rgba(66, 153, 225, 0.4), 0 0 30px rgba(0, 212, 255, 0.4); }
 }
 
-/* Fixed and enhanced buttons with proper centering */
-.btn,
-button,
+/* Fixed buttons - be more specific to avoid conflicts */
+button[class*="btn"],
 input[type="submit"],
-input[type="button"] {
+input[type="button"],
+.btn:not(.nav-link):not(.dropdown-toggle):not(.navbar-toggler) {
   background: linear-gradient(45deg, var(--gaming-blue), var(--gaming-cyan)) !important;
   border: none !important;
   border-radius: 8px !important;
@@ -279,20 +281,20 @@ input[type="button"] {
   box-shadow: 0 4px 15px rgba(66, 153, 225, 0.4) !important;
   position: relative !important;
   overflow: hidden !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  text-align: center !important;
   font-family: 'Rajdhani', sans-serif !important;
   font-size: 14px !important;
   cursor: pointer !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+  text-align: center !important;
 }
 
-.btn::before,
-button::before,
+/* Button ripple effect - only for actual buttons */
+button[class*="btn"]::before,
 input[type="submit"]::before,
-input[type="button"]::before {
-  content: '';
+input[type="button"]::before,
+.btn:not(.nav-link):not(.dropdown-toggle):not(.navbar-toggler)::before {
+  content: '' !important;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -304,18 +306,18 @@ input[type="button"]::before {
   transform: translate(-50%, -50%);
 }
 
-.btn:hover::before,
-button:hover::before,
+button[class*="btn"]:hover::before,
 input[type="submit"]:hover::before,
-input[type="button"]:hover::before {
+input[type="button"]:hover::before,
+.btn:not(.nav-link):not(.dropdown-toggle):not(.navbar-toggler):hover::before {
   width: 300px;
   height: 300px;
 }
 
-.btn:hover,
-button:hover,
+button[class*="btn"]:hover,
 input[type="submit"]:hover,
-input[type="button"]:hover {
+input[type="button"]:hover,
+.btn:not(.nav-link):not(.dropdown-toggle):not(.navbar-toggler):hover {
   transform: translateY(-3px) scale(1.05) !important;
   box-shadow: 
     0 8px 25px rgba(66, 153, 225, 0.6),
@@ -335,14 +337,12 @@ input[type="button"]:hover {
 }
 
 /* Primary buttons with different gradient */
-.btn-primary,
-.btn.primary {
+.btn-primary:not(.nav-link):not(.dropdown-toggle) {
   background: linear-gradient(45deg, var(--gaming-purple), var(--gaming-blue)) !important;
   box-shadow: 0 4px 15px rgba(159, 122, 234, 0.4) !important;
 }
 
-.btn-primary:hover,
-.btn.primary:hover {
+.btn-primary:not(.nav-link):not(.dropdown-toggle):hover {
   box-shadow: 
     0 8px 25px rgba(159, 122, 234, 0.6),
     0 0 30px rgba(159, 122, 234, 0.8),
@@ -465,7 +465,7 @@ select:focus {
 /* Enhanced avatars with more animations */
 .avatar,
 .user-avatar,
-img[class*="avatar"] {
+img[class*="avatar"]:not([class*="group"]):not(.profile-pic):not(.profile-image) {
   border: 3px solid transparent !important;
   border-radius: 50% !important;
   background: linear-gradient(45deg, var(--gaming-cyan), var(--gaming-blue)) !important;
@@ -498,8 +498,8 @@ img[class*="avatar"] {
   50% { transform: scale(1.2) rotate(5deg); }
 }
 
-/* Enhanced links with more effects */
-a {
+/* Enhanced links with more effects - exclude nav links */
+a:not(.nav-link):not(.dropdown-toggle):not(.btn) {
   color: var(--gaming-cyan) !important;
   text-decoration: none !important;
   transition: all 0.3s ease !important;
@@ -507,8 +507,8 @@ a {
   font-family: 'Rajdhani', sans-serif !important;
 }
 
-a::after {
-  content: '';
+a:not(.nav-link):not(.dropdown-toggle):not(.btn)::after {
+  content: '' !important;
   position: absolute;
   bottom: -2px;
   left: 0;
@@ -519,7 +519,7 @@ a::after {
   box-shadow: 0 0 5px rgba(0, 212, 255, 0.5);
 }
 
-a:hover::after {
+a:not(.nav-link):not(.dropdown-toggle):not(.btn):hover::after {
   width: 100%;
   animation: linkGlow 1s ease-in-out infinite alternate;
 }
@@ -529,40 +529,10 @@ a:hover::after {
   100% { box-shadow: 0 0 15px rgba(0, 212, 255, 0.8); }
 }
 
-a:hover {
+a:not(.nav-link):not(.dropdown-toggle):not(.btn):hover {
   color: var(--gaming-blue) !important;
   text-shadow: 0 0 10px rgba(0, 212, 255, 0.6) !important;
   transform: translateY(-1px) !important;
-}
-
-/* More loading animations */
-.loading,
-.spinner {
-  animation: 
-    spin 1s linear infinite, 
-    colorShift 2s ease-in-out infinite,
-    pulse 1.5s ease-in-out infinite alternate !important;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes colorShift {
-  0%, 100% { filter: hue-rotate(0deg); }
-  50% { filter: hue-rotate(180deg); }
-}
-
-@keyframes pulse {
-  0% { 
-    opacity: 0.7;
-    transform: scale(1);
-  }
-  100% { 
-    opacity: 1;
-    transform: scale(1.1);
-  }
 }
 
 /* Enhanced scrollbars */
@@ -627,8 +597,8 @@ a:hover {
     transform: translateY(-4px) scale(1.01) !important;
   }
   
-  .btn:hover,
-  button:hover {
+  button[class*="btn"]:hover,
+  .btn:hover {
     transform: translateY(-2px) scale(1.02) !important;
   }
   
