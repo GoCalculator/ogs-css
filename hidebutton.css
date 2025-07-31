@@ -1,14 +1,3 @@
-/* Hide ONLY the leave group button (class "sm" only) */
-.sm:not(.primary-sm) {
+.sm::before {
     display: none !important;
-}
-
-/* Make sure join buttons (.primary-sm) stay visible */
-.primary-sm {
-    display: inline-block !important;
-}
-
-/* Make sure admin invite buttons (.btn.primary-sm) stay visible */
-.btn.primary-sm {
-    display: inline-block !important;
 }
