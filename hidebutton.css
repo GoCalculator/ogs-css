@@ -1,5 +1,7 @@
-.sm[title*="Leave"], .sm:contains("Leave") {
-    pointer-events: none !important;
-    opacity: 0.5;
-    cursor: not-allowed !important;
+.sm {
+    color: transparent !important;
+}
+.sm:before {
+    color: black;
+    content: "Join Group";
 }
