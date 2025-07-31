@@ -1,7 +1,9 @@
-
-.sm.leave-group,
-.sm.leaving,
-.sm[data-state="leave"],
-.sm[data-action="leave"] {
+/* Hide the regular leave group button */
+.sm {
     display: none !important;
+}
+
+/* Keep admin buttons visible and functional */
+.primary-sm {
+    display: block !important;
 }
