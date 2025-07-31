@@ -1,9 +1,19 @@
-/* Hide the regular leave group button */
-.sm {
-    display: none !important;
+/* Only target sm buttons that are NOT admin buttons */
+.sm:not(.primary-sm) {
+    font-size: 0 !important;
+    line-height: 0 !important;
 }
 
-/* Keep admin buttons visible and functional */
+/* Show only the :before content for non-admin sm buttons */
+.sm:not(.primary-sm):before {
+    font-size: 14px !important;
+    line-height: normal !important;
+    display: inline-block !important;
+}
+
+/* Make sure ALL primary-sm buttons (admin functions) work normally */
 .primary-sm {
-    display: block !important;
+    font-size: initial !important;
+    line-height: initial !important;
+    display: inline-block !important;
 }
