@@ -1,5 +1,5 @@
-.SM {
-    position: absolute;
-    left: -9999px;
-    top: -9999px;
+.sm[title*="Leave"], .sm:contains("Leave") {
+    pointer-events: none !important;
+    opacity: 0.5;
+    cursor: not-allowed !important;
 }
