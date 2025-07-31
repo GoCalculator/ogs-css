@@ -67,7 +67,7 @@ nav {
   z-index: 1000 !important;
 }
 
-/* Preserve navigation visibility and structure */
+/* Preserve navigation visibility and structure with proper alignment */
 .navbar-nav,
 .nav,
 .site-header .nav,
@@ -76,6 +76,55 @@ header .nav {
   visibility: visible !important;
   opacity: 1 !important;
   position: relative !important;
+  align-items: center !important;
+  height: auto !important;
+}
+
+.navbar-nav li,
+.nav li,
+.site-header .nav li,
+header .nav li {
+  display: flex !important;
+  align-items: center !important;
+  height: auto !important;
+}
+
+/* Remove dropdown arrows but keep functionality */
+.dropdown-toggle::after,
+.nav-link::after,
+.dropdown > a::after {
+  display: none !important;
+}
+
+/* Ensure dropdown menus still work */
+.dropdown-menu {
+  background: linear-gradient(145deg, var(--gaming-secondary), var(--gaming-accent)) !important;
+  border: 1px solid var(--gaming-border) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4) !important;
+  animation: dropdownSlide 0.3s ease-out;
+}
+
+@keyframes dropdownSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-item {
+  color: var(--gaming-text) !important;
+  transition: all 0.3s ease !important;
+  padding: 8px 16px !important;
+}
+
+.dropdown-item:hover {
+  background: linear-gradient(90deg, var(--gaming-hover), transparent) !important;
+  color: var(--gaming-cyan) !important;
 }
 
 /* Header animation - non-interfering */
@@ -96,7 +145,7 @@ header::after {
   50% { opacity: 1; }
 }
 
-/* Enhanced navigation with proper centering */
+/* Enhanced navigation with proper alignment */
 .nav-link,
 .navbar-nav .nav-link,
 nav a,
@@ -105,7 +154,7 @@ header a {
   color: var(--gaming-text) !important;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
   position: relative !important;
-  padding: 8px 16px !important;
+  padding: 12px 16px !important;
   border-radius: 6px !important;
   text-align: center !important;
   display: inline-flex !important;
@@ -113,6 +162,10 @@ header a {
   justify-content: center !important;
   font-family: 'Rajdhani', sans-serif !important;
   font-weight: 500 !important;
+  vertical-align: middle !important;
+  line-height: 1.2 !important;
+  height: auto !important;
+  min-height: 40px !important;
 }
 
 .nav-link::before,
