@@ -1,10 +1,1 @@
-.sm {
-    display: none !important;
-}
 
-/* Method 6: Most targeted approach for OGS */
-.sm:not(:empty):contains("Leave") {
-    visibility: hidden !important;
-    position: absolute !important;
-    left: -9999px !important;
-}
