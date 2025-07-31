@@ -1,0 +1,353 @@
+/* Gaming Theme CSS for Online-Go.com Group */
+/* Preserve all original layouts while adding gaming aesthetics */
+
+/* Main color palette */
+:root {
+  --gaming-primary: #1a1a2e;
+  --gaming-secondary: #16213e;
+  --gaming-accent: #0f3460;
+  --gaming-highlight: #e94560;
+  --gaming-gold: #f39c12;
+  --gaming-text: #e8e8e8;
+  --gaming-text-muted: #b0b0b0;
+  --gaming-border: #2c3e50;
+  --gaming-shadow: rgba(233, 69, 96, 0.3);
+  --gaming-glow: rgba(52, 152, 219, 0.4);
+}
+
+/* Enhanced background with subtle pattern */
+body {
+  background: linear-gradient(135deg, var(--gaming-primary) 0%, var(--gaming-secondary) 100%) !important;
+  background-attachment: fixed !important;
+  color: var(--gaming-text) !important;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+/* Add subtle texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0);
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Header enhancements */
+.site-header,
+header {
+  background: linear-gradient(90deg, var(--gaming-accent), var(--gaming-secondary)) !important;
+  border-bottom: 2px solid var(--gaming-highlight) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Navigation elements */
+.nav-link,
+.navbar-nav .nav-link,
+nav a {
+  color: var(--gaming-text) !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+}
+
+.nav-link:hover,
+.navbar-nav .nav-link:hover,
+nav a:hover {
+  color: var(--gaming-highlight) !important;
+  text-shadow: 0 0 8px var(--gaming-shadow) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Card and panel styling */
+.card,
+.panel,
+.group-card,
+div[class*="card"] {
+  background: linear-gradient(145deg, var(--gaming-secondary), var(--gaming-accent)) !important;
+  border: 1px solid var(--gaming-border) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+  transition: all 0.3s ease !important;
+}
+
+.card:hover,
+.panel:hover,
+.group-card:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6) !important;
+  border-color: var(--gaming-highlight) !important;
+}
+
+/* Button styling */
+.btn,
+button,
+input[type="submit"],
+input[type="button"] {
+  background: linear-gradient(45deg, var(--gaming-highlight), #c0392b) !important;
+  border: none !important;
+  border-radius: 6px !important;
+  color: white !important;
+  padding: 8px 16px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 2px 8px rgba(233, 69, 96, 0.3) !important;
+}
+
+.btn:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 15px rgba(233, 69, 96, 0.5) !important;
+  filter: brightness(1.1) !important;
+}
+
+/* Primary buttons get gold accent */
+.btn-primary,
+.btn.primary {
+  background: linear-gradient(45deg, var(--gaming-gold), #e67e22) !important;
+  box-shadow: 0 2px 8px rgba(243, 156, 18, 0.3) !important;
+}
+
+.btn-primary:hover,
+.btn.primary:hover {
+  box-shadow: 0 4px 15px rgba(243, 156, 18, 0.5) !important;
+}
+
+/* Input fields */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+  background: rgba(22, 33, 62, 0.8) !important;
+  border: 1px solid var(--gaming-border) !important;
+  border-radius: 4px !important;
+  color: var(--gaming-text) !important;
+  padding: 8px 12px !important;
+  transition: all 0.3s ease !important;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--gaming-highlight) !important;
+  box-shadow: 0 0 10px var(--gaming-shadow) !important;
+  outline: none !important;
+}
+
+/* Tables */
+table {
+  background: var(--gaming-secondary) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+thead,
+.table-header {
+  background: linear-gradient(90deg, var(--gaming-accent), var(--gaming-primary)) !important;
+}
+
+th {
+  color: var(--gaming-text) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  border-color: var(--gaming-border) !important;
+}
+
+td {
+  color: var(--gaming-text) !important;
+  border-color: var(--gaming-border) !important;
+}
+
+tr:hover {
+  background: rgba(233, 69, 96, 0.1) !important;
+}
+
+/* Links */
+a {
+  color: var(--gaming-highlight) !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+}
+
+a:hover {
+  color: var(--gaming-gold) !important;
+  text-shadow: 0 0 5px rgba(243, 156, 18, 0.5) !important;
+}
+
+/* Text elements */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--gaming-text) !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5) !important;
+}
+
+h1 {
+  background: linear-gradient(45deg, var(--gaming-highlight), var(--gaming-gold)) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+p, span, div {
+  color: var(--gaming-text) !important;
+}
+
+/* Sidebar enhancements */
+.sidebar,
+aside,
+.side-panel {
+  background: rgba(22, 33, 62, 0.95) !important;
+  border-radius: 8px !important;
+  border: 1px solid var(--gaming-border) !important;
+}
+
+/* Game board area - keep subtle */
+.game-board,
+.goban,
+canvas[id*="board"] {
+  border-radius: 8px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Chat and messaging */
+.chat-container,
+.message-box,
+div[class*="chat"] {
+  background: rgba(22, 33, 62, 0.9) !important;
+  border-radius: 8px !important;
+  border: 1px solid var(--gaming-border) !important;
+}
+
+.message,
+.chat-message {
+  border-left: 3px solid var(--gaming-highlight) !important;
+  background: rgba(233, 69, 96, 0.05) !important;
+  margin: 4px 0 !important;
+  padding: 8px !important;
+  border-radius: 4px !important;
+}
+
+/* User avatars and profile elements */
+.avatar,
+.user-avatar,
+img[class*="avatar"] {
+  border: 2px solid var(--gaming-highlight) !important;
+  border-radius: 50% !important;
+  box-shadow: 0 0 10px var(--gaming-shadow) !important;
+}
+
+/* Notifications and alerts */
+.alert,
+.notification {
+  background: linear-gradient(45deg, var(--gaming-accent), var(--gaming-secondary)) !important;
+  border: 1px solid var(--gaming-highlight) !important;
+  border-radius: 6px !important;
+  color: var(--gaming-text) !important;
+}
+
+/* Progress bars */
+.progress,
+.progress-bar {
+  background: var(--gaming-secondary) !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+
+.progress-bar-fill,
+.progress .fill {
+  background: linear-gradient(90deg, var(--gaming-highlight), var(--gaming-gold)) !important;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 8px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gaming-secondary) !important;
+  border-radius: 4px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--gaming-highlight), var(--gaming-gold)) !important;
+  border-radius: 4px !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--gaming-gold), var(--gaming-highlight)) !important;
+}
+
+/* Loading animations */
+@keyframes gaming-pulse {
+  0% { box-shadow: 0 0 5px var(--gaming-shadow); }
+  50% { box-shadow: 0 0 20px var(--gaming-shadow), 0 0 30px var(--gaming-shadow); }
+  100% { box-shadow: 0 0 5px var(--gaming-shadow); }
+}
+
+.loading,
+.spinner {
+  animation: gaming-pulse 2s infinite !important;
+}
+
+/* Footer */
+footer,
+.site-footer {
+  background: linear-gradient(90deg, var(--gaming-primary), var(--gaming-secondary)) !important;
+  border-top: 2px solid var(--gaming-highlight) !important;
+  color: var(--gaming-text-muted) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  body::before {
+    background-size: 15px 15px !important;
+  }
+  
+  .card,
+  .panel {
+    margin: 8px 0 !important;
+  }
+}
+
+/* Subtle animations for enhanced gaming feel */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card,
+.panel,
+.message {
+  animation: fadeInUp 0.5s ease-out !important;
+}
+
+/* Ensure text remains readable */
+.text-muted {
+  color: var(--gaming-text-muted) !important;
+}
+
+/* Special gaming accents for important elements */
+.featured,
+.highlighted,
+.important {
+  border-left: 4px solid var(--gaming-gold) !important;
+  background: linear-gradient(90deg, rgba(243, 156, 18, 0.1), transparent) !important;
+}
