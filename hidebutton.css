@@ -1,1 +1,7 @@
 
+.sm.leave-group,
+.sm.leaving,
+.sm[data-state="leave"],
+.sm[data-action="leave"] {
+    display: none !important;
+}
