@@ -1,19 +1,14 @@
-/* Only target sm buttons that are NOT admin buttons */
+/* Hide ONLY the leave group button (class "sm" only) */
 .sm:not(.primary-sm) {
-    font-size: 0 !important;
-    line-height: 0 !important;
+    display: none !important;
 }
 
-/* Show only the :before content for non-admin sm buttons */
-.sm:not(.primary-sm):before {
-    font-size: 14px !important;
-    line-height: normal !important;
+/* Make sure join buttons (.primary-sm) stay visible */
+.primary-sm {
     display: inline-block !important;
 }
 
-/* Make sure ALL primary-sm buttons (admin functions) work normally */
-.primary-sm {
-    font-size: initial !important;
-    line-height: initial !important;
+/* Make sure admin invite buttons (.btn.primary-sm) stay visible */
+.btn.primary-sm {
     display: inline-block !important;
 }
