@@ -1,7 +1,10 @@
 /* Enhanced Gaming Theme CSS for Online-Go.com Group */
-/* Better color harmony with more animations */
+/* Fixed topbar, buttons, added gaming font and more animations */
 
-/* Improved gaming color palette */
+/* Gaming font imports */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+/* Gaming color palette */
 :root {
   --gaming-dark: #0a0e1a;
   --gaming-primary: #1a1f2e;
@@ -22,7 +25,7 @@ body {
   background: linear-gradient(135deg, var(--gaming-dark) 0%, var(--gaming-primary) 50%, var(--gaming-secondary) 100%) !important;
   background-attachment: fixed !important;
   color: var(--gaming-text) !important;
-  font-family: 'Segoe UI', 'Roboto', sans-serif !important;
+  font-family: 'Rajdhani', 'Segoe UI', sans-serif !important;
   position: relative !important;
 }
 
@@ -51,47 +54,72 @@ body::before {
   100% { transform: translate(-150px, -100px); }
 }
 
-/* Glowing header with pulse animation */
+/* Fixed header - preserve original structure */
 .site-header,
-header {
+header,
+.navbar,
+nav {
   background: linear-gradient(90deg, var(--gaming-primary), var(--gaming-secondary)) !important;
   border-bottom: 2px solid var(--gaming-blue) !important;
   box-shadow: 0 4px 20px rgba(66, 153, 225, 0.3) !important;
   position: relative !important;
-  overflow: hidden !important;
+  overflow: visible !important;
+  z-index: 1000 !important;
 }
 
-.site-header::before,
-header::before {
+/* Preserve navigation visibility and structure */
+.navbar-nav,
+.nav,
+.site-header .nav,
+header .nav {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+}
+
+/* Header animation - non-interfering */
+.site-header::after,
+header::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: -100%;
+  bottom: 0;
+  left: 0;
   width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
-  animation: headerSweep 3s infinite;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gaming-cyan), var(--gaming-blue), var(--gaming-purple));
+  animation: headerPulse 3s ease-in-out infinite;
 }
 
-@keyframes headerSweep {
-  0% { left: -100%; }
-  100% { left: 100%; }
+@keyframes headerPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
 }
 
-/* Enhanced navigation with hover effects */
+/* Enhanced navigation with proper centering */
 .nav-link,
 .navbar-nav .nav-link,
-nav a {
+nav a,
+.site-header a,
+header a {
   color: var(--gaming-text) !important;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
   position: relative !important;
   padding: 8px 16px !important;
   border-radius: 6px !important;
+  text-align: center !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-family: 'Rajdhani', sans-serif !important;
+  font-weight: 500 !important;
 }
 
 .nav-link::before,
 .navbar-nav .nav-link::before,
-nav a::before {
+nav a::before,
+.site-header a::before,
+header a::before {
   content: '';
   position: absolute;
   top: 0;
@@ -106,16 +134,26 @@ nav a::before {
 
 .nav-link:hover::before,
 .navbar-nav .nav-link:hover::before,
-nav a:hover::before {
+nav a:hover::before,
+.site-header a:hover::before,
+header a:hover::before {
   width: 100%;
 }
 
 .nav-link:hover,
 .navbar-nav .nav-link:hover,
-nav a:hover {
+nav a:hover,
+.site-header a:hover,
+header a:hover {
   color: white !important;
   transform: translateY(-2px) !important;
-  text-shadow: 0 0 10px rgba(0, 212, 255, 0.8) !important;
+  text-shadow: 0 0 15px rgba(0, 212, 255, 0.8) !important;
+  animation: navGlow 1s ease-in-out infinite alternate;
+}
+
+@keyframes navGlow {
+  0% { text-shadow: 0 0 15px rgba(0, 212, 255, 0.8); }
+  100% { text-shadow: 0 0 25px rgba(0, 212, 255, 1); }
 }
 
 /* Animated cards with better colors */
@@ -140,9 +178,15 @@ div[class*="card"] {
   top: 0;
   left: -100%;
   width: 100%;
-  height: 2px;
+  height: 3px;
   background: linear-gradient(90deg, var(--gaming-blue), var(--gaming-cyan), var(--gaming-purple));
-  transition: left 0.5s ease;
+  transition: left 0.6s ease;
+  animation: cardShimmer 3s ease-in-out infinite;
+}
+
+@keyframes cardShimmer {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
 }
 
 .card:hover::before,
@@ -155,11 +199,17 @@ div[class*="card"] {
 .panel:hover,
 .group-card:hover {
   transform: translateY(-8px) scale(1.02) !important;
-  box-shadow: 0 15px 40px rgba(66, 153, 225, 0.2) !important;
+  box-shadow: 0 15px 40px rgba(66, 153, 225, 0.3), 0 0 20px rgba(0, 212, 255, 0.2) !important;
   border-color: var(--gaming-blue) !important;
+  animation: cardPulse 2s ease-in-out infinite;
 }
 
-/* Gaming-style buttons with pulse animation */
+@keyframes cardPulse {
+  0%, 100% { box-shadow: 0 15px 40px rgba(66, 153, 225, 0.3), 0 0 20px rgba(0, 212, 255, 0.2); }
+  50% { box-shadow: 0 20px 50px rgba(66, 153, 225, 0.4), 0 0 30px rgba(0, 212, 255, 0.4); }
+}
+
+/* Fixed and enhanced buttons with proper centering */
 .btn,
 button,
 input[type="submit"],
@@ -168,7 +218,7 @@ input[type="button"] {
   border: none !important;
   border-radius: 8px !important;
   color: white !important;
-  padding: 10px 20px !important;
+  padding: 12px 24px !important;
   font-weight: 600 !important;
   text-transform: uppercase !important;
   letter-spacing: 1px !important;
@@ -176,6 +226,13 @@ input[type="button"] {
   box-shadow: 0 4px 15px rgba(66, 153, 225, 0.4) !important;
   position: relative !important;
   overflow: hidden !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  font-family: 'Rajdhani', sans-serif !important;
+  font-size: 14px !important;
+  cursor: pointer !important;
 }
 
 .btn::before,
@@ -188,8 +245,8 @@ input[type="button"]::before {
   left: 50%;
   width: 0;
   height: 0;
-  background: rgba(255, 255, 255, 0.2);
-  transition: all 0.4s ease;
+  background: rgba(255, 255, 255, 0.3);
+  transition: all 0.5s ease;
   border-radius: 50%;
   transform: translate(-50%, -50%);
 }
@@ -206,14 +263,22 @@ input[type="button"]:hover::before {
 button:hover,
 input[type="submit"]:hover,
 input[type="button"]:hover {
-  transform: translateY(-3px) !important;
-  box-shadow: 0 8px 25px rgba(66, 153, 225, 0.6) !important;
-  animation: buttonPulse 1s infinite;
+  transform: translateY(-3px) scale(1.05) !important;
+  box-shadow: 
+    0 8px 25px rgba(66, 153, 225, 0.6),
+    0 0 30px rgba(0, 212, 255, 0.8),
+    inset 0 0 20px rgba(255, 255, 255, 0.1) !important;
+  animation: buttonGlow 1.5s ease-in-out infinite alternate;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8) !important;
 }
 
-@keyframes buttonPulse {
-  0%, 100% { box-shadow: 0 8px 25px rgba(66, 153, 225, 0.6); }
-  50% { box-shadow: 0 8px 35px rgba(0, 212, 255, 0.8); }
+@keyframes buttonGlow {
+  0% { 
+    box-shadow: 0 8px 25px rgba(66, 153, 225, 0.6), 0 0 30px rgba(0, 212, 255, 0.8), inset 0 0 20px rgba(255, 255, 255, 0.1);
+  }
+  100% { 
+    box-shadow: 0 12px 35px rgba(66, 153, 225, 0.8), 0 0 50px rgba(0, 212, 255, 1), inset 0 0 30px rgba(255, 255, 255, 0.2);
+  }
 }
 
 /* Primary buttons with different gradient */
@@ -225,122 +290,71 @@ input[type="button"]:hover {
 
 .btn-primary:hover,
 .btn.primary:hover {
-  box-shadow: 0 8px 25px rgba(159, 122, 234, 0.6) !important;
+  box-shadow: 
+    0 8px 25px rgba(159, 122, 234, 0.6),
+    0 0 30px rgba(159, 122, 234, 0.8),
+    inset 0 0 20px rgba(255, 255, 255, 0.1) !important;
 }
 
-/* Glowing input fields */
-input[type="text"],
-input[type="email"],
-input[type="password"],
-textarea,
-select {
-  background: rgba(37, 43, 61, 0.8) !important;
-  border: 2px solid var(--gaming-border) !important;
-  border-radius: 8px !important;
-  color: var(--gaming-text) !important;
-  padding: 12px 16px !important;
+/* Shining group profile picture border */
+.group-profile-pic,
+.group-avatar,
+img[class*="group"],
+.profile-pic,
+.profile-image {
+  border: 4px solid transparent !important;
+  border-radius: 50% !important;
+  background: linear-gradient(45deg, var(--gaming-cyan), var(--gaming-blue), var(--gaming-purple), var(--gaming-cyan)) !important;
+  background-size: 300% 300% !important;
+  padding: 4px !important;
+  box-shadow: 
+    0 0 20px rgba(0, 212, 255, 0.6),
+    0 0 40px rgba(66, 153, 225, 0.4),
+    inset 0 0 20px rgba(255, 255, 255, 0.1) !important;
   transition: all 0.4s ease !important;
-  font-size: 14px !important;
-}
-
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus,
-textarea:focus,
-select:focus {
-  border-color: var(--gaming-cyan) !important;
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3) !important;
-  outline: none !important;
-  background: rgba(37, 43, 61, 1) !important;
-  transform: scale(1.02) !important;
-}
-
-/* Animated tables */
-table {
-  background: var(--gaming-secondary) !important;
-  border-radius: 12px !important;
-  overflow: hidden !important;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4) !important;
-  border-collapse: separate !important;
-  border-spacing: 0 !important;
-}
-
-thead,
-.table-header {
-  background: linear-gradient(90deg, var(--gaming-blue), var(--gaming-purple)) !important;
+  animation: profileShine 3s linear infinite;
   position: relative !important;
 }
 
-thead::after,
-.table-header::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, var(--gaming-cyan), var(--gaming-blue));
-  animation: tableGlow 2s ease-in-out infinite alternate;
+@keyframes profileShine {
+  0% { 
+    background-position: 0% 50%;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.6), 0 0 40px rgba(66, 153, 225, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.1);
+  }
+  50% { 
+    background-position: 100% 50%;
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.8), 0 0 60px rgba(159, 122, 234, 0.6), inset 0 0 30px rgba(255, 255, 255, 0.2);
+  }
+  100% { 
+    background-position: 0% 50%;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.6), 0 0 40px rgba(66, 153, 225, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.1);
+  }
 }
 
-@keyframes tableGlow {
-  0% { opacity: 0.5; }
-  100% { opacity: 1; }
+.group-profile-pic:hover,
+.group-avatar:hover,
+.profile-pic:hover,
+.profile-image:hover {
+  transform: scale(1.1) rotate(5deg) !important;
+  box-shadow: 
+    0 0 40px rgba(0, 212, 255, 0.8),
+    0 0 80px rgba(66, 153, 225, 0.6),
+    inset 0 0 40px rgba(255, 255, 255, 0.3) !important;
+  animation: profileHover 0.6s ease-in-out infinite alternate;
 }
 
-th {
-  color: white !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 1px !important;
-  padding: 15px !important;
+@keyframes profileHover {
+  0% { filter: brightness(1.1) saturate(1.2); }
+  100% { filter: brightness(1.3) saturate(1.4); }
 }
 
-td {
-  color: var(--gaming-text) !important;
-  padding: 12px 15px !important;
-  transition: all 0.3s ease !important;
-}
-
-tr:hover {
-  background: linear-gradient(90deg, var(--gaming-hover), transparent) !important;
-  transform: scale(1.01) !important;
-}
-
-/* Enhanced links with glow effect */
-a {
-  color: var(--gaming-cyan) !important;
-  text-decoration: none !important;
-  transition: all 0.3s ease !important;
-  position: relative !important;
-}
-
-a::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--gaming-cyan), var(--gaming-blue));
-  transition: width 0.3s ease;
-}
-
-a:hover::after {
-  width: 100%;
-}
-
-a:hover {
-  color: var(--gaming-blue) !important;
-  text-shadow: 0 0 10px var(--gaming-glow) !important;
-  transform: translateY(-1px) !important;
-}
-
-/* Animated headings */
+/* Gaming font for headings */
 h1, h2, h3, h4, h5, h6 {
+  font-family: 'Orbitron', 'Rajdhani', sans-serif !important;
   color: var(--gaming-text) !important;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important;
   position: relative !important;
+  font-weight: 700 !important;
 }
 
 h1 {
@@ -357,86 +371,145 @@ h1 {
   50% { background-position: 100% 50%; }
 }
 
-/* Enhanced sidebar */
-.sidebar,
-aside,
-.side-panel {
-  background: linear-gradient(180deg, var(--gaming-secondary), var(--gaming-accent)) !important;
-  border-radius: 12px !important;
-  border: 1px solid var(--gaming-border) !important;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3) !important;
-  animation: slideInRight 0.6s ease-out;
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* Chat enhancements */
-.chat-container,
-.message-box,
-div[class*="chat"] {
-  background: linear-gradient(180deg, var(--gaming-secondary), var(--gaming-accent)) !important;
-  border-radius: 12px !important;
-  border: 1px solid var(--gaming-border) !important;
-  animation: fadeInUp 0.5s ease-out;
-}
-
-.message,
-.chat-message {
-  border-left: 3px solid var(--gaming-cyan) !important;
-  background: linear-gradient(90deg, rgba(0, 212, 255, 0.1), transparent) !important;
-  margin: 6px 0 !important;
-  padding: 10px 15px !important;
+/* Glowing input fields with enhanced animations */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+  background: rgba(37, 43, 61, 0.8) !important;
+  border: 2px solid var(--gaming-border) !important;
   border-radius: 8px !important;
-  transition: all 0.3s ease !important;
-  animation: messageSlide 0.4s ease-out;
+  color: var(--gaming-text) !important;
+  padding: 12px 16px !important;
+  transition: all 0.4s ease !important;
+  font-size: 14px !important;
+  font-family: 'Rajdhani', sans-serif !important;
+  position: relative !important;
 }
 
-@keyframes messageSlide {
-  from {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--gaming-cyan) !important;
+  box-shadow: 
+    0 0 20px rgba(0, 212, 255, 0.4),
+    0 0 40px rgba(66, 153, 225, 0.2),
+    inset 0 0 10px rgba(0, 212, 255, 0.1) !important;
+  outline: none !important;
+  background: rgba(37, 43, 61, 1) !important;
+  transform: scale(1.02) !important;
+  animation: inputGlow 2s ease-in-out infinite alternate;
 }
 
-.message:hover,
-.chat-message:hover {
-  background: linear-gradient(90deg, rgba(0, 212, 255, 0.2), transparent) !important;
-  transform: translateX(5px) !important;
+@keyframes inputGlow {
+  0% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.4), 0 0 40px rgba(66, 153, 225, 0.2), inset 0 0 10px rgba(0, 212, 255, 0.1); }
+  100% { box-shadow: 0 0 30px rgba(0, 212, 255, 0.6), 0 0 60px rgba(66, 153, 225, 0.4), inset 0 0 20px rgba(0, 212, 255, 0.2); }
 }
 
-/* Glowing avatars */
+/* Enhanced avatars with more animations */
 .avatar,
 .user-avatar,
 img[class*="avatar"] {
-  border: 3px solid var(--gaming-cyan) !important;
+  border: 3px solid transparent !important;
   border-radius: 50% !important;
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.5) !important;
-  transition: all 0.3s ease !important;
+  background: linear-gradient(45deg, var(--gaming-cyan), var(--gaming-blue)) !important;
+  padding: 2px !important;
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.5) !important;
+  transition: all 0.4s ease !important;
   animation: avatarGlow 3s ease-in-out infinite alternate;
 }
 
 @keyframes avatarGlow {
-  0% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.5); }
-  100% { box-shadow: 0 0 30px rgba(66, 153, 225, 0.8); }
+  0% { 
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+    filter: brightness(1);
+  }
+  100% { 
+    box-shadow: 0 0 25px rgba(66, 153, 225, 0.8);
+    filter: brightness(1.1);
+  }
 }
 
 .avatar:hover,
 .user-avatar:hover {
-  transform: scale(1.1) !important;
-  box-shadow: 0 0 40px rgba(0, 212, 255, 0.8) !important;
+  transform: scale(1.15) rotate(-5deg) !important;
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.8) !important;
+  animation: avatarSpin 2s ease-in-out infinite;
+}
+
+@keyframes avatarSpin {
+  0%, 100% { transform: scale(1.15) rotate(-5deg); }
+  50% { transform: scale(1.2) rotate(5deg); }
+}
+
+/* Enhanced links with more effects */
+a {
+  color: var(--gaming-cyan) !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+  font-family: 'Rajdhani', sans-serif !important;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gaming-cyan), var(--gaming-blue));
+  transition: width 0.4s ease;
+  box-shadow: 0 0 5px rgba(0, 212, 255, 0.5);
+}
+
+a:hover::after {
+  width: 100%;
+  animation: linkGlow 1s ease-in-out infinite alternate;
+}
+
+@keyframes linkGlow {
+  0% { box-shadow: 0 0 5px rgba(0, 212, 255, 0.5); }
+  100% { box-shadow: 0 0 15px rgba(0, 212, 255, 0.8); }
+}
+
+a:hover {
+  color: var(--gaming-blue) !important;
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.6) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* More loading animations */
+.loading,
+.spinner {
+  animation: 
+    spin 1s linear infinite, 
+    colorShift 2s ease-in-out infinite,
+    pulse 1.5s ease-in-out infinite alternate !important;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes colorShift {
+  0%, 100% { filter: hue-rotate(0deg); }
+  50% { filter: hue-rotate(180deg); }
+}
+
+@keyframes pulse {
+  0% { 
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  100% { 
+    opacity: 1;
+    transform: scale(1.1);
+  }
 }
 
 /* Enhanced scrollbars */
@@ -453,71 +526,40 @@ img[class*="avatar"] {
   background: linear-gradient(180deg, var(--gaming-blue), var(--gaming-cyan)) !important;
   border-radius: 6px !important;
   border: 2px solid var(--gaming-primary) !important;
+  animation: scrollbarGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes scrollbarGlow {
+  0% { box-shadow: inset 0 0 5px rgba(0, 212, 255, 0.3); }
+  100% { box-shadow: inset 0 0 15px rgba(0, 212, 255, 0.6); }
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, var(--gaming-cyan), var(--gaming-purple)) !important;
-  animation: scrollGlow 1s ease-in-out infinite alternate;
+  animation: scrollbarHover 0.5s ease-in-out infinite alternate;
 }
 
-@keyframes scrollGlow {
-  0% { box-shadow: inset 0 0 5px rgba(0, 212, 255, 0.5); }
-  100% { box-shadow: inset 0 0 15px rgba(0, 212, 255, 0.8); }
+@keyframes scrollbarHover {
+  0% { box-shadow: inset 0 0 10px rgba(0, 212, 255, 0.6); }
+  100% { box-shadow: inset 0 0 20px rgba(159, 122, 234, 0.8); }
 }
 
-/* Loading animations */
-.loading,
-.spinner {
-  animation: spin 1s linear infinite, colorShift 2s ease-in-out infinite !important;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes colorShift {
-  0%, 100% { filter: hue-rotate(0deg); }
-  50% { filter: hue-rotate(180deg); }
-}
-
-/* Page transitions */
+/* Page transitions with more effects */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(30px) scale(0.95);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
 .card,
 .panel,
 .message {
-  animation: fadeInUp 0.6s ease-out !important;
-}
-
-/* Special gaming effects for important elements */
-.featured,
-.highlighted,
-.important {
-  border: 2px solid var(--gaming-cyan) !important;
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(66, 153, 225, 0.05)) !important;
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3) !important;
-  animation: importantPulse 2s ease-in-out infinite alternate;
-}
-
-@keyframes importantPulse {
-  0% { 
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
-    border-color: var(--gaming-cyan);
-  }
-  100% { 
-    box-shadow: 0 0 30px rgba(66, 153, 225, 0.6);
-    border-color: var(--gaming-blue);
-  }
+  animation: fadeInUp 0.8s ease-out !important;
 }
 
 /* Mobile optimizations */
@@ -534,6 +576,11 @@ img[class*="avatar"] {
   
   .btn:hover,
   button:hover {
-    transform: translateY(-2px) !important;
+    transform: translateY(-2px) scale(1.02) !important;
+  }
+  
+  .group-profile-pic:hover,
+  .profile-pic:hover {
+    transform: scale(1.05) !important;
   }
 }
