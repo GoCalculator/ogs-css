@@ -1,7 +1,30 @@
-.container {
-    width: 100%; /* Ensure it fills the full width of its parent */
-    max-width: none !important; /* Removes any maximum width restriction */
-    background-image: url('https://i.ibb.co/5WQR2pdX/atlantis-nexus-nebula-black-background-digital-render-3840x2160-3704.jpg');
-    background-size: cover; /* Ensures the background covers the full container */
-    background-position: center; /* Centers the background image */
+/*
+  Author: BadukAlpha
+  Purpose: This CSS file targets elements with the 'sm' class,
+           typically the 'Leave Group' button, to either hide
+           it completely or disable its functionality.
+*/
+
+/*
+  Option 1: Make the button disappear completely.
+  This rule removes the element from the page layout entirely.
+*/
+.sm {
+  display: none !important; /* Use !important to ensure this rule overrides other styles if necessary */
 }
+
+
+/*
+  Option 2: Disable the button's function and make it look faded.
+  Uncomment the code below and comment out Option 1 to use this.
+  This makes the button visible but not clickable, which can be
+  a better user experience in some cases.
+*/
+
+/*
+.sm {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+*/
