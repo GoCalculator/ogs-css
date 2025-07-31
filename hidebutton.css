@@ -1,7 +1,3 @@
-.sm {
-    color: transparent !important;
-}
-.sm:before {
-    color: black;
-    content: "Join Group";
+.sm:contains("Leave Group") {
+    display: none !important;
 }
