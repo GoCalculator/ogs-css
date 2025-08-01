@@ -107,7 +107,7 @@
   40%, 100% { transform: rotateZ(0); }
 }
 
-/* Enhanced animated background */
+/* Enhanced animated background with Northern Lights */
 body {
   background: 
     radial-gradient(circle at 20% 20%, var(--gaming-purple) 0%, transparent 50%),
@@ -118,23 +118,101 @@ body {
   animation: gradientShift 15s ease infinite !important;
   color: var(--gaming-text) !important;
   font-family: 'Rajdhani', sans-serif !important;
+  position: relative !important;
+  overflow-x: hidden !important;
 }
 
-/* Add animated pseudo-elements for extra background effects */
+/* Northern Lights Aurora Effect */
 body::before {
   content: '';
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 120%;
   height: 100%;
   background: 
-    radial-gradient(circle at 10% 20%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(255, 20, 147, 0.1) 0%, transparent 50%);
-  animation: float 20s ease-in-out infinite;
+    linear-gradient(180deg, 
+      rgba(0, 255, 255, 0.15) 0%, 
+      rgba(0, 255, 127, 0.12) 25%, 
+      rgba(138, 43, 226, 0.1) 50%, 
+      rgba(255, 20, 147, 0.08) 75%, 
+      transparent 100%
+    );
+  transform-origin: top center;
+  animation: auroraWave 12s ease-in-out infinite, auroraSway 8s ease-in-out infinite;
   pointer-events: none;
-  z-index: -1;
+  z-index: -3;
+  opacity: 0.7;
+}
+
+/* Second Aurora Layer */
+body::after {
+  content: '';
+  position: fixed;
+  top: -10%;
+  left: -10%;
+  width: 130%;
+  height: 80%;
+  background: 
+    radial-gradient(ellipse 100% 60% at 30% 0%, 
+      rgba(0, 255, 255, 0.2) 0%, 
+      rgba(0, 191, 255, 0.15) 30%, 
+      rgba(138, 43, 226, 0.1) 60%, 
+      transparent 100%
+    ),
+    radial-gradient(ellipse 80% 40% at 70% 10%, 
+      rgba(255, 20, 147, 0.18) 0%, 
+      rgba(0, 255, 127, 0.12) 40%, 
+      transparent 80%
+    );
+  animation: auroraFloat 15s ease-in-out infinite, auroraShimmer 6s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -2;
+  filter: blur(1px);
+}
+
+@keyframes auroraWave {
+  0%, 100% {
+    transform: translateX(-5%) skewX(2deg) scaleY(1);
+    opacity: 0.7;
+  }
+  25% {
+    transform: translateX(2%) skewX(-1deg) scaleY(1.1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateX(-2%) skewX(1deg) scaleY(0.9);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translateX(3%) skewX(-2deg) scaleY(1.05);
+    opacity: 0.85;
+  }
+}
+
+@keyframes auroraSway {
+  0%, 100% { transform: rotate(-1deg); }
+  50% { transform: rotate(1deg); }
+}
+
+@keyframes auroraFloat {
+  0%, 100% {
+    transform: translateY(0%) translateX(-3%) rotate(-0.5deg);
+    opacity: 0.6;
+  }
+  33% {
+    transform: translateY(-2%) translateX(2%) rotate(0.5deg);
+    opacity: 0.8;
+  }
+  66% {
+    transform: translateY(1%) translateX(-1%) rotate(-0.3deg);
+    opacity: 0.7;
+  }
+}
+
+@keyframes auroraShimmer {
+  0%, 100% { filter: blur(1px) brightness(1); }
+  50% { filter: blur(2px) brightness(1.2); }
 }
 
 /* COMPLETE arrow removal - target all possible dropdown arrows */
