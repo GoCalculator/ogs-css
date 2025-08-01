@@ -1,5 +1,11 @@
-* {
-   background-image: url('https://i.ibb.co/5WQR2pdX/atlantis-nexus-nebula-black-background-digital-render-3840x2160-3704.jpg') !important;
-   background-size: cover !important;
-   background-position: center !important;
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url('https://i.ibb.co/5WQR2pdX/atlantis-nexus-nebula-black-background-digital-render-3840x2160-3704.jpg') center/cover no-repeat;
+    z-index: -9999;
+    pointer-events: none;
 }
