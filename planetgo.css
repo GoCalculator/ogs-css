@@ -1,4 +1,22 @@
-/* Fixed Gaming Theme CSS for Online-Go.com Group */
+/* Enhanced animated headings with light mode support */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Orbitron', monospace !important;
+  color: var(--gaming-text) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 2px !important;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8), 0 0 5px rgba(0, 255, 255, 0.4) !important;
+  animation: text-glow 3s ease-in-out infinite, fade-in-up 0.8s ease-out !important;
+  position: relative !important;
+}
+
+h1 {
+  background: linear-gradient(45deg, var(--gaming-cyan), var(--gaming-purple), var(--gaming-pink)) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  color: var(--gaming-cyan) !important;
+  animation: text-glow 2s ease-/* Fixed Gaming Theme CSS for Online-Go.com Group */
 
 /* Gaming font imports */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;400;500;600;700&display=swap');
@@ -26,15 +44,114 @@
   --gaming-shadow: rgba(0, 0, 0, 0.8);
 }
 
-/* Enhanced background with proper contrast for light mode detection */
+/* Keyframe animations */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(0, 255, 255, 0.3), 0 0 10px rgba(0, 255, 255, 0.2), 0 0 15px rgba(0, 255, 255, 0.1); }
+  50% { box-shadow: 0 0 10px rgba(0, 255, 255, 0.6), 0 0 20px rgba(0, 255, 255, 0.4), 0 0 30px rgba(0, 255, 255, 0.2); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes slide-in-left {
+  0% { transform: translateX(-100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slide-in-right {
+  0% { transform: translateX(100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fade-in-up {
+  0% { transform: translateY(30px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes rotate-border {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes neon-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+  75% { opacity: 0.9; }
+}
+
+@keyframes text-glow {
+  0%, 100% { text-shadow: 0 0 5px rgba(0, 255, 255, 0.5), 0 0 10px rgba(0, 255, 255, 0.3); }
+  50% { text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.5), 0 0 30px rgba(0, 255, 255, 0.3); }
+}
+
+@keyframes matrix-rain {
+  0% { transform: translateY(-100vh); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+@keyframes hologram-scan {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
+}
+
+@keyframes cyber-pulse {
+  0% { border-color: var(--gaming-blue); transform: scale(1); }
+  50% { border-color: var(--gaming-cyan); transform: scale(1.02); }
+  100% { border-color: var(--gaming-blue); transform: scale(1); }
+}
+
+@keyframes data-stream {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100vw); }
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+/* Enhanced animated background */
 body {
   background: 
     radial-gradient(circle at 20% 20%, var(--gaming-purple) 0%, transparent 50%),
     radial-gradient(circle at 80% 80%, var(--gaming-blue) 0%, transparent 50%),
     linear-gradient(135deg, var(--gaming-void) 0%, var(--gaming-dark) 50%, var(--gaming-primary) 100%) !important;
   background-attachment: fixed !important;
+  background-size: 400% 400% !important;
+  animation: hologram-scan 20s ease infinite !important;
   color: var(--gaming-text) !important;
   font-family: 'Rajdhani', sans-serif !important;
+  position: relative !important;
+  overflow-x: hidden !important;
+}
+
+/* Animated background particles */
+body::before {
+  content: '' !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: 
+    radial-gradient(2px 2px at 20px 30px, rgba(0, 255, 255, 0.3), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(138, 43, 226, 0.3), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(0, 191, 255, 0.3), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(255, 20, 147, 0.3), transparent),
+    radial-gradient(2px 2px at 160px 30px, rgba(0, 255, 127, 0.3), transparent) !important;
+  background-repeat: repeat !important;
+  background-size: 200px 100px !important;
+  animation: data-stream 15s linear infinite !important;
+  pointer-events: none !important;
+  z-index: -1 !important;
 }
 
 /* Light mode text fixes - ensure readability in both modes */
@@ -118,7 +235,7 @@ a.dropdown-toggle::after,
   border-right: none !important;
 }
 
-/* Header styling */
+/* Animated header styling */
 .site-header,
 header,
 .navbar,
@@ -127,9 +244,28 @@ nav {
   border-bottom: 2px solid var(--gaming-blue) !important;
   box-shadow: 0 2px 10px rgba(0, 191, 255, 0.3) !important;
   padding: 0 !important;
+  position: relative !important;
+  animation: slide-in-left 0.8s ease-out, pulse-glow 3s ease-in-out infinite !important;
+  overflow: hidden !important;
 }
 
-/* Navigation styling with proper spacing and fixed cursor issues */
+/* Animated header background effect */
+.site-header::before,
+header::before,
+.navbar::before,
+nav::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent) !important;
+  animation: data-stream 3s linear infinite !important;
+  pointer-events: none !important;
+}
+
+/* Animated navigation styling with proper spacing and fixed cursor issues */
 .navbar-nav,
 .nav,
 .site-header .nav,
@@ -141,6 +277,7 @@ header .nav {
   width: 100% !important;
   margin: 0 !important;
   padding: 0 !important;
+  animation: fade-in-up 1s ease-out 0.3s both !important;
 }
 
 .navbar-nav .nav-link,
@@ -168,12 +305,31 @@ nav > a,
   height: 40px !important;
   flex: 1 !important;
   background: rgba(45, 55, 72, 0.3) !important;
-  /* Fixed border to prevent cursor glitch */
   border: 1px solid rgba(0, 191, 255, 0.2) !important;
   cursor: pointer !important;
-  /* Prevent border flickering */
   will-change: transform, background-color, border-color !important;
   backface-visibility: hidden !important;
+  position: relative !important;
+  overflow: hidden !important;
+  animation: text-glow 4s ease-in-out infinite !important;
+}
+
+/* Animated nav link hover effect */
+.navbar-nav .nav-link::before,
+.navbar .nav-link::before,
+.site-header .nav-link::before,
+header .nav-link::before,
+nav > a::before,
+.nav > li > a::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent) !important;
+  transition: left 0.5s ease !important;
+  z-index: -1 !important;
 }
 
 .navbar-nav .nav-link:hover,
@@ -185,18 +341,44 @@ nav > a:hover,
   color: var(--gaming-cyan) !important;
   background: rgba(0, 255, 255, 0.1) !important;
   border-color: var(--gaming-cyan) !important;
-  transform: translateY(-2px) !important;
+  transform: translateY(-2px) scale(1.05) !important;
   text-shadow: 0 0 5px rgba(0, 255, 255, 0.8) !important;
   box-shadow: 0 2px 10px rgba(0, 191, 255, 0.3) !important;
+  animation: cyber-pulse 1s ease-in-out infinite !important;
 }
 
-/* Dropdown menus */
+.navbar-nav .nav-link:hover::before,
+.navbar .nav-link:hover::before,
+.site-header .nav-link:hover::before,
+header .nav-link:hover::before,
+nav > a:hover::before,
+.nav > li > a:hover::before {
+  left: 100% !important;
+}
+
+/* Animated dropdown menus */
 .dropdown-menu {
   background: linear-gradient(145deg, rgba(26, 31, 46, 0.95), rgba(37, 43, 61, 0.95)) !important;
   backdrop-filter: blur(10px) !important;
   border: 2px solid var(--gaming-blue) !important;
   border-radius: 8px !important;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5) !important;
+  animation: fade-in-up 0.3s ease-out !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.dropdown-menu::before {
+  content: '' !important;
+  position: absolute !important;
+  top: -2px !important;
+  left: -2px !important;
+  right: -2px !important;
+  bottom: -2px !important;
+  background: conic-gradient(var(--gaming-cyan), var(--gaming-purple), var(--gaming-pink), var(--gaming-cyan)) !important;
+  border-radius: 8px !important;
+  z-index: -1 !important;
+  animation: rotate-border 3s linear infinite !important;
 }
 
 .dropdown-item {
@@ -204,16 +386,35 @@ nav > a:hover,
   font-family: 'Rajdhani', sans-serif !important;
   font-weight: 400 !important;
   padding: 8px 16px !important;
-  transition: all 0.2s ease !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.dropdown-item::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent) !important;
+  transition: left 0.3s ease !important;
+  z-index: -1 !important;
 }
 
 .dropdown-item:hover {
   background: rgba(0, 255, 255, 0.1) !important;
   color: var(--gaming-cyan) !important;
-  transform: translateX(5px) !important;
+  transform: translateX(5px) scale(1.02) !important;
+  animation: neon-flicker 2s ease-in-out infinite !important;
 }
 
-/* Card styling with fixed border behavior */
+.dropdown-item:hover::before {
+  left: 100% !important;
+}
+
+/* Animated card styling with fixed border behavior */
 .card,
 .panel,
 .group-card,
@@ -223,22 +424,53 @@ div[class*="card"] {
   border: 2px solid rgba(0, 191, 255, 0.3) !important;
   border-radius: 12px !important;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
-  transition: all 0.3s ease !important;
+  transition: all 0.4s ease !important;
   position: relative !important;
-  /* Prevent border flickering */
   will-change: transform, box-shadow, border-color !important;
   backface-visibility: hidden !important;
+  animation: fade-in-up 0.6s ease-out !important;
+  overflow: hidden !important;
+}
+
+.card::before,
+.panel::before,
+.group-card::before,
+div[class*="card"]::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: linear-gradient(45deg, transparent 30%, rgba(0, 255, 255, 0.05) 50%, transparent 70%) !important;
+  opacity: 0 !important;
+  transition: opacity 0.3s ease !important;
+  pointer-events: none !important;
 }
 
 .card:hover,
 .panel:hover,
 .group-card:hover {
-  transform: translateY(-5px) !important;
-  box-shadow: 0 8px 25px rgba(0, 191, 255, 0.2) !important;
+  transform: translateY(-10px) rotateX(5deg) !important;
+  box-shadow: 0 15px 35px rgba(0, 191, 255, 0.3), 0 5px 15px rgba(0, 0, 0, 0.2) !important;
   border-color: var(--gaming-cyan) !important;
+  animation: float 2s ease-in-out infinite, pulse-glow 2s ease-in-out infinite !important;
 }
 
-/* Simplified button styling with cursor fix */
+.card:hover::before,
+.panel:hover::before,
+.group-card:hover::before {
+  opacity: 1 !important;
+}
+
+/* Staggered card animations */
+.card:nth-child(1), .panel:nth-child(1), div[class*="card"]:nth-child(1) { animation-delay: 0s !important; }
+.card:nth-child(2), .panel:nth-child(2), div[class*="card"]:nth-child(2) { animation-delay: 0.1s !important; }
+.card:nth-child(3), .panel:nth-child(3), div[class*="card"]:nth-child(3) { animation-delay: 0.2s !important; }
+.card:nth-child(4), .panel:nth-child(4), div[class*="card"]:nth-child(4) { animation-delay: 0.3s !important; }
+.card:nth-child(5), .panel:nth-child(5), div[class*="card"]:nth-child(5) { animation-delay: 0.4s !important; }
+
+/* Animated button styling with cursor fix */
 button,
 input[type="submit"],
 input[type="button"],
@@ -256,7 +488,7 @@ input[type="button"],
   margin: 2px !important;
   min-height: 34px !important;
   min-width: 80px !important;
-  transition: all 0.2s ease !important;
+  transition: all 0.3s ease !important;
   cursor: pointer !important;
   text-decoration: none !important;
   display: inline-flex !important;
@@ -265,21 +497,54 @@ input[type="button"],
   text-align: center !important;
   line-height: 1.2 !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
-  /* Prevent border flickering */
   will-change: transform, background, border-color !important;
   backface-visibility: hidden !important;
+  position: relative !important;
+  overflow: hidden !important;
+  animation: fade-in-up 0.5s ease-out !important;
+}
+
+button::before,
+input[type="submit"]::before,
+input[type="button"]::before,
+.btn::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent) !important;
+  transition: left 0.6s ease !important;
+  z-index: 0 !important;
 }
 
 button:hover,
 input[type="submit"]:hover,
 input[type="button"]:hover,
 .btn:hover {
-  transform: translateY(-2px) !important;
+  transform: translateY(-3px) scale(1.05) !important;
   background: linear-gradient(135deg, rgba(0, 255, 255, 0.8), rgba(138, 43, 226, 0.8)) !important;
   color: var(--gaming-text) !important;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5) !important;
-  box-shadow: 0 4px 15px rgba(0, 191, 255, 0.4) !important;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8) !important;
+  box-shadow: 0 6px 20px rgba(0, 191, 255, 0.5), 0 0 30px rgba(0, 255, 255, 0.3) !important;
   border-color: var(--gaming-cyan) !important;
+  animation: pulse-glow 1s ease-in-out infinite, neon-flicker 3s ease-in-out infinite !important;
+}
+
+button:hover::before,
+input[type="submit"]:hover::before,
+input[type="button"]:hover::before,
+.btn:hover::before {
+  left: 100% !important;
+}
+
+button:active,
+input[type="submit"]:active,
+input[type="button"]:active,
+.btn:active {
+  transform: translateY(-1px) scale(0.98) !important;
+  animation: glitch 0.3s ease-in-out !important;
 }
 
 /* Hide duplicate cancel buttons - keep only the working one */
@@ -299,7 +564,7 @@ div[class*="button"]:has(button:contains("Cancel")) button:nth-child(2) {
   display: none !important;
 }
 
-/* Enhanced headings with light mode support */
+/* Enhanced animated headings with light mode support */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Orbitron', monospace !important;
   color: var(--gaming-text) !important;
@@ -307,18 +572,29 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase !important;
   letter-spacing: 2px !important;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8), 0 0 5px rgba(0, 255, 255, 0.4) !important;
+  animation: text-glow 3s ease-in-out infinite, fade-in-up 0.8s ease-out !important;
+  position: relative !important;
 }
 
 h1 {
   background: linear-gradient(45deg, var(--gaming-cyan), var(--gaming-purple), var(--gaming-pink)) !important;
+  background-size: 200% 200% !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   background-clip: text !important;
-  /* Fallback for better compatibility */
   color: var(--gaming-cyan) !important;
+  animation: text-glow 2s ease-in-out infinite, hologram-scan 4s ease-in-out infinite, float 3s ease-in-out infinite !important;
 }
 
-/* Input field styling */
+h2, h3 {
+  animation: neon-flicker 4s ease-in-out infinite, fade-in-up 0.9s ease-out !important;
+}
+
+h4, h5, h6 {
+  animation: text-glow 5s ease-in-out infinite, fade-in-up 1s ease-out !important;
+}
+
+/* Animated input field styling */
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -334,8 +610,10 @@ select {
   font-size: 14px !important;
   padding: 10px 14px !important;
   margin: 2px 0 !important;
-  transition: all 0.3s ease !important;
+  transition: all 0.4s ease !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+  position: relative !important;
+  animation: fade-in-up 0.6s ease-out !important;
 }
 
 input[type="text"]:focus,
@@ -346,10 +624,29 @@ select:focus {
   outline: none !important;
   border-color: var(--gaming-cyan) !important;
   color: var(--gaming-text) !important;
-  box-shadow: 0 4px 12px rgba(0, 255, 255, 0.3) !important;
+  box-shadow: 0 4px 12px rgba(0, 255, 255, 0.3), 0 0 20px rgba(0, 255, 255, 0.1) !important;
+  transform: scale(1.02) !important;
+  animation: pulse-glow 2s ease-in-out infinite !important;
 }
 
-/* Profile picture styling with cursor fix */
+/* Animated placeholder effect */
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="password"]::placeholder,
+textarea::placeholder {
+  color: rgba(176, 196, 222, 0.6) !important;
+  transition: all 0.3s ease !important;
+}
+
+input[type="text"]:focus::placeholder,
+input[type="email"]:focus::placeholder,
+input[type="password"]:focus::placeholder,
+textarea:focus::placeholder {
+  color: transparent !important;
+  transform: translateY(-20px) !important;
+}
+
+/* Animated profile picture styling with cursor fix */
 .group-profile-pic,
 .group-avatar,
 img[class*="group"],
@@ -358,23 +655,50 @@ img[class*="group"],
   border: 3px solid var(--gaming-blue) !important;
   border-radius: 50% !important;
   padding: 2px !important;
-  transition: all 0.3s ease !important;
+  transition: all 0.4s ease !important;
   box-shadow: 0 0 15px rgba(0, 255, 255, 0.4) !important;
-  /* Prevent border flickering */
   will-change: transform, border-color, box-shadow !important;
   backface-visibility: hidden !important;
+  position: relative !important;
+  animation: pulse-glow 4s ease-in-out infinite !important;
+}
+
+.group-profile-pic::before,
+.group-avatar::before,
+.profile-pic::before,
+.profile-image::before {
+  content: '' !important;
+  position: absolute !important;
+  top: -5px !important;
+  left: -5px !important;
+  right: -5px !important;
+  bottom: -5px !important;
+  border-radius: 50% !important;
+  background: conic-gradient(var(--gaming-cyan), var(--gaming-purple), var(--gaming-pink), var(--gaming-cyan)) !important;
+  z-index: -1 !important;
+  opacity: 0 !important;
+  transition: opacity 0.3s ease !important;
+  animation: rotate-border 3s linear infinite !important;
 }
 
 .group-profile-pic:hover,
 .group-avatar:hover,
 .profile-pic:hover,
 .profile-image:hover {
-  transform: scale(1.1) !important;
+  transform: scale(1.15) rotate(5deg) !important;
   border-color: var(--gaming-cyan) !important;
-  box-shadow: 0 0 25px rgba(0, 255, 255, 0.6) !important;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.8), 0 0 50px rgba(0, 255, 255, 0.4) !important;
+  animation: float 1s ease-in-out infinite, neon-flicker 2s ease-in-out infinite !important;
 }
 
-/* Avatar styling with cursor fix */
+.group-profile-pic:hover::before,
+.group-avatar:hover::before,
+.profile-pic:hover::before,
+.profile-image:hover::before {
+  opacity: 1 !important;
+}
+
+/* Animated avatar styling with cursor fix */
 .avatar,
 .user-avatar,
 img[class*="avatar"]:not([class*="group"]):not(.profile-pic):not(.profile-image) {
@@ -383,55 +707,53 @@ img[class*="avatar"]:not([class*="group"]):not(.profile-pic):not(.profile-image)
   padding: 1px !important;
   transition: all 0.3s ease !important;
   box-shadow: 0 0 10px rgba(0, 255, 255, 0.3) !important;
-  /* Prevent border flickering */
   will-change: transform, border-color, box-shadow !important;
   backface-visibility: hidden !important;
+  animation: text-glow 5s ease-in-out infinite !important;
 }
 
 .avatar:hover,
 .user-avatar:hover {
-  transform: scale(1.15) !important;
+  transform: scale(1.2) rotate(-5deg) !important;
   border-color: var(--gaming-cyan) !important;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5) !important;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.6) !important;
+  animation: cyber-pulse 1s ease-in-out infinite !important;
 }
 
-/* Link styling */
+/* Animated link styling */
 a:not(.nav-link):not(.dropdown-toggle):not(.btn) {
   color: var(--gaming-cyan) !important;
   font-family: 'Rajdhani', sans-serif !important;
   font-weight: 500 !important;
   text-decoration: none !important;
-  transition: all 0.2s ease !important;
+  transition: all 0.3s ease !important;
   position: relative !important;
+  display: inline-block !important;
+}
+
+a:not(.nav-link):not(.dropdown-toggle):not(.btn)::before {
+  content: '' !important;
+  position: absolute !important;
+  bottom: -2px !important;
+  left: 0 !important;
+  width: 0 !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, var(--gaming-cyan), var(--gaming-purple)) !important;
+  transition: width 0.3s ease !important;
 }
 
 a:not(.nav-link):not(.dropdown-toggle):not(.btn):hover {
   color: var(--gaming-text) !important;
-  text-shadow: 0 0 5px rgba(0, 255, 255, 0.6) !important;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.8) !important;
+  transform: translateY(-2px) !important;
+  animation: neon-flicker 2s ease-in-out infinite !important;
 }
 
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 12px !important;
-  background: var(--gaming-dark) !important;
+a:not(.nav-link):not(.dropdown-toggle):not(.btn):hover::before {
+  width: 100% !important;
 }
 
-::-webkit-scrollbar-track {
-  background: rgba(26, 31, 46, 0.8) !important;
-  border-radius: 6px !important;
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--gaming-cyan), var(--gaming-blue)) !important;
-  border-radius: 6px !important;
-  border: 1px solid var(--gaming-primary) !important;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, var(--gaming-blue), var(--gaming-purple)) !important;
-}
-
-/* Table styling */
+/* Animated table styling */
 table {
   background: linear-gradient(145deg, rgba(26, 31, 46, 0.95), rgba(37, 43, 61, 0.95)) !important;
   backdrop-filter: blur(10px) !important;
@@ -441,11 +763,26 @@ table {
   border-spacing: 0 !important;
   overflow: hidden !important;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+  animation: fade-in-up 0.8s ease-out !important;
+  position: relative !important;
+}
+
+table::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent) !important;
+  animation: data-stream 4s linear infinite !important;
+  pointer-events: none !important;
 }
 
 thead,
 .table-header {
   background: linear-gradient(90deg, var(--gaming-blue), var(--gaming-purple)) !important;
+  animation: pulse-glow 3s ease-in-out infinite !important;
 }
 
 th {
@@ -457,6 +794,7 @@ th {
   letter-spacing: 1px !important;
   padding: 12px 10px !important;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8) !important;
+  animation: text-glow 4s ease-in-out infinite !important;
 }
 
 td {
@@ -466,16 +804,33 @@ td {
   font-size: 13px !important;
   padding: 10px !important;
   border-bottom: 1px solid rgba(0, 191, 255, 0.2) !important;
-  transition: all 0.2s ease !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+}
+
+td::before {
+  content: '' !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  width: 0 !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent) !important;
+  transition: width 0.3s ease !important;
 }
 
 tr:hover {
-  background: rgba(0, 255, 255, 0.05) !important;
-  transform: translateX(3px) !important;
+  background: rgba(0, 255, 255, 0.08) !important;
+  transform: translateX(5px) scale(1.01) !important;
+  animation: cyber-pulse 1s ease-in-out infinite !important;
 }
 
 tr:hover td {
   color: var(--gaming-text) !important;
+}
+
+tr:hover td::before {
+  width: 100% !important;
 }
 
 /* Footer styling */
