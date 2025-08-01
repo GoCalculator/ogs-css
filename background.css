@@ -1,7 +1,9 @@
 .container {
-    width: 100%; /* Ensure it fills the full width of its parent */
-    max-width: none !important; /* Removes any maximum width restriction */
-    background-image: url('https://i.ibb.co/5WQR2pdX/atlantis-nexus-nebula-black-background-digital-render-3840x2160-3704.jpg');
-    background-size: cover; /* Ensures the background covers the full container */
-    background-position: center; /* Centers the background image */
+    width: 100% !important;
+    max-width: none !important;
+    background-image: url('https://i.ibb.co/5WQR2pdX/atlantis-nexus-nebula-black-background-digital-render-3840x2160-3704.jpg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important; /* Optional: keeps background fixed during scroll */
 }
