@@ -1,1 +1,919 @@
+/* Enhanced Gaming Theme CSS for Online-Go.com Group with Animations and Skin Toggle */
 
+/* Gaming font imports */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+/* Gaming color palette */
+:root {
+  --gaming-void: #000000;
+  --gaming-dark: #0a0e1a;
+  --gaming-primary: #1a1f2e;
+  --gaming-secondary: #252b3d;
+  --gaming-accent: #2d3748;
+  --gaming-blue: #00bfff;
+  --gaming-cyan: #00ffff;
+  --gaming-purple: #8a2be2;
+  --gaming-pink: #ff1493;
+  --gaming-green: #00ff7f;
+  --gaming-orange: #ff4500;
+  --gaming-text: #ffffff;
+  --gaming-text-bright: #f0f8ff;
+  --gaming-text-dim: #b0c4de;
+  --gaming-border: #4169e1;
+  --gaming-hover: rgba(0, 191, 255, 0.2);
+  --gaming-glow: rgba(0, 255, 255, 0.6);
+  --gaming-shadow: rgba(0, 0, 0, 0.8);
+}
+
+/* Skin Toggle Button - Fixed Position */
+.skin-toggle {
+  position: fixed !important;
+  top: 20px !important;
+  right: 20px !important;
+  z-index: 9999 !important;
+  background: linear-gradient(135deg, var(--gaming-blue), var(--gaming-purple)) !important;
+  border: 2px solid var(--gaming-cyan) !important;
+  border-radius: 25px !important;
+  color: var(--gaming-text) !important;
+  font-family: 'Rajdhani', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+  padding: 8px 16px !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3) !important;
+  animation: pulseGlow 3s ease-in-out infinite !important;
+}
+
+.skin-toggle:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 6px 20px rgba(0, 255, 255, 0.5) !important;
+  background: linear-gradient(135deg, var(--gaming-cyan), var(--gaming-pink)) !important;
+}
+
+/* Create the skin toggle button dynamically */
+body::before {
+  content: "🎮 PlanetGo Skin" !important;
+  position: fixed !important;
+  top: 20px !important;
+  right: 20px !important;
+  z-index: 9999 !important;
+  background: linear-gradient(135deg, var(--gaming-blue), var(--gaming-purple)) !important;
+  border: 2px solid var(--gaming-cyan) !important;
+  border-radius: 25px !important;
+  color: var(--gaming-text) !important;
+  font-family: 'Rajdhani', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+  padding: 8px 16px !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3) !important;
+  animation: pulseGlow 3s ease-in-out infinite !important;
+  pointer-events: auto !important;
+}
+
+/* Keyframe Animations */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3) !important;
+  }
+  50% {
+    box-shadow: 0 6px 25px rgba(0, 255, 255, 0.6) !important;
+  }
+}
+
+@keyframes rainbowBorder {
+  0% { border-color: #ff0000; }
+  16.66% { border-color: #ff8000; }
+  33.33% { border-color: #ffff00; }
+  50% { border-color: #00ff00; }
+  66.66% { border-color: #0080ff; }
+  83.33% { border-color: #8000ff; }
+  100% { border-color: #ff0000; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes slideIn {
+  from { 
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes subtleGlow {
+  0%, 100% { 
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8), 0 0 5px rgba(0, 255, 255, 0.2);
+  }
+  50% { 
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 255, 255, 0.4);
+  }
+}
+
+@keyframes cardHover {
+  0% { transform: translateY(0px) scale(1); }
+  100% { transform: translateY(-5px) scale(1.02); }
+}
+
+@keyframes buttonPress {
+  0% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(1px) scale(0.98); }
+  100% { transform: translateY(-2px) scale(1.02); }
+}
+
+/* Enhanced background with animation */
+body {
+  background: 
+    radial-gradient(circle at 20% 20%, var(--gaming-purple) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, var(--gaming-blue) 0%, transparent 50%),
+    linear-gradient(135deg, var(--gaming-void) 0%, var(--gaming-dark) 50%, var(--gaming-primary) 100%) !important;
+  background-attachment: fixed !important;
+  background-size: 100% 100%, 100% 100%, 100% 100% !important;
+  color: var(--gaming-text) !important;
+  font-family: 'Rajdhani', sans-serif !important;
+  animation: fadeInUp 0.8s ease-out !important;
+}
+
+/* COMPLETE arrow removal - target all possible dropdown arrows */
+.dropdown-toggle::after,
+.nav-link::after,
+.navbar-nav .dropdown-toggle::after,
+.btn-group .dropdown-toggle::after,
+[data-toggle="dropdown"]::after,
+.dropdown > a::after,
+.dropdown > button::after,
+.dropup .dropdown-toggle::after,
+.navbar-nav .nav-link.dropdown-toggle::after,
+button.dropdown-toggle::after,
+a.dropdown-toggle::after,
+*[class*="dropdown"]::after {
+  display: none !important;
+  content: '' !important;
+  width: 0 !important;
+  height: 0 !important;
+  border: 0 !important;
+  margin: 0 !important;
+  vertical-align: 0 !important;
+}
+
+/* Remove all possible arrow borders */
+.dropdown-toggle,
+.dropdown-toggle::before,
+.dropdown-toggle::after,
+.nav-link,
+.navbar-nav .dropdown-toggle,
+.btn-group .dropdown-toggle,
+[data-toggle="dropdown"],
+.dropdown > a,
+.dropdown > button {
+  border-top: none !important;
+  border-bottom: none !important;
+  border-left: none !important;
+  border-right: none !important;
+}
+
+/* Header styling with animation */
+.site-header,
+header,
+.navbar,
+nav {
+  background: linear-gradient(90deg, var(--gaming-primary), var(--gaming-secondary), var(--gaming-primary)) !important;
+  border-bottom: 2px solid var(--gaming-blue) !important;
+  box-shadow: 0 2px 10px rgba(0, 191, 255, 0.3) !important;
+  padding: 0 !important;
+  animation: slideIn 0.6s ease-out !important;
+}
+
+/* Navigation styling with proper spacing and animations */
+.navbar-nav,
+.nav,
+.site-header .nav,
+header .nav {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-evenly !important;
+  gap: 0 !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.navbar-nav .nav-link,
+.navbar .nav-link,
+.site-header .nav-link,
+header .nav-link,
+nav > a,
+.nav > li > a {
+  color: var(--gaming-text-bright) !important;
+  font-family: 'Rajdhani', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  padding: 10px 15px !important;
+  margin: 0 !important;
+  border-radius: 6px !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  line-height: 1.2 !important;
+  height: 40px !important;
+  flex: 1 !important;
+  background: rgba(45, 55, 72, 0.3) !important;
+  border: 1px solid rgba(0, 191, 255, 0.2) !important;
+  animation: fadeInUp 0.4s ease-out !important;
+  animation-fill-mode: both !important;
+}
+
+.navbar-nav .nav-link:nth-child(1) { animation-delay: 0.1s !important; }
+.navbar-nav .nav-link:nth-child(2) { animation-delay: 0.2s !important; }
+.navbar-nav .nav-link:nth-child(3) { animation-delay: 0.3s !important; }
+.navbar-nav .nav-link:nth-child(4) { animation-delay: 0.4s !important; }
+.navbar-nav .nav-link:nth-child(5) { animation-delay: 0.5s !important; }
+
+.navbar-nav .nav-link:hover,
+.navbar .nav-link:hover,
+.site-header .nav-link:hover,
+header .nav-link:hover,
+nav > a:hover,
+.nav > li > a:hover {
+  color: var(--gaming-cyan) !important;
+  background: rgba(0, 255, 255, 0.1) !important;
+  border-color: var(--gaming-cyan) !important;
+  transform: translateY(-2px) scale(1.02) !important;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.8) !important;
+  box-shadow: 0 2px 10px rgba(0, 191, 255, 0.3) !important;
+  animation: subtleGlow 2s ease-in-out infinite !important;
+}
+
+/* Dropdown menus with animations */
+.dropdown-menu {
+  background: linear-gradient(145deg, rgba(26, 31, 46, 0.95), rgba(37, 43, 61, 0.95)) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 2px solid var(--gaming-blue) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5) !important;
+  animation: fadeInUp 0.3s ease-out !important;
+}
+
+.dropdown-item {
+  color: var(--gaming-text-bright) !important;
+  font-family: 'Rajdhani', sans-serif !important;
+  font-weight: 400 !important;
+  padding: 8px 16px !important;
+  transition: all 0.2s ease !important;
+}
+
+.dropdown-item:hover {
+  background: rgba(0, 255, 255, 0.1) !important;
+  color: var(--gaming-cyan) !important;
+  transform: translateX(5px) !important;
+  animation: shimmer 1.5s ease-in-out infinite !important;
+  background-size: 200% 100% !important;
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 255, 255, 0.1),
+    transparent
+  ) !important;
+}
+
+/* Card styling with enhanced animations */
+.card,
+.panel,
+.group-card,
+div[class*="card"] {
+  background: linear-gradient(145deg, rgba(37, 43, 61, 0.9), rgba(45, 55, 72, 0.9)) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 2px solid rgba(0, 191, 255, 0.3) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative !important;
+  animation: fadeInUp 0.6s ease-out !important;
+}
+
+.card:hover,
+.panel:hover,
+.group-card:hover {
+  animation: cardHover 0.3s ease-out forwards !important;
+  box-shadow: 0 8px 25px rgba(0, 191, 255, 0.2) !important;
+  border-color: var(--gaming-cyan) !important;
+}
+
+/* Enhanced button styling with animations */
+button,
+input[type="submit"],
+input[type="button"],
+.btn {
+  background: linear-gradient(135deg, rgba(0, 191, 255, 0.7), rgba(138, 43, 226, 0.7)) !important;
+  border: 1px solid var(--gaming-blue) !important;
+  border-radius: 6px !important;
+  color: var(--gaming-text) !important;
+  font-family: 'Rajdhani', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  padding: 8px 16px !important;
+  margin: 2px !important;
+  min-height: 34px !important;
+  min-width: 80px !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  line-height: 1.2 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+  animation: fadeInUp 0.4s ease-out !important;
+}
+
+button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover,
+.btn:hover {
+  animation: buttonPress 0.3s ease-out forwards !important;
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.8), rgba(138, 43, 226, 0.8)) !important;
+  color: var(--gaming-text) !important;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5) !important;
+  box-shadow: 0 4px 15px rgba(0, 191, 255, 0.4) !important;
+  border-color: var(--gaming-cyan) !important;
+}
+
+button:active,
+input[type="submit"]:active,
+input[type="button"]:active,
+.btn:active {
+  transform: translateY(1px) scale(0.98) !important;
+}
+
+/* Hide duplicate cancel buttons */
+button:contains("Cancel"):not(:last-child),
+.btn:contains("Cancel"):not(:last-child),
+input[value*="Cancel"]:not(:last-child) {
+  display: none !important;
+}
+
+.challenge-buttons button:nth-child(1),
+.challenge-buttons button:nth-child(2),
+.modal-footer button:nth-child(1):contains("Cancel"),
+.modal-footer button:nth-child(2):contains("Cancel"),
+div[class*="button"]:has(button:contains("Cancel")) button:nth-child(1),
+div[class*="button"]:has(button:contains("Cancel")) button:nth-child(2) {
+  display: none !important;
+}
+
+/* Enhanced headings with animations */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Orbitron', monospace !important;
+  color: var(--gaming-text) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 2px !important;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8), 0 0 5px rgba(0, 255, 255, 0.4) !important;
+  animation: subtleGlow 3s ease-in-out infinite !important;
+}
+
+h1 {
+  background: linear-gradient(45deg, var(--gaming-cyan), var(--gaming-purple), var(--gaming-pink)) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  animation: float 4s ease-in-out infinite, subtleGlow 3s ease-in-out infinite !important;
+}
+
+/* Rainbow border profile pictures */
+.group-profile-pic,
+.group-avatar,
+img[class*="group"],
+.profile-pic,
+.profile-image {
+  border: 4px solid #ff0000 !important;
+  border-radius: 50% !important;
+  padding: 2px !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.4) !important;
+  animation: rainbowBorder 3s linear infinite, float 6s ease-in-out infinite !important;
+  position: relative !important;
+}
+
+.group-profile-pic:hover,
+.group-avatar:hover,
+.profile-pic:hover,
+.profile-image:hover {
+  transform: scale(1.1) rotate(5deg) !important;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.6) !important;
+  animation: rainbowBorder 1s linear infinite, float 2s ease-in-out infinite !important;
+}
+
+/* Regular avatar styling with subtle animation */
+.avatar,
+.user-avatar,
+img[class*="avatar"]:not([class*="group"]):not(.profile-pic):not(.profile-image) {
+  border: 2px solid var(--gaming-blue) !important;
+  border-radius: 50% !important;
+  padding: 1px !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3) !important;
+  animation: fadeInUp 0.5s ease-out !important;
+}
+
+.avatar:hover,
+.user-avatar:hover {
+  transform: scale(1.15) !important;
+  border-color: var(--gaming-cyan) !important;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5) !important;
+  animation: pulseGlow 1s ease-in-out infinite !important;
+}
+
+/* Input field styling with focus animations */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+  background: linear-gradient(135deg, rgba(26, 31, 46, 0.9), rgba(37, 43, 61, 0.9)) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 2px solid rgba(0, 191, 255, 0.4) !important;
+  border-radius: 6px !important;
+  color: var(--gaming-text-bright) !important;
+  font-family: 'Rajdhani', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  padding: 10px 14px !important;
+  margin: 2px 0 !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+  animation: fadeInUp 0.4s ease-out !important;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  border-color: var(--gaming-cyan) !important;
+  color: var(--gaming-text) !important;
+  box-shadow: 0 4px 12px rgba(0, 255, 255, 0.3) !important;
+  animation: pulseGlow 2s ease-in-out infinite !important;
+  transform: scale(1.02) !important;
+}
+
+/* Link styling with hover animations */
+a:not(.nav-link):not(.dropdown-toggle):not(.btn) {
+  color: var(--gaming-cyan) !important;
+  font-family: 'Rajdhani', sans-serif !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  position: relative !important;
+}
+
+a:not(.nav-link):not(.dropdown-toggle):not(.btn):hover {
+  color: var(--gaming-text) !important;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.6) !important;
+  animation: subtleGlow 1s ease-in-out infinite !important;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 12px !important;
+  background: var(--gaming-dark) !important;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(26, 31, 46, 0.8) !important;
+  border-radius: 6px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--gaming-cyan), var(--gaming-blue)) !important;
+  border-radius: 6px !important;
+  border: 1px solid var(--gaming-primary) !important;
+  transition: all 0.3s ease !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--gaming-blue), var(--gaming-purple)) !important;
+  animation: pulseGlow 1s ease-in-out infinite !important;
+}
+
+/* Table styling with animations */
+table {
+  background: linear-gradient(145deg, rgba(26, 31, 46, 0.95), rgba(37, 43, 61, 0.95)) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 2px solid var(--gaming-blue) !important;
+  border-radius: 8px !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  overflow: hidden !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+  animation: fadeInUp 0.6s ease-out !important;
+}
+
+thead,
+.table-header {
+  background: linear-gradient(90deg, var(--gaming-blue), var(--gaming-purple)) !important;
+}
+
+th {
+  color: var(--gaming-text) !important;
+  font-family: 'Orbitron', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  padding: 12px 10px !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8) !important;
+  animation: subtleGlow 4s ease-in-out infinite !important;
+}
+
+td {
+  color: var(--gaming-text-bright) !important;
+  font-family: 'Rajdhani', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 13px !important;
+  padding: 10px !important;
+  border-bottom: 1px solid rgba(0, 191, 255, 0.2) !important;
+  transition: all 0.2s ease !important;
+}
+
+tr:hover {
+  background: rgba(0, 255, 255, 0.05) !important;
+  transform: translateX(3px) !important;
+  animation: shimmer 2s ease-in-out infinite !important;
+  background-size: 200% 100% !important;
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 255, 255, 0.05),
+    transparent
+  ) !important;
+}
+
+tr:hover td {
+  color: var(--gaming-text) !important;
+  text-shadow: 0 0 3px rgba(0, 255, 255, 0.3) !important;
+}
+
+/* Footer styling */
+footer,
+.site-footer,
+.footer {
+  background: linear-gradient(90deg, var(--gaming-dark), var(--gaming-primary)) !important;
+  border-top: 2px solid var(--gaming-blue) !important;
+  color: var(--gaming-text-dim) !important;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3) !important;
+  animation: slideIn 0.6s ease-out !important;
+}
+
+/* Text visibility with subtle animations */
+p, span, div, li, td, th, label {
+  color: var(--gaming-text-bright) !important;
+  animation: fadeInUp 0.5s ease-out !important;
+}
+
+/* Add staggered animation delays for lists */
+li:nth-child(1) { animation-delay: 0.1s !important; }
+li:nth-child(2) { animation-delay: 0.2s !important; }
+li:nth-child(3) { animation-delay: 0.3s !important; }
+li:nth-child(4) { animation-delay: 0.4s !important; }
+li:nth-child(5) { animation-delay: 0.5s !important; }
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .navbar-nav .nav-link,
+  .nav-link {
+    font-size: 12px !important;
+    padding: 8px 10px !important;
+    height: 36px !important;
+  }
+  
+  button,
+  .btn {
+    font-size: 12px !important;
+    padding: 6px 12px !important;
+    min-width: 70px !important;
+    min-height: 30px !important;
+  }
+  
+  h1 {
+    font-size: 20px !important;
+  }
+  
+  /* Adjust skin toggle for mobile */
+  body::before {
+    top: 10px !important;
+    right: 10px !important;
+    font-size: 10px !important;
+    padding: 6px 12px !important;
+  }
+  
+  /* Reduce animation intensity on mobile */
+  .group-profile-pic:hover,
+  .group-avatar:hover,
+  .profile-pic:hover,
+  .profile-image:hover {
+    transform: scale(1.05) rotate(2deg) !important;
+  }
+}
+
+/* Disable PlanetGo skin styles when OGS skin is active */
+body.ogs-skin {
+  background: unset !important;
+  color: unset !important;
+  font-family: unset !important;
+  animation: none !important;
+}
+
+body.ogs-skin *:not(.skin-toggle):not(body::before) {
+  background: unset !important;
+  color: unset !important;
+  font-family: unset !important;
+  border: unset !important;
+  border-radius: unset !important;
+  box-shadow: unset !important;
+  text-shadow: unset !important;
+  animation: none !important;
+  transform: unset !important;
+  transition: unset !important;
+  backdrop-filter: unset !important;
+  padding: unset !important;
+  margin: unset !important;
+  min-height: unset !important;
+  min-width: unset !important;
+  text-transform: unset !important;
+  letter-spacing: unset !important;
+  font-weight: unset !important;
+  font-size: unset !important;
+  line-height: unset !important;
+  text-decoration: unset !important;
+  display: unset !important;
+  align-items: unset !important;
+  justify-content: unset !important;
+  text-align: unset !important;
+  cursor: unset !important;
+  position: unset !important;
+  z-index: unset !important;
+  width: unset !important;
+  height: unset !important;
+  flex: unset !important;
+  gap: unset !important;
+  border-collapse: unset !important;
+  border-spacing: unset !important;
+  overflow: unset !important;
+  background-attachment: unset !important;
+  background-size: unset !important;
+  background-image: unset !important;
+  background-position: unset !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+  background-clip: unset !important;
+}
+
+/* Update skin toggle text when OGS skin is active */
+body.ogs-skin::before {
+  content: "🌐 OGS Skin" !important;
+  background: linear-gradient(135deg, #666, #888) !important;
+  border: 2px solid #999 !important;
+  color: #fff !important;
+  animation: none !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+body.ogs-skin::before:hover {
+  background: linear-gradient(135deg, #777, #999) !important;
+  transform: scale(1.05) !important;
+}
+
+/* JavaScript for skin toggle functionality - This would need to be added separately */
+/*
+To implement the skin toggle functionality, add this JavaScript to your page:
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Create the toggle functionality
+  document.addEventListener('click', function(e) {
+    // Check if the click was on the skin toggle (the ::before pseudo-element area)
+    if (e.target === document.body && 
+        e.clientX >= window.innerWidth - 120 && 
+        e.clientX <= window.innerWidth - 20 && 
+        e.clientY >= 20 && 
+        e.clientY <= 60) {
+      
+      // Toggle between skins
+      if (document.body.classList.contains('ogs-skin')) {
+        document.body.classList.remove('ogs-skin');
+        localStorage.setItem('skinPreference', 'planetgo');
+      } else {
+        document.body.classList.add('ogs-skin');
+        localStorage.setItem('skinPreference', 'ogs');
+      }
+    }
+  });
+  
+  // Load saved skin preference
+  const savedSkin = localStorage.getItem('skinPreference');
+  if (savedSkin === 'ogs') {
+    document.body.classList.add('ogs-skin');
+  }
+  
+  // Make the skin toggle area more clickable
+  document.body.style.cursor = 'default';
+  document.addEventListener('mousemove', function(e) {
+    if (e.clientX >= window.innerWidth - 120 && 
+        e.clientX <= window.innerWidth - 20 && 
+        e.clientY >= 20 && 
+        e.clientY <= 60) {
+      document.body.style.cursor = 'pointer';
+    } else {
+      document.body.style.cursor = 'default';
+    }
+  });
+});
+</script>
+*/
+
+/* Additional hover effects for interactive elements */
+.nav-item:hover,
+.menu-item:hover,
+[class*="nav"]:hover,
+[class*="menu"]:hover {
+  animation: float 2s ease-in-out infinite !important;
+}
+
+/* Subtle loading animation for new content */
+.fade-in {
+  animation: fadeInUp 0.6s ease-out !important;
+}
+
+/* Enhanced glow effects for important elements */
+.important,
+.highlighted,
+.featured,
+[class*="featured"] {
+  animation: pulseGlow 2s ease-in-out infinite !important;
+  border: 2px solid var(--gaming-cyan) !important;
+  border-radius: 8px !important;
+}
+
+/* Notification/alert styling with animation */
+.alert,
+.notification,
+.message,
+[class*="alert"],
+[class*="notification"] {
+  background: linear-gradient(135deg, rgba(0, 191, 255, 0.1), rgba(138, 43, 226, 0.1)) !important;
+  border: 2px solid var(--gaming-blue) !important;
+  border-radius: 8px !important;
+  color: var(--gaming-text-bright) !important;
+  animation: slideIn 0.5s ease-out !important;
+  box-shadow: 0 4px 15px rgba(0, 191, 255, 0.2) !important;
+}
+
+/* Form styling improvements */
+form {
+  animation: fadeInUp 0.8s ease-out !important;
+}
+
+fieldset {
+  border: 2px solid rgba(0, 191, 255, 0.3) !important;
+  border-radius: 8px !important;
+  background: rgba(37, 43, 61, 0.5) !important;
+  animation: fadeInUp 0.6s ease-out !important;
+}
+
+legend {
+  color: var(--gaming-cyan) !important;
+  font-family: 'Orbitron', monospace !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  animation: subtleGlow 3s ease-in-out infinite !important;
+}
+
+/* Modal/popup styling */
+.modal,
+.popup,
+.overlay,
+[class*="modal"],
+[class*="popup"] {
+  background: linear-gradient(145deg, rgba(26, 31, 46, 0.95), rgba(37, 43, 61, 0.95)) !important;
+  backdrop-filter: blur(15px) !important;
+  border: 2px solid var(--gaming-blue) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+  animation: fadeInUp 0.4s ease-out !important;
+}
+
+/* Tab styling */
+.tab,
+.nav-tab,
+[class*="tab"] {
+  background: rgba(45, 55, 72, 0.5) !important;
+  border: 1px solid rgba(0, 191, 255, 0.3) !important;
+  color: var(--gaming-text-bright) !important;
+  transition: all 0.3s ease !important;
+  animation: fadeInUp 0.3s ease-out !important;
+}
+
+.tab:hover,
+.nav-tab:hover,
+.tab.active,
+.nav-tab.active {
+  background: rgba(0, 255, 255, 0.1) !important;
+  border-color: var(--gaming-cyan) !important;
+  transform: translateY(-2px) !important;
+  animation: subtleGlow 2s ease-in-out infinite !important;
+}
+
+/* Game board or content area enhancements */
+.game-board,
+.content-area,
+.main-content,
+[class*="board"],
+[class*="game"] {
+  border: 2px solid rgba(0, 191, 255, 0.2) !important;
+  border-radius: 10px !important;
+  background: rgba(26, 31, 46, 0.3) !important;
+  animation: fadeInUp 0.8s ease-out !important;
+  transition: all 0.3s ease !important;
+}
+
+.game-board:hover,
+.content-area:hover,
+.main-content:hover {
+  border-color: rgba(0, 255, 255, 0.4) !important;
+  box-shadow: 0 0 20px rgba(0, 191, 255, 0.1) !important;
+}
+
+/* Loading spinner/indicator */
+.loading,
+.spinner,
+[class*="loading"],
+[class*="spinner"] {
+  animation: float 1s ease-in-out infinite !important;
+}
+
+/* Success/error state animations */
+.success {
+  animation: pulseGlow 1s ease-in-out 3 !important;
+  border-color: var(--gaming-green) !important;
+}
+
+.error {
+  animation: pulseGlow 1s ease-in-out 3 !important;
+  border-color: var(--gaming-orange) !important;
+}
+
+/* Breadcrumb styling */
+.breadcrumb,
+.breadcrumbs,
+[class*="breadcrumb"] {
+  background: rgba(37, 43, 61, 0.5) !important;
+  border-radius: 6px !important;
+  animation: slideIn 0.5s ease-out !important;
+}
+
+.breadcrumb a,
+.breadcrumbs a {
+  color: var(--gaming-cyan) !important;
+  transition: all 0.2s ease !important;
+}
+
+.breadcrumb a:hover,
+.breadcrumbs a:hover {
+  color: var(--gaming-text) !important;
+  animation: subtleGlow 1s ease-in-out infinite !important;
+}
