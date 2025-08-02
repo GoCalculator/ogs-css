@@ -53,7 +53,7 @@
 
 /* Create the skin toggle button dynamically */
 body::before {
-  content: "🎮 PlanetGo Skin" !important;
+  content: "🎮 BadukAlpha's Skin" !important;
   position: fixed !important;
   top: 20px !important;
   right: 20px !important;
@@ -649,72 +649,141 @@ li:nth-child(5) { animation-delay: 0.5s !important; }
   }
 }
 
-/* Disable PlanetGo skin styles when OGS skin is active */
+/* Disable BadukAlpha's skin styles when OGS skin is active - COMPLETE RESET */
+body.ogs-skin,
+body.ogs-skin *,
+body.ogs-skin *::before,
+body.ogs-skin *::after {
+  all: unset !important;
+  display: revert !important;
+}
+
+/* Restore basic document structure for OGS skin */
 body.ogs-skin {
-  background: unset !important;
-  color: unset !important;
-  font-family: unset !important;
-  animation: none !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  line-height: 1.5 !important;
+  color: #333 !important;
+  background: #fff !important;
 }
 
-body.ogs-skin *:not(.skin-toggle):not(body::before) {
-  background: unset !important;
-  color: unset !important;
-  font-family: unset !important;
-  border: unset !important;
-  border-radius: unset !important;
-  box-shadow: unset !important;
-  text-shadow: unset !important;
-  animation: none !important;
-  transform: unset !important;
-  transition: unset !important;
-  backdrop-filter: unset !important;
-  padding: unset !important;
-  margin: unset !important;
-  min-height: unset !important;
-  min-width: unset !important;
-  text-transform: unset !important;
-  letter-spacing: unset !important;
-  font-weight: unset !important;
-  font-size: unset !important;
-  line-height: unset !important;
-  text-decoration: unset !important;
-  display: unset !important;
-  align-items: unset !important;
-  justify-content: unset !important;
-  text-align: unset !important;
-  cursor: unset !important;
-  position: unset !important;
-  z-index: unset !important;
-  width: unset !important;
-  height: unset !important;
-  flex: unset !important;
-  gap: unset !important;
-  border-collapse: unset !important;
-  border-spacing: unset !important;
-  overflow: unset !important;
-  background-attachment: unset !important;
-  background-size: unset !important;
-  background-image: unset !important;
-  background-position: unset !important;
-  -webkit-background-clip: unset !important;
-  -webkit-text-fill-color: unset !important;
-  background-clip: unset !important;
+body.ogs-skin html {
+  display: block !important;
 }
 
-/* Update skin toggle text when OGS skin is active */
+body.ogs-skin head {
+  display: none !important;
+}
+
+body.ogs-skin div,
+body.ogs-skin span,
+body.ogs-skin p,
+body.ogs-skin a,
+body.ogs-skin button,
+body.ogs-skin input,
+body.ogs-skin select,
+body.ogs-skin textarea,
+body.ogs-skin table,
+body.ogs-skin thead,
+body.ogs-skin tbody,
+body.ogs-skin tr,
+body.ogs-skin td,
+body.ogs-skin th,
+body.ogs-skin h1,
+body.ogs-skin h2,
+body.ogs-skin h3,
+body.ogs-skin h4,
+body.ogs-skin h5,
+body.ogs-skin h6,
+body.ogs-skin ul,
+body.ogs-skin ol,
+body.ogs-skin li,
+body.ogs-skin nav,
+body.ogs-skin header,
+body.ogs-skin footer,
+body.ogs-skin section,
+body.ogs-skin article,
+body.ogs-skin aside,
+body.ogs-skin form,
+body.ogs-skin fieldset,
+body.ogs-skin legend,
+body.ogs-skin label,
+body.ogs-skin img {
+  display: revert !important;
+  position: static !important;
+  margin: revert !important;
+  padding: revert !important;
+  border: revert !important;
+  background: revert !important;
+  color: revert !important;
+  font-family: revert !important;
+  font-size: revert !important;
+  font-weight: revert !important;
+  line-height: revert !important;
+  text-decoration: revert !important;
+  text-transform: revert !important;
+  letter-spacing: revert !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  animation: none !important;
+  transform: none !important;
+  transition: none !important;
+  backdrop-filter: none !important;
+  text-align: revert !important;
+  vertical-align: revert !important;
+  width: revert !important;
+  height: revert !important;
+  min-width: revert !important;
+  min-height: revert !important;
+  max-width: revert !important;
+  max-height: revert !important;
+  overflow: revert !important;
+  cursor: revert !important;
+  z-index: revert !important;
+  opacity: revert !important;
+  visibility: revert !important;
+  flex: revert !important;
+  grid: revert !important;
+  float: revert !important;
+  clear: revert !important;
+  content: revert !important;
+}
+
+/* Only keep the skin toggle button visible in OGS mode */
 body.ogs-skin::before {
+  all: revert !important;
   content: "🌐 OGS Skin" !important;
-  background: linear-gradient(135deg, #666, #888) !important;
-  border: 2px solid #999 !important;
-  color: #fff !important;
+  position: fixed !important;
+  top: 20px !important;
+  right: 20px !important;
+  z-index: 9999 !important;
+  background: #f8f9fa !important;
+  border: 2px solid #dee2e6 !important;
+  border-radius: 4px !important;
+  color: #495057 !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 12px !important;
+  padding: 8px 16px !important;
+  cursor: pointer !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+  transition: all 0.2s ease !important;
   animation: none !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+  transform: none !important;
+  text-shadow: none !important;
+  backdrop-filter: none !important;
+  display: block !important;
 }
 
 body.ogs-skin::before:hover {
-  background: linear-gradient(135deg, #777, #999) !important;
-  transform: scale(1.05) !important;
+  background: #e9ecef !important;
+  border-color: #adb5bd !important;
+  transform: none !important;
+  animation: none !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
 }
 
 /* JavaScript for skin toggle functionality - This would need to be added separately */
@@ -727,7 +796,7 @@ document.addEventListener('DOMContentLoaded', function() {
   document.addEventListener('click', function(e) {
     // Check if the click was on the skin toggle (the ::before pseudo-element area)
     if (e.target === document.body && 
-        e.clientX >= window.innerWidth - 120 && 
+        e.clientX >= window.innerWidth - 140 && 
         e.clientX <= window.innerWidth - 20 && 
         e.clientY >= 20 && 
         e.clientY <= 60) {
@@ -735,7 +804,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Toggle between skins
       if (document.body.classList.contains('ogs-skin')) {
         document.body.classList.remove('ogs-skin');
-        localStorage.setItem('skinPreference', 'planetgo');
+        localStorage.setItem('skinPreference', 'badukalpha');
       } else {
         document.body.classList.add('ogs-skin');
         localStorage.setItem('skinPreference', 'ogs');
@@ -743,16 +812,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
-  // Load saved skin preference
+  // Load saved skin preference - Default to BadukAlpha's Skin
   const savedSkin = localStorage.getItem('skinPreference');
   if (savedSkin === 'ogs') {
     document.body.classList.add('ogs-skin');
   }
+  // If no preference is saved or savedSkin === 'badukalpha', use BadukAlpha's Skin (default)
   
   // Make the skin toggle area more clickable
   document.body.style.cursor = 'default';
   document.addEventListener('mousemove', function(e) {
-    if (e.clientX >= window.innerWidth - 120 && 
+    if (e.clientX >= window.innerWidth - 140 && 
         e.clientX <= window.innerWidth - 20 && 
         e.clientY >= 20 && 
         e.clientY <= 60) {
