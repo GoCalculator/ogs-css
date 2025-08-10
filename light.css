@@ -1,18 +1,54 @@
-/* Make OGS completely white, covering all elements in both light and dark mode */
+/* ---------- OGS: Full white overlay + fallbacks (paste into Stylus or your CSS file) ---------- */
 
-/* Force background white and hide everything else */
-html, body {
-    background: #ffffff !important;
-    color: #ffffff !important; /* Text invisible */
+/* Ensure root backgrounds/text are white */
+:root, html, body, #root, #app, .app, .App {
+  background: #ffffff !important;
+  color: #ffffff !important;
 }
 
-* {
-    background: #ffffff !important;
-    color: #ffffff !important;
-    border-color: #ffffff !important;
+/* 1) Full-viewport white overlay (most robust way) */
+html::before {
+  content: "";
+  position: fixed;
+  inset: 0; /* top:0; right:0; bottom:0; left:0; */
+  background: #ffffff !important;
+  z-index: 2147483647 !important; /* extremely high so it sits on top */
+  pointer-events: none !important; /* let clicks pass through — change below if you want blocking */
+  mix-blend-mode: normal !important;
 }
 
-/* Hide images and videos */
-img, video, svg, canvas {
-    display: none !important;
+/* 2) Fallback: force every element to white background/text and remove images/background-images */
+*,
+*::before,
+*::after {
+  background: #ffffff !important;
+  background-image: none !important;
+  color: #ffffff !important;
+  border-color: #ffffff !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  -webkit-text-fill-color: #ffffff !important; /* for some browsers */
+  filter: none !important;
+  opacity: 1 !important;
 }
+
+/* 3) Hide media and vector graphics that could still show through */
+img, picture, video, svg, canvas, iframe {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+/* 4) Remove decorative outlines & gradients */
+*[style*="linear-gradient"],
+*[style*="radial-gradient"] {
+  background-image: none !important;
+}
+
+/* ---- Optional tweaks (uncomment if you want these behaviors) ---- */
+/* Make the page unscrollable */
+/* html, body { overflow: hidden !important; } */
+
+/* Make overlay block clicks too (prevents interacting with the site) */
+/* html::before { pointer-events: auto !important; } */
+
