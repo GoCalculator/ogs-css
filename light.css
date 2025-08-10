@@ -1,54 +1,63 @@
-/* ---------- OGS: Full white overlay + fallbacks (paste into Stylus or your CSS file) ---------- */
+/* --------- Hide rating/card containers + h2s (pure CSS) --------- */
 
-/* Ensure root backgrounds/text are white */
-:root, html, body, #root, #app, .app, .App {
-  background: #ffffff !important;
-  color: #ffffff !important;
-}
-
-/* 1) Full-viewport white overlay (most robust way) */
-html::before {
-  content: "";
-  position: fixed;
-  inset: 0; /* top:0; right:0; bottom:0; left:0; */
-  background: #ffffff !important;
-  z-index: 2147483647 !important; /* extremely high so it sits on top */
-  pointer-events: none !important; /* let clicks pass through — change below if you want blocking */
-  mix-blend-mode: normal !important;
-}
-
-/* 2) Fallback: force every element to white background/text and remove images/background-images */
-*,
-*::before,
-*::after {
-  background: #ffffff !important;
-  background-image: none !important;
-  color: #ffffff !important;
-  border-color: #ffffff !important;
-  box-shadow: none !important;
-  text-shadow: none !important;
-  -webkit-text-fill-color: #ffffff !important; /* for some browsers */
-  filter: none !important;
-  opacity: 1 !important;
-}
-
-/* 3) Hide media and vector graphics that could still show through */
-img, picture, video, svg, canvas, iframe {
+/* Exact/likely class names */
+.rating-container,
+.Rating-container,
+.ratings-container,
+.Ratings-container,
+.ratings-row,
+.Ratings-row,
+.rating-row,
+.Rating-row,
+.card,
+.Card,
+.cards,
+.Cards {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  pointer-events: none !important;
 }
 
-/* 4) Remove decorative outlines & gradients */
-*[style*="linear-gradient"],
-*[style*="radial-gradient"] {
-  background-image: none !important;
+/* Hide any h2 inside those containers explicitly */
+.rating-container h2,
+.Rating-container h2,
+.ratings-container h2,
+.Ratings-container h2,
+.ratings-row h2,
+.Ratings-row h2,
+.rating-row h2,
+.Rating-row h2,
+.card h2,
+.Card h2,
+.cards h2,
+.Cards h2 {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-/* ---- Optional tweaks (uncomment if you want these behaviors) ---- */
-/* Make the page unscrollable */
-/* html, body { overflow: hidden !important; } */
+/* Fallback: hide any element whose class name contains those keywords (more aggressive) */
+[class*="rating"],
+[class*="Rating"],
+[class*="ratings"],
+[class*="Ratings"],
+[class*="card"],
+[class*="Card"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  pointer-events: none !important;
+}
 
-/* Make overlay block clicks too (prevents interacting with the site) */
-/* html::before { pointer-events: auto !important; } */
+/* Optional: hide h2 globally (uncomment if you want all h2 removed site-wide) */
+/* h2 { display: none !important; visibility: hidden !important; height: 0 !important; margin: 0 !important; padding: 0 !important; } */
 
