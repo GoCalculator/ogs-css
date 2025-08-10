@@ -1,0 +1,18 @@
+/* Make OGS completely white, covering all elements in both light and dark mode */
+
+/* Force background white and hide everything else */
+html, body {
+    background: #ffffff !important;
+    color: #ffffff !important; /* Text invisible */
+}
+
+* {
+    background: #ffffff !important;
+    color: #ffffff !important;
+    border-color: #ffffff !important;
+}
+
+/* Hide images and videos */
+img, video, svg, canvas {
+    display: none !important;
+}
