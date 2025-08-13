@@ -1,1 +1,78 @@
 
+/* Select every element and all pseudo-elements */
+*,
+*::before,
+*::after {
+  /* Text and background */
+  color: black !important;
+  background-color: black !important;
+
+  /* Borders and outlines */
+  border-color: black !important;
+  outline-color: black !important;
+
+  /* Remove shadows that might add color */
+  box-shadow: none !important;
+  text-shadow: none !important;
+
+  /* Remove any filters that affect colors */
+  filter: none !important;
+}
+
+/* Links */
+a,
+a:visited,
+a:hover,
+a:active {
+  color: black !important;
+  text-decoration: none !important;
+}
+
+/* Form elements */
+input,
+textarea,
+button,
+select,
+option {
+  color: black !important;
+  background-color: black !important;
+  border-color: black !important;
+  box-shadow: none !important;
+  outline-color: black !important;
+}
+
+/* Tables */
+table,
+th,
+td {
+  color: black !important;
+  background-color: black !important;
+  border-color: black !important;
+  box-shadow: none !important;
+}
+
+/* Lists */
+ul,
+ol,
+li {
+  color: black !important;
+  background-color: black !important;
+  border-color: black !important;
+}
+
+/* SVG and images with fill or stroke */
+svg * {
+  fill: black !important;
+  stroke: black !important;
+}
+
+/* Disable animations that might change colors */
+* {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Remove background images */
+* {
+  background-image: none !important;
+}
