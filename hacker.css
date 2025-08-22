@@ -1,0 +1,438 @@
+/* ==========================================
+   HACKER THEME CSS - Matrix Terminal Style
+   ========================================== */
+
+/* Import terminal-style fonts */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Source+Code+Pro:wght@300;400;500;600;700&display=swap');
+
+/* Root variables for consistent theming */
+:root {
+  --primary-bg: #0d1117;
+  --secondary-bg: #161b22;
+  --tertiary-bg: #21262d;
+  --accent-green: #00ff41;
+  --accent-cyan: #00ffff;
+  --accent-red: #ff0040;
+  --text-primary: #c9d1d9;
+  --text-secondary: #8b949e;
+  --text-muted: #6e7681;
+  --border-color: #30363d;
+  --shadow-color: rgba(0, 255, 65, 0.2);
+  --glow-color: rgba(0, 255, 65, 0.4);
+}
+
+/* Global styles */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  background: var(--primary-bg) !important;
+  color: var(--text-primary) !important;
+  font-family: 'Fira Code', 'Source Code Pro', 'Consolas', monospace !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: 100vh !important;
+  overflow-x: auto !important;
+}
+
+/* Matrix-style background animation */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, 
+    var(--primary-bg) 0%, 
+    rgba(13, 17, 23, 0.95) 50%, 
+    var(--primary-bg) 100%);
+  z-index: -2;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(0, 255, 65, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(0, 255, 255, 0.1) 0%, transparent 50%);
+  z-index: -1;
+}
+
+/* Container and layout fixes */
+#MainContainer,
+.container,
+.main-content,
+[id*="container"],
+[class*="container"] {
+  background: transparent !important;
+  color: var(--text-primary) !important;
+}
+
+/* Headers and typography */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--accent-green) !important;
+  font-family: 'Fira Code', monospace !important;
+  font-weight: 600 !important;
+  text-shadow: 0 0 10px var(--glow-color) !important;
+  letter-spacing: 0.5px !important;
+}
+
+h1::before { content: '> '; }
+h2::before { content: '>> '; }
+h3::before { content: '>>> '; }
+
+/* Links */
+a, a:link, a:visited {
+  color: var(--accent-cyan) !important;
+  text-decoration: none !important;
+  border-bottom: 1px solid transparent !important;
+  transition: all 0.3s ease !important;
+}
+
+a:hover, a:focus {
+  color: var(--accent-green) !important;
+  border-bottom-color: var(--accent-green) !important;
+  text-shadow: 0 0 8px var(--glow-color) !important;
+}
+
+/* Buttons */
+button,
+input[type="button"],
+input[type="submit"],
+.button,
+[class*="btn"] {
+  background: var(--secondary-bg) !important;
+  color: var(--text-primary) !important;
+  border: 2px solid var(--border-color) !important;
+  border-radius: 4px !important;
+  padding: 8px 16px !important;
+  font-family: 'Fira Code', monospace !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover,
+.button:hover,
+[class*="btn"]:hover {
+  background: var(--tertiary-bg) !important;
+  border-color: var(--accent-green) !important;
+  color: var(--accent-green) !important;
+  box-shadow: 0 0 20px var(--shadow-color) !important;
+  transform: translateY(-1px) !important;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+/* Input fields */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+  background: var(--secondary-bg) !important;
+  color: var(--text-primary) !important;
+  border: 2px solid var(--border-color) !important;
+  border-radius: 4px !important;
+  padding: 8px 12px !important;
+  font-family: 'Fira Code', monospace !important;
+  outline: none !important;
+  transition: all 0.3s ease !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--accent-green) !important;
+  box-shadow: 0 0 10px var(--shadow-color) !important;
+  background: var(--tertiary-bg) !important;
+}
+
+/* Tables */
+table {
+  background: var(--secondary-bg) !important;
+  border-collapse: collapse !important;
+  width: 100% !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+th, td {
+  background: transparent !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+  padding: 12px !important;
+  font-family: 'Fira Code', monospace !important;
+}
+
+th {
+  background: var(--tertiary-bg) !important;
+  color: var(--accent-green) !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+}
+
+tr:hover td {
+  background: var(--tertiary-bg) !important;
+}
+
+/* Navigation and menus */
+nav,
+.nav,
+.navbar,
+.menu,
+[class*="nav"] {
+  background: var(--secondary-bg) !important;
+  border-bottom: 2px solid var(--border-color) !important;
+}
+
+.nav-link,
+.menu-item,
+[class*="nav-"] a {
+  color: var(--text-primary) !important;
+  padding: 10px 15px !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+}
+
+.nav-link:hover,
+.menu-item:hover {
+  color: var(--accent-green) !important;
+  background: var(--tertiary-bg) !important;
+}
+
+.nav-link.active,
+.menu-item.active {
+  color: var(--accent-cyan) !important;
+  background: var(--tertiary-bg) !important;
+}
+
+/* Cards and panels */
+.card,
+.panel,
+.box,
+[class*="card"],
+[class*="panel"] {
+  background: var(--secondary-bg) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 6px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+  margin: 15px 0 !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+.card::before,
+.panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-green), var(--accent-cyan), var(--accent-green));
+}
+
+.card-header,
+.panel-header {
+  background: var(--tertiary-bg) !important;
+  color: var(--accent-green) !important;
+  padding: 12px 16px !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  font-weight: 600 !important;
+}
+
+/* Alerts and notifications */
+.alert,
+.notification,
+.message {
+  border-radius: 4px !important;
+  padding: 12px 16px !important;
+  margin: 10px 0 !important;
+  font-family: 'Fira Code', monospace !important;
+}
+
+.alert-success { 
+  background: rgba(0, 255, 65, 0.1) !important;
+  border: 1px solid var(--accent-green) !important;
+  color: var(--accent-green) !important;
+}
+
+.alert-error,
+.alert-danger { 
+  background: rgba(255, 0, 64, 0.1) !important;
+  border: 1px solid var(--accent-red) !important;
+  color: var(--accent-red) !important;
+}
+
+.alert-info { 
+  background: rgba(0, 255, 255, 0.1) !important;
+  border: 1px solid var(--accent-cyan) !important;
+  color: var(--accent-cyan) !important;
+}
+
+/* Code blocks and pre */
+code,
+pre,
+.code,
+[class*="code"] {
+  background: var(--primary-bg) !important;
+  color: var(--accent-green) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 4px !important;
+  padding: 12px !important;
+  font-family: 'Fira Code', monospace !important;
+  font-size: 14px !important;
+  overflow-x: auto !important;
+  position: relative !important;
+}
+
+pre::before {
+  content: '$ ';
+  color: var(--accent-cyan);
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 12px !important;
+  height: 12px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary-bg) !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color) !important;
+  border-radius: 6px !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-green) !important;
+  box-shadow: 0 0 10px var(--glow-color) !important;
+}
+
+/* Terminal cursor animation */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.cursor::after {
+  content: '█';
+  color: var(--accent-green);
+  animation: blink 1s infinite;
+}
+
+/* Loading animations */
+@keyframes matrix-rain {
+  0% { transform: translateY(-100vh); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+.matrix-char {
+  position: fixed;
+  color: var(--accent-green);
+  font-family: 'Fira Code', monospace;
+  animation: matrix-rain 3s linear infinite;
+  z-index: -1;
+}
+
+/* Glitch effect for special elements */
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+.glitch:hover {
+  animation: glitch 0.5s ease-in-out;
+}
+
+/* Go board specific styles (for online-go.com) */
+.goban,
+.board,
+[class*="goban"],
+[class*="board"] {
+  border: 2px solid var(--accent-green) !important;
+  box-shadow: 0 0 30px var(--shadow-color) !important;
+}
+
+.stone,
+[class*="stone"] {
+  filter: drop-shadow(0 0 8px var(--glow-color)) !important;
+}
+
+/* Footer */
+footer {
+  background: var(--secondary-bg) !important;
+  border-top: 1px solid var(--border-color) !important;
+  color: var(--text-secondary) !important;
+  padding: 20px !important;
+  margin-top: auto !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px !important;
+  }
+  
+  .card,
+  .panel {
+    margin: 10px 0 !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  :root {
+    --text-primary: #ffffff;
+    --accent-green: #00ff00;
+    --accent-cyan: #ffffff;
+    --border-color: #555555;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus indicators for keyboard navigation */
+*:focus {
+  outline: 2px solid var(--accent-green) !important;
+  outline-offset: 2px !important;
+}
