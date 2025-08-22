@@ -175,6 +175,11 @@ nav a,
   border-radius: 4px !important;
   margin: 0 2px !important;
   overflow: hidden !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  vertical-align: top !important;
+  text-align: center !important;
 }
 
 .ogs-nav-bar a::before,
@@ -255,6 +260,12 @@ input[type="submit"],
   position: relative !important;
   overflow: hidden !important;
   animation: fadeIn 0.6s ease-out;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  vertical-align: top !important;
+  line-height: 1.2 !important;
 }
 
 button::before,
