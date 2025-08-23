@@ -1,30 +1,27 @@
-/* Reset some default styles for a clean slate */
+/* General Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    color: #000 !important;
-    background-color: #000 !important;
-    border: none !important;
-    font-family: Arial, sans-serif !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
 }
 
 /* Body and HTML */
 html, body {
     height: 100%;
     width: 100%;
-    color: #fff !important; /* Text color */
-    background-color: #000 !important; /* Background color */
+    background-color: #000 !important;
+    color: #000 !important; /* Make text black globally */
+    font-family: Arial, sans-serif !important;
 }
 
 /* Links */
-a {
-    color: #fff !important;
+a, a:visited {
+    color: #000 !important; /* Set all links to black */
     text-decoration: none !important;
 }
 
 /* Buttons */
-button, .button, .btn {
+button, .button, .btn, .btn-primary, .btn-secondary {
     background-color: #000 !important;
     color: #fff !important;
     border: 1px solid #fff !important;
@@ -33,26 +30,39 @@ button, .button, .btn {
 }
 
 button:hover, .button:hover, .btn:hover {
-    background-color: #333 !important; /* Slight hover effect */
+    background-color: #333 !important;
+}
+
+/* Disable button with fa fa-pencil class */
+button.fa-pencil, .fa-pencil {
+    pointer-events: none !important;
+    opacity: 0.5 !important;
 }
 
 /* Inputs and form elements */
-input, textarea, select {
+input, textarea, select, .input-group, .form-control {
     background-color: #000 !important;
-    color: #fff !important;
+    color: #000 !important; /* All text in input fields black */
     border: 1px solid #fff !important;
     padding: 10px !important;
 }
 
-input:focus, textarea:focus, select:focus {
+input:focus, textarea:focus, select:focus, .form-control:focus {
     outline: none !important;
     border: 1px solid #fff !important;
 }
 
-/* Tables */
+/* Chat and Message Box */
+.chat-container, .chat-box, .message-box, .chat-textarea {
+    background-color: #000 !important;
+    color: #000 !important; /* All text in chat boxes black */
+    border: 1px solid #fff !important;
+}
+
+/* Table and Board */
 table, th, td {
     border: 1px solid #fff !important;
-    color: #fff !important;
+    color: #000 !important; /* All table text black */
 }
 
 th {
@@ -63,53 +73,48 @@ tr:nth-child(even) {
     background-color: #111 !important;
 }
 
-/* Links and hover effects */
-a:hover {
-    color: #f00 !important; /* Red on hover */
-}
-
-/* Headers */
-h1, h2, h3, h4, h5, h6 {
-    color: #fff !important;
-}
-
-/* Navigation and menu bars */
-nav, .navbar, .menu {
+/* Header (Logo and Nav) */
+header, .navbar, .site-header, .navbar-nav {
     background-color: #000 !important;
-    color: #fff !important;
+    color: #000 !important; /* Text in navbar and header black */
+}
+
+.navbar a {
+    color: #000 !important;
+}
+
+.navbar a:hover {
+    color: #f00 !important; /* Red hover for links */
 }
 
 /* Footer */
 footer {
     background-color: #111 !important;
-    color: #fff !important;
+    color: #000 !important; /* Footer text black */
 }
 
-/* General page content */
-.container, .content {
-    padding: 20px !important;
-}
-
-/* Miscellaneous UI elements */
-.tooltip, .popup, .modal {
-    background-color: #222 !important;
-    color: #fff !important;
-}
-
-.card, .box, .panel {
-    background-color: #111 !important;
-    color: #fff !important;
-}
-
-.carousel, .slider {
+/* Sidebar */
+.sidebar, .menu, .left-sidebar {
     background-color: #000 !important;
+    color: #000 !important; /* Sidebar text black */
+}
+
+/* Miscellaneous UI components */
+.card, .panel, .popup, .modal, .tooltip {
+    background-color: #000 !important; /* Make card background black */
+    color: #000 !important; /* Ensure text in card is black */
+}
+
+.card-body, .post-content, .comment-content, .text-box {
+    background-color: #000 !important;
+    color: #000 !important; /* Ensure text in these areas is black */
 }
 
 img {
     filter: brightness(0) invert(1) !important; /* Ensures images are darkened */
 }
 
-/* Scrollbar styling */
+/* Scrollbar Styling */
 ::-webkit-scrollbar {
     width: 8px !important;
 }
@@ -121,4 +126,10 @@ img {
 
 ::-webkit-scrollbar-track {
     background-color: #000 !important;
+}
+
+/* Specific Overrides for Content Areas */
+.content-wrapper, .main-content, .page-content {
+    background-color: #000 !important;
+    color: #000 !important; /* Make content text black */
 }
