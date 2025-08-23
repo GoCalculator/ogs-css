@@ -1,26 +1,25 @@
-/* General Reset */
+
 * {
     margin: 0 !important;
     padding: 0 !important;
     box-sizing: border-box !important;
 }
 
-/* Body and HTML */
-html, body {
-    height: 100%;
-    width: 100%;
+body, html {
     background-color: #000 !important;
-    color: #000 !important; /* Make text black globally */
-    font-family: Arial, sans-serif !important;
+    color: #000 !important;
+    border-color: #000 !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
 }
 
-/* Links */
+
 a, a:visited {
     color: #000 !important; /* Set all links to black */
     text-decoration: none !important;
 }
 
-/* Buttons */
+
 button, .button, .btn, .btn-primary, .btn-secondary {
     background-color: #000 !important;
     color: #fff !important;
@@ -33,13 +32,12 @@ button:hover, .button:hover, .btn:hover {
     background-color: #333 !important;
 }
 
-/* Disable button with fa fa-pencil class */
 button.fa-pencil, .fa-pencil {
     pointer-events: none !important;
     opacity: 0.5 !important;
 }
 
-/* Inputs and form elements */
+
 input, textarea, select, .input-group, .form-control {
     background-color: #000 !important;
     color: #000 !important; /* All text in input fields black */
@@ -52,14 +50,13 @@ input:focus, textarea:focus, select:focus, .form-control:focus {
     border: 1px solid #fff !important;
 }
 
-/* Chat and Message Box */
 .chat-container, .chat-box, .message-box, .chat-textarea {
     background-color: #000 !important;
     color: #000 !important; /* All text in chat boxes black */
     border: 1px solid #fff !important;
 }
 
-/* Table and Board */
+
 table, th, td {
     border: 1px solid #fff !important;
     color: #000 !important; /* All table text black */
@@ -73,10 +70,10 @@ tr:nth-child(even) {
     background-color: #111 !important;
 }
 
-/* Header (Logo and Nav) */
+
 header, .navbar, .site-header, .navbar-nav {
     background-color: #000 !important;
-    color: #000 !important; /* Text in navbar and header black */
+    color: #000 !important; 
 }
 
 .navbar a {
@@ -84,37 +81,37 @@ header, .navbar, .site-header, .navbar-nav {
 }
 
 .navbar a:hover {
-    color: #f00 !important; /* Red hover for links */
+    color: #f00 !important; 
 }
 
-/* Footer */
+
 footer {
     background-color: #111 !important;
-    color: #000 !important; /* Footer text black */
+    color: #000 !important;
 }
 
-/* Sidebar */
+
 .sidebar, .menu, .left-sidebar {
     background-color: #000 !important;
-    color: #000 !important; /* Sidebar text black */
+    color: #000 !important; 
 }
 
-/* Miscellaneous UI components */
+
 .card, .panel, .popup, .modal, .tooltip {
-    background-color: #000 !important; /* Make card background black */
-    color: #000 !important; /* Ensure text in card is black */
+    background-color: #000 !important; 
+    color: #000 !important;
 }
 
 .card-body, .post-content, .comment-content, .text-box {
     background-color: #000 !important;
-    color: #000 !important; /* Ensure text in these areas is black */
+    color: #000 !important; 
 }
 
 img {
-    filter: brightness(0) invert(1) !important; /* Ensures images are darkened */
+    filter: brightness(0) invert(1) !important; 
 }
 
-/* Scrollbar Styling */
+
 ::-webkit-scrollbar {
     width: 8px !important;
 }
@@ -128,8 +125,33 @@ img {
     background-color: #000 !important;
 }
 
-/* Specific Overrides for Content Areas */
+
 .content-wrapper, .main-content, .page-content {
     background-color: #000 !important;
-    color: #000 !important; /* Make content text black */
+    color: #000 !important;
+}
+
+
+
+a:hover, .navbar a:hover, button:hover, .btn:hover {
+    color: #000 !important;
+    background-color: #000 !important;
+}
+
+
+input:focus, textarea:focus, select:focus, .form-control:focus {
+    border-color: #000 !important;
+    background-color: #000 !important;
+    color: #000 !important;
+}
+
+
+svg, i, .fa, .icon {
+    color: #000 !important;
+    fill: #000 !important;
+}
+
+
+img {
+    filter: brightness(0) !important;
 }
